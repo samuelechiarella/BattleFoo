@@ -1,0 +1,45 @@
+                            Casi d'uso.
+
+1) Gestire Torneo.
+2) Avviare e monitorare l'andamento del torneo.
+3) Gestire Team.
+
+Nome caso d'uso: Gestire Torneo.
+Portata: Gestore torneo di videogiochi.
+Livello: Obiettivo utente.
+Attore primario: Organizzatore.
+Parti interessate ed interessi:
+    -   Organizzatore: Avere la possibilità di creare un torneo con determinate specifiche,
+        che sia visibile e facilmente accessibile ai giocatori interessati a quella categoria
+        di tornei.
+    -	Giocatore: Avere la possibilità di cercare ed eventualmente partecipare al torneo.
+    -	Spettatore: Avere la possibilità di assistere ad una eventuale live stream oppure
+        controllare l’andamento del torneo.
+    -	Sponsor: Avere la possibilità di pubblicizzare il proprio marchio sulla pagina del
+        torneo.
+
+Pre-Condizioni:
+    L'Organizzatore è identificato ed autenticato.
+    Il Player è identificato ed autenticato.
+
+Garanzia di successo:
+    Il torneo viene creato secondo le specifiche. Il giocatore riesce
+    a cercare, visualizzare ed iscriversi al torneo. L’eventuale marchio
+    dello sponsor è visibile sulla pagina del torneo. Lo spettatore
+    controlla l’andamento del torneo.
+
+Scenario principale di successo: 
+    1)	L’Organizzatore apre la pagina di creazione del torneo.
+    2)	L’Organizzatore inserisce le specifiche per quel torneo.
+    3)	L’Organizzatore pubblica il torneo.
+    4)  Il Sistema crea la pagina del torneo.
+    5)  Il Player ricerca il torneo.
+    6)  Il Player effettua l'iscrizione al torneo.
+
+// va con caso d'uso 2).
+    Il Sistema sorteggia i vari scontri.
+    Il Sistema ultima la pianificazione del torneo
+    Il Sistema avvia il torneo.
+    I vari Team entrano in partita.
+    I Player comunicano il risultato della partita.
+    Il Sistema aggiorna l'andamento del torneo.

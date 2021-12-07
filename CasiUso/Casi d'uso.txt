@@ -1,0 +1,28 @@
+BattleFoo casi d’uso.
+
+1.	Caso d’uso Creare Torneo
+2.	Caso d’uso Modificare Torneo
+3.	Caso d’uso Iscriversi ad un Torneo
+4.	Caso d’uso Assistere ad un Torneo
+5.	Caso d’uso Creare Team
+6.	Caso d’uso Trovare Team
+
+Creare torneo:
+
+Portata: Applicazione WEB
+Livello: Obiettivo utente
+Attore primario: Organizzatore
+Parti interessate e interessi: 
+
+-	Organizzatore: Avere la possibilità di creare un torneo con determinate specifiche, che sia visibile e facilmente accessibile ai giocatori interessati a quella categoria di tornei.
+-	Giocatore: Avere la possibilità di cercare ed eventualmente partecipare al torneo.
+-	Spettatore: Avere la possibilità di assistere ad una eventuale live stream oppure controllare l’andamento del torneo.
+-	Sponsor: Avere la possibilità di pubblicizzare il proprio marchio sulla pagina del torneo.
+
+Pre-condizioni: L’Organizzatore è identificato ed autenticato
+Garanzia di successo: Il torneo viene creato secondo le specifiche. Il giocatore riesce a cercare, visualizzare ed iscriversi al torneo. L’eventuale marchio dello sponsor è visibile sulla pagina del torneo. Lo spettatore controlla l’andamento del torneo.
+
+Scenario principale di successo:
+1)	L’Organizzatore apre la pagina di creazione del torneo.
+2)	L’Organizzatore inserisce le specifiche per quel torneo.
+3)	L’Organizzatore pubblica il torneo.
