@@ -1,0 +1,31 @@
+Nome: BattleFoo
+
+L'applicazione web permette di gestire, creare e partecipare a tornei di videogiochi online. Sarà inoltre
+possibile assistere alle partite in live streaming o controllare l'andamento del torneo tramite apposite
+funzionalità e richiedere supporto allo staff tramite un'apposita chat.
+
+Funzionalità comuni:
+    -Esiste già un utente amministratore nel db
+    -Chiunque può registrarsi
+    -In ogni pagina torneo sarà essere presente:
+        Descrizione torneo
+        Bracket
+        Team partecipanti
+    -In ogni pagina torneo potrà essere presente:
+        -Live stream su Twitch tramite API
+        -Banner di alcuni sponsor
+
+Attori: Giocatori, Organizzatori, Spettatori.
+
+Organizzatori:
+    Hanno l'opportunità di organizzare e assistere ai tornei. Se l'organizzatore è anche registrato come
+    giocatore, ne derivano le funzionalità dei giocatori (con l'eccezione di non poter partecipare ai
+    propri tornei).
+
+Giocatori:
+    Hanno l'opportunità di partecipare o assistere ai tornei, creare e/o trovare team e registrarsi come
+    organizzatori.
+
+Spettatori:
+    Possono assistere alle partite live come ospiti (nel caso in cui l'organizzatore del torneo trasmetta
+    live la partita) oppure controllare i risultati del torneo dal bracket.
