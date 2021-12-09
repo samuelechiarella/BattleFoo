@@ -31,8 +31,6 @@ Scenario principale di successo:
     9) Il Sistema registra l'iscrizione e aggiorna i partecipanti.
 
 Estensioni:
-*a. Il Sistema fallisce.
-*b. Il Giocatore decide di filtrare i risultati.
 
 1a. Non sono stati creati tornei:
     1)  Il Sistema notifica che non sono presenti tornei al momento
