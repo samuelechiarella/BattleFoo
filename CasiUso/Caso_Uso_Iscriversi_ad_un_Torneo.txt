@@ -19,7 +19,7 @@ Garanzia di successo:
     correttamente iscritto al torneo, risulta dunque nell'elenco partecipanti.
 
 Scenario principale di successo:
-    1)  Il Giocatore seleziona la lista di torneo disponibili.
+    1)  Il Giocatore seleziona la lista di tornei disponibili.
     2)  Il Sistema visualizza l'intero elenco di torneo disponibili.
     3)  Il Giocatore sceglie un torneo.
     4)  Il Giocatore seleziona il torneo di suo interesse.
@@ -29,3 +29,20 @@ Scenario principale di successo:
     8)  Il Giocatore sceglie, conferma il nickname da utilizzare e
         prosegue con la registrazione al torneo.
     9) Il Sistema registra l'iscrizione e aggiorna i partecipanti.
+
+Estensioni:
+*a. Il Sistema fallisce.
+*b. Il Giocatore decide di filtrare i risultati.
+
+1a. Non sono stati creati tornei:
+    1)  Il Sistema notifica che non sono presenti tornei al momento
+        e restituisce l'opzione di tornare alla pagina principale.
+
+3b. Il Giocatore decide di modificare i criteri di ricerca del torneo>
+    1)  Il Giocatore inserisce il filtro desiderato.
+    2)  Il Sistema restituisce i risultati della ricerca.
+        2a. La ricerca non produce risultati:
+            1)  Il Sistema notifica l'assenza di tornei in base ai
+                criteri di ricerca e restituisce l'opzione di tornare
+                alla pagina di ricerca dei tornei.
+
