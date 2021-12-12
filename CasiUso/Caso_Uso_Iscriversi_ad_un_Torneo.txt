@@ -68,3 +68,11 @@ Estensioni:
     8a2.    Il Giocatore conferma l'iscrizione.
     8a3.    Il Sistema controlla, se è disponibile va al punto 9), altrimenti
             torna al punto 8a.
+
+Requisiti speciali:
+    -   Evitare conflitti dovuti alla concorrenza nella registrazione ai tornei.
+    -   Latenza nella risposta delle pagine web non superiore a 5 secondi. 
+
+Frequenza di ripetizione:   Il limite per un torneo specifico è il numero di
+                            partecipanti, ma si può tentare l'iscrizioni un
+                            numero illimitato di volte.
