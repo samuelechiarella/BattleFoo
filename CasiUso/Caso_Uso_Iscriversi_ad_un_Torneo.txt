@@ -25,11 +25,6 @@ Scenario principale di successo:
     4)  Il Giocatore seleziona il torneo di suo interesse.
     5)  Il Sistema visualizza la pagina del torneo.
     6)  Il Giocatore seleziona l'iscrizione al torneo.
-    //(dettaglio di implementazione)una volta selezionata l'opzione, mettiamo
-    //un contatore che raggiunto il numero massimo non fa più iscrivere
-    //nemmeno se il Giocatore decide di non confermare l'iscrizione dopo,
-    //se dovesse farlo decrementiamo il contatore e diamo di nuovo la
-    //possibilità di scriversi
     7)  Il Sistema visualizza la pagina di iscrizione al torneo.
     8)  Il Giocatore sceglie, conferma il nickname da utilizzare e
         prosegue con la registrazione al torneo.
