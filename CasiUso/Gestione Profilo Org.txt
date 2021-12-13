@@ -1,20 +1,21 @@
-Nome del caso d'uso: Gestire Profilo Org
+Nome del caso d'uso: Gestire Profilo Organizzazione
 Portata: Gestore Tornei
 
 Livello: Sottofunzione Profilo Organizzatore(?)
 
-Attore Primario: Admin Org
+Attore Primario: Organizzatore
 
-Parti Interessati ed Interessi;
--Admin Org: Vuole poter creare la propria organizzazione, modificare i dati di quest'ultima ed essere in grado di creare inviti per altri eventuali
-mebri dello staff.
--Membro Staff: Vuole facilmente individuare gli inviti ricevuti da parte dell'organizzazione per poterne fare parte
+Parti Interessati ed Interessi:
+-	Admin Org:	Vuole poter creare la propria organizzazione, modificare i dati di quest'ultima
+						ed essere in grado di creare inviti per altri eventuali membri dello staff.
+-	Membro Staff:	Vuole facilmente individuare gli inviti ricevuti da parte dell'organizzazione per poterne fare parte
 
-Pre-condizioni: Tutti gli utenti interessati sono identificati come "Profilo Organizzatore"
+Pre-condizioni:	Tutti gli utenti interessati sono identificati come "Profilo Organizzatore"
 
-Garanzia di Successo (Post-Condizione): L'organizzazione viene creata. L'admin è in grado di modificare le info di quest'ultima a suo piacimento.
-L'admin ha la possibilità di invitare i membri dello staff. I membri dello staff ricevono ed accettano gli inviti dalle organizzazioni in modo
-semplice ed intuitivo.
+Garanzia di Successo (Post-Condizione):
+	L'organizzazione viene creata. L'admin Ã¨ in grado di modificare le info di quest'ultima a suo piacimento.
+	L'Organizzatore ha la possibilitÃ  di invitare i membri dello staff. I membri dello staff ricevono ed accettano gli
+	inviti dalle organizzazioni in modo semplice ed intuitivo.
 
 Scenario principale di successo:
 1. L'Admin apre la pagina di creazione dell'Org
@@ -45,20 +46,20 @@ Estensioni (Flussi Alternativi):
 	3a. Il Sistema rileva che gli elementi di base non sono validi:
 		1. Il Sistema segnala l'errore e rifiuta il proseguimento.
 		2. L'Admin risponde all'errore:
-		   2a. C'è il campo di inserimento del nome dell'Org vuoto:
+		   2a. C'ï¿½ il campo di inserimento del nome dell'Org vuoto:
 		       1. L'Admin inserisce il nome dell'Org nell'apposito campo.
 		       2. Il Sistema visualizza il nome dell'Org.
-		          3a. Nome Org già in uso:
+		          3a. Nome Org giï¿½ in uso:
 		              1. Il Sistema segnala l'errore.
 		              2. L'Admin inserisce un nuovo nome per l'Org.
-		              3. Ripetere dal punto 3a finchè l'Admin non trova un nome disponibile.
+		              3. Ripetere dal punto 3a finchï¿½ l'Admin non trova un nome disponibile.
 		              4. Il Sistema convalida il nome e riprende con il normale proseguimento.
 	5a. Il Sistema segnala l'errore e rifiuta il proseguimento.
 		2. L'Admin risponde all'errore:
-		   2a. C'è il campo di inserimento del nome utente dello Staff vuoto:
+		   2a. C'ï¿½ il campo di inserimento del nome utente dello Staff vuoto:
 		       1. L'Admin inserisce il nome utente dello Staff nell'apposito campo.
 		       2. Il Sistema visualizza il nome utente.
 		          3a. Nome utente non registrato nel Sistema:
 		          	  1. Il Sistema segnala l'errore.
-		              2. Torna al punto 3a finchè L'Admin inserisce il corretto nome utente.
+		              2. Torna al punto 3a finchï¿½ L'Admin inserisce il corretto nome utente.
 		              3. Il Sistema convalida il nome e riprende con il normale proseguimento.
