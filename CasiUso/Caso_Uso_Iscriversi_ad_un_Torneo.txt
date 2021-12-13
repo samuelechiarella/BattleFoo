@@ -1,6 +1,6 @@
 Nome del caso d'uso: Iscriversi ad un Torneo.
-Portata: Gestore torneo di videogiochi.
-Attore primario: Giocatore
+Portata: Gestore torneo di videogiochi. (o sottofunzione?)
+Attore primario: Giocatore.
 Parti interessate e interessi:
     -   Giocatore: Avere la possibilità di selezionare e cercare tornei
         filtrando per alcuni campi, visualizzare le specifiche del
@@ -16,7 +16,7 @@ Pre-Condizioni:
 
 Garanzia di successo:
     L'iscrizione va a buon fine ed il Giocatore (o il team intero) risulta
-    correttamente iscritto al torneo, risulta dunque nell'elenco partecipanti.
+    correttamente iscritto al torneo, compare dunque nell'elenco partecipanti.
 
 Scenario principale di successo:
     1)  Il Giocatore seleziona la lista di tornei disponibili.
@@ -53,7 +53,10 @@ Estensioni:
             6a1a1.  Il Sistema torna alla pagina di scelta dei tornei,
                     si torna al punto 3).
     6a2.    Il Giocatore accetta di essere notificato.
-    6a3.    Il Sistema registra la risposta e torna alla pagina principale.
+    6a3.    Il Sistema notifica l'Organizzatore che il numero massimo di posti
+            è stato raggiunto.
+    6a4.    Il Sistema registra la risposta del Giocatore e torna alla pagina
+            principale.
 
 8a. Il Sistema notifica che il nickname è già in uso:
     8a1.    Il Giocatore cambia il nickname.
@@ -68,6 +71,4 @@ Requisiti speciali:
     -   Evitare conflitti dovuti alla concorrenza nella registrazione ai tornei.
     -   Latenza nella risposta delle pagine web non superiore a 5 secondi. 
 
-Frequenza di ripetizione:   Il limite per un torneo specifico è il numero di
-                            partecipanti, ma si può tentare l'iscrizioni un
-                            numero illimitato di volte.
+Frequenza di ripetizione:   Illimitate volte.
