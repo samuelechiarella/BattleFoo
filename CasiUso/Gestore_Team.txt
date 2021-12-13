@@ -1,0 +1,54 @@
+Nome caso d'uso: Gestire Team ed inserimento nei Team.
+Portata: Gestore torneo di videogiochi.
+Livello: Obiettivo utente.
+Attore primario: Giocatore.
+Parti interessate ed interessi:
+    -   Creatore del Team:  Un Giocatore che ha la possibilità di creare e gestire un team.
+    -   Giocatore:  Ha la possibilità di aggiungersi ad un Team.    
+
+Pre-Condizioni:
+    Il Giocatore deve avere effettuato il login sulla piattaforma.
+
+Garanzia di successo:
+    Il giocatore riesce a creare un team e modificarne le sue specifiche.
+
+Scenario principale di successo: 
+    1)  Il Creatore del Team accede alla schermata di creazione team.
+    2)  Il Sistema apre la pagina di creazione del team.
+    3)  Il Creatore del Team sceglie il nome, l'avatar ed il motto del team.
+    4)  Il Sistema controlla il corretto inserimento delle specifiche.
+    5)  Il Sistema inserisce il team fra quelli esistenti sulla piattaforma.
+    6)  Il Giocatore si unisce al Team.
+    7)  Il Sistema aggiorna i membri del Team.
+
+
+Estensioni:
+4a. Il Sistema notifica che il nome del team è già in uso:
+    1.  Il Giocatore cambia il nome del team.
+    2.  Il Giocatore conferma il nome inserito.
+    3.  Il Sistema controlla.
+        3a. Il nome inserito è già in uso:
+            1.  Torna al 3a.
+    4.  Il Sistema convalida il nome e riprende con il normale proseguimento.
+
+6a. Il Creatore del Team invia un invito ad un Giocatore:
+    1.  Il Creatore del Team inserisce il nome del Giocatore.
+        1a. Il Giocatore inserito non esiste:
+            1.  Il Sistema notifica l'errore.
+            2.  Ritorna al punto 1.
+    2.  Il Sistema invia l'invito al Giocatore.
+    3.  Il Giocatore riceve l'invito.
+        3a. Il Giocatore rifiuta l'invito:
+            1.  Il Sistema notifica la risposta al Creatore del Team.
+    4. Il Giocatore accetta l'invito.
+ 
+6b. Il Giocatore richiede di entrare in un Team:
+    1.  Il Giocatore inserisce il nome del Team.
+        1a. Il Team inserito non esiste:
+            1.  Il Sistema notifica l'errore.
+            2.  Ritorna al punto 1.
+    2.  Il Sistema notifica al Creatore del Team la richiesta.
+    3.  Il Creatore del Team risponde alla richiesta.
+        3a. Il Creatore del Team rifiuta la richiesta:
+            1.  Il Sistema notifica al Giocatore la risposta.
+    4.  Il Creatore del Team accetta la richiesta.
