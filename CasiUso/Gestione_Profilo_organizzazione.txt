@@ -59,3 +59,9 @@ Estensioni (Flussi Alternativi):
 		       1. Il Sistema segnala l'errore.
 		       2. Torna al punto 6a.
 		3. Il Sistema convalida il nome e riprende con il normale proseguimento.
+
+Requisiti Speciali:
+- Risposta del server entro 5 ms il 95% delle volte.
+- Le finestre di segnalazione degli eventuali errori sono facilmente individuabili dall'utente
+
+Frequenza di ripetizione: Ogni qualvolta l'Organizzatore decide di creare una nuova Organizzazione.
