@@ -1,0 +1,11 @@
+MODELLO DI DOMINIO
+
+Entità possibili:
+
+	-	Giocatore
+	-	Organizzatore
+	-	Spettatore
+	-	Sponsor
+	-	Catalogo Tornei
+	-	Torneo -> deve essere descritto
+	-	Iscrizione ad un torneo	
