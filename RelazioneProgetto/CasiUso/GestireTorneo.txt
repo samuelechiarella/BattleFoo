@@ -1,11 +1,3 @@
-                            Casi d'uso.
-
-1) Gestire Torneo.
-2) Avviare e monitorare l'andamento del torneo.
-3) Gestore Team.
-4) Iscrizione Torneo.
-5) Gestire Profilo Organizzazione.
-
 Nome caso d'uso: Gestire Torneo.
 Portata: Gestore torneo di videogiochi.
 Livello: Obiettivo utente.
@@ -24,17 +16,16 @@ Pre-Condizioni:
     L'Organizzatore è identificato ed autenticato.
     
 Garanzia di successo:
-    Il torneo viene creato secondo le specifiche. Il giocatore riesce
-    a cercare, visualizzare ed iscriversi al torneo. L’eventuale marchio
+    Il torneo viene creato secondo le specifiche. L’eventuale marchio
     dello sponsor è visibile sulla pagina del torneo. Lo spettatore
     controlla l’andamento del torneo.
 
 Scenario principale di successo: 
     1)	L’Organizzatore seleziona la creazione di un torneo.
     2)  Il Sistema apre la pagina di creazione del torneo.
-    3)  Il Sistema mostra le categorie popolari.
-    4)  L'Organizzatore sceglie la categoria.
-    5)  Il Sistema conferma la categoria.
+    3)  Il Sistema mostra i giochi popolari.
+    4)  L'Organizzatore sceglie il gioco per il torneo.
+    5)  Il Sistema conferma la scelta.
     6)	L’Organizzatore inserisce le specifiche del torneo.
     7)  L'Organizzatore conferma le specifiche.
     8)  Il Sistema controlla il corretto inserimento.
@@ -42,22 +33,23 @@ Scenario principale di successo:
     
 
 Estensioni:
-    a.  Il Sistema fallisce
-    b.  L'Organizzatore filtra:
-        1.  L'Organizzatore sceglie il metodo di filtraggio.
-            1a. Il Sistema non trova la categoria richiesta:
-                1.  Il Sistema notifica l'errore all'Organizzatore.
-                2.  Tornare allo stato 4. 
-        2.  Il Sistema restituisce i giochi filtrati.
 
-// va con caso d'uso 2).
-    Il Sistema sorteggia i vari scontri.
-    Il Sistema ultima la pianificazione del torneo
-    Il Sistema avvia il torneo.
-    I vari Team entrano in partita.
-    I Player comunicano il risultato della partita.
-    Il Sistema aggiorna l'andamento del torneo.
+    *a. Una volta creato il torneo, lo sponsor decide di far promuovere il proprio
+        marchio:
 
-// va con caso d'uso 4).
-    Il Player ricerca il torneo.
-    Il Player effettua l'iscrizione al torneo.
+
+    *b. Una volta creato il torneo l' Organizzatore decide di modificare le specifiche:
+
+
+    4a. L' Organizzatore decide di ricercare una categoria particolare di giochi:
+        4a-1.    L' Organizzatore inserisce filtro desiderato.
+        4a-2.    Il Sistema restituisce i risultati della ricerca.
+            4a2-a.   La ricerca non ha prodotto risultati:
+                4a2a-1. Il Sistema notifica l'assenza di risultati in base ai
+                        criteri di ricerca e si torna al punto 3).
+        4a-3.    Si prosegue con il punto 4).
+    
+    9a. Il Sistema trova degli errori nei campi:
+        9a-1.   Il Sistema notifica gli errori all'Organizzatore.
+        9a-2.   L' Organizzatore inserisce nuovamente i campi con le modifiche appropriate.
+        9a-3.   Si torna al punto 8).
