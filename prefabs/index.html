@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+<link href="background.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="background.js"></script>
+
+</head>
+<body>
+<div id="mySidepanel" class="sidepanel">
+  	<a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+	<a href="/">Home</a>
+  	<a href="#">Browse<br>Tournaments</a>
+  	<a href="#" onclick="openMTournaments()">Organize<br>Tournament&rarr;</a>
+  	<a href="#" onclick="openMTeams()">Manage<br>Teams&rarr;</a>
+  	<a id="loginButton" href="#">Login</a>
+  	<!-- <a href="#">My Profile</a> compare dopo essersi loggato -->
+  	<!-- <a href="#">Logout</a> compare dopo essersi loggato -->
+</div>
+
+<div id="myBackMTournaments" class="sidepanel">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeBack()">&lt;</a>
+	<div class="list">
+	<!-- lista organizzazioni -->
+	<a href="#" id="newOrganizationButton">+ New Organization</a>
+	</div>
+</div>
+
+<div id="myBackMTeams" class="sidepanel">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeBack()">&lt;</a>
+	<div class="list">
+	<!-- lista team -->
+	</div>
+	<a href="#" id="newTeamButton">+ New Team</a>
+</div>
+
+<button class="openbtn" onclick="openNav()">&#9776; Menu</button>
+</body>
+</html>
