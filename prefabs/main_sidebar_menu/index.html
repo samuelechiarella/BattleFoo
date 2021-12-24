@@ -8,8 +8,12 @@
 
 </head>
 <body>
-<div id="mySidepanel" class="sidepanel">
-  	<a href="#" class="closebtn" onclick="closeNav()">&times;</a>
+
+<button class="openbtn" onclick="openMenu()">&#9776; Menu</button>
+
+<!-- Menu -->
+<div id="sidePanel" class="sidepanel">
+  	<a href="#" class="closebtn" onclick="closeMenu()">&times;</a>
 	<a href="/">Home</a>
   	<a href="#">Browse<br>Tournaments</a>
   	<a href="#" onclick="openMTournaments()">Organize<br>Tournament&rarr;</a>
@@ -19,7 +23,8 @@
   	<!-- <a href="#">Logout</a> compare dopo essersi loggato -->
 </div>
 
-<div id="myBackMTournaments" class="sidepanel">
+<!-- Organize Tournaments side panel -->
+<div id="organizeTournamentsBackside" class="sidepanel">
 	<a href="javascript:void(0)" class="closebtn" onclick="closeBack()">&lt;</a>
 	<div class="list">
 	<!-- lista organizzazioni -->
@@ -27,7 +32,8 @@
 	</div>
 </div>
 
-<div id="myBackMTeams" class="sidepanel">
+<!-- Manage Teams side panel -->
+<div id="manageTeamsBackside" class="sidepanel">
 	<a href="javascript:void(0)" class="closebtn" onclick="closeBack()">&lt;</a>
 	<div class="list">
 	<!-- lista team -->
@@ -35,6 +41,5 @@
 	<a href="#" id="newTeamButton">+ New Team</a>
 </div>
 
-<button class="openbtn" onclick="openNav()">&#9776; Menu</button>
 </body>
 </html>
