@@ -1,0 +1,46 @@
+<!-- Menu -->
+<div id="sidePanel" class="sidepanel">
+  	<a class="closebtn not-move" onclick="closeMenu()">&times;</a>
+    <div id="logo" class="side-elem">
+      <img src="images/logo_noBG.png">
+    </div>
+    <div class="side-elem">
+      <img id="home" href="/" src="images/home_icon.png">
+      <label for="home">Home</label>
+    </div>
+    <div class="side-elem">
+      <img id="browse" href="#" src="images/browse_tournaments_icon_alternative.png">
+      <label for="browse">Browse<br>Tournaments</label>
+    </div>
+    <div class="side-elem">
+      <img id="organize" href="#" src="images/organize_tournaments_icon.png">
+      <label for="organize" onclick="openOrganizeTournaments()">Organize<br>Tournaments</label>
+    </div>
+    <div class="side-elem">
+      <img if="manage" href="#" src="images/teamIcon.png">
+      <label for="manage" onclick="openManageTeams()">Manage<br>Teams</label>
+    </div>
+    <div class="side-elem">
+      <a id="loginButton" href="#">Login</a>
+    </div>
+  	<!-- <a href="#">My Profile</a> compare dopo essersi loggato -->
+  	<!-- <a href="#">Logout</a> compare dopo essersi loggato -->
+</div>
+
+<!-- Organize Tournaments side panel -->
+<div id="organizeTournamentsBackside" class="sidepanel">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeBack()">&lt;</a>
+	<div class="list">
+	<!-- lista organizzazioni -->
+	<a href="#" class="not-move" id="newOrganizationButton">+ New Organization</a>
+	</div>
+</div>
+
+<!-- Manage Teams side panel -->
+<div id="manageTeamsBackside" class="sidepanel">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeBack()">&lt;</a>
+	<div class="list">
+	<!-- lista team -->
+	</div>
+	<a href="#" class="not-move" id="newTeamButton">+ New Team</a>
+</div>

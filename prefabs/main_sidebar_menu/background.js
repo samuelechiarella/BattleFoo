@@ -1,19 +1,18 @@
-/* Set the width of the sidebar to 250px (show it) */
+var sizeSidebar = "12.5em";
 function openMenu() {
-  document.getElementById("sidePanel").style.width = "250px";
+  document.getElementById("sidePanel").style.width = sizeSidebar;
 }
 
-/* Set the width of the sidebar to 0 (hide it) */
 function closeMenu() {
   document.getElementById("sidePanel").style.width = "0";
 }
 
-function openMTournaments(){
-	document.getElementById("organizeTournamentsBackside").style.width = "250px";
+function openOrganizeTournaments(){
+	document.getElementById("organizeTournamentsBackside").style.width = sizeSidebar;
 }
 
-function openMTeams(){
-	document.getElementById("manageTeamsBackside").style.width = "250px";
+function openManageTeams(){
+	document.getElementById("manageTeamsBackside").style.width = sizeSidebar;
 }
 
 function closeBack() {

@@ -1,56 +1,70 @@
-@charset "ISO-8859-1";
-
 body {
-	background-color: #282828;
+  margin: 0;
+  padding: 0;
+  background: #0f388a;/*#282828*/
 }
+
+/*****************************SIDEBAR*****************************/
 
 /* The sidepanel menu */
 .sidepanel {
 	bottom: 0;
-  	width: 0; /* 0 width - change this with JavaScript */
+  width: 0; /* 0 width - change this with JavaScript */
 	position: fixed; /* Stay in place */
 	z-index: 1; /* Stay on top */
 	top: 0;
 	left: 0;
-	background-color: rgb(69, 69, 69); /* Black*/
+	background-color: rgb(179,107,0); /*92,0,153-viola, 47,69,1-verde*/
 	overflow-x: hidden; /* Disable horizontal scroll */
-	padding-top: 60px; /* Place content 60px from the top */
+	padding-top: 3.75em; /* Place content 60px from the top */
 	transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
-	border-top-right-radius: 15px;
+	border-top-right-radius: 1em;
 }
 
 /* The sidepanel links */
-.sidepanel a {
-  padding: 8px 8px 8px 32px;
+.sidepanel a, .side-elem, .side-elem label{
+  padding: 0.4em;
   text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
+  font-size: 1.13em;
+  font-family: sans-serif;
+  color: white;
   transition: 0.3s;
+  cursor: pointer;
 }
 
-/* When you mouse over the navigation links, change their color */
-.sidepanel a:hover {
-  color: #f1f1f1;
+.side-elem {
+  margin-left: 1em;
+}
+
+.side-elem label{
+  display: inline;
+}
+
+.sidepanel .side-elem:not(#logo):hover {
+  margin-left: 2em;
 }
 
 /* Position and style the close button (top right corner) */
 .sidepanel .closebtn {
   position: absolute;
   top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
+  right: 0.5em;
+  font-size: 2.3em;
 }
 
 /* Style the button that is used to open the sidepanel */
 .openbtn {
-  font-size: 20px;
+	position: fixed;
+	top: 0;
+	margin: 2%;
+  font-size: 1.3em;
+  font-family: sans-serif;
   cursor: pointer;
-  background-color: #111;
-  color: white;
-  padding: 10px 15px;
-  border: none;
+  background-color: transparent;/*rgba(0,0,0,0.0)*/
+  color: rgb(179,107,0);
+  padding: 0.5em 0.7em;
+  border-radius: 0.5em;
+	border: 0.1em outset rgb(179,107,0);/*wihte vince sempre*/
   border-radius: 7px;
 }
 
@@ -60,30 +74,39 @@ body {
 
 #loginButton {
 	position: absolute;
-	bottom: 80px;
+	bottom: 5em;
 }
 
 .list {
-	height: 600px;
+	height: 37.5em;
 	overflow-y: scroll;
 }
-/*border: 5px solid green;*/
+
 #newTeamButton	{
-	left: 25px;
-	width: 150px;
+
 	position: absolute;
-	bottom: 100px;
-	border-radius: 10px;
+  left: 1.2em;
+	bottom: 5em;
+	border-radius: 0.5em;
 	border: 2px solid white;
 }
 
 #newOrganizationButton	{
-	left: 5px;
-	width: 175px;/*150*/
-	position: absolute;
-	bottom: 100px;
-	border-radius: 10px;
+  width:20em;
+  position: absolute;
+  left: 0.5em;
+	bottom: 5em;
+	border-radius: 0.5em;
 	border: 2px solid white;
+}
+
+#logo img{
+  width: 8em;
+  height: 4em;
+}
+
+.tournaments > h2 {
+  margin-top: 1%;
 }
 
 /* width */
