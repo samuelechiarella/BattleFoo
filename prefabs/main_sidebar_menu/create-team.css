@@ -1,0 +1,78 @@
+.inline {
+  display: inline;
+}
+
+.side-panel {
+  bottom: 0;
+  width: 30em;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	right: -30em;
+	background-color: rgb(179,107,0);
+	overflow-x: hidden;
+	padding-top: 3.75em;
+	transition: 0.5s;
+	border-top-left-radius: 1em;
+}
+
+.side-panel-form{
+  right: 3em;
+  padding: 0.2em;
+  margin: 0.5em;
+  font-family: sans-serif;
+  color: white;
+}
+
+.writings h1 {
+  margin-left: 0.5em;
+  font-size: 3em;
+  color: white;
+}
+
+.form-elem {
+  margin-left: 3em;
+  font-size: 1.13em;
+}
+
+#choose-img, .side-panel input[type="button"] {
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+}
+
+.side-panel input, .label-button{
+  padding: 0.2em;
+  border: 0.15em outset orange;
+  border-radius: 0.5em;
+}
+
+.label-button{
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+label[for="choose-img"] {
+  position: fixed;
+  margin-top: 15em;
+  width: 4em;
+  text-align: center;
+}
+
+.label-button:hover{
+  background-color: #EAA022;
+}
+
+#img-logo {
+  width: 13em;
+  height: 13em;
+  background: white;
+  margin: 1em;
+  border: 0.2em solid orange;
+  border-radius: 1em;
+}
+
+.btns {
+  position: fixed;
+  margin-top: 15em;
+}

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/index.css">
 <link rel="stylesheet" type="text/css" href="css/background.css">
+<link rel="stylesheet" type="text/css" href="css/create-team.css">
 <script type="text/javascript" src="js/background.js"></script>
 </head>
 <body>
@@ -12,23 +13,23 @@
 <div id="sidePanel" class="sidepanel">
   	<a class="closebtn not-move" onclick="closeMenu()">&times;</a>
     <div id="logo" class="side-elem">
-      <img src="images/logo_noBG.png">
+      <img src="images/sidebar-icons/logo_noBG.png">
     </div>
     <div class="side-elem">
-      <a href="#"><img id="home" src="images/home_icon.png"></a>
+      <a href="/"><img id="home" src="images/sidebar-icons/home_icon.png"></a>
       <label for="home">Home</label>
     </div>
     <div class="side-elem">
-      <a href="#"><img id="browse" src="images/browse_tournaments_icon_alternative.png"></a>
-      <label for="browse">Browse<br>Tournaments</label>
+      <img id="browse" src="images/sidebar-icons/browse_tournaments_icon.png">
+      <a href="#"><label for="browse">Browse<br>Tournaments</label></a>
     </div>
     <div class="side-elem">
-      <a href="#"><img id="organize" src="images/organize_tournaments_icon.png"></a>
-      <label for="organize" onclick="openOrganizeTournaments()">Organize<br>Tournaments</label>
+      <img id="organize" src="images/sidebar-icons/organize_tournaments_icon.png">
+      <a href="#"><label for="organize" onclick="openOrganizeTournaments()">Organize<br>Tournaments</label></a>
     </div>
     <div class="side-elem">
-      <a href="#"><img id="manage" src="images/teamIcon.png"></a>
-      <label for="manage" onclick="openManageTeams()">Manage<br>Teams</label>
+      <img id="manage" src="images/sidebar-icons/teamIcon.png">
+      <a href="#"><label for="manage" onclick="openManageTeams()">Manage<br>Teams</label></a>
     </div>
     <div class="side-elem">
       <a id="loginButton" href="#">Login</a>
@@ -52,7 +53,42 @@
 	<div class="list">
 	<!-- lista team -->
 	</div>
-	<a href="#" class="not-move" id="newTeamButton">+ New Team</a>
+	<a href="#" class="not-move" id="newTeamButton" onclick="openCreateTeamSidebar()">+ New Team</a>
+</div>
+
+<!-- Create Team Panel-->
+<div class="side-panel">
+  <div class="writings">
+    <h1>Create Team</h1>
+  </div>
+  <form action="">
+    <div class="side-panel-form">
+      <div class="writings form-elem">
+        <label for="nickname">Nickname</label>
+        <input id="nickname" type="text" name="" value="">
+      </div>
+      <div class="writings form-elem list-attendee">
+        <!-- invitations list -->
+      </div>
+      <div class="writings form-elem inline">
+        <label for="attendee">New Attendee</label>
+        <input id="attendee" type="text">
+        <label class="label-button" for="send-invite" onclick="sendInvite()">Send</label>
+        <input id="send-invite" type="button">
+      </div>
+      <div class="form-elem">
+        <img id="img-logo">
+        <label class="label-button" for="choose-img">Logo</label>
+        <input id="choose-img" type="file" accept="image/*">
+      </div>
+      <div class="form-elem btns">
+        <label class="label-button" for="create-btn" onclick="closeCreateTeam()">Create</label>
+        <label class="label-button" for="cancel-btn" onclick="closeCreateTeam()">Cancel</label>
+        <input id="create-btn" type="button">
+        <input id="cancel-btn" type="button">
+      </div>
+    </div>
+  </form>
 </div>
 
 <!-- Slider -->

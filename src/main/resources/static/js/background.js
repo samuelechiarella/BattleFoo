@@ -1,21 +1,61 @@
-var sizeSidebar = "12.5em";
 function openMenu() {
-  document.getElementById("sidePanel").style.width = sizeSidebar;
+  document.getElementById("sidePanel").style.left = "0";
 }
 
 function closeMenu() {
-  document.getElementById("sidePanel").style.width = "0";
+  document.getElementById("sidePanel").style.left = "-12.5em";
 }
 
 function openOrganizeTournaments(){
-	document.getElementById("organizeTournamentsBackside").style.width = sizeSidebar;
+	document.getElementById("organizeTournamentsBackside").style.left = "0";
 }
 
 function openManageTeams(){
-	document.getElementById("manageTeamsBackside").style.width = sizeSidebar;
+	document.getElementById("manageTeamsBackside").style.left = "0";
 }
 
 function closeBack() {
-	document.getElementById("organizeTournamentsBackside").style.width = "0px";
-	document.getElementById("manageTeamsBackside").style.width = "0px";
+	document.getElementById("organizeTournamentsBackside").style.left = "-12.5em";
+	document.getElementById("manageTeamsBackside").style.left = "-12.5em";
 }
+
+function openCreateTeamSidebar(){
+  closeMenu();
+  closeBack();
+  document.getElementsByClassName("side-panel")[0].style.right="0";
+}
+
+function sendInvite(){
+  //check if it exists
+  //put it into the list
+}
+
+function closeCreateTeam(){
+  document.getElementsByClassName("side-panel")[0].style.right="-30em";
+  openMenu();
+}
+
+function getImg(evt) {
+  // send the img (json) to the server and store the img into that (TO-DO)
+  // then store the url into the db (TO-DO)
+
+  // show it in its place as below
+  var tgt = evt.target || window.event.srcElement;
+  files = tgt.files;
+  // FileReader support
+  if (FileReader && files && files.length) {
+      var fr = new FileReader();
+      fr.onload = function () {
+          document.getElementById("img-logo").src = fr.result;
+      }
+      fr.readAsDataURL(files[0]);
+  }
+}
+
+function loadEvents(){
+  document.getElementById("choose-img").onchange = function (evt){ getImg(evt); };
+}
+
+window.addEventListener("load", function(){
+  loadEvents();
+});

@@ -6,16 +6,14 @@ body {
 
 /*****************************SIDEBAR*****************************/
 
-/*****************************SIDEBAR*****************************/
-
 /* The sidepanel menu */
 .sidepanel {
 	bottom: 0;
-  width: 0; /* 0 width - change this with JavaScript */
+  width: 12.5em; /* 0 width - change this with JavaScript */
 	position: fixed; /* Stay in place */
 	z-index: 1; /* Stay on top */
 	top: 0;
-	left: 0;
+	left: -12.75em;
 	background-color: rgb(179,107,0); /*92,0,153-viola, 47,69,1-verde*/
 	overflow-x: hidden; /* Disable horizontal scroll */
 	padding-top: 3.75em; /* Place content 60px from the top */
