@@ -1,6 +1,6 @@
 Nome del caso d'uso: Iscriversi ad un Torneo.
-Portata: Gestore torneo di videogiochi.
-Attore primario: Giocatore
+Portata: Gestore torneo di videogiochi. (o sottofunzione?)
+Attore primario: Giocatore.
 Parti interessate e interessi:
     -   Giocatore: Avere la possibilità di selezionare e cercare tornei
         filtrando per alcuni campi, visualizzare le specifiche del
@@ -16,7 +16,7 @@ Pre-Condizioni:
 
 Garanzia di successo:
     L'iscrizione va a buon fine ed il Giocatore (o il team intero) risulta
-    correttamente iscritto al torneo, risulta dunque nell'elenco partecipanti.
+    correttamente iscritto al torneo, compare dunque nell'elenco partecipanti.
 
 Scenario principale di successo:
     1)  Il Giocatore seleziona la lista di tornei disponibili.
@@ -32,42 +32,44 @@ Scenario principale di successo:
 
 Estensioni:
 
+*a. Il Giocatore decide di modificare i criteri di ricerca:
+    a-1.   Il Giocatore inserisce il filtro desiderato.
+    a-2.   Il Sistema restituisce i risultati della ricerca.
+        a2-a.   La ricerca non ha prodotto risultati:
+            a2a-1.  Il Sistema notifica l'assenza di risultati in base ai
+                    criteri di ricerca e si torna al passo precendente.
+    a-3.   Si prosegue con il passo successivo dello scenario principale.
+
+*b. Il Sistema trova degli errori nei campi:
+        b-1.   Il Sistema notifica gli errori all'Organizzatore.
+        b-2.   L' Organizzatore inserisce nuovamente i campi con le modifiche appropriate.
+        b-3.   Si torna al passo precedente per nuovo controllo dei campi.
+
 1a. Non sono presenti tornei:
-    1a1.    Il Sistema notifica che non sono presenti tornei al momento
+    1a-1.    Il Sistema notifica che non sono presenti tornei al momento
             e restituisce l'opzione di tornare alla pagina principale.
             Si torna al punto 1).
 
-3b. Il Giocatore decide di modificare i criteri di ricerca del torneo:
-    3b1.    Il Giocatore inserisce il filtro desiderato.
-    3b2.    Il Sistema restituisce i risultati della ricerca.
-        3b2a.   La ricerca non ha prodotto risultati:
-            3b2a1.  Il Sistema notifica l'assenza di tornei in base ai
-                    criteri di ricerca e restituisce l'opzione di tornare
-                    alla pagina di ricerca dei tornei, si torna al punto 2).
-    3b3.    Si prosegue con il punto 4).
-
 6a. Il Sistema notifica il Giocatore che al momento i posti sono esauriti:
-    6a1.    Il Sistema mette a disposizione del Giocatore la possibilità
+    6a-1.   Il Sistema mette a disposizione del Giocatore la possibilità
             di notificarlo quando ci sarà nuovamente disponibilità.
-        6a1a.   Il Giocatore non accetta di essere notificato:
-            6a1a1.  Il Sistema torna alla pagina di scelta dei tornei,
+        6a1-a.  Il Giocatore non accetta di essere notificato:
+            6a1a-1. Il Sistema torna alla pagina di scelta dei tornei,
                     si torna al punto 3).
-    6a2.    Il Giocatore accetta di essere notificato.
-    6a3.    Il Sistema registra la risposta e torna alla pagina principale.
+    6a-2.   Il Giocatore accetta di essere notificato.
+    6a-3.   Il Sistema notifica l'Organizzatore che il numero massimo di posti
+            è stato raggiunto.
+    6a-4.   Il Sistema registra la risposta del Giocatore e torna alla pagina
+            principale.
 
-8a. Il Sistema notifica che il nickname è già in uso:
-    8a1.    Il Giocatore cambia il nickname.
-        8a1a.   Il Giocatore seleziona la generazione automatica di un
-                nuovo nickname:
-            8a1a1.  Il Sistema genera il nuovo nickname.
-    8a2.    Il Giocatore conferma l'iscrizione.
-    8a3.    Il Sistema controlla, se è disponibile va al punto 9), altrimenti
-            torna al punto 8a.
+8b. Il Giocatore deve iscrivere l'intero team al torneo:
+    8b-1.   Il Giocatore sceglie il team tra quelli di cui fa parte e assegna un
+            nickname.
+    8b-2.   Il Giocatore conferma l'iscrizione.
+    8b-3.   Si va al passo successivo dello scenario principale (in assenza di errori).
 
 Requisiti speciali:
     -   Evitare conflitti dovuti alla concorrenza nella registrazione ai tornei.
     -   Latenza nella risposta delle pagine web non superiore a 5 secondi. 
 
-Frequenza di ripetizione:   Il limite per un torneo specifico è il numero di
-                            partecipanti, ma si può tentare l'iscrizioni un
-                            numero illimitato di volte.
+Frequenza di ripetizione:   Illimitate volte.

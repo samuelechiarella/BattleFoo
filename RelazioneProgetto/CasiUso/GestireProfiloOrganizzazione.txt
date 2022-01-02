@@ -7,7 +7,7 @@ Attore Primario: Organizzatore
 
 Parti Interessati ed Interessi:
 -	Organizzatore organizzazione:	Vuole poter creare la propria organizzazione, modificare i dati di quest'ultima
-							ed essere in grado di creare inviti per altri eventuali membri dello staff.
+									ed essere in grado di creare inviti per altri eventuali membri dello staff.
 -	Membro Staff:	Vuole facilmente individuare gli inviti ricevuti da parte dell'organizzazione per poterne fare parte
 
 Pre-condizioni:	Tutti gli utenti interessati sono identificati come "Profilo Organizzatore".
@@ -40,22 +40,22 @@ Estensioni (Flussi Alternativi):
     1.	L'Organizzatore cambia il nome dell'organizzazione.
     2.	L'Organizzatore conferma il nome inserito.
     3.  Il Sistema controlla.
-				3b. Il nome inserito è già in uso:
-						1. Torna al 3a.
-		4.	Il Sistema convalida il nome e riprende con il normale proseguimento.
+		3b. Il nome inserito è già in uso:
+			1. Torna al 3a.
+	4.	Il Sistema convalida il nome e riprende con il normale proseguimento.
 
 3b. Il Sistema notifica che i campi non sono stati compilati:
     1.	L'Organizzatore compila nuovamente i campi vuoti.
     2.	L'Organizzatore conferma nuovamente i campi.
     3.  Il Sistema controlla.
-				3c. I campi non sono compilati nuovamente:
-						1. Torna al 3b.
-		4.	Il Sistema convalida i campi e riprende con il normale proseguimento.
+		3c. I campi non sono compilati nuovamente:
+			1. Torna al 3b.
+	4.	Il Sistema convalida i campi e riprende con il normale proseguimento.
 	         
 6a. Il campo di inserimento del nome utente non esiste:
-		1. L'Organizzatore inserisce il nome utente del membro da inserire nell'apposito campo.
-		2. Il Sistema verifica il nome utente.
-		        3a. Nome utente non registrato nel Sistema:
-		          	1. Il Sistema segnala l'errore.
-		            2. Torna al punto 6a.
-		3. Il Sistema convalida il nome e riprende con il normale proseguimento.
+	1. L'Organizzatore inserisce il nome utente del membro da inserire nell'apposito campo.
+	2. Il Sistema verifica il nome utente.
+		3a. Nome utente non registrato nel Sistema:
+		    1. Il Sistema segnala l'errore.
+		    2. Torna al punto 6a.
+	3. Il Sistema convalida il nome e riprende con il normale proseguimento.
