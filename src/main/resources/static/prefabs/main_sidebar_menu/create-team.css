@@ -73,6 +73,6 @@ label[for="choose-img"] {
 }
 
 .btns {
-  position: fixed;
+  position: absolute;
   margin-top: 15em;
 }

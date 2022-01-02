@@ -1,0 +1,33 @@
+!!!!! Tomcat e servlet !!!!!
+-Scaricare tomcat (9 magari, zip o tar, poi estrarlo in una cartella a scelta)
+-tasto destro sul progetto->properties->project facets->cliccare sull'unico link disponibile
+-spuntare "dynamic web module"
+-sulla destra cliccare sul tab "runtime"
+-se non appare tomcat in automatico cliccare su "new"
+-selezionare la versione di tomcat -> next
+-inserire il percorso della cartella dov'è stato estratto tomcat -> finish
+-apparirà ora tomcat in "runtime", selezionarlo -> apply and close
+
+
+!!!!! Configurazione per .jsp e jstl !!!!!
+inserire:
+spring.mvc.view.prefix: /WEB-INF/jsp
+spring.mvc.view.suffix: .jsp
+in target->classes->application.properties
+<----- inserire dipendenza per jstl nel pom ----->
+Per ogni file .jsp:
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
+
+!!!!! Stringa per JQuery !!!!!
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+!!!!! Per includere un file background.html in un altro html con JQuery !!!!!
+-inserire un div con id="content" nel file in cui si vuole includere il background
+-mettere questa stringa nel tag header:
+<script>
+$(document).ready(function() {
+    $('#content').load('path/to/background.html');
+});
+</script>
+-non funziona in locale, serve springboot!

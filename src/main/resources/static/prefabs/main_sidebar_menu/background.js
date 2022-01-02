@@ -35,25 +35,13 @@ function closeCreateTeam(){
   openMenu();
 }
 
-function getImg(evt) {
+function getImg() {
   // send the img (json) to the server and store the img into that (TO-DO)
   // then store the url into the db (TO-DO)
-
-  // show it in its place as below
-  var tgt = evt.target || window.event.srcElement;
-  files = tgt.files;
-  // FileReader support
-  if (FileReader && files && files.length) {
-      var fr = new FileReader();
-      fr.onload = function () {
-          document.getElementById("img-logo").src = fr.result;
-      }
-      fr.readAsDataURL(files[0]);
-  }
+  // show it in its place (TO-DO)
 }
 
 function loadEvents(){
-  document.getElementById("choose-img").onchange = function (evt){ getImg(evt); };
 }
 
 window.addEventListener("load", function(){
