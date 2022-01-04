@@ -1,0 +1,89 @@
+.inline {
+  display: inline;
+}
+
+.side-panel-organization {
+  bottom: 0;
+  width: 30em;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	right: -30em;
+	background-color: rgb(179,107,0);
+	overflow-x: hidden;
+	padding-top: 3.75em;
+	transition: 0.5s;
+	border-top-left-radius: 1em;
+}
+
+.side-panel-form-org{
+  right: 2em;
+  padding: 0.10em;
+  padding-left: 2em;
+  margin: 1.5em;
+  font-family: sans-serif;
+  color: white;
+}
+
+.writings-org h1 {
+  margin-left: 0.5em;
+  font-size: 3em;
+  color: white;
+}
+
+.form-elem-org {
+  margin-left: 3em;
+  font-size: 1.13em;
+
+}
+
+#choose-img-org, .side-panel-organization input[type="button"] {
+  opacity: 0;
+
+  z-index: -1;
+  position: absolute;
+}
+
+.side-panel-organization input, .label-button-org{
+  padding: 0.2em;
+  
+  border: 0.15em outset orange;
+  border-radius: 0.5em;
+}
+
+.label-button-org{
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+label[for="choose-img-org"] {
+  position: fixed;
+  margin-top: 17em;
+  margin-left: -2em;
+  width: 4em;
+  text-align: center;
+}
+
+.label-button-org:hover{
+  background-color: #EAA022;
+}
+
+#img-logo-org {
+  width: 13em;
+  height: 13em;
+  background: white;
+  margin:1em;
+  margin-left: 0em;
+  border: 0.2em solid orange;
+  border-radius: 1em;
+}
+
+.btns-org{
+  position: absolute;
+  margin-top: 15em;
+}
+#organization{
+	margin:0.5em;
+	padding-left:2em
+	
+}

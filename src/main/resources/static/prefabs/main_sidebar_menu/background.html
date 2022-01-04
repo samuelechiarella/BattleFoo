@@ -33,7 +33,7 @@
 	<a href="javascript:void(0)" class="closebtn" onclick="closeBack()">&lt;</a>
 	<div class="list">
 	<!-- lista organizzazioni -->
-	<a href="#" class="not-move" id="newOrganizationButton">+ New Organization</a>
+	<a href="#" class="not-move" id="newOrganizationButton" onclick="openCreateOrganizationSidebar()">+ New Organization</a>
 	</div>
 </div>
 
@@ -46,8 +46,9 @@
 	<a href="#" class="not-move" id="newTeamButton" onclick="openCreateTeamSidebar()">+ New Team</a>
 </div>
 
+
 <!-- Create Team Panel-->
-<div class="side-panel">
+<div class="side-panel" >
   <div class="writings">
     <h1>Create Team</h1>
   </div>
@@ -80,3 +81,34 @@
     </div>
   </form>
 </div>
+
+<!-- Create Organization Panel -->
+<div class="side-panel-organization">
+  <div class="writings-org">
+    <h1>Create Organization</h1>
+  </div>
+  <form action="">
+    <div class="side-panel-form-org">
+      <div class="writings-org form-elem-org">
+        <label for="organization">  Name Your Organization</label>
+        <input id="organization" type="text" name="" value="">
+      </div>
+      <div class="writings form-elem-org list-organization">
+        <!-- invitations list -->
+      </div>
+      <div class="form-elem-org">
+        <img id="img-logo-org">
+        <label class="label-button-org" for="choose-img-org">Logo</label>
+        <input id="choose-img-org" type="file" accept="image/*">
+      </div>
+      <div class="form-elem-org btns-org">
+        <label class="label-button-org" for="create-btn" onclick="closeCreateOrganization()">Create</label>
+        <label class="label-button-org" for="cancel-btn" onclick="closeCreateOrganization()">Cancel</label>
+        <input id="create-btn" type="button">
+        <input id="cancel-btn" type="button">
+      </div>
+    </div>
+  </form>
+</div>
+
+

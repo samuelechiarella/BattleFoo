@@ -35,6 +35,22 @@ function closeCreateTeam(){
   openMenu();
 }
 
+
+function openCreateOrganizationSidebar(){
+  closeMenu();
+  closeBack();
+  document.getElementsByClassName("side-panel-organization")[0].style.right="0";
+}
+
+function closeCreateOrganization(){
+  document.getElementsByClassName("side-panel-organization")[0].style.right="-30em";
+  openMenu();
+}
+function sendInviteOrg(){
+  //check if it exists
+  //put it into the list
+}
+
 function getImg() {
   // send the img (json) to the server and store the img into that (TO-DO)
   // then store the url into the db (TO-DO)
