@@ -2,16 +2,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="css/index.css">
-<link rel="stylesheet" type="text/css" href="prefabs/main_sidebar_menu/background.css">
-<link rel="stylesheet" type="text/css" href="prefabs/main_sidebar_menu/create-team.css">
-<link rel="stylesheet" href="bgStyle.css">
-<script type="text/javascript" src="prefabs/main_sidebar_menu/background.js"></script>
+<link rel="stylesheet" type="text/css" href="css/background.css">
+<link rel="stylesheet" type="text/css" href="css/create-team.css">
+<link rel="stylesheet" href="css/organization.css">
+<script type="text/javascript" src="js/background.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="orgTab.js" defer></script>
+<script src="js/organization.js" defer></script>
 <script>
 $(document).ready(function() {
-	$('#content').load('prefabs/main_sidebar_menu/background.html');
+	$('#content').load('html/background.html');
 });
 </script>
 </head>

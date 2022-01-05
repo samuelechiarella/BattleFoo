@@ -128,3 +128,8 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* organization backside */
+.backside-list ul {
+	list-style: none;
+}
