@@ -39,21 +39,21 @@ function getImg(input) {
 	let file = input.files[0];
 	let reader = new FileReader();
 	if(file){
-		reader.readAsDataURL(file); //send it through JSON
+		reader.readAsDataURL(file);
 		reader.onload = function() {
 			let img = document.getElementById("img-logo");
 			//img.src=URL.createObjectURL(file);
 			$.ajax({
 				type: "POST",
-				url: "/storeImage",
+				url: "/storeTeamLogo",
 				contentType: "application/json",
 				data: JSON.stringify(reader.result),
 				success: function(risposta){
-					//create a class RESPONSE
+					//****************************************************************** create a class RESPONSE
 					console.log(risposta);
 					if (risposta === "Done"){
 						img.src=reader.result;
-						console.log("finally");
+						console.log("finally - " + file.name + " stored");
 					}
 				},
 				error: function(xhr){
