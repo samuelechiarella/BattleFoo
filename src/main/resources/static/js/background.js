@@ -35,10 +35,35 @@ function closeCreateTeam(){
   openMenu();
 }
 
-function getImg() {
-  // send the img (json) to the server and store the img into that (TO-DO)
-  // then store the url into the db (TO-DO)
-  // show it in its place (TO-DO)
+function getImg(input) {
+	let file = input.files[0];
+	let reader = new FileReader();
+	if(file){
+		reader.readAsDataURL(file); //send it through JSON
+		reader.onload = function() {
+			let img = document.getElementById("img-logo");
+			//img.src=URL.createObjectURL(file);
+			$.ajax({
+				type: "POST",
+				url: "/storeImage",
+				contentType: "application/json",
+				data: JSON.stringify(reader.result),
+				success: function(risposta){
+					//create a class RESPONSE
+					console.log(risposta);
+					if (risposta === "Done"){
+						img.src=reader.result;
+						console.log("finally");
+					}
+				},
+				error: function(xhr){
+					console.log(xhr);
+					var res = JSON.parse(xhr.responseText);
+					alert(res.messaggio);
+				}
+			});
+		};
+	}
 }
 
 function loadEvents(){
