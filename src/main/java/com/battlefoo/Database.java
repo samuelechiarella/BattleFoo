@@ -2,29 +2,33 @@ package com.battlefoo;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Database {
-	Connection conn;
-	public Database() {
+	private Connection connection;
+	
+	private static Database instance = null;
+	
+	private Database() {
 		try {
-			conn = DriverManager.getConnection("jdbc:postgresql://postgres:5432/postgres", "postgres", "postgres");
+			connection = DriverManager.getConnection("jdbc:postgresql://postgres:5432/postgres", "postgres", "postgres");
+			System.out.println("Connected to postgres");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
-	public void insertGame(String game, String genre) {
-		try {
-			PreparedStatement st = conn.prepareStatement("insert into game values(?,?);");
-			st.setString(1, game);
-			st.setString(2, genre);
-			System.out.println(st.executeUpdate()); 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public static Database getInstance() {
+		if(instance == null)
+			instance = new Database();
+		return instance;
+	}
+
+	public Connection getConnection() {
+		return connection;
+	}
+
+	public void setConnection(Connection connection) {
+		this.connection = connection;
 	}
 }
