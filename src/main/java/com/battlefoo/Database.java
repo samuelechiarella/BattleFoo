@@ -9,7 +9,7 @@ public class Database {
 	Connection conn;
 	public Database() {
 		try {
-			conn = DriverManager.getConnection("jdbc:postgresql://postgres:5432/postgres", "postgres", "76199065");
+			conn = DriverManager.getConnection("jdbc:postgresql://postgres:5432/postgres", "postgres", "postgres");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
