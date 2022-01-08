@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.battlefoo.model.DatabaseNames;
+
 public class Database {
 	private Connection connection;
 	
@@ -11,7 +13,7 @@ public class Database {
 	
 	private Database() {
 		try {
-			connection = DriverManager.getConnection("jdbc:postgresql://postgres:5432/postgres", "postgres", "postgres");
+			connection = DriverManager.getConnection(DatabaseNames.URL_POSTGRES, "postgres", "postgres");
 			System.out.println("Connected to postgres");
 		} catch (SQLException e) {
 			e.printStackTrace();
