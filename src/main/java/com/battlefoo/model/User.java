@@ -5,16 +5,16 @@ import java.util.Objects;
 public class User {
 	
 	protected String nickname;
-	protected String firstname;
-	protected String lastname;
+	protected String firstName;
+	protected String lastName;
 	protected String email;
 	protected String password;
 	
 	public User(String nickname, String firstname, String lastname, String email, String password) {
 		super();
 		this.nickname = nickname;
-		this.firstname = firstname;
-		this.lastname = lastname;
+		this.firstName = firstname;
+		this.lastName = lastname;
 		this.email = email;
 		this.password = password;
 	}
@@ -28,19 +28,19 @@ public class User {
 	}
 	
 	public String getFirstname() {
-		return firstname;
+		return firstName;
 	}
 	
 	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+		this.firstName = firstname;
 	}
 	
 	public String getLastname() {
-		return lastname;
+		return lastName;
 	}
 	
 	public void setLastname(String lastname) {
-		this.lastname = lastname;
+		this.lastName = lastname;
 	}
 	
 	public String getEmail() {

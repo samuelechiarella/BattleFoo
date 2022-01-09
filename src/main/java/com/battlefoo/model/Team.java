@@ -4,25 +4,25 @@ import java.util.Objects;
 
 public class Team {
 	
-	private String team_name;
+	private String teamName;
 	private String logo;
 	private String description;
-	private long leader_id;
-	private long tournament_id;
+	private long leaderId;
+	private long tournamentId;
 	
 	public Team(String team_name, String logo, long leader_id) {
 		super();
-		this.team_name = team_name;
+		this.teamName = team_name;
 		this.logo = logo;
-		this.leader_id = leader_id;
+		this.leaderId = leader_id;
 	}
 
 	public String getTeam_name() {
-		return team_name;
+		return teamName;
 	}
 
 	public void setTeam_name(String team_name) {
-		this.team_name = team_name;
+		this.teamName = team_name;
 	}
 
 	public String getLogo() {
@@ -42,24 +42,24 @@ public class Team {
 	}
 
 	public long getLeader_id() {
-		return leader_id;
+		return leaderId;
 	}
 
 	public void setLeader_id(long leader_id) {
-		this.leader_id = leader_id;
+		this.leaderId = leader_id;
 	}
 
 	public long getTournament_id() {
-		return tournament_id;
+		return tournamentId;
 	}
 
 	public void setTournament_id(long tournament_id) {
-		this.tournament_id = tournament_id;
+		this.tournamentId = tournament_id;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(team_name);
+		return Objects.hash(teamName);
 	}
 
 	@Override
@@ -71,6 +71,6 @@ public class Team {
 		if (getClass() != obj.getClass())
 			return false;
 		Team other = (Team) obj;
-		return Objects.equals(team_name, other.team_name);
+		return Objects.equals(teamName, other.teamName);
 	}
 }

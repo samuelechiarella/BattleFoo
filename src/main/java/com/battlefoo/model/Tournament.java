@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Tournament {
 	
-	private String tournament_id;
+	private String tournamentId;
 	private String name;
 	private Date date;
 	private String description;
@@ -14,24 +14,24 @@ public class Tournament {
 	private String sponsor;
 	private String prizes;
 	private String logo;
-	private long manager_id;
+	private long managerId;
 	
 	public Tournament(String tournament_id, String name, Date date, String game_name, String logo, long manager_id) {
 		super();
-		this.tournament_id = tournament_id;
+		this.tournamentId = tournament_id;
 		this.name = name;
 		this.date = date;
 		this.game_name = game_name;
 		this.logo = logo;
-		this.manager_id = manager_id;
+		this.managerId = manager_id;
 	}
 
 	public String getTournament_id() {
-		return tournament_id;
+		return tournamentId;
 	}
 
 	public void setTournament_id(String tournament_id) {
-		this.tournament_id = tournament_id;
+		this.tournamentId = tournament_id;
 	}
 
 	public String getName() {
@@ -107,16 +107,16 @@ public class Tournament {
 	}
 
 	public long getManager_id() {
-		return manager_id;
+		return managerId;
 	}
 
 	public void setManager_id(long manager_id) {
-		this.manager_id = manager_id;
+		this.managerId = manager_id;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(tournament_id);
+		return Objects.hash(tournamentId);
 	}
 
 	@Override
@@ -128,6 +128,6 @@ public class Tournament {
 		if (getClass() != obj.getClass())
 			return false;
 		Tournament other = (Tournament) obj;
-		return Objects.equals(tournament_id, other.tournament_id);
+		return Objects.equals(tournamentId, other.tournamentId);
 	}
 }
