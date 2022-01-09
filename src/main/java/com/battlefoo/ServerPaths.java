@@ -1,4 +1,4 @@
-package com.battlefoo.model;
+package com.battlefoo;
 
 public class ServerPaths {
 	public static String IMAGES_PATH = "stored-images/";

@@ -6,12 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import com.battlefoo.model.ServerPaths;
+import com.battlefoo.ServerPaths;
 
 @Controller
 public class HomePage {

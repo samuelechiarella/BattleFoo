@@ -1,4 +1,4 @@
-package com.battlefoo.model;
+package com.battlefoo;
 
 public class DatabaseNames {
 	public static final String URL_POSTGRES = "jdbc:postgresql://postgres:5432/postgres";
