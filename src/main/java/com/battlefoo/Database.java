@@ -3,10 +3,14 @@ package com.battlefoo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
+
+import com.battlefoo.model.Game;
+import com.battlefoo.persistence.jdbc.GamesDAO;
 
 public class Database {
-	private Connection connection;
 	
+	private Connection connection;
 	private static Database instance = null;
 	
 	private Database() {
@@ -30,5 +34,9 @@ public class Database {
 
 	public void setConnection(Connection connection) {
 		this.connection = connection;
+	}
+	
+	public List<Game> getAllGames(){
+		return GamesDAO.getInstance(connection).getAll();
 	}
 }

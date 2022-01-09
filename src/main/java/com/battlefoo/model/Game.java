@@ -44,4 +44,9 @@ public class Game {
 		Game other = (Game) obj;
 		return Objects.equals(genre, other.genre) && Objects.equals(name, other.name);
 	}
+
+	@Override
+	public String toString() {
+		return "Game [name=" + name + ", genre=" + genre + "]";
+	}
 }

@@ -1,22 +1,22 @@
 Nome del caso d'uso: Iscriversi ad un Torneo.
 Portata: Gestore torneo di videogiochi. (o sottofunzione?)
-Attore primario: Giocatore.
+Attore primario: Team.
 Parti interessate e interessi:
     -   Giocatore: Avere la possibilità di selezionare e cercare tornei
         filtrando per alcuni campi, visualizzare le specifiche del
         torneo di suo interesse ed eventualmente effettuare l'iscrizione
-        a quest'ultimo.
+        del suo team a quest'ultimo.
     -   Organizzatore: Avere la possibilità di controllare il numero di
         partecipanti fino alla data del torneo ed eventualmente
-        (in caso il numero di team/persone fosse insufficiente) rimandare
+        (in caso il numero di team fosse insufficiente) rimandare
         ad un'altra data.
 
 Pre-Condizioni:
-    Il Giocatore è identificato ed autenticato.
+    Il Giocatore è identificato ed autenticato. Il Giocatore fa aprte di un team.
 
 Garanzia di successo:
-    L'iscrizione va a buon fine ed il Giocatore (o il team intero) risulta
-    correttamente iscritto al torneo, compare dunque nell'elenco partecipanti.
+    L'iscrizione va a buon fine ed il Team risulta correttamente iscritto al torneo,
+    compare dunque nell'elenco partecipanti.
 
 Scenario principale di successo:
     1)  Il Giocatore seleziona la lista di tornei disponibili.
@@ -26,9 +26,9 @@ Scenario principale di successo:
     5)  Il Sistema visualizza la pagina del torneo.
     6)  Il Giocatore seleziona l'iscrizione al torneo.
     7)  Il Sistema visualizza la pagina di iscrizione al torneo.
-    8)  Il Giocatore sceglie, conferma il nickname da utilizzare e
+    8)  Il Giocatore sceglie, conferma il team con cui iscriversi e
         prosegue con la registrazione al torneo.
-    9) Il Sistema registra l'iscrizione e aggiorna i partecipanti.
+    9)  Il Sistema registra l'iscrizione e aggiorna i partecipanti.
 
 Estensioni:
 
@@ -37,36 +37,14 @@ Estensioni:
     a-2.   Il Sistema restituisce i risultati della ricerca.
         a2-a.   La ricerca non ha prodotto risultati:
             a2a-1.  Il Sistema notifica l'assenza di risultati in base ai
-                    criteri di ricerca e si torna al passo precendente.
+                    criteri di ricerca e si torna al passo precendente dello
+                    scenario principale.
     a-3.   Si prosegue con il passo successivo dello scenario principale.
 
-*b. Il Sistema trova degli errori nei campi:
-        b-1.   Il Sistema notifica gli errori all'Organizzatore.
-        b-2.   L' Organizzatore inserisce nuovamente i campi con le modifiche appropriate.
-        b-3.   Si torna al passo precedente per nuovo controllo dei campi.
-
 1a. Non sono presenti tornei:
-    1a-1.    Il Sistema notifica che non sono presenti tornei al momento
+    1a-1.   Il Sistema notifica che non sono presenti tornei al momento
             e restituisce l'opzione di tornare alla pagina principale.
             Si torna al punto 1).
-
-6a. Il Sistema notifica il Giocatore che al momento i posti sono esauriti:
-    6a-1.   Il Sistema mette a disposizione del Giocatore la possibilità
-            di notificarlo quando ci sarà nuovamente disponibilità.
-        6a1-a.  Il Giocatore non accetta di essere notificato:
-            6a1a-1. Il Sistema torna alla pagina di scelta dei tornei,
-                    si torna al punto 3).
-    6a-2.   Il Giocatore accetta di essere notificato.
-    6a-3.   Il Sistema notifica l'Organizzatore che il numero massimo di posti
-            è stato raggiunto.
-    6a-4.   Il Sistema registra la risposta del Giocatore e torna alla pagina
-            principale.
-
-8b. Il Giocatore deve iscrivere l'intero team al torneo:
-    8b-1.   Il Giocatore sceglie il team tra quelli di cui fa parte e assegna un
-            nickname.
-    8b-2.   Il Giocatore conferma l'iscrizione.
-    8b-3.   Si va al passo successivo dello scenario principale (in assenza di errori).
 
 Requisiti speciali:
     -   Evitare conflitti dovuti alla concorrenza nella registrazione ai tornei.

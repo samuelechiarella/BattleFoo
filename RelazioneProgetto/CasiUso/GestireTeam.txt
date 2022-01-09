@@ -10,20 +10,21 @@ Pre-Condizioni:
     Il Giocatore deve avere effettuato il login sulla piattaforma.
 
 Garanzia di successo:
-    Il giocatore riesce a creare un team e modificarne le sue specifiche.
+    Il Giocatore riesce a creare un team e modificarne le sue specifiche.
 
 Scenario principale di successo: 
     1)  Il Creatore del Team accede alla schermata di creazione team.
-    2)  Il Sistema apre la pagina di creazione del team.
-    3)  Il Creatore del Team sceglie il nome, l'avatar ed il motto del team.
-    4)  Il Sistema controlla il corretto inserimento delle specifiche.
-    5)  Il Sistema inserisce il team fra quelli esistenti sulla piattaforma.
-    6)  Il Giocatore si unisce al Team.
-    7)  Il Sistema aggiorna i membri del Team.
-
+    2)  Il Creatore del Team sceglie il nome e il logo.
+    3)  Il Sistema controlla il corretto inserimento delle specifiche.
+    4)  Il Sistema inserisce il team fra quelli esistenti sulla piattaforma e carica la home del team.
+    5)  Il Creatore del Team inserisce i memebri del team.
+    6)  Il sistema conferma i membri del team.
+    7)  Il sistema manda gli inviti ai membri del team.
+    8)  Il Creatore del Team conclude e conferma i dati.
+    9)  Il Sistema aggiorna i dati del team.
 
 Estensioni:
-4a. Il Sistema notifica che il nome del team è già in uso:
+3a. Il Sistema notifica che il nome del team è già in uso:
     1.  Il Giocatore cambia il nome del team.
     2.  Il Giocatore conferma il nome inserito.
     3.  Il Sistema controlla.
@@ -31,18 +32,11 @@ Estensioni:
             1.  Torna al 3a.
     4.  Il Sistema convalida il nome e riprende con il normale proseguimento.
 
-6a. Il Creatore del Team invia un invito ad un Giocatore:
-    1.  Il Creatore del Team inserisce il nome del Giocatore.
-        1a. Il Giocatore inserito non esiste:
-            1.  Il Sistema notifica l'errore.
-            2.  Ritorna al punto 1.
-    2.  Il Sistema invia l'invito al Giocatore.
-    3.  Il Giocatore riceve l'invito.
-        3a. Il Giocatore rifiuta l'invito:
-            1.  Il Sistema notifica la risposta al Creatore del Team.
-    4. Il Giocatore accetta l'invito.
+6a. Il Sistema notifica che il giocatore inserito non è presente:
+    1.  Il Sistema notifica l'errore.
+    2.  Ritorna al punto 5 dello scenario principale.
  
-6b. Il Giocatore richiede di entrare in un Team:
+*b. Il Giocatore, in qualsiasi momento, richiede di entrare in un Team:
     1.  Il Giocatore inserisce il nome del Team.
         1a. Il Team inserito non esiste:
             1.  Il Sistema notifica l'errore.
@@ -52,3 +46,10 @@ Estensioni:
         3a. Il Creatore del Team rifiuta la richiesta:
             1.  Il Sistema notifica al Giocatore la risposta.
     4.  Il Creatore del Team accetta la richiesta.
+    5.  Il Sistema notifica al Giocatore la risposta e aggiorna i partecipanti.
+
+Requisiti Speciali:
+	- Risposta del server entro 5 ms il 95% delle volte.
+	- Le finestre di segnalazione degli eventuali errori sono facilmente individuabili dall'utente.
+
+Frequenza di ripetizione: illimitato.

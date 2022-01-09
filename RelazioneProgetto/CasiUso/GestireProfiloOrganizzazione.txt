@@ -8,7 +8,7 @@ Attore Primario: Organizzatore
 Parti Interessati ed Interessi:
 -	Organizzatore organizzazione:	Vuole poter creare la propria organizzazione, modificare i dati di quest'ultima
 									ed essere in grado di creare inviti per altri eventuali membri dello staff.
--	Membro Staff:	Vuole facilmente individuare gli inviti ricevuti da parte dell'organizzazione per poterne fare parte
+-	Membro Staff:	Vuole facilmente individuare gli inviti ricevuti da parte dell'organizzazione per poterne fare parte.
 
 Pre-condizioni:	Tutti gli utenti interessati sono identificati come "Profilo Organizzatore".
 
@@ -20,29 +20,22 @@ Garanzia di Successo (Post-Condizione):
 Scenario principale di successo:
 1. L'Organizzatore apre la pagina di creazione dell'organizzazione.
 2. L'Organizzatore inserisce gli elementi di base dell'organizzazione.
-3. Il sistema convalida i dati inseriti.
-4. L'Organizzatore inserisce le informazioni di contatto
+3. Il sistema convalida e carica la home dell'organizzazione.
+4. L'Organizzatore inserisce le informazioni di contatto.
 5. L'Organizzatore aggiunge lo staff dell'organizzazione.
 6. Il sistema conferma i membri dello staff.
-7. Il sistema manda gli inviti ai membri dello staff
-8. L'Organizzatore conclude e conferma la creazione dell'organizzazione.
-9. Il sistema convalida e carica la home dell'organizzazione.
+7. Il sistema manda gli inviti ai membri dello staff.
+8. L'Organizzatore conclude e conferma i dati.
+9. Il Sistema aggiorna i dati dell'organizzazione.
 
 Estensioni (Flussi Alternativi):
-*a. In qualsiasi momento, l'Organizzatore torna alla pagina precedente per modificare delle informazioni:
-	1. Il Sistema salva le scelte della pagina attuale.
-	2. Il Sistema carica la pagina precedente con le varie informazioni inserite dall'Organizzazione.
-	3. L'Organizzatore cambia le informazioni desiderate.
-	4. Il Sistema salva le nuove informazioni.
-	5. L'Organizzatore continua con la creazione dell'organizzazione.
-
 3a. Il Sistema notifica che il nome dell'organizzazione è già in uso:
     1.	L'Organizzatore cambia il nome dell'organizzazione.
     2.	L'Organizzatore conferma il nome inserito.
     3.  Il Sistema controlla.
 		3b. Il nome inserito è già in uso:
 			1. Torna al 3a.
-	4.	Il Sistema convalida il nome e riprende con il normale proseguimento.
+		4.	Il Sistema convalida il nome e riprende con il normale proseguimento.
 
 3b. Il Sistema notifica che i campi non sono stati compilati:
     1.	L'Organizzatore compila nuovamente i campi vuoti.
@@ -50,7 +43,7 @@ Estensioni (Flussi Alternativi):
     3.  Il Sistema controlla.
 		3c. I campi non sono compilati nuovamente:
 			1. Torna al 3b.
-	4.	Il Sistema convalida i campi e riprende con il normale proseguimento.
+		4.	Il Sistema convalida i campi e riprende con il normale proseguimento.
 	         
 6a. Il campo di inserimento del nome utente non esiste:
 	1. L'Organizzatore inserisce il nome utente del membro da inserire nell'apposito campo.
@@ -59,3 +52,9 @@ Estensioni (Flussi Alternativi):
 		    1. Il Sistema segnala l'errore.
 		    2. Torna al punto 6a.
 	3. Il Sistema convalida il nome e riprende con il normale proseguimento.
+
+Requisiti Speciali:
+	- Risposta del server entro 5 ms il 95% delle volte.
+	- Le finestre di segnalazione degli eventuali errori sono facilmente individuabili dall'utente.
+
+Frequenza di ripetizione: Ogni qualvolta l'Organizzatore decide di creare una nuova Organizzazione.
