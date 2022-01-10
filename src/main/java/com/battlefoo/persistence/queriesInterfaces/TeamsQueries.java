@@ -1,8 +1,8 @@
-package com.battlefoo.persistence;
+package com.battlefoo.persistence.queriesInterfaces;
 
 import java.util.List;
 
-import com.battlefoo.model.Team;
+import com.battlefoo.model.entitiesObjects.Team;
 
 public interface TeamsQueries {
 	public List<Team> getAll();

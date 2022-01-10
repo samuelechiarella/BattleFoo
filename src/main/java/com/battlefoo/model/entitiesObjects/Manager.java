@@ -1,4 +1,4 @@
-package com.battlefoo.model;
+package com.battlefoo.model.entitiesObjects;
 
 public class Manager extends User {
 

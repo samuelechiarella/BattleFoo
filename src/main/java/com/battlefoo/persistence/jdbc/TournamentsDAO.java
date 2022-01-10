@@ -3,8 +3,8 @@ package com.battlefoo.persistence.jdbc;
 import java.sql.Connection;
 import java.util.List;
 
-import com.battlefoo.model.Tournament;
-import com.battlefoo.persistence.TournamentsQueries;
+import com.battlefoo.model.entitiesObjects.Tournament;
+import com.battlefoo.persistence.queriesInterfaces.TournamentsQueries;
 
 public class TournamentsDAO  implements TournamentsQueries{
 

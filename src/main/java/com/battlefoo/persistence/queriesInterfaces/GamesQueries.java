@@ -1,8 +1,8 @@
-package com.battlefoo.persistence;
+package com.battlefoo.persistence.queriesInterfaces;
 
 import java.util.List;
 
-import com.battlefoo.model.Game;
+import com.battlefoo.model.entitiesObjects.Game;
 
 public interface GamesQueries {
 	public List<Game> getAll();

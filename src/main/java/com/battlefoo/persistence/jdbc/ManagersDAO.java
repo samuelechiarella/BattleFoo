@@ -3,8 +3,8 @@ package com.battlefoo.persistence.jdbc;
 import java.sql.Connection;
 import java.util.List;
 
-import com.battlefoo.model.Manager;
-import com.battlefoo.persistence.ManagersQueries;
+import com.battlefoo.model.entitiesObjects.Manager;
+import com.battlefoo.persistence.queriesInterfaces.ManagersQueries;
 
 public class ManagersDAO implements ManagersQueries{
 

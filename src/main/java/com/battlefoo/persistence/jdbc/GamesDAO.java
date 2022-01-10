@@ -1,15 +1,14 @@
 package com.battlefoo.persistence.jdbc;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.battlefoo.model.Game;
-import com.battlefoo.persistence.GamesQueries;
+import com.battlefoo.model.entitiesObjects.Game;
+import com.battlefoo.persistence.queriesInterfaces.GamesQueries;
 
 public class GamesDAO implements GamesQueries{
 

@@ -1,8 +1,8 @@
-package com.battlefoo.persistence;
+package com.battlefoo.persistence.queriesInterfaces;
 
 import java.util.List;
 
-import com.battlefoo.model.Manager;
+import com.battlefoo.model.entitiesObjects.Manager;
 
 public interface ManagersQueries {
 	public List<Manager> getAll();

@@ -3,8 +3,8 @@ package com.battlefoo.persistence.jdbc;
 import java.sql.Connection;
 import java.util.List;
 
-import com.battlefoo.model.Player;
-import com.battlefoo.persistence.PlayersQueries;
+import com.battlefoo.model.entitiesObjects.Player;
+import com.battlefoo.persistence.queriesInterfaces.PlayersQueries;
 
 public class PlayersDAO implements PlayersQueries {
 

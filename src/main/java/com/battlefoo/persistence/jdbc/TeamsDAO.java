@@ -3,8 +3,8 @@ package com.battlefoo.persistence.jdbc;
 import java.sql.Connection;
 import java.util.List;
 
-import com.battlefoo.model.Team;
-import com.battlefoo.persistence.TeamsQueries;
+import com.battlefoo.model.entitiesObjects.Team;
+import com.battlefoo.persistence.queriesInterfaces.TeamsQueries;
 
 public class TeamsDAO implements TeamsQueries {
 

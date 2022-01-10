@@ -1,4 +1,4 @@
-package com.battlefoo.controller;
+package com.battlefoo.controller.web;
 
 import java.io.BufferedWriter;
 import java.io.File;

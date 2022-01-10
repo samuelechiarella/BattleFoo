@@ -1,11 +1,11 @@
-package com.battlefoo;
+package com.battlefoo.persistence.dbManagement;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
-
-import com.battlefoo.model.Game;
+import com.battlefoo.DatabaseNames;
+import com.battlefoo.model.entitiesObjects.*;
 import com.battlefoo.persistence.jdbc.GamesDAO;
 
 public class Database {
