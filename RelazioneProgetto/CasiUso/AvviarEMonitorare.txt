@@ -1,7 +1,7 @@
 Nome caso d'uso: Avviare e monitorare l'andamento del torneo.
 Portata: Gestore torneo di videogiochi.
 Livello: Obiettivo utente.
-Attore primario: Organizzatore, Team.
+Attore primario: Team.
 Parti interessate ed interessi:
     -   Organizzatore: Avere la possibilità di monitorare il torneo.
     -	Team: Avere la possibilità giocare il proprio match e controllare l'andamento del torneo.

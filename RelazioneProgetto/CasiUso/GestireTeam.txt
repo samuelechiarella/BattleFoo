@@ -17,7 +17,7 @@ Scenario principale di successo:
     2)  Il Creatore del Team sceglie il nome e il logo.
     3)  Il Sistema controlla il corretto inserimento delle specifiche.
     4)  Il Sistema inserisce il team fra quelli esistenti sulla piattaforma e carica la home del team.
-    5)  Il Creatore del Team inserisce i memebri del team.
+    5)  Il Creatore del Team inserisce i membri del team.
     6)  Il sistema conferma i membri del team.
     7)  Il sistema manda gli inviti ai membri del team.
     8)  Il Creatore del Team conclude e conferma i dati.

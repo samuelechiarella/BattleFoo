@@ -1,0 +1,16 @@
+            Scenario Iscriversi ad un Torneo.
+            
+    
+    Team    --------------------------------    Sistema
+                    chooseTournament()
+            ------------------------------->
+                    showTournamentPage()
+            <-------------------------------
+                    signUpTournament()
+            ------------------------------->
+                    openApplyingPage()
+            <-------------------------------
+                    chooseTeamAndApply()
+            ------------------------------->
+                    updateAttendees()
+            <-------------------------------
