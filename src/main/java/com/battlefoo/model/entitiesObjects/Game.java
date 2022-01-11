@@ -1,36 +1,27 @@
 package com.battlefoo.model.entitiesObjects;
 
 import java.util.Objects;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+@NoArgsConstructor
+@RequiredArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Game {
 	
+	@NonNull
 	private String name;
 	private String genre;
-	
-	public Game(String name) {
-		super();
-		this.name = name;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getGenre() {
-		return genre;
-	}
-
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(genre, name);
+		return Objects.hash(name);
 	}
 
 	@Override
@@ -42,11 +33,6 @@ public class Game {
 		if (getClass() != obj.getClass())
 			return false;
 		Game other = (Game) obj;
-		return Objects.equals(genre, other.genre) && Objects.equals(name, other.name);
-	}
-
-	@Override
-	public String toString() {
-		return "Game [name=" + name + ", genre=" + genre + "]";
+		return Objects.equals(name, other.name);
 	}
 }

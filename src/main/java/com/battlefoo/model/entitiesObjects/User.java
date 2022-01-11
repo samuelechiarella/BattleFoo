@@ -2,62 +2,33 @@ package com.battlefoo.model.entitiesObjects;
 
 import java.util.Objects;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@NoArgsConstructor
+@RequiredArgsConstructor
+@Getter
+@Setter
+@ToString
 public class User {
 	
-	protected String nickname;
-	protected String firstName;
-	protected String lastName;
-	protected String email;
 	protected String password;
 	
-	public User(String nickname, String firstname, String lastname, String email, String password) {
-		super();
-		this.nickname = nickname;
-		this.firstName = firstname;
-		this.lastName = lastname;
-		this.email = email;
-		this.password = password;
-	}
+	@NonNull
+	protected String nickname;
 	
-	public String getNickname() {
-		return nickname;
-	}
+	@NonNull
+	protected String firstName;
 	
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
+	@NonNull
+	protected String lastName;
 	
-	public String getFirstname() {
-		return firstName;
-	}
-	
-	public void setFirstname(String firstname) {
-		this.firstName = firstname;
-	}
-	
-	public String getLastname() {
-		return lastName;
-	}
-	
-	public void setLastname(String lastname) {
-		this.lastName = lastname;
-	}
-	
-	public String getEmail() {
-		return email;
-	}
-	
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
-	
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	@NonNull
+	protected String email;
 
 	@Override
 	public int hashCode() {

@@ -7,6 +7,10 @@ import java.util.List;
 import com.battlefoo.DatabaseNames;
 import com.battlefoo.model.entitiesObjects.*;
 import com.battlefoo.persistence.jdbc.GamesDAO;
+import com.battlefoo.persistence.jdbc.ManagersDAO;
+import com.battlefoo.persistence.jdbc.PlayersDAO;
+import com.battlefoo.persistence.jdbc.TeamsDAO;
+import com.battlefoo.persistence.jdbc.TournamentsDAO;
 
 public class Database {
 	
@@ -36,7 +40,72 @@ public class Database {
 		this.connection = connection;
 	}
 	
+	// ************************************* GAMES
 	public List<Game> getAllGames(){
 		return GamesDAO.getInstance(connection).getAll();
+	}
+	
+	public Game getGameByName(String name) {
+		return GamesDAO.getInstance(connection).getByName(name);
+	}
+	
+	public boolean gameExists(String name) {
+		return GamesDAO.getInstance(connection).exists(name);
+	}
+	
+	public List<Game> getGamesByGenre(String genre){
+		return GamesDAO.getInstance(connection).getGamesByGenre(genre);
+	}
+	
+	// ************************************* PLAYERS
+	public List<Player> getAllPlayers(){
+		return PlayersDAO.getInstance(connection).getAll();
+	}
+	
+	public Player getPlayerByNickname(String nickname) {
+		return PlayersDAO.getInstance(connection).getByNickname(nickname);
+	}
+	
+	public boolean playerExists(String name) {
+		return PlayersDAO.getInstance(connection).exists(name);
+	}
+	
+	// ************************************* MANAGERS
+	public List<Manager> getAllManagers(){
+		return ManagersDAO.getInstance(connection).getAll();
+	}
+	
+	public Manager getManagerByNickname(String name) {
+		return ManagersDAO.getInstance(connection).getByNickname(name);
+	}
+	
+	public boolean managerExists(String nickname) {
+		return ManagersDAO.getInstance(connection).exists(nickname);
+	}
+	
+	// ************************************* Teams
+	public List<Team> getAllTeams(){
+		return TeamsDAO.getInstance(connection).getAll();
+	}
+	
+	public Team getManagerByTeamName(String teamName) {
+		return TeamsDAO.getInstance(connection).getByTeamName(teamName);
+	}
+	
+	public boolean teamExists(String teamName) {
+		return TeamsDAO.getInstance(connection).exists(teamName);
+	}
+	
+	// ************************************* Tournaments
+	public List<Tournament> getAllTournaments(){
+		return TournamentsDAO.getInstance(connection).getAll();
+	}
+	
+	public Tournament getManagerByTournamentName(String tournamentName) {
+		return TournamentsDAO.getInstance(connection).getByTournamentName(tournamentName);
+	}
+	
+	public boolean tournamentExists(String tournamentName) {
+		return TournamentsDAO.getInstance(connection).exists(tournamentName);
 	}
 }

@@ -1,19 +1,42 @@
 package com.battlefoo.model.entitiesObjects;
 
+import java.util.Objects;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Manager extends User {
 
 	protected String managerId;
-	
-	public Manager(String nickname, String firstname, String lastname, String email, String password, String manager_id) {
-		super(nickname, firstname, lastname, email, password);
+
+	public Manager(String nickname, String firstname, String lastname, String email, String manager_id) {
+		super(nickname, firstname, lastname, email);
 		this.managerId = manager_id;
 	}
 
-	public String getManager_id() {
-		return managerId;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(managerId);
+		return result;
 	}
 
-	public void setManager_id(String manager_id) {
-		this.managerId = manager_id;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Manager other = (Manager) obj;
+		return Objects.equals(managerId, other.managerId);
 	}
 }

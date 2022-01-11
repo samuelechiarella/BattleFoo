@@ -2,60 +2,31 @@ package com.battlefoo.model.entitiesObjects;
 
 import java.util.Objects;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@NoArgsConstructor
+@RequiredArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Team {
 	
-	private String teamName;
-	private String logo;
 	private String description;
-	private long leaderId;
-	private long tournamentId;
 	
-	public Team(String team_name, String logo, long leader_id) {
-		super();
-		this.teamName = team_name;
-		this.logo = logo;
-		this.leaderId = leader_id;
-	}
+	@NonNull
+	private String teamName;
+	
+	@NonNull
+	private String logo;
+	
+	@NonNull
+	private Long leaderId;
 
-	public String getTeam_name() {
-		return teamName;
-	}
-
-	public void setTeam_name(String team_name) {
-		this.teamName = team_name;
-	}
-
-	public String getLogo() {
-		return logo;
-	}
-
-	public void setLogo(String logo) {
-		this.logo = logo;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public long getLeader_id() {
-		return leaderId;
-	}
-
-	public void setLeader_id(long leader_id) {
-		this.leaderId = leader_id;
-	}
-
-	public long getTournament_id() {
-		return tournamentId;
-	}
-
-	public void setTournament_id(long tournament_id) {
-		this.tournamentId = tournament_id;
-	}
 
 	@Override
 	public int hashCode() {

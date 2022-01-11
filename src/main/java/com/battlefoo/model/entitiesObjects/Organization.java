@@ -5,24 +5,17 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 @EqualsAndHashCode
-public class Date {
+public class Organization {
 	
-	private int month;
-	private int day;
-	private int year;
-	
-	public String getDate() {
-		String m = "", d = "";
-		if(month < 10)	
-			m = "0" + month;
-		if(day < 10)	
-			d = "0" + day;
-		return m + "/" + d + "/" + year;
-	}
+	private String organizationId;
+	private String managerId;
+	private String tournamentId;
 }
