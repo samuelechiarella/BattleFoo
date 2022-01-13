@@ -26,6 +26,11 @@ public class Team {
 	
 	@NonNull
 	private Long leaderId;
+	
+	public Team(String teamName, String logo) {
+		this.teamName = teamName;
+		this.logo = logo;
+	}
 
 
 	@Override

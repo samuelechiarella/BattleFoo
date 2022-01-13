@@ -29,7 +29,7 @@ public class ManagersDAO implements ManagersQueries{
 	public List<Manager> getAll() {
 		List<Manager> list = new ArrayList<Manager>();
 		try {
-			String query = "select * from managers";
+			String query = "select * from managers;";
 			PreparedStatement ps = connection.prepareStatement(query);
 			ResultSet res = ps.executeQuery();
 			while(res.next()) {
@@ -50,9 +50,8 @@ public class ManagersDAO implements ManagersQueries{
 			PreparedStatement ps = connection.prepareStatement(query);
 			ps.setString(1, nickname);
 			ResultSet res = ps.executeQuery();
-			if(res.next()) {
+			if(res.next())
 				m = createManager(res);
-			}
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
@@ -82,7 +81,7 @@ public class ManagersDAO implements ManagersQueries{
 		PreparedStatement ps = connection.prepareStatement(query);
 		ps.setString(1, res.getString("nickname"));
 		ResultSet thisRes = ps.executeQuery();
-		while(thisRes.next())
+		if(thisRes.next())
 			m = new Manager(thisRes.getString(DatabaseNames.Tables.Users.COLUMN_NICKNAME),
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_FIRST_NAME),
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_LAST_NAME),

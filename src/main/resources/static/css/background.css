@@ -4,6 +4,12 @@ body {
   background: #0f388a;/*#282828*/
 }
 
+input[type="text"] {
+	background-color: #C0D5FF;
+	font-size: 1em;
+	color: #272727;
+}
+
 /*****************************SIDEBAR*****************************/
 
 /* The sidepanel menu */

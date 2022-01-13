@@ -1,3 +1,5 @@
+var imgDataURL = "";
+
 function openMenu() {
   document.getElementById("sidePanel").style.left = "0";
 }
@@ -25,14 +27,54 @@ function openCreateTeamSidebar(){
   document.getElementsByClassName("side-panel")[0].style.right="0";
 }
 
-function sendInvite(){
-  //check if it exists
-  //put it into the list
+function openPopup(id) {
+	console.log(id);
+  var popup = document.getElementById(id);
+  popup.classList.toggle("show");
 }
 
 function closeCreateTeam(){
+  $("#nickname").val("");
+  $("#img-logo").attr("src","");
   document.getElementsByClassName("side-panel")[0].style.right="-30em";
+  openManageTeams();
   openMenu();
+}
+
+function storeTeam() {
+	$(document).ready(function(){
+		let newTeam = new Team($("#nickname").val(), imgDataURL);
+		$.ajax({
+			type: "POST",
+			url: "/createTeam",
+			contentType: "application/json",
+			data: JSON.stringify(newTeam),
+			success: function(answer){
+				switch(answer.responseCode){
+						case 501:
+							openPopup("nameTakenPopup");
+							console.log(answer.responseMessage);
+							break;
+						case 502:
+							openPopup("teamNameNotFilledPopup");
+							console.log(answer.responseMessage);
+							break;
+						case 503:
+							openPopup("constraintsNotSatisfiedPopup");
+							console.log(answer.responseMessage);
+							break;
+						default:
+							console.log("TEAM CREATED");
+							window.location = "/";
+							break;
+					};
+			},
+			error: function(err){
+				console.log("CREATE TEAM ERROR");
+				console.log(err);
+			}
+		});
+	});
 }
 
 function getImg(input) {
@@ -41,27 +83,8 @@ function getImg(input) {
 	if(file){
 		reader.readAsDataURL(file);
 		reader.onload = function() {
-			let img = document.getElementById("img-logo");
-			//img.src=URL.createObjectURL(file);
-			$.ajax({
-				type: "POST",
-				url: "/storeTeamLogo",
-				contentType: "application/json",
-				data: JSON.stringify(reader.result),
-				success: function(risposta){
-					//****************************************************************** create a class RESPONSE
-					console.log(risposta);
-					if (risposta === "Done"){
-						img.src=reader.result;
-						console.log("finally - " + file.name + " stored");
-					}
-				},
-				error: function(xhr){
-					console.log(xhr);
-					var res = JSON.parse(xhr.responseText);
-					alert(res.messaggio);
-				}
-			});
+			imgDataURL = reader.result;
+			$("#img-logo").attr("src",imgDataURL);
 		};
 	}
 }

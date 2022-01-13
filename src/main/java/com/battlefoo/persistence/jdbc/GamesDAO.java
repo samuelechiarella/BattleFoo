@@ -29,7 +29,7 @@ public class GamesDAO implements GamesQueries{
 	public List<Game> getAll() {
 		List<Game> list = new ArrayList<Game>();
 		try {
-			String query = "select * from games";
+			String query = "select * from games;";
 			PreparedStatement ps = connection.prepareStatement(query);
 			ResultSet res = ps.executeQuery();
 			while(res.next()) {

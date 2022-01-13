@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.battlefoo.DatabaseNames;
-import com.battlefoo.model.entitiesObjects.Manager;
 import com.battlefoo.model.entitiesObjects.Player;
 import com.battlefoo.persistence.queriesInterfaces.PlayersQueries;
 
@@ -46,13 +44,35 @@ public class PlayersDAO implements PlayersQueries {
 
 	@Override
 	public Player getByNickname(String nickname) {
-		// TODO Auto-generated method stub
-		return null;
+		Player p = null;
+		String query = "select users.nickname, users.firstname, users.lastname, "
+					+ "users.email, players.player_id from users full outer join "
+					+ "players on users.nickname = players.nickname where users.nickname=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, nickname);
+			ResultSet res = ps.executeQuery();
+			if(res.next())
+				p = createPlayer(res);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return p;
 	}
 
 	@Override
 	public boolean exists(String nickname) {
-		// TODO Auto-generated method stub
+		try {
+			String query = "select * from players where nickname=?";
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, nickname);
+			ResultSet res = ps.executeQuery();
+			if(res.next())
+				return true;
+		}
+		catch(SQLException e) {
+			System.out.println("ERROR IN PLAYERS DAO EXISTS");
+		}
 		return false;
 	}
 	
@@ -62,12 +82,12 @@ public class PlayersDAO implements PlayersQueries {
 		PreparedStatement ps = connection.prepareStatement(query);
 		ps.setString(1, res.getString("nickname"));
 		ResultSet thisRes = ps.executeQuery();
-		while(thisRes.next())
+		if(thisRes.next())
 			p = new Player(thisRes.getString(DatabaseNames.Tables.Users.COLUMN_NICKNAME),
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_FIRST_NAME),
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_LAST_NAME),
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_EMAIL),
-							thisRes.getString(DatabaseNames.Tables.Players.COLUMN_PLAYER_ID));
+							thisRes.getLong(DatabaseNames.Tables.Players.COLUMN_PLAYER_ID));
 		return p;
 	}
 

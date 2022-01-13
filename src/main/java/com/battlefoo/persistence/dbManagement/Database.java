@@ -108,4 +108,8 @@ public class Database {
 	public boolean tournamentExists(String tournamentName) {
 		return TournamentsDAO.getInstance(connection).exists(tournamentName);
 	}
+
+	public boolean insertTeam(Team team) {
+		return TeamsDAO.getInstance(connection).insert(team);
+	}
 }
