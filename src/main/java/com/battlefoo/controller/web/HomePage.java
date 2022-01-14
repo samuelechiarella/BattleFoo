@@ -6,28 +6,17 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.battlefoo.ServerPaths;
-import com.battlefoo.model.entitiesObjects.Team;
-import com.battlefoo.persistence.dbManagement.Database;
+import com.battlefoo.model.CommonMethods;
 
 @Controller
 public class HomePage {
 	@GetMapping("/")
 	public String getHomePage(HttpServletRequest req) {
-		//	set attribute teamsList
-		HttpSession session = req.getSession(true);
-		List<Team> teams = Database.getInstance().getAllTeams();
-		System.out.println(teams);
-		session.setAttribute("teamsList", teams);
-		// 	***********************
-		
+		CommonMethods.updateTeamsAttribute(req,null);
 		req.getSession(true).setAttribute("loggedUser", "user1");
 		
 		BufferedWriter writer;

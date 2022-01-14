@@ -69,7 +69,7 @@ public class TeamsDAO implements TeamsQueries {
 			String query = "insert into teams(team_name,logo,leader_id) values(?,?,?);";
 			PreparedStatement ps = connection.prepareStatement(query);
 			ps.setString(1, team.getTeamName());
-			ps.setString(2, "LOGO");
+			ps.setString(2, team.getLogo());
 			ps.setLong(3, team.getLeaderId());
 			ps.execute();
 			return true;

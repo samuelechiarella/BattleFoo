@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.battlefoo.ServerPaths;
+import com.battlefoo.model.CommonMethods;
 import com.battlefoo.model.Response;
 import com.battlefoo.model.entitiesObjects.Team;
 import com.battlefoo.persistence.dbManagement.Database;
@@ -32,40 +32,45 @@ public class ManageTeam {
 			user = (String)obj;
 		}
 		Response response = createResponse(team,user);
-		List<Team> teams = Database.getInstance().getAllTeams();
-		teams.add(team);
-		session.setAttribute("teamsList", teams);
-		//	***********************
+		
+		if(response.getResponseCode()==200)
+			CommonMethods.updateTeamsAttribute(req, team);
+		else
+			CommonMethods.updateTeamsAttribute(req, null);
 		
 		return response;
 	}
 	
 	private Response createResponse(Team team, String loggedUser) {
+		System.out.println(team.toString());
 		Response res = new Response(Response.failure,"Storing failed");
 		if(accepted(team.getTeamName())) {
 			if(!Database.getInstance().teamExists(team.getTeamName())) {
-				// store logo into a text file named as below
-				BufferedWriter writer;
-				String imgFileName = new Date().getTime() + ".txt";
-				try {
-					writer = new BufferedWriter(new FileWriter(new File(ServerPaths.TEAMS_LOGOS_PATH, imgFileName)));
-					writer.write(team.getLogo());
-					writer.close();
-				} catch (IOException e) {
-					System.out.println("***********************************ManageTeam.java ERROR createTeam***********************************");
+				if(team.getLogo() != null) {
+					// store logo into a text file named as below
+					BufferedWriter writer;
+					String imgFileName = new Date().getTime() + ".txt";
+					try {
+						writer = new BufferedWriter(new FileWriter(new File(ServerPaths.TEAMS_LOGOS_PATH, imgFileName)));
+						writer.write(team.getLogo());
+						writer.close();
+					} catch (IOException e) {
+						System.out.println("***********************************ManageTeam.java ERROR createTeam***********************************");
+					}
+					//*******************************************
+					
+					// set the team logo as the path to the text file instead
+					team.setLogo(ServerPaths.TEAMS_LOGOS_PATH + imgFileName);
 				}
-				//*******************************************
-				
-				// set the team logo as the path to the text file instead
-				team.setLogo(ServerPaths.TEAMS_LOGOS_PATH + imgFileName);
-				
+				else {
+					team.setLogo(ServerPaths.DEFAULT_LOGO);
+				}
 				long leaderId = -1;
 				if(Database.getInstance().playerExists(loggedUser)) {
 					leaderId = Database.getInstance().getPlayerByNickname(loggedUser).getPlayerId();
 				}
 				team.setLeaderId(leaderId);
 				Database.getInstance().insertTeam(team);
-				System.out.println(team.toString());
 				res.setResponseCode(Response.success);
 				res.setResponseMessage("Team successfully stored");
 			}

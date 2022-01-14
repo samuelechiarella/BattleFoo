@@ -33,6 +33,12 @@ th, td {
 }
 
 tr:hover {background-color: #585858;}
+
+.logo {
+	widht: 10em;
+	height: 10em;
+}
+
 </style>
 </head>
 <body>
@@ -82,6 +88,25 @@ tr:hover {background-color: #585858;}
 		<tr>
 			<td><h3>${manager.nickname}</h3></td>
 			<td><h3>${manager.managerId}</h3></td>
+		</tr>
+		</jstl:forEach>
+	</tbody>
+</table>
+
+<table>
+	<thead>
+		<tr>
+			<th>Team Name</th>
+			<th>Leader ID</th>
+			<th>Logo</th>
+		</tr>
+	</thead>
+	<tbody>
+		<jstl:forEach items="${teamsList}" var="team">
+		<tr>
+			<td><h3>${team.teamName}</h3></td>
+			<td><h3>${team.leaderId}</h3></td>
+			<td><img class="logo" src="${team.logo}"></td>
 		</tr>
 		</jstl:forEach>
 	</tbody>

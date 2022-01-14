@@ -1,5 +1,3 @@
-var imgDataURL = "";
-
 function openMenu() {
   document.getElementById("sidePanel").style.left = "0";
 }
@@ -43,7 +41,7 @@ function closeCreateTeam(){
 
 function storeTeam() {
 	$(document).ready(function(){
-		let newTeam = new Team($("#nickname").val(), imgDataURL);
+		let newTeam = new Team($("#nickname").val(), $("#img-logo").attr("src"));
 		$.ajax({
 			type: "POST",
 			url: "/createTeam",
