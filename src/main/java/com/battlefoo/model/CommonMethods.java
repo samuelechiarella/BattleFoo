@@ -14,20 +14,38 @@ public class CommonMethods {
 	public static void updateTeamsAttribute(HttpServletRequest req, Team team) {
 		//	set attribute teamsList
 		HttpSession session = req.getSession(true);
-		List<Team> teams = Database.getInstance().getAllTeams();
+		List<Team> teams = null;
 		
-		if(team!=null)
+		if(session.getAttribute("teamsList") == null) {
+			teams = Database.getInstance().getAllTeams();
+			for(Team t : teams) {
+				if(t.getLogo().compareTo(ServerPaths.DEFAULT_LOGO)!=0) {
+					try {
+						BufferedReader br =  new BufferedReader(new FileReader(t.getLogo()));
+						t.setLogo(br.readLine());
+						br.close();
+					} catch (IOException e) {
+						System.out.println("ERROR IN COMMON METHODS CREATE TEAM IO EXCEPTION");
+					}
+				}
+			}
+		}
+		
+		else {
+			// it supposed to be a list
+			teams = (List<Team>) session.getAttribute("teamsList");
+		}
+		
+		
+		if(team!=null) {
 			teams.add(team);
-		
-		for(Team t : teams) {
-			if(t.getLogo().compareTo(ServerPaths.DEFAULT_LOGO)!=0) {
+			if(team.getLogo().compareTo(ServerPaths.DEFAULT_LOGO)!=0) {
 				try {
-					BufferedReader br =  new BufferedReader(new FileReader(t.getLogo()));
-					t.setLogo(br.readLine());
-					System.out.println(t.getLogo());
+					BufferedReader br =  new BufferedReader(new FileReader(team.getLogo()));
+					team.setLogo(br.readLine());
 					br.close();
 				} catch (IOException e) {
-					System.out.println("ERROR IN MANAGE TEAM CREATE TEAM IO EXCEPTION");
+					System.out.println("ERROR IN MCOMMON METHODS CREATE TEAM IO EXCEPTION");
 				}
 			}
 		}

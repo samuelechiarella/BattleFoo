@@ -64,8 +64,11 @@
 	<a href="javascript:void(0)" class="closebtn" onclick="closeBack()">&lt;</a>
 	<div id="teams-list" class="backside-list">
 	<jstl:forEach items="${teamsList}" var="team">
-		<div>
-			<p>${team.teamName}</p>
+		<div class="team-logo">
+			<div class="tooltip">
+				<img id="${team.leaderId}"  src="${team.logo}">
+				<span class="tooltiptext">${team.teamName}</span>
+			</div>
 		</div>
 	</jstl:forEach>
 	</div>

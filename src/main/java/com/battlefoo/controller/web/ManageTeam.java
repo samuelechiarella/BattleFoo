@@ -37,12 +37,10 @@ public class ManageTeam {
 			CommonMethods.updateTeamsAttribute(req, team);
 		else
 			CommonMethods.updateTeamsAttribute(req, null);
-		
 		return response;
 	}
 	
 	private Response createResponse(Team team, String loggedUser) {
-		System.out.println(team.toString());
 		Response res = new Response(Response.failure,"Storing failed");
 		if(accepted(team.getTeamName())) {
 			if(!Database.getInstance().teamExists(team.getTeamName())) {
@@ -102,4 +100,5 @@ public class ManageTeam {
 			return false;
 		return true;
 	}
+	
 }
