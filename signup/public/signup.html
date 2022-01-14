@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="signup.css">
+<script type="text/javascript" src="signup.js"></script>
+</head>
+<body>
+  <button class="openbtn" onclick="openMenu()">&#9776; Menu</button>
+
+<!-- Menu -->
+<div id="sidePanel" class="sidepanel">
+  	<a href="#" class="closebtn not-move" onclick="closeMenu()">&times;</a>
+    <div class="side-elem">
+      <img src="images/home-icon.png">
+      <a href="/">Home</a>
+    </div>
+    <div class="side-elem">
+      <img src="images/browse_tournaments_icon.png">
+  	  <a href="#">Browse<br>Tournaments</a>
+    </div>
+    <div class="side-elem">
+      <img src="images/organize_tournaments_icon.png">
+      <a href="#" onclick="openMTournaments()">Organize<br>Tournament&rarr;</a>
+    </div>
+    <div class="side-elem">
+      <img src="images/teamIcon.png">
+      <a href="#" onclick="openMTeams()">Manage<br>Teams&rarr;</a>
+    </div>
+    <div class="side-elem">
+      <a id="loginButton" href="#">Login</a>
+    </div>
+  	<!-- <a href="#">My Profile</a> compare dopo essersi loggato -->
+  	<!-- <a href="#">Logout</a> compare dopo essersi loggato -->
+</div>
+
+<!-- Organize Tournaments side panel -->
+<div id="organizeTournamentsBackside" class="sidepanel">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeBack()">&lt;</a>
+	<div class="list">
+	<!-- lista organizzazioni -->
+	<a href="#" class="not-move" id="newOrganizationButton">+ New Organization</a>
+	</div>
+</div>
+
+<!-- Manage Teams side panel -->
+<div id="manageTeamsBackside" class="sidepanel">
+	<a href="javascript:void(0)" class="closebtn" onclick="closeBack()">&lt;</a>
+	<div class="list">
+	<!-- lista team -->
+	</div>
+	<a href="#" class="not-move" id="newTeamButton">+ New Team</a>
+</div>
+
+	<div class="form">
+	<h1>Sign Up!</h1>
+	<form>
+	<input type="Name" class="inputbox" placeholder="Name">
+	<input type="Surname" class="inputbox" placeholder="Surname">
+	<input type="username" class="inputbox" placeholder="Username">
+	<input type="Email" class="inputbox" placeholder="Email">
+	<input type="Password" class="inputbox" placeholder="Password">
+	<input type="Conferma Password" class="inputbox" placeholder="Conferma Password">
+	
+	<button type="Submit" class="submit-button">Submit</button>
+	
+	</form>
+	
+	
+	
+	</div>
+
+
+
+</body>
+</html>

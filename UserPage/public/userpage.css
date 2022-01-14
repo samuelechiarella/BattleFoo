@@ -1,0 +1,236 @@
+@charset "ISO-8859-1";
+body {
+  margin: 0;
+  padding: 0;
+  background: #0f388a;/*#282828*/
+}
+
+/*****************************SIDEBAR*****************************/
+
+/* The sidepanel menu */
+.sidepanel {
+	bottom: 0;
+  width: 12.5em; /* 0 width - change this with JavaScript */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Stay on top */
+	top: 0;
+	left: -12.75em;
+	background-color: rgb(179,107,0); /*92,0,153-viola, 47,69,1-verde*/
+	overflow-x: hidden; /* Disable horizontal scroll */
+	padding-top: 3.75em; /* Place content 60px from the top */
+	transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+	border-top-right-radius: 1em;
+}
+
+/* The sidepanel links */
+.sidepanel a, .side-elem, .side-elem label{
+  padding: 0.4em;
+  text-decoration: none;
+  font-size: 1.13em;
+  font-family: sans-serif;
+  color: white;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.side-elem {
+  margin-left: 1em;
+}
+
+.side-elem label{
+  display: inline;
+}
+
+.sidepanel .side-elem:not(#logo):hover {
+  margin-left: 2em;
+}
+
+/* Position and style the close button (top right corner) */
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 0.5em;
+  font-size: 2.3em;
+}
+
+/* Style the button that is used to open the sidepanel */
+.openbtn {
+	position: fixed;
+	top: 0;
+	margin: 2%;
+  font-size: 1.3em;
+  font-family: sans-serif;
+  cursor: pointer;
+  background-color: transparent;/*rgba(0,0,0,0.0)*/
+  color: rgb(179,107,0);
+  padding: 0.5em 0.7em;
+  border-radius: 0.5em;
+	border: 0.1em outset rgb(179,107,0);/*wihte vince sempre*/
+  border-radius: 7px;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+#loginButton {
+	position: absolute;
+	bottom: 5em;
+}
+
+.list {
+	height: 37.5em;
+	overflow-y: scroll;
+}
+
+#newTeamButton	{
+
+	position: absolute;
+  left: 1.2em;
+	bottom: 5em;
+	border-radius: 0.5em;
+	border: 2px solid white;
+}
+
+#newOrganizationButton	{
+  width:9em;
+  position: absolute;
+  left: 0.5em;
+	bottom: 5em;
+	border-radius: 0.5em;
+	border: 2px solid white;
+}
+
+#logo img{
+  width: 8em;
+  height: 4em;
+}
+
+.tournaments > h2 {
+  margin-top: 1%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background:  #454545;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* organization backside */
+.backside-list ul {
+	list-style: none;
+}
+
+.wrapper{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 450px;
+  display: flex;
+  box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+}
+
+.wrapper .left{
+  width: 35%;
+  background: linear-gradient(to right,#01a9ac,#01dbdf);
+  padding: 30px 25px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  text-align: center;
+  color: #fff;
+}
+
+.wrapper .left img{
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.wrapper .left h4{
+  margin-bottom: 10px;
+}
+
+.wrapper .left p{
+  font-size: 12px;
+}
+
+.wrapper .right{
+  width: 65%;
+  background: #fff;
+  padding: 30px 25px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.wrapper .right .info,
+.wrapper .right .projects{
+  margin-bottom: 25px;
+}
+
+.wrapper .right .info h3,
+.wrapper .right .projects h3{
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #353c4e;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.wrapper .right .info_data,
+.wrapper .right .projects_data{
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper .right .info_data .data,
+.wrapper .right .projects_data .data{
+  width: 45%;
+}
+
+.wrapper .right .info_data .data h4,
+.wrapper .right .projects_data .data h4{
+    color: #353c4e;
+    margin-bottom: 5px;
+}
+
+.wrapper .right .info_data .data p,
+.wrapper .right .projects_data .data p{
+  font-size: 13px;
+  margin-bottom: 10px;
+  color: #919aa3;
+}
+
+.wrapper .social_media ul{
+  display: flex;
+}
+
+.wrapper .social_media ul li{
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(to right,#01a9ac,#01dbdf);
+  margin-right: 10px;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 45px;
+}
+
+.wrapper .social_media ul li a{
+  color :#fff;
+  display: block;
+  font-size: 18px;
+}
