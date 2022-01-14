@@ -2,23 +2,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="css/background.css">
-<link rel="stylesheet" type="text/css" href="css/create-team.css">
 <link rel="stylesheet" href="css/organization.css">
-<script type="text/javascript" src="js/background.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="js/organization.js" defer></script>
-<script>
-$(document).ready(function() {
-	$('#content').load('html/background.html');
-});
-</script>
+<jsp:include page="resources.jsp"></jsp:include>
 </head>
 <body>
-	<div id="content">
-	<!-- including background.html -->
-	</div>
-
+	<jsp:include page="background.jsp"></jsp:include>
+	
 	<ul class="tabs">
 		<li data-tab-target="#home" class="active tab">HOME</li>
 		<li data-tab-target="#tournaments" class="tab">TOURNAMENTS</li>

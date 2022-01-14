@@ -1,7 +1,7 @@
 package com.battlefoo;
 
 public class DatabaseNames {
-	public static final String URL_POSTGRES = "jdbc:postgresql://postgres:5432/postgres";
+	public static final String URL_POSTGRES = "jdbc:postgresql://localhost:5432/postgres";
 	public class Tables {
 		public class Games {
 			public static final String TABLE_NAME = "games";
