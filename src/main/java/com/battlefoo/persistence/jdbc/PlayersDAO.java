@@ -1,0 +1,94 @@
+package com.battlefoo.persistence.jdbc;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import com.battlefoo.DatabaseNames;
+import com.battlefoo.model.entitiesObjects.Player;
+import com.battlefoo.persistence.queriesInterfaces.PlayersQueries;
+
+public class PlayersDAO implements PlayersQueries {
+
+	private static PlayersDAO instance = null;
+	private Connection connection;
+	
+	private PlayersDAO(Connection connection) {
+		this.connection = connection;
+	}
+	
+	public static PlayersDAO getInstance(Connection c) {
+		if(instance == null)
+			instance = new PlayersDAO(c);
+		return instance;
+	}
+	
+	@Override
+	public List<Player> getAll() {
+		List<Player> list = new ArrayList<Player>();
+		try {
+			String query = "select * from players";
+			PreparedStatement ps = connection.prepareStatement(query);
+			ResultSet res = ps.executeQuery();
+			while(res.next()) {
+				list.add(createPlayer(res));
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("NO");
+		}
+		return list;
+	}
+
+	@Override
+	public Player getByNickname(String nickname) {
+		Player p = null;
+		String query = "select users.nickname, users.firstname, users.lastname, "
+					+ "users.email, players.player_id from users full outer join "
+					+ "players on users.nickname = players.nickname where users.nickname=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, nickname);
+			ResultSet res = ps.executeQuery();
+			if(res.next())
+				p = createPlayer(res);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return p;
+	}
+
+	@Override
+	public boolean exists(String nickname) {
+		try {
+			String query = "select * from players where nickname=?";
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, nickname);
+			ResultSet res = ps.executeQuery();
+			if(res.next())
+				return true;
+		}
+		catch(SQLException e) {
+			System.out.println("ERROR IN PLAYERS DAO EXISTS");
+		}
+		return false;
+	}
+	
+	private Player createPlayer(ResultSet res) throws SQLException {
+		Player p = null;
+		String query = "select * from players join users on players.nickname = users.nickname where players.nickname=?";
+		PreparedStatement ps = connection.prepareStatement(query);
+		ps.setString(1, res.getString("nickname"));
+		ResultSet thisRes = ps.executeQuery();
+		if(thisRes.next())
+			p = new Player(thisRes.getString(DatabaseNames.Tables.Users.COLUMN_NICKNAME),
+							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_FIRST_NAME),
+							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_LAST_NAME),
+							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_EMAIL),
+							thisRes.getLong(DatabaseNames.Tables.Players.COLUMN_PLAYER_ID));
+		return p;
+	}
+
+}

@@ -1,0 +1,16 @@
+                    Scenario Gestire Torneo.
+            
+    
+    Organizzatore   --------------------------------    Sistema
+                            makeTournament()
+                    ------------------------------->    
+                            showGenres()
+                    <-------------------------------
+                            chooseGenre(genre)
+                    ------------------------------->
+                    fillInFields(field1,field2...)
+                    ------------------------------->
+                            checkFields()
+                    <-------------------------------
+                            storeTournament()
+                    <-------------------------------

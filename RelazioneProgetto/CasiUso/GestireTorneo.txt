@@ -1,0 +1,61 @@
+Nome caso d'uso: Gestire Torneo.
+Portata: Gestore torneo di videogiochi.
+Livello: Obiettivo utente.
+Attore primario: Organizzatore.
+Parti interessate ed interessi:
+    -   Organizzatore: Avere la possibilità di creare un torneo con determinate specifiche,
+        che sia visibile e facilmente accessibile ai giocatori interessati a quella categoria
+        di tornei.
+    -	Giocatore: Avere la possibilità di cercare ed eventualmente partecipare al torneo.
+    -	Spettatore: Avere la possibilità di assistere ad una eventuale live stream oppure
+        controllare l'andamento del torneo.
+    -	Sponsor: Avere la possibilità di pubblicizzare il proprio marchio sulla pagina del
+        torneo.
+
+Pre-Condizioni:
+    L'Organizzatore è identificato ed autenticato.
+    
+Garanzia di successo:
+    Il torneo viene creato secondo le specifiche e sarà visibile e consultabile a tutti gli
+    utenti registrati e non. L'eventuale marchio dello sponsor è visibile sulla pagina del torneo.
+
+Scenario principale di successo: 
+    1)	L'Organizzatore seleziona la creazione di un torneo.
+    2)  Il Sistema apre la pagina di creazione del torneo.
+    3)  L'Organizzatore sceglie il gioco per il torneo.
+    4)  Il Sistema conferma la scelta.
+    5)	L'Organizzatore inserisce le specifiche del torneo.
+    6)  L'Organizzatore conferma le specifiche.
+    7)  Il Sistema controlla il corretto inserimento.
+    8)	Il Sistema conferma la creazione del torneo.
+
+Estensioni:
+    *a. Il Sistema trova degli errori nei campi:
+        1.  Il Sistema notifica gli errori all'Organizzatore.
+        2.  L' Organizzatore inserisce nuovamente i campi con le modifiche appropriate.
+        3.  Si torna al passo precedente per nuovo controllo dei campi.
+
+    *b. Una volta creato il torneo l' Organizzatore decide di modificare le specifiche:
+        1.  L' Organizzatore apre la pagina di modifica del torneo.
+        2.  L' Organizzatore riempie/modifica i campi (alcuni campi non sono modificabili).
+        3.  Il Sistema controlla la correttezza dei campi modificati.
+        4.  Il Sistema notifica che la modifiche sono state correttamente salvate.
+
+    3a. L' Organizzatore decide di ricercare una categoria particolare di giochi:
+        1.    L' Organizzatore inserisce filtro desiderato.
+        2.    Il Sistema restituisce i risultati della ricerca.
+            a.  La ricerca non ha prodotto risultati:
+                1. Il Sistema notifica l'assenza di risultati in base ai
+                        criteri di ricerca e si torna al punto 2).
+        3.    Si prosegue con il punto 4).
+    
+Requisiti speciali:
+    -   Latenza nella risposta delle pagine web non superiore a 5 secondi.
+
+Frequenza di ripetizione:   Illimitate volte.
+
+Problemi aperti:
+    -   Sarebbe meglio fare in modo che tutti i campi (compresa la data del torneo)
+        siano modificabili?
+    -   Ci può essere più di uno sponsor per torneo?
+    -   Possibilità differenti di sponsorizzare un marchio oltre ai banner?
