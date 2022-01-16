@@ -26,7 +26,6 @@ function openCreateTeamSidebar(){
 }
 
 function openPopup(id) {
-	console.log(id);
   var popup = document.getElementById(id);
   popup.classList.toggle("show");
 }
@@ -63,7 +62,7 @@ function storeTeam() {
 							break;
 						default:
 							console.log("TEAM CREATED");
-							window.location = "/";
+							location.reload(true);
 							break;
 					};
 			},
@@ -87,9 +86,59 @@ function getImg(input) {
 	}
 }
 
-function loadEvents(){
+function openLoginSignup(choice){
+  	closeCreateTeam();
+  	closeMenu();
+  	closeBack();
+  	array = document.body.getElementsByTagName("*");
+  	let len = array.length;
+  	for (var i = 0; i < len; i++){
+    	if(!array[i].classList.contains("do-not-hide")){
+        	array[i].classList.add("semi-transparent");
+    	}
+  	}
+  	document.getElementsByClassName(choice)[0].classList.add("show-login-signup");
+};
+
+function closeLoginSignup(choice){
+  	let array = document.body.getElementsByTagName("*");
+  	for (let i = 0, len = array.length; i < len; i++){
+    	if(!array[i].classList.contains("do-not-hide")){
+        	array[i].classList.remove("semi-transparent");
+    	}
+  	}
+	array = document.body.getElementsByClassName("clear-" + choice);
+	for (let i = 0, len = array.length; i < len; i++){
+    	array[i].value="";
+  	}
+  	document.getElementsByClassName(choice)[0].classList.remove("show-login-signup");
 }
 
-window.addEventListener("load", function(){
-  loadEvents();
-});
+function login(){
+	let user = new UserLogIn($("#loginUsername").val(),$("#loginPassword").val());
+	console.log(user)
+	$.ajax({
+		type: "POST",
+		url: "/login",
+		contentType: "application/json",
+		data: JSON.stringify(user),
+		success: function(answer){
+			if(answer.responseCode==200){
+				closeLoginSignup("log-in");
+				location.reload(true);
+			}
+			else{
+				openPopup("invalidUsernamePassword");
+			}
+			console.log(answer.responseMessage);
+		},
+		error: function(err){
+				console.log("CREATE TEAM ERROR");
+				console.log(err);
+			}
+	});
+}
+
+function signup(){
+	
+}

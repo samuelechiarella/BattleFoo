@@ -46,8 +46,12 @@ input[type="text"] {
   display: inline;
 }
 
-.sidepanel .side-elem:not(#logo):hover {
+.sidepanel .side-elem:not(#logo):not(.sidebar-log-buttons):hover {
   margin-left: 2em;
+}
+
+.sidebar-log-buttons > a:hover {
+  margin-left: 0.5em;
 }
 
 /* Position and style the close button (top right corner) */
@@ -78,9 +82,13 @@ input[type="text"] {
   background-color: #444;
 }
 
-#loginButton {
+.login-signup-buttons, .profile-logout-buttons {
 	position: absolute;
 	bottom: 5em;
+}
+
+#loginButton, #signupButton, #profileButton, #logoutButton{
+	display: block;
 }
 
 .list {

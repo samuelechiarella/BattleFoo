@@ -19,19 +19,19 @@
       <input type="radio" name="radio-btn" id="radio5">
 
       <div class="slide first">
-        <img src="https://imgr.search.brave.com/1KgnidNuCZ_XrEW4zUvTnRUpv1Slb_19WT5BYnpwKiw/fit/1200/720/ce/1/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9U/cGhBYUwxczVhSS9t/YXhyZXNkZWZhdWx0/LmpwZw">
+        <img src="images/games_banner_index/fortniteWallpaper.jpeg">
       </div>
       <div class="slide">
-        <img src="https://imgr.search.brave.com/9GaJUffsiuvHzg3ykdNdieQ_QD6a0Smi-EVsDLkPBQM/fit/1200/1080/ce/1/aHR0cHM6Ly9oZGRl/c2t0b3B3YWxscGFw/ZXJzLmluL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDE1LzExL2xv/bC13YWxwYXBlci5q/cGc">
+        <img src="images/games_banner_index/lolWallpaper.jpg">
       </div>
       <div class="slide">
-        <img src="https://imgr.search.brave.com/Ly0dGs_jc7RE4xYU7euhapD42AD3vdD0BSN6ryOuivk/fit/1200/1080/ce/1/aHR0cDovL25lcmRy/ZWFjdG9yLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAxNy8w/My9QYWxhZGluc18y/MDE3MDMxNDIwNDQ1/Mi5qcGc">
+        <img src="images/games_banner_index/paladinsWallpaper.jpg">
       </div>
       <div class="slide">
-        <img src="https://imgr.search.brave.com/rvt9MJ9sNK_7N9p_JZxdTuVFufBGCFCZ_MclFIs-kSk/fit/1200/1080/ce/1/aHR0cHM6Ly9jZG4u/d2FsbHBhcGVyc2Fm/YXJpLmNvbS8yMS8z/OS9qSU5iQ1guanBn">
+        <img src="images/games_banner_index/r6Wallpaper.jpg">
       </div>
       <div class="slide">
-        <img src="https://imgr.search.brave.com/RbWLVbr1KpVopsDWirgCe_pi3tdXThoNHFViFGKgq7o/fit/1200/1080/ce/1/aHR0cHM6Ly9hc3Nl/dHMud2FsbHBhcGVy/c2luNGsub3JnL3Vw/bG9hZHMvMjAxNy8w/NC9UZjItRW5naW5l/ZXItV2FsbHBhcGVy/LTE1LmpwZw">
+        <img src="images/games_banner_index/tf2Wallpaper.jpg">
       </div>
 
       <div class="navigation-auto">

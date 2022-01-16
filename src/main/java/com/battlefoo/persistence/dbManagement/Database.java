@@ -112,4 +112,9 @@ public class Database {
 	public boolean insertTeam(Team team) {
 		return TeamsDAO.getInstance(connection).insert(team);
 	}
+	
+	// ************************************* Auth
+	public boolean allowLogIn(String username, String password) {
+		return PlayersDAO.getInstance(connection).logUser(username, password);
+	}
 }

@@ -91,4 +91,20 @@ public class PlayersDAO implements PlayersQueries {
 		return p;
 	}
 
+	public boolean logUser(String username, String password) {
+		String query = "select nickname from users where nickname=? and password=?";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ResultSet res = ps.executeQuery();
+			if(res.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			System.out.println("ERROR IN PLAYERS DAO LOG USER");
+		}
+		return false;
+	}
+
 }

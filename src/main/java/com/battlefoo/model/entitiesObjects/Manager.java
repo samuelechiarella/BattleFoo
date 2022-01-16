@@ -15,8 +15,8 @@ public class Manager extends User {
 
 	protected String managerId;
 
-	public Manager(String nickname, String firstname, String lastname, String email, String manager_id) {
-		super(nickname, firstname, lastname, email);
+	public Manager(String username, String firstname, String lastname, String email, String manager_id) {
+		super(username, firstname, lastname, email);
 		this.managerId = manager_id;
 	}
 

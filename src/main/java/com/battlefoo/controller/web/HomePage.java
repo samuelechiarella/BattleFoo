@@ -16,9 +16,7 @@ import com.battlefoo.model.CommonMethods;
 public class HomePage {
 	@GetMapping("/")
 	public String getHomePage(HttpServletRequest req) {
-		CommonMethods.updateTeamsAttribute(req,null);
-		req.getSession(true).setAttribute("loggedUser", "user1");
-		
+		CommonMethods.updateTeamsAttribute(req,false);
 		BufferedWriter writer;
 		try {
 			writer = new BufferedWriter(new FileWriter(new File(ServerPaths.LOG_PATH,"log.txt"), true));

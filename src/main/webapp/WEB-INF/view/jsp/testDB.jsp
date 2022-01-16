@@ -69,7 +69,7 @@ tr:hover {background-color: #585858;}
 	<tbody>
 		<jstl:forEach items="${allPlayers}" var="player">
 		<tr>
-			<td><h3>${player.nickname}</h3></td>
+			<td><h3>${player.username}</h3></td>
 			<td><h3>${player.playerId}</h3></td>
 		</tr>
 		</jstl:forEach>
@@ -86,7 +86,7 @@ tr:hover {background-color: #585858;}
 	<tbody>
 		<jstl:forEach items="${allManagers}" var="manager">
 		<tr>
-			<td><h3>${manager.nickname}</h3></td>
+			<td><h3>${manager.username}</h3></td>
 			<td><h3>${manager.managerId}</h3></td>
 		</tr>
 		</jstl:forEach>

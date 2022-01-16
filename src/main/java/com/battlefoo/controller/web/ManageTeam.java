@@ -34,9 +34,9 @@ public class ManageTeam {
 		Response response = createResponse(team,user);
 		
 		if(response.getResponseCode()==200)
-			CommonMethods.updateTeamsAttribute(req, team);
+			CommonMethods.updateTeamsAttribute(req, true);
 		else
-			CommonMethods.updateTeamsAttribute(req, null);
+			CommonMethods.updateTeamsAttribute(req, false);
 		return response;
 	}
 	
@@ -63,11 +63,7 @@ public class ManageTeam {
 				else {
 					team.setLogo(ServerPaths.DEFAULT_LOGO);
 				}
-				long leaderId = -1;
-				if(Database.getInstance().playerExists(loggedUser)) {
-					leaderId = Database.getInstance().getPlayerByNickname(loggedUser).getPlayerId();
-				}
-				team.setLeaderId(leaderId);
+				team.setLeaderId(Database.getInstance().getPlayerByNickname(loggedUser).getPlayerId());
 				Database.getInstance().insertTeam(team);
 				res.setResponseCode(Response.success);
 				res.setResponseMessage("Team successfully stored");
