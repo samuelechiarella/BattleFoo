@@ -46,3 +46,18 @@ body {
   margin-left: 50%;
   /*margin-right: 20px;*/
 }
+
+#live div {
+	margin-right: 30%;
+}
+
+#org-description {
+  font-weight: 400;
+  font-size: 21px;
+  color: #edf0f1;
+  text-decoration: none;
+}
+
+#org-info button {
+	margin: 5px;
+}
