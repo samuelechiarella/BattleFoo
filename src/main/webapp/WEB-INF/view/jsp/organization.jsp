@@ -8,7 +8,7 @@
 </head>
 <body>
 	<jsp:include page="background.jsp"></jsp:include>
-	
+
 	<ul class="tabs">
 		<li data-tab-target="#home" class="active tab">HOME</li>
 		<li data-tab-target="#tournaments" class="tab">TOURNAMENTS</li>
@@ -18,8 +18,9 @@
 
 	<div class="tab-content">
     <div id="home" data-tab-content class="active">
-      <h1>HOME</h1>
-      <p>This is the home</p>
+			<img src="src\main\resources\static\images\games_banner_index\lolWallpaper.jpg" alt="Organization Logo">
+      <h1>Org Name HERE</h1>
+      <p>Add a description for your Organization</p>
     </div>
     <div id="tournaments" data-tab-content>
       <h1>TOURNAMENTS</h1>
