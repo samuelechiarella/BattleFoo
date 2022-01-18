@@ -19,8 +19,6 @@ import com.battlefoo.model.entitiesObjects.Team;
 import com.battlefoo.model.entitiesObjects.User;
 import com.battlefoo.persistence.dbManagement.Database;
 
-import lombok.NonNull;
-
 @RestController
 public class BackgroundRestController {
 	@PostMapping("/login")
