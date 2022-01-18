@@ -61,17 +61,35 @@ public class PlayersDAO implements PlayersQueries {
 	}
 
 	@Override
-	public boolean exists(String nickname) {
+	public boolean exists(String username) {
 		try {
-			String query = "select * from players where nickname=?";
+			String query = "select * from players where username=?";
 			PreparedStatement ps = connection.prepareStatement(query);
-			ps.setString(1, nickname);
+			ps.setString(1, username);
 			ResultSet res = ps.executeQuery();
 			if(res.next())
 				return true;
 		}
 		catch(SQLException e) {
+			e.printStackTrace();
 			System.out.println("ERROR IN PLAYERS DAO EXISTS");
+		}
+		return false;
+	}
+
+	public boolean logUser(String username, String password) {
+		String query = "select username from users where username=? and password=?";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ResultSet res = ps.executeQuery();
+			if(res.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("ERROR IN PLAYERS DAO LOG USER");
 		}
 		return false;
 	}
@@ -89,22 +107,6 @@ public class PlayersDAO implements PlayersQueries {
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_EMAIL),
 							thisRes.getLong(DatabaseNames.Tables.Players.COLUMN_PLAYER_ID));
 		return p;
-	}
-
-	public boolean logUser(String username, String password) {
-		String query = "select nickname from users where nickname=? and password=?";
-		try {
-			PreparedStatement ps = connection.prepareStatement(query);
-			ps.setString(1, username);
-			ps.setString(2, password);
-			ResultSet res = ps.executeQuery();
-			if(res.next()) {
-				return true;
-			}
-		} catch (SQLException e) {
-			System.out.println("ERROR IN PLAYERS DAO LOG USER");
-		}
-		return false;
 	}
 
 }

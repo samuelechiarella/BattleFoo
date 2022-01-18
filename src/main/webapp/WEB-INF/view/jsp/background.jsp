@@ -37,6 +37,9 @@
 		    <div class="side-elem">
 		      <a href="/testDB">Test Database</a>
 		    </div>
+		    <div class="side-elem">
+		      <a href="/testChat">Test Chat</a>
+		    </div>
 		    <div class="side-elem profile-logout-buttons sidebar-log-buttons">
 		      <a id="profileButton" href="#">${loggedUser}</a>
 		      <a id="logoutButton" href="/logout">Logout</a>
@@ -126,9 +129,9 @@
 		<div class="sign-up do-not-hide">
 		    <a class="close-sign-up do-not-hide" onclick="closeLoginSignup('sign-up')">&times;</a>
 		    <h1 class="do-not-hide">Sign Up</h1>
+		    <input type="text" id="signupUsername" class="do-not-hide clear-sign-up" name="signupUsername" placeholder="Username">
 	    	<input type="text" id="firstname" class="do-not-hide clear-sign-up" name="firstname" placeholder="Firstname">
 	    	<input type="text" id="lastname" class="do-not-hide clear-sign-up" name="lastname" placeholder="Lastname">
-	    	<input type="text" id="signupUsername" class="do-not-hide clear-sign-up" name="signupUsername" placeholder="Username">
 	    	<input type="text" id="email" class="do-not-hide clear-sign-up" name="email" placeholder="Email">
 	    	<input type="password" id="signupPassword" class="do-not-hide clear-sign-up" name="signupPassword" placeholder="Password">
 	    	<input type="password" id="confirmPassword" class="do-not-hide clear-sign-up" name="confirmPassword" placeholder="Confirm Password">

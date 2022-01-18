@@ -3,8 +3,7 @@ Portata: Gestore torneo di videogiochi.
 Livello: Obiettivo utente.
 Attore primario: Giocatore.
 Parti interessate ed interessi:
-    -   Creatore del Team:  Un Giocatore che ha la possibilità di creare e gestire un team.
-    -   Giocatore:  Ha la possibilità di aggiungersi ad un Team.    
+    -   Giocatore:  Ha la possibilità di creare e gestire un team.  
 
 Pre-Condizioni:
     Il Giocatore deve avere effettuato il login sulla piattaforma.
@@ -13,43 +12,27 @@ Garanzia di successo:
     Il Giocatore riesce a creare un team e modificarne le sue specifiche.
 
 Scenario principale di successo: 
-    1)  Il Creatore del Team accede alla schermata di creazione team.
-    2)  Il Creatore del Team sceglie il nome e il logo.
-    3)  Il Sistema controlla il corretto inserimento delle specifiche.
-    4)  Il Sistema inserisce il team fra quelli esistenti sulla piattaforma e carica la home del team.
-    5)  Il Creatore del Team inserisce i membri del team.
-    6)  Il sistema conferma i membri del team.
-    7)  Il sistema manda gli inviti ai membri del team.
-    8)  Il Creatore del Team conclude e conferma i dati.
-    9)  Il Sistema aggiorna i dati del team.
+    1)  Il Giocatore vuole creare un team.
+    2)  Il Sistema avvia la creazione del team.
+    3)  Il Giocatore sceglie le specifiche di base.
+    4)  Il Sistema controlla le specifiche, crea il team e avvia la modifica del team.
+    5)  Il Giocatore inserisce le specifiche del team.
+    6)  Il sistema convalida e aggiorna il team.
 
 Estensioni:
-3a. Il Sistema notifica che il nome del team è già in uso:
-    1.  Il Giocatore cambia il nome del team.
-    2.  Il Giocatore conferma il nome inserito.
-    3.  Il Sistema controlla.
-        3a. Il nome inserito è già in uso:
-            1.  Torna al 3a.
-    4.  Il Sistema convalida il nome e riprende con il normale proseguimento.
+4. Il Sistema trova degli errori nei campi:
+        1.  Il Sistema notifica gli errori al Giocatore.
+        2.  Ritorna al punto 3) dello scenario principale.
 
-6a. Il Sistema notifica che il giocatore inserito non è presente:
-    1.  Il Sistema notifica l'errore.
-    2.  Ritorna al punto 5 dello scenario principale.
- 
-*b. Il Giocatore, in qualsiasi momento, richiede di entrare in un Team:
-    1.  Il Giocatore inserisce il nome del Team.
-        1a. Il Team inserito non esiste:
-            1.  Il Sistema notifica l'errore.
-            2.  Ritorna al punto 1.
-    2.  Il Sistema notifica al Creatore del Team la richiesta.
-    3.  Il Creatore del Team risponde alla richiesta.
-        3a. Il Creatore del Team rifiuta la richiesta:
-            1.  Il Sistema notifica al Giocatore la risposta.
-    4.  Il Creatore del Team accetta la richiesta.
-    5.  Il Sistema notifica al Giocatore la risposta e aggiorna i partecipanti.
+5.	Il Giocatore vuole aggiungere dei membri al team:
+	1.	Il Giocatore invita un utente.
+	2.	Il Sistema convalida l'utente e invia l'invito.
+		2a.	L' utente non è autenticato:
+			1.	Il Sistema notifica l' errore.
+			2.	Ritorna al punto 5 delle Estensioni.
 
 Requisiti Speciali:
-	- Risposta del server entro 5 ms il 95% delle volte.
-	- Le finestre di segnalazione degli eventuali errori sono facilmente individuabili dall'utente.
+	-   Latenza nella risposta delle pagine web non superiore a 5 secondi.
+	-   Le finestre di segnalazione degli eventuali errori sono facilmente individuabili dall'utente.
 
 Frequenza di ripetizione: illimitato.

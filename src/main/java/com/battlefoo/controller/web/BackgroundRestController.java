@@ -9,7 +9,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,21 +16,43 @@ import com.battlefoo.ServerPaths;
 import com.battlefoo.model.CommonMethods;
 import com.battlefoo.model.Response;
 import com.battlefoo.model.entitiesObjects.Team;
+import com.battlefoo.model.entitiesObjects.User;
 import com.battlefoo.persistence.dbManagement.Database;
 
-@Controller
+import lombok.NonNull;
+
 @RestController
-public class ManageTeam {
+public class BackgroundRestController {
+	@PostMapping("/login")
+	public Response login(HttpServletRequest req, @RequestBody User user){
+		Response response = createLoginResponse(user);
+		
+		if(response.getResponseCode()==200)
+			req.getSession(true).setAttribute("loggedUser", user.getUsername());
+		
+		return response;
+	}
+	
+	@PostMapping("/signup")
+	public Response signup(HttpServletRequest req, @RequestBody User user){
+		System.out.println(user.toString());
+		Response response = createSignupResponse(user);
+		if(response.getResponseCode()==200)
+			req.getSession(true).setAttribute("loggedUser", user.getUsername());
+		
+		return response;
+	}
+	
 	@PostMapping("/createTeam")
 	public Response createTeam(@RequestBody Team team, HttpServletRequest req){
-		//	set attribute teamsList
+		//	setting attribute teamsList
 		HttpSession session = req.getSession(true);
 		Object obj = session.getAttribute("loggedUser");
 		String user = "";
 		if(obj instanceof String) {
 			user = (String)obj;
 		}
-		Response response = createResponse(team,user);
+		Response response = createCreateTeamResponse(team,user);
 		
 		if(response.getResponseCode()==200)
 			CommonMethods.updateTeamsAttribute(req, true);
@@ -40,12 +61,52 @@ public class ManageTeam {
 		return response;
 	}
 	
-	private Response createResponse(Team team, String loggedUser) {
+	private Response createLoginResponse(User user) {
 		Response res = new Response(Response.failure,"Storing failed");
-		if(accepted(team.getTeamName())) {
+		if(Database.getInstance().allowLogIn(user.getUsername(), user.getPassword())) {
+			res.setResponseCode(Response.success);
+			res.setResponseMessage("Logged");
+		}
+		else
+			res.setResponseMessage("Log in failed");
+		return res;
+	}
+	
+	private Response createSignupResponse(User user) {
+		Response res = new Response(Response.failure,"Storing failed");
+		if(!emailAccepted(user.getEmail())) {
+			res.setResponseCode(501);
+			res.setResponseMessage("Invalid email");
+			return res;
+		}
+		if(!Database.getInstance().playerExists(user.getEmail())) {
+			if(!Database.getInstance().playerExists(user.getUsername())) {
+				Database.getInstance().insertUser(user);
+				res.setResponseCode(200);
+				res.setResponseMessage("Users added");
+			}
+			else {
+				res.setResponseCode(503);
+				res.setResponseMessage("Username already exists!");
+			}
+		}
+		else {
+			res.setResponseCode(502);
+			res.setResponseMessage("Email already exists!");
+		}
+		return res;
+	}
+	
+	private boolean emailAccepted(String email) {
+		return true;
+	}
+
+	private Response createCreateTeamResponse(Team team, String loggedUser) {
+		Response res = new Response(Response.failure,"Storing failed");
+		if(usernameAccepted(team.getTeamName())) {
 			if(!Database.getInstance().teamExists(team.getTeamName())) {
 				if(team.getLogo() != null) {
-					// store logo into a text file named as below
+					// storing logo into a text file named as below
 					BufferedWriter writer;
 					String imgFileName = new Date().getTime() + ".txt";
 					try {
@@ -57,7 +118,7 @@ public class ManageTeam {
 					}
 					//*******************************************
 					
-					// set the team logo as the path to the text file instead
+					// setting the team logo as the path to the text file instead
 					team.setLogo(ServerPaths.TEAMS_LOGOS_PATH + imgFileName);
 				}
 				else {
@@ -86,7 +147,7 @@ public class ManageTeam {
 		return res;
 	}
 	
-	private boolean accepted(String s) {
+	private boolean usernameAccepted(String s) {
 		if(s.isEmpty() || s.contains(" ") || s.contains("-"))
 			return false;
 		Pattern p = Pattern.compile("[a-zA-Z0-9_]+");
@@ -96,5 +157,4 @@ public class ManageTeam {
 			return false;
 		return true;
 	}
-	
 }

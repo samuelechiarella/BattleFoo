@@ -3,10 +3,10 @@ function Team(teamName, logo){
 	this.logo = logo;
 }
 
-function User(nickname, firstname, lastname, email, password){
-	this.nickname = nickname;
-	this.firstname = firstname;
-	this.lastname = lastname;
+function User(username, firstName, lastName, email, password){
+	this.username = username;
+	this.firstName = firstName;
+	this.lastName = lastName;
 	this.email = email;
 	this.password = password;
 }

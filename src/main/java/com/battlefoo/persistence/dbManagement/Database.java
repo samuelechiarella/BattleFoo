@@ -11,6 +11,7 @@ import com.battlefoo.persistence.jdbc.ManagersDAO;
 import com.battlefoo.persistence.jdbc.PlayersDAO;
 import com.battlefoo.persistence.jdbc.TeamsDAO;
 import com.battlefoo.persistence.jdbc.TournamentsDAO;
+import com.battlefoo.persistence.jdbc.UsersDAO;
 
 public class Database {
 	
@@ -111,6 +112,12 @@ public class Database {
 
 	public boolean insertTeam(Team team) {
 		return TeamsDAO.getInstance(connection).insert(team);
+	}
+	
+	// ************************************* Users
+	
+	public boolean insertUser(User user) {
+		return UsersDAO.getInstance(connection).insertUser(user);
 	}
 	
 	// ************************************* Auth

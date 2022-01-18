@@ -15,6 +15,8 @@ public class TestDB {
 	
 	@GetMapping("/testDB")
 	public String getTestDBPage(HttpServletRequest req) {
+		if(req.getSession(true).getAttribute("loggedUser")==null)
+			return "index";
 		getAllGames(req);
 		getAllPlayers(req);
 		getAllManagers(req);

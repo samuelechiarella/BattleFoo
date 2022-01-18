@@ -15,7 +15,15 @@ public class BackgroundController {
 	
 	@GetMapping("/organization")
 	public String getOrganization(HttpServletRequest req) {
+		if(req.getSession(true).getAttribute("loggedUser")==null)
+			return "index";
 		CommonMethods.updateTeamsAttribute(req, false);
 		return "organization";
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest req){
+		req.getSession(true).setAttribute("loggedUser", "");
+		return "index";
 	}
 }

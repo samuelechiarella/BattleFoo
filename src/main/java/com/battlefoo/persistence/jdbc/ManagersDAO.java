@@ -46,7 +46,7 @@ public class ManagersDAO implements ManagersQueries{
 	public Manager getByNickname(String nickname) {
 		Manager m = null;
 		try {
-			String query = "select * from managers where nickname=?";
+			String query = "select * from managers where username=?";
 			PreparedStatement ps = connection.prepareStatement(query);
 			ps.setString(1, nickname);
 			ResultSet res = ps.executeQuery();
