@@ -63,8 +63,8 @@ public class Database {
 		return PlayersDAO.getInstance(connection).getAll();
 	}
 	
-	public Player getPlayerByNickname(String nickname) {
-		return PlayersDAO.getInstance(connection).getByNickname(nickname);
+	public Player getPlayerByUsername(String username) {
+		return PlayersDAO.getInstance(connection).getByUsername(username);
 	}
 	
 	public boolean playerExists(String name) {
@@ -76,8 +76,8 @@ public class Database {
 		return ManagersDAO.getInstance(connection).getAll();
 	}
 	
-	public Manager getManagerByNickname(String name) {
-		return ManagersDAO.getInstance(connection).getByNickname(name);
+	public Manager getManagerByNickname(String username) {
+		return ManagersDAO.getInstance(connection).getByUsername(username);
 	}
 	
 	public boolean managerExists(String nickname) {
@@ -89,7 +89,7 @@ public class Database {
 		return TeamsDAO.getInstance(connection).getAll();
 	}
 	
-	public Team getManagerByTeamName(String teamName) {
+	public Team getTeamByTeamName(String teamName) {
 		return TeamsDAO.getInstance(connection).getByTeamName(teamName);
 	}
 	
@@ -123,5 +123,9 @@ public class Database {
 	// ************************************* Auth
 	public boolean allowLogIn(String username, String password) {
 		return PlayersDAO.getInstance(connection).logUser(username, password);
+	}
+
+	public List<Player> getAllTeamMembers(String teamName) {
+		return TeamsDAO.getInstance(connection).getTeamMembers(teamName);
 	}
 }

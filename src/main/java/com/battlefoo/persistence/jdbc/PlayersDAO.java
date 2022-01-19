@@ -43,17 +43,16 @@ public class PlayersDAO implements PlayersQueries {
 	}
 
 	@Override
-	public Player getByNickname(String nickname) {
+	public Player getByUsername(String username) {
 		Player p = null;
-		String query = "select users.nickname, users.firstname, users.lastname, "
-					+ "users.email, players.player_id from users full outer join "
-					+ "players on users.nickname = players.nickname where users.nickname=?;";
+		String query = "select * from players where username=?;";
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
-			ps.setString(1, nickname);
+			ps.setString(1, username);
 			ResultSet res = ps.executeQuery();
-			if(res.next())
+			if(res.next()) {
 				p = createPlayer(res);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -96,16 +95,17 @@ public class PlayersDAO implements PlayersQueries {
 	
 	private Player createPlayer(ResultSet res) throws SQLException {
 		Player p = null;
-		String query = "select * from players join users on players.nickname = users.nickname where players.nickname=?";
+		String query = "select * from players join users on players.username = users.username where players.username=?";
 		PreparedStatement ps = connection.prepareStatement(query);
-		ps.setString(1, res.getString("nickname"));
+		ps.setString(1, res.getString("username"));
 		ResultSet thisRes = ps.executeQuery();
 		if(thisRes.next())
-			p = new Player(thisRes.getString(DatabaseNames.Tables.Users.COLUMN_NICKNAME),
+			p = new Player(thisRes.getString(DatabaseNames.Tables.Users.COLUMN_USERNAME),
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_FIRST_NAME),
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_LAST_NAME),
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_EMAIL),
-							thisRes.getLong(DatabaseNames.Tables.Players.COLUMN_PLAYER_ID));
+							thisRes.getLong(DatabaseNames.Tables.Players.COLUMN_PLAYER_ID),
+							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_PROFILE_PICTURE));
 		return p;
 	}
 

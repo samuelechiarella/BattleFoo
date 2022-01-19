@@ -3,8 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<jsp:include page="resources.jsp"></jsp:include>
 </head>
 	<body>
 		<button class="openbtn" onclick="openMenu()">&#9776; Menu</button>
@@ -24,7 +23,7 @@
 		    </div>
 		    
 		    <!-- ONLY IF THE USER IS LOGGED -->
-		    <jstl:set value="${loggedUser}" var="user" />
+		    <jstl:set value="${loggedUser}" var="user"/>
 		    <jstl:if test="${not empty user}">
 		    <div class="side-elem">
 		      <img id="organize" src="images/sidebar-icons/organize_tournaments_icon.png">
@@ -39,6 +38,9 @@
 		    </div>
 		    <div class="side-elem">
 		      <a href="/testChat">Test Chat</a>
+		    </div>
+		    <div class="side-elem">
+		      <a href="/tournamentStructure">Tournament Structure</a>
 		    </div>
 		    <div class="side-elem profile-logout-buttons sidebar-log-buttons">
 		      <a id="profileButton" href="#">${loggedUser}</a>
@@ -75,7 +77,7 @@
 			<jstl:forEach items="${teamsList}" var="team">
 				<div class="team-logo">
 					<div class="tooltip">
-						<img id="${team.leaderId}"  src="${team.logo}">
+						<img id="${team.leaderId}"  src="${team.logo}" onclick="openTeamPage('${team.teamName}')">
 						<span class="tooltiptext">${team.teamName}</span>
 					</div>
 				</div>

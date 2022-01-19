@@ -15,8 +15,8 @@ public class Player extends User {
 
 	private long playerId;
 	
-	public Player(String username, String firstname, String lastname, String email, long player_id) {
-		super(username, firstname, lastname, email);
+	public Player(String username, String firstname, String lastname, String email, long player_id, String profilePicture) {
+		super(username, firstname, lastname, email, profilePicture);
 		this.playerId = player_id;
 	}
 

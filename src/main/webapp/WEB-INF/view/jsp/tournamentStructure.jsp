@@ -2,23 +2,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="css/background.css">
-<link rel="stylesheet" type="text/css" href="css/create-team.css">
 <link rel="stylesheet" href="css/tournamentStructure.css">
-<script type="text/javascript" src="js/background.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="js/tournamentStructure.js" defer></script>
-<script>
-$(document).ready(function() {
-	$('#content').load('html/background.html');
-});
-</script>
 </head>
 <body>
-	<div id="content">
-	<!-- including background.html -->
-	</div>
-
+<jsp:include page="background.jsp"></jsp:include>
 	<ul class="tabs">
 		<li data-tab-target="#overview" class="active tab">OVERVIEW</li>
 		<li data-tab-target="#partecipants" class="tab">PARTECIPANTS</li>
@@ -31,7 +20,7 @@ $(document).ready(function() {
     <div class="overview_box">
       <div id="overview" data-tab-content class="active overview">
         <h1>NOME TORNEO</h1>
-        <img src="prefabs/games_banner_index/r6Wallpaper.jpg" alt="PLACEHOLDER_IMG">
+        <img src="images/games_banner_index/r6Wallpaper.jpg" alt="PLACEHOLDER_IMG">
         <p>This is the tournament's home</p>
         <br></br>
       </div>
@@ -61,7 +50,7 @@ $(document).ready(function() {
 
       <div id="Prizes-content" class="tabcontent">
         <h3>Prizes</h3>
-        <img src="prefabs/games_banner_index/paladinsWallpaper.jpg" alt="PRIZE_PLACEHOLDER">
+        <img src="images/games_banner_index/paladinsWallpaper.jpg" alt="PRIZE_PLACEHOLDER">
         <p>tournament's prizes.</p>
       </div>
 

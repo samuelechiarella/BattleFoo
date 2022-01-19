@@ -5,4 +5,5 @@ public class ServerPaths {
 	public static String TEAMS_LOGOS_PATH = IMAGES_PATH + "teams-logos/";
 	public static String LOG_PATH = "log/";
 	public static String DEFAULT_LOGO = "images/sidebar-icons/insert-picture-icon.png";
+	public static String DEFAULT_PROFILE_PICTURE = "images/sidebar-icons/profilePicture.png";
 }

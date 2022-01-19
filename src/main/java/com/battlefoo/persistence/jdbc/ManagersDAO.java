@@ -43,12 +43,12 @@ public class ManagersDAO implements ManagersQueries{
 	}
 
 	@Override
-	public Manager getByNickname(String nickname) {
+	public Manager getByUsername(String username) {
 		Manager m = null;
 		try {
 			String query = "select * from managers where username=?";
 			PreparedStatement ps = connection.prepareStatement(query);
-			ps.setString(1, nickname);
+			ps.setString(1, username);
 			ResultSet res = ps.executeQuery();
 			if(res.next())
 				m = createManager(res);
@@ -60,11 +60,11 @@ public class ManagersDAO implements ManagersQueries{
 	}
 
 	@Override
-	public boolean exists(String nickname) {
+	public boolean exists(String username) {
 		try {
-			String query = "select * from managers where name=?";
+			String query = "select * from managers where username=?";
 			PreparedStatement ps = connection.prepareStatement(query);
-			ps.setString(1, nickname);
+			ps.setString(1, username);
 			ResultSet res = ps.executeQuery();
 			if(res.next())
 				return true;
@@ -77,12 +77,12 @@ public class ManagersDAO implements ManagersQueries{
 
 	private Manager createManager(ResultSet res) throws SQLException {
 		Manager m = null;
-		String query = "select * from managers join users on managers.nickname = users.nickname where managers.nickname=?";
+		String query = "select * from managers join users on managers.username = users.username where managers.username=?";
 		PreparedStatement ps = connection.prepareStatement(query);
-		ps.setString(1, res.getString("nickname"));
+		ps.setString(1, res.getString("username"));
 		ResultSet thisRes = ps.executeQuery();
 		if(thisRes.next())
-			m = new Manager(thisRes.getString(DatabaseNames.Tables.Users.COLUMN_NICKNAME),
+			m = new Manager(thisRes.getString(DatabaseNames.Tables.Users.COLUMN_USERNAME),
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_FIRST_NAME),
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_LAST_NAME),
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_EMAIL),

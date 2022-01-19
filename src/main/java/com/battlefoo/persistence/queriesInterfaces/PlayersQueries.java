@@ -6,6 +6,6 @@ import com.battlefoo.model.entitiesObjects.Player;
 
 public interface PlayersQueries {
 	public List<Player> getAll();
-	public Player getByNickname(String nickname);
+	public Player getByUsername(String username);
 	public boolean exists(String nickname);
 }

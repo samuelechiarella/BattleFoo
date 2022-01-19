@@ -1,0 +1,110 @@
+.out-tab-logo-name, .out-tab-logo-name *, .out-tab-btn {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.out-tab {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  top: 10%;
+  min-width: 50em;
+}
+
+label[for="team-logo"] {
+	margin-left: 1em;
+}
+
+.out-tab img {
+  width: 13em;
+  border-radius: 0.5em;
+}
+
+.keep-away {
+  z-index: -1;
+  opacity: 0;
+  position: absolute;
+}
+
+.out-tab-btn label {
+  padding: 0.5em;
+  color: #EEEEFF;
+  cursor: pointer;
+}
+
+.out-tab-btn img {
+  padding: 0.3em;
+  width: 1.8em;
+}
+
+label[for="team-logo"] {
+  font-size: 3.5em;
+}
+
+.tabs {
+  position: absolute;
+  top: 45%;
+  left: 2%;
+  margin-right: 2%;
+  width: 94%;
+  min-width: 14em;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 0.1em solid orange;
+  border-radius: 0.2em;
+  background-color: #f1f1f1;
+  font-size: 1.1em;
+  min-width: 14em;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab label {
+  background-color: none;
+  float: left;
+  outline: none;
+  cursor: pointer;
+  padding: 0.7em 0.9em;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+/* Change background color of buttons on hover */
+.tab label:hover {
+  background-color: orange;
+}
+
+/* Create an active/current tablink class */
+.tab label.active {
+  background-color: orange;
+}
+
+/* Style the tab content */
+.tabcontent {
+  height: 20em;
+  overflow: auto;
+  display: none;
+  padding: 0.6em 0.7em;
+  border-top: none;
+  font-weight: normal;
+}
+
+#list-attendees ul {
+  list-style: none;
+}
+
+#list-attendees li:not(:last-child){
+  display: inline-block;
+  margin-right: 0.8em;
+}
+
+#list-attendees * {
+  padding: 0.3em;
+}
+
+#list-attendees img {
+  width: 7em;
+  border-radius: 10em;
+}

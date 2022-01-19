@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/index.css">
-<jsp:include page="resources.jsp"></jsp:include>
 </head>
 <body>
 <jsp:include page="background.jsp"></jsp:include>

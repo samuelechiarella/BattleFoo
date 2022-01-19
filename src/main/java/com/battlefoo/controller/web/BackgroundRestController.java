@@ -1,10 +1,13 @@
 package com.battlefoo.controller.web;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.battlefoo.ServerPaths;
 import com.battlefoo.model.CommonMethods;
 import com.battlefoo.model.Response;
+import com.battlefoo.model.entitiesObjects.Player;
 import com.battlefoo.model.entitiesObjects.Team;
 import com.battlefoo.model.entitiesObjects.User;
 import com.battlefoo.persistence.dbManagement.Database;
@@ -23,7 +27,7 @@ import com.battlefoo.persistence.dbManagement.Database;
 public class BackgroundRestController {
 	@PostMapping("/login")
 	public Response login(HttpServletRequest req, @RequestBody User user){
-		Response response = createLoginResponse(user);
+		Response response = createCreateLoginResponse(user);
 		
 		if(response.getResponseCode()==200)
 			req.getSession(true).setAttribute("loggedUser", user.getUsername());
@@ -33,7 +37,7 @@ public class BackgroundRestController {
 	
 	@PostMapping("/signup")
 	public Response signup(HttpServletRequest req, @RequestBody User user){
-		System.out.println(user.toString());
+		user.setProfilePicture(ServerPaths.DEFAULT_PROFILE_PICTURE);
 		Response response = createSignupResponse(user);
 		if(response.getResponseCode()==200)
 			req.getSession(true).setAttribute("loggedUser", user.getUsername());
@@ -50,7 +54,7 @@ public class BackgroundRestController {
 		if(obj instanceof String) {
 			user = (String)obj;
 		}
-		Response response = createCreateTeamResponse(team,user);
+		Response response = createTeamResponse(team,user);
 		
 		if(response.getResponseCode()==200)
 			CommonMethods.updateTeamsAttribute(req, true);
@@ -59,7 +63,45 @@ public class BackgroundRestController {
 		return response;
 	}
 	
-	private Response createLoginResponse(User user) {
+	@PostMapping("/teamPage")
+	public Response getResponseTeamPage(HttpServletRequest req, @RequestBody String teamName) {
+		Response res = createTeamPageResponse(req,teamName.replace("\"", ""));
+		return res;
+	}
+	
+	private Response createTeamPageResponse(HttpServletRequest req, String teamName) {
+		Response res = new Response(Response.failure,"Creating Team Page failed!");
+		Team team = Database.getInstance().getTeamByTeamName(teamName);
+		if(team != null) {
+			List<Player> teamMembersList = Database.getInstance().getAllTeamMembers(teamName);
+			if(teamMembersList != null) {
+				if(team.getLogo().compareTo(ServerPaths.DEFAULT_LOGO)!=0) {
+					try {
+						BufferedReader br =  new BufferedReader(new FileReader(team.getLogo()));
+						team.setLogo(br.readLine());
+						br.close();
+					} catch (IOException e) {
+						System.out.println("ERROR IN COMMON METHODS CREATE TEAM IO EXCEPTION");
+					}
+				}
+				req.getSession(true).setAttribute("teamMembersList", teamMembersList);
+				req.getSession(true).setAttribute("team", team);
+				res.setResponseCode(200);
+				res.setResponseMessage("Team and team members were added to the attributes");
+			}
+			else {
+				res.setResponseCode(501);
+				res.setResponseMessage("The team members list is null!");
+			}
+		}
+		else {
+			res.setResponseCode(502);
+			res.setResponseMessage("The team is null!");
+		}
+		return res;
+	}
+
+	private Response createCreateLoginResponse(User user) {
 		Response res = new Response(Response.failure,"Storing failed");
 		if(Database.getInstance().allowLogIn(user.getUsername(), user.getPassword())) {
 			res.setResponseCode(Response.success);
@@ -99,7 +141,7 @@ public class BackgroundRestController {
 		return true;
 	}
 
-	private Response createCreateTeamResponse(Team team, String loggedUser) {
+	private Response createTeamResponse(Team team, String loggedUser) {
 		Response res = new Response(Response.failure,"Storing failed");
 		if(usernameAccepted(team.getTeamName())) {
 			if(!Database.getInstance().teamExists(team.getTeamName())) {
@@ -122,7 +164,7 @@ public class BackgroundRestController {
 				else {
 					team.setLogo(ServerPaths.DEFAULT_LOGO);
 				}
-				team.setLeaderId(Database.getInstance().getPlayerByNickname(loggedUser).getPlayerId());
+				team.setLeaderId(Database.getInstance().getPlayerByUsername(loggedUser).getPlayerId());
 				Database.getInstance().insertTeam(team);
 				res.setResponseCode(Response.success);
 				res.setResponseMessage("Team successfully stored");

@@ -44,21 +44,22 @@ public class UsersDAO implements UsersQueries {
 		return false;
 	}
 	
-	private User createUser(ResultSet res) throws SQLException{
-		User u = new User(res.getString(1),res.getString(2),res.getString(3),res.getString(4),res.getString(5));
-		return u;
-	}
-
 	@Override
 	public boolean insertUser(User user) {
 		try {
-			String query = "insert into users values(?,?,?,?,?);";
+			String query = "insert into users values(?,?,?,?,?,?);";
 			PreparedStatement ps = connection.prepareStatement(query);
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getFirstName());
 			ps.setString(3, user.getLastName());
 			ps.setString(4, user.getEmail());
 			ps.setString(5, user.getPassword());
+			ps.setString(6, user.getProfilePicture());
+			ps.execute();
+			
+			query = "insert into players(username) values(?);";
+			ps = connection.prepareStatement(query);
+			ps.setString(1, user.getUsername());
 			ps.execute();
 			return true;
 		} catch (SQLException e) {
@@ -66,6 +67,11 @@ public class UsersDAO implements UsersQueries {
 			System.out.println("ERROR IN USERS DAO INSERT USER");
 		}
 		return false;
+	}
+	
+	private User createUser(ResultSet res) throws SQLException{
+		User u = new User(res.getString(1),res.getString(2),res.getString(3),res.getString(4),res.getString(5), res.getString(6));
+		return u;
 	}
 
 }

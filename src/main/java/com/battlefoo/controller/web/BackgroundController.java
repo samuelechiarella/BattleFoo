@@ -26,4 +26,18 @@ public class BackgroundController {
 		req.getSession(true).setAttribute("loggedUser", "");
 		return "index";
 	}
+	
+	@GetMapping("/teamPage")
+	public String getTeamPage(HttpServletRequest req) {
+		if(req.getSession(true).getAttribute("loggedUser")==null)
+			return "index";
+		CommonMethods.updateTeamsAttribute(req, false);
+		return "teamPage";
+	}
+	
+	// TEMP
+	@GetMapping("/tournamentStructure")
+	public String tournamentStructure() {
+		return "tournamentStructure";
+	}
 }

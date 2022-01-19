@@ -32,9 +32,20 @@ public class User {
 	
 	protected String password;
 	
+	@NonNull
+	protected String profilePicture;
+	
 	public User(String username, String password) {
 		this.username = username;
 		this.password = password;
+	}
+	
+	public User(String username, String firstName, String lastName, String email) {
+		super();
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
 	}
 	
 	@Override
