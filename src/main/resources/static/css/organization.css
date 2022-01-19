@@ -43,6 +43,32 @@ body {
 
 .tab-content {
   color: #FFF;
-  margin-left: 50%;
+  margin-left: 45%;
   /*margin-right: 20px;*/
+  text-align: center;
+  position: absolute;
 }
+
+#org-description {
+  font-weight: 400;
+  font-size: 21px;
+  color: #edf0f1;
+  text-decoration: none;
+}
+
+#org-info button {
+	margin: 5px;
+}
+
+.staffTable table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.staffTable th, .staffTable td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.staffTable tr:hover {background-color: orange;}

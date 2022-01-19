@@ -76,12 +76,12 @@ public class Database {
 		return ManagersDAO.getInstance(connection).getAll();
 	}
 	
-	public Manager getManagerByNickname(String username) {
+	public Manager getManagerByUsername(String username) {
 		return ManagersDAO.getInstance(connection).getByUsername(username);
 	}
 	
-	public boolean managerExists(String nickname) {
-		return ManagersDAO.getInstance(connection).exists(nickname);
+	public boolean managerExists(String username) {
+		return ManagersDAO.getInstance(connection).exists(username);
 	}
 	
 	// ************************************* Teams
@@ -127,5 +127,10 @@ public class Database {
 
 	public List<Player> getAllTeamMembers(String teamName) {
 		return TeamsDAO.getInstance(connection).getTeamMembers(teamName);
+	}
+
+	public boolean insertTeamMember(String organizationName, String membersUsername) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

@@ -14,3 +14,14 @@ tabs.forEach(tab => {
     target.classList.add('active')
   })
 })
+
+function addMember() {
+    $.ajax({
+        type: "POST", 
+        url: "/addMember",
+        contentType: "apllication/json",
+        data: JSON.stringify($("#newMember").val()),
+        success: function(answer){}, 
+        error: function(err){console.log("err")}
+    });
+}

@@ -31,7 +31,7 @@
 
       <!-- Tab content -->
       <div id="description-content" class="tabcontent">
-      	<h3>${team.description}</h3>
+      	<h3 contenteditable="true">${team.description}</h3>
       </div>
 
       <div id="list-attendees" class="tabcontent">
