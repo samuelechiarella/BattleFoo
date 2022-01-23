@@ -20,5 +20,7 @@ public class Response {
 	public static final Integer success = 200;
 	@NonNull
 	private Integer responseCode;
+	@NonNull
 	private String responseMessage;
+	private Object data;
 }

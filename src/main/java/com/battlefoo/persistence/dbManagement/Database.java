@@ -8,6 +8,7 @@ import com.battlefoo.DatabaseNames;
 import com.battlefoo.model.entitiesObjects.*;
 import com.battlefoo.persistence.jdbc.GamesDAO;
 import com.battlefoo.persistence.jdbc.ManagersDAO;
+import com.battlefoo.persistence.jdbc.OrganizationsDAO;
 import com.battlefoo.persistence.jdbc.PlayersDAO;
 import com.battlefoo.persistence.jdbc.TeamsDAO;
 import com.battlefoo.persistence.jdbc.TournamentsDAO;
@@ -129,8 +130,37 @@ public class Database {
 		return TeamsDAO.getInstance(connection).getTeamMembers(teamName);
 	}
 
-	public boolean insertTeamMember(String organizationName, String membersUsername) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean insertTeamMember(String creatorUsername, String organizationName, String membersUsername) {
+		Manager creator = ManagersDAO.getInstance(connection).getByUsername(creatorUsername);
+		Organization currentOrg = null;
+		for(Organization o : OrganizationsDAO.getInstance(connection).getAllByCreatorId(creator.getManagerId()))
+			if(o.getOrganizationName().compareTo(organizationName)==0)
+				currentOrg = o;
+		if(currentOrg == null)
+			return false;
+		Manager newMember = ManagersDAO.getInstance(connection).getByUsername(membersUsername);
+		return OrganizationsDAO.getInstance(connection).insertMember(creator, currentOrg, newMember);
+	}
+
+	public List<Team> getTeamsByPlayer(String leaderUsername) {
+		Player leader = PlayersDAO.getInstance(connection).getByUsername(leaderUsername);
+		return TeamsDAO.getInstance(connection).getAllByLeaderId(leader.getPlayerId());
+	}
+
+	public Manager getManagerById(Long creatorId) {
+		return ManagersDAO.getInstance(connection).getById(creatorId);
+	}
+	
+	public List<Manager> getOrganizationMembersById(Long id) {
+		return OrganizationsDAO.getInstance(connection).getMembersByOrganizationId(id);
+	}
+
+	public List<Organization> getMyOrganizations(String username) {
+		Manager manager = Database.getInstance().getManagerByUsername(username);
+		return OrganizationsDAO.getInstance(connection).getAllByManagerId(manager.getManagerId());
+	}
+
+	public boolean insertManager(String username) {
+		return ManagersDAO.getInstance(connection).insertManager(username);
 	}
 }

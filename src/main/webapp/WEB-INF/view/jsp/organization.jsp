@@ -17,11 +17,10 @@
         <li data-tab-target="#staff" class="tab">STAFF</li>
         <li data-tab-target="#live" class="tab">LIVE</li>
     </ul>
-
     <div class="tab-content">
     <div id="home" data-tab-content class="active">
-      <img src="src\main\resources\static\images\games_banner_index\lolWallpaper.jpg" alt="Organization Logo">
-      <h1>Org Name HERE</h1>
+      <img src="images/games_banner_index/lolWallpaper.jpg" alt="Organization Logo">
+      <h1>${organization.organizationName}</h1>
       <div id="org-info">
           <div id="org-description" contenteditable="false">
               Add a description for your Organization
@@ -39,22 +38,28 @@
       <p>Let me tell you about our staff</p>
       <table class="staffTable">
           <tr>
-              <th></th>
+            <th></th>
             <th>Name</th>
           </tr>
-          <jstl:forEach items="staffMembers" var="member">
-          <tr>
-              <td>${member.profilePicture}</td>
-            <td>${member.username}</td>
-          </tr>
-            </jstl:forEach>
+          
+          <jstl:forEach items="${staff}" var="member">
+	          <tr>
+	            <td><img src="${member.profilePicture}"></td>
+	            <td>${member.username}</td>
+	          </tr>
+           </jstl:forEach>
+           
       </table>
-      <input type="text" id="newMemebr">
-      <button onclick="addMember()">Add Member</button>
+      
+      <jstl:if test="${organization.creatorId eq loggedManager.managerId}">
+	      <input type="text" id="newMember">
+	      <button onclick="addMember()">Add Member</button>
+      </jstl:if>
+      
     </div>
     <div id="live" data-tab-content>
       <h1>LIVE</h1>
-      <p>there will be implemented live stream</p>
+      <p>Here will be implemented live stream</p>
       <!-- Add a placeholder for the Twitch embed -->
       <div id="twitch-embed"></div>
     

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import com.battlefoo.ServerPaths;
+import com.battlefoo.model.entitiesObjects.Organization;
 import com.battlefoo.model.entitiesObjects.Team;
 import com.battlefoo.persistence.dbManagement.Database;
 
@@ -20,7 +21,7 @@ public class CommonMethods {
 			return;
 		
 		// otherwise ask db for all the teams
-		teams = Database.getInstance().getAllTeams();
+		teams = Database.getInstance().getTeamsByPlayer((String)session.getAttribute("loggedUser"));
 		
 		// the db stored the paths of all the teams logos, but we have wrote
 		// the real base64 logos into many text files who follow THOSE paths, thus we
@@ -37,5 +38,18 @@ public class CommonMethods {
 			}
 		}
 		session.setAttribute("teamsList", teams);
+	}
+	
+	public static void updateOrganizationsAttribute(HttpServletRequest req, boolean organizationAdded) {
+		HttpSession session = req.getSession(true);
+		List<Organization> organizations = null;
+		
+		// if an organizations list exists yet and there is no organization to add, stop 
+		if( (session.getAttribute("organizationsList") != null && !organizationAdded) || session.getAttribute("loggedManager") == null)
+			return;
+		
+		organizations = Database.getInstance().getMyOrganizations((String)req.getSession(true).getAttribute("loggedUser"));
+			
+		session.setAttribute("organizationsList", organizations);
 	}
 }

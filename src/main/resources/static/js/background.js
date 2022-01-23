@@ -71,8 +71,27 @@ function openTeamPage(teamName){
 			console.log(answer.responseMessage);
 		},
 		error: function(err){
-				console.log("CREATE TEAM ERROR");
-				console.log(err);
+			console.log(err);
+		}
+	});
+}
+
+function openOrganizationPage(organizationId, organizationName, description, creatorId){
+	let org = new Organization(organizationId, organizationName, description, creatorId);
+	console.log(org);
+	$.ajax({
+		type: "POST",
+		url: "/organizationPage",
+		contentType: "application/json",
+		data: JSON.stringify(org),
+		success: function(answer){
+			if(answer.responseCode==200){
+				location.href = "/organizationPage";
 			}
+			console.log(answer.responseMessage);
+		},
+		error: function(err){
+			console.log(err);
+		}
 	});
 }

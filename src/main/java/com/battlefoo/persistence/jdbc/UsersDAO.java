@@ -69,7 +69,7 @@ public class UsersDAO implements UsersQueries {
 		return false;
 	}
 	
-	private User createUser(ResultSet res) throws SQLException{
+	private User createUser(ResultSet res) throws SQLException {
 		User u = new User(res.getString(1),res.getString(2),res.getString(3),res.getString(4),res.getString(5), res.getString(6));
 		return u;
 	}

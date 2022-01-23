@@ -15,8 +15,7 @@ import com.battlefoo.model.CommonMethods;
 @Controller
 public class HomePage {
 	@GetMapping("/")
-	public String getHomePage(HttpServletRequest req) {
-		CommonMethods.updateTeamsAttribute(req,false);
+	public String getHomePage1(HttpServletRequest req) {
 		if(req.getSession(true).getAttribute("loggedUser")==null) {
 			BufferedWriter writer;
 			try {
@@ -27,14 +26,21 @@ public class HomePage {
 			} catch (IOException e) {
 				System.out.println("***********************************HomePage.java ERROR***********************************");
 			}
+			return "index";
 		}
+		
+		CommonMethods.updateTeamsAttribute(req, false);
+		CommonMethods.updateOrganizationsAttribute(req, false);
 		return "index";
 	}
 	
-	@GetMapping("/testChat")
-	public String getTestChat(HttpServletRequest req) {
-		if(req.getSession(true).getAttribute("loggedUser")==null)
+	@GetMapping("/index")
+	public String getHomePage2(HttpServletRequest req) {
+		if(req.getSession(true).getAttribute("loggedUser")==null) {
 			return "index";
-		return "testChat";
+		}
+		CommonMethods.updateTeamsAttribute(req, false);
+		CommonMethods.updateOrganizationsAttribute(req, false);
+		return "index";
 	}
 }

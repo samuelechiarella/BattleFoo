@@ -15,3 +15,10 @@ function UserLogIn(username, password){
 	this.username = username;
 	this.password = password;
 }
+
+function Organization(organizationId, organizationName, description, creatorId) {
+	this.organizationId = organizationId;
+	this.organizationName = organizationName;
+	this.description = description;
+	this.creatorId = creatorId;
+}

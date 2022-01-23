@@ -58,6 +58,23 @@ public class ManagersDAO implements ManagersQueries{
 		}
 		return m;
 	}
+	
+	@Override
+	public Manager getById(Long managerId) {
+		Manager m = null;
+		try {
+			String query = "select * from managers where manager_id=?";
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, managerId);
+			ResultSet res = ps.executeQuery();
+			if(res.next())
+				m = createManager(res);
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return m;
+	}
 
 	@Override
 	public boolean exists(String username) {
@@ -86,7 +103,23 @@ public class ManagersDAO implements ManagersQueries{
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_FIRST_NAME),
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_LAST_NAME),
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_EMAIL),
-							thisRes.getString(DatabaseNames.Tables.Managers.COLUMN_MANAGER_ID));
+							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_PROFILE_PICTURE),
+							thisRes.getLong(DatabaseNames.Tables.Managers.COLUMN_MANAGER_ID));
 		return m;
+	}
+
+	@Override
+	public boolean insertManager(String username) {
+		String query = "insert into managers(username) values(?);";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, username);
+			ps.execute();
+			return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

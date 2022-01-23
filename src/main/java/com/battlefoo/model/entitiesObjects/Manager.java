@@ -13,11 +13,16 @@ import lombok.ToString;
 @ToString
 public class Manager extends User {
 
-	protected String managerId;
+	protected Long managerId;
 
-	public Manager(String username, String firstname, String lastname, String email, String manager_id) {
+	public Manager(String username, String firstname, String lastname, String email, Long manager_id) {
 		super(username, firstname, lastname, email);
 		this.managerId = manager_id;
+	}
+	
+	public Manager(String username, String firstname, String lastname, String email, String profilePicture, Long managerId) {
+		super(username, firstname, lastname, email, profilePicture);
+		this.managerId = managerId;
 	}
 
 	@Override

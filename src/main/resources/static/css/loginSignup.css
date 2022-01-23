@@ -1,4 +1,4 @@
-.log-in, .sign-up {
+.log-in, .sign-up, .sign-up-manager{
 	z-index: -1;
 	position: fixed;
 	opacity: 0;
@@ -13,7 +13,7 @@
 	transition: 0.5s;
 }
 
-.log-in input, .sign-up input {
+.log-in input, .sign-up input, .sign-up-manager input {
 	border-radius:20 px;
 	padding: 10px;
 	margin: 10px 0;
@@ -22,7 +22,7 @@
 	outline:none;
 }
 
-.log-in button, .sign-up button {
+.log-in button, .sign-up button, .sign-up-manager button {
 	color: #fff;
 	width:100%;
 	padding: 10px;
@@ -32,9 +32,6 @@
 	border: none;
 	outline: none;
 	cursor: pointer;
-}
-
-.log-in button, .sign-up button {
 	background-color: orange;
 }
 
@@ -48,14 +45,14 @@
 	pointer-events: none
 }
 
-.close-log-in, .close-sign-up {
+.close-log-in-sign-up {
 	cursor: pointer;
 	font-size: 2.2em;
 	position: relative;
 	left: 3.5em;
 }
 
-.log-in h1, .sign-up h1 {
+.log-in h1, .sign-up h1, sign-up-manager h1 {
 	font-family: sans-serif;
 	color: #272727;
 }

@@ -23,51 +23,61 @@
 		    </div>
 		    
 		    <!-- ONLY IF THE USER IS LOGGED -->
-		    <jstl:set value="${loggedUser}" var="user"/>
-		    <jstl:if test="${not empty user}">
-		    <div class="side-elem">
-		      <img id="organize" src="images/sidebar-icons/organize_tournaments_icon.png">
-		      <a href="#"><label for="organize" onclick="openOrganizeTournaments()">Organize<br>Tournaments</label></a>
-		    </div>
-		    <div class="side-elem">
-		      <img id="manage" src="images/sidebar-icons/teamIcon.png">
-		      <a href="#"><label for="manage" onclick="openManageTeams()">Manage<br>Teams</label></a>
-		    </div>
-		    <div class="side-elem">
-		      <a href="/testDB">Test Database</a>
-		    </div>
-		    <div class="side-elem">
-		      <a href="/testChat">Test Chat</a>
-		    </div>
-		    <div class="side-elem">
-		      <a href="/tournamentStructure">Tournament Structure</a>
-		    </div>
-		    <div class="side-elem profile-logout-buttons sidebar-log-buttons">
-		      <a id="profileButton" href="#">${loggedUser}</a>
-		      <a id="logoutButton" href="/logout">Logout</a>
-		    </div>
+		    <jstl:if test="${not empty loggedUser}">
+			    <div class="side-elem">
+			      <img id="organize" src="images/sidebar-icons/organize_tournaments_icon.png">
+			      <a href="#"><label for="organize" onclick="openOrganizeTournaments()">Organize<br>Tournaments</label></a>
+			    </div>
+			    <div class="side-elem">
+			      <img id="manage" src="images/sidebar-icons/teamIcon.png">
+			      <a href="#"><label for="manage" onclick="openManageTeams()">Manage<br>Teams</label></a>
+			    </div>
+			    <div class="side-elem">
+			      <a href="/testDB">Test Database</a>
+			    </div>
+			    <div class="side-elem">
+			      <a href="/testChat">Test Chat</a>
+			    </div>
+			    <div class="side-elem">
+			      <a href="/tournamentStructure">Tournament Structure</a>
+			    </div>
+			    <div class="side-elem profile-logout-buttons sidebar-log-buttons">
+			      <a id="profileButton" href="#">${loggedUser}</a>
+			      <a id="logoutButton" href="/logout">Logout</a>
+			    </div>
 		    </jstl:if>
 		    <!-- END IF -->
 		    
 		    <!-- ONLY IF THE USER IS NOT LOGGED -->
-		    <jstl:if test="${empty user}">
-		    <div class="side-elem login-signup-buttons sidebar-log-buttons">
-		      <a id="loginButton" href="#" onclick="openLoginSignup('log-in')">Log In</a>
-		      <a id="signupButton" href="#" onclick="openLoginSignup('sign-up')">Sign Up</a>
-		    </div>
+		    <jstl:if test="${empty loggedUser}">
+			    <div class="side-elem login-signup-buttons sidebar-log-buttons">
+			      <a id="loginButton" href="#" onclick="openLoginSignup('log-in')">Log In</a>
+			      <a id="signupButton" href="#" onclick="openLoginSignup('sign-up')">Sign Up</a>
+			    </div>
 		    </jstl:if>
 		</div>
 		
 		<!-- Organize Tournaments side panel -->
 		<div id="organizeTournamentsBackside" class="sidepanel">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeBack()">&lt;</a>
-			<div class="backside-list">
-			<!-- lista organizzazioni -->
-			<ul>
-				<li><a href="organization">Organizzazione1</a></li>
-			</ul>
-			</div>
-			<a href="#" class="not-move" id="newOrganizationButton">+ New Organization</a>
+			<jstl:choose>
+				<jstl:when test="${not empty loggedManager}">
+					<div class="backside-list">
+						<!-- lista organizzazioni -->
+						<jstl:forEach items="${organizationsList}" var="org">
+						 	<div class="side-elem">
+								<span onclick="openOrganizationPage('${org.organizationId}','${org.organizationName}','${org.description}','${org.creatorId}')">${org.organizationName}</span>
+							</div>
+						</jstl:forEach>
+					</div>
+					<a href="#" class="not-move" id="newOrganizationButton">+ New Organization</a>
+				</jstl:when>
+				<jstl:otherwise>
+					<div class="side-elem">
+						<span id="sign-up-manager" onclick="openLoginSignup('sign-up-manager')">Sign up as<br>Manager</span>
+					</div>
+				</jstl:otherwise>
+			</jstl:choose>
 		</div>
 		
 		<!-- Manage Teams side panel -->
@@ -118,7 +128,7 @@
 		
 		<!-- Log in -->  
 		<div class="log-in do-not-hide popup">
-			<a class="close-log-in do-not-hide" onclick="closeLoginSignup('log-in')">&times;</a>
+			<a class="close-log-in-sign-up do-not-hide" onclick="closeLoginSignup('log-in')">&times;</a>
 			<span class="popuptext" id="invalidUsernamePassword">Invalid Username or Password!</span>
 			<h1 class="do-not-hide">Log In</h1>
 			<input type="text" id="loginUsername" class="do-not-hide clear-log-in" name="loginUsername" placeholder="Username or Email">
@@ -129,7 +139,7 @@
 		
 		<!-- Sign up -->
 		<div class="sign-up do-not-hide">
-		    <a class="close-sign-up do-not-hide" onclick="closeLoginSignup('sign-up')">&times;</a>
+		    <a class="close-log-in-sign-up do-not-hide" onclick="closeLoginSignup('sign-up')">&times;</a>
 		    <h1 class="do-not-hide">Sign Up</h1>
 		    <input type="text" id="signupUsername" class="do-not-hide clear-sign-up" name="signupUsername" placeholder="Username">
 	    	<input type="text" id="firstname" class="do-not-hide clear-sign-up" name="firstname" placeholder="Firstname">
@@ -138,7 +148,14 @@
 	    	<input type="password" id="signupPassword" class="do-not-hide clear-sign-up" name="signupPassword" placeholder="Password">
 	    	<input type="password" id="confirmPassword" class="do-not-hide clear-sign-up" name="confirmPassword" placeholder="Confirm Password">
 	    	<button class="do-not-hide" onclick="signup()">Submit</button>
-
+	 	</div>
+	 	
+	 	<!-- Sign up as Manager -->
+		<div class="sign-up-manager do-not-hide">
+		    <a class="close-log-in-sign-up clear-sign-up-manager do-not-hide" onclick="closeLoginSignup('sign-up-manager')">&times;</a>
+		    <h1 class="do-not-hide">Confirm your password</h1>
+		    <input type="password" id="signupManagerPassword" class="do-not-hide clear-sign-up-manager" name="signupPassword" placeholder="Password">
+	    	<button class="do-not-hide" onclick="signupAsManager()">Submit</button>
 	 	</div>
   		
 	</body>

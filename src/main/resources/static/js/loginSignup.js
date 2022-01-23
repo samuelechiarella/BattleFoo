@@ -57,3 +57,23 @@ function signup(){
 			}
 	});
 }
+
+function signupAsManager(){
+	$.ajax({
+		type: "POST",
+		url: "/signupManager",
+		contentType: "application/json",
+		data: JSON.stringify($("#signupManagerPassword").val()),
+		success: function(answer){
+			if(answer.responseCode == 200){
+				location.reload();
+			}
+			else {
+				alert(answer.responseMessage);
+			}
+		},
+		error: function(err){
+			console.log(err);
+		}
+	});	
+}

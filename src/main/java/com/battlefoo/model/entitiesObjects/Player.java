@@ -13,7 +13,7 @@ import lombok.ToString;
 @ToString
 public class Player extends User {
 
-	private long playerId;
+	private Long playerId;
 	
 	public Player(String username, String firstname, String lastname, String email, long player_id, String profilePicture) {
 		super(username, firstname, lastname, email, profilePicture);

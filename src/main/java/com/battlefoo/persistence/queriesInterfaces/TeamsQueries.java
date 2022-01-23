@@ -8,4 +8,6 @@ public interface TeamsQueries {
 	public List<Team> getAll();
 	public Team getByTeamName(String teamName);
 	public boolean exists(String teamName);
+	List<Team> getAllByLeaderId(long leaderId);
+	boolean insert(Team team);
 }

@@ -71,11 +71,13 @@ public class TeamsDAO implements TeamsQueries {
 				return true;
 		}
 		catch(SQLException e) {
+			e.printStackTrace();
 			System.out.println("ERROR IN TEAMS DAO EXISTS");
 		}
 		return false;
 	}
 
+	@Override
 	public boolean insert(Team team) {
 		// example
 		try {
@@ -113,6 +115,24 @@ public class TeamsDAO implements TeamsQueries {
 		catch(SQLException e) {
 			System.out.println("ERROR IN TEAMS DAO GET TEAM MEMBERS");
 			e.printStackTrace();
+		}
+		return l;
+	}
+	
+	@Override
+	public List<Team> getAllByLeaderId(long leaderId) {
+		List<Team> l = null;
+		String query = "select * from teams where leader_id=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, leaderId);
+			ResultSet res = ps.executeQuery();
+			l = new ArrayList<Team>();
+			while(res.next())
+				l.add(createTeam(res));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println("ERROR IN PLAYERS DAO GET ALL BY LEADER ID");
 		}
 		return l;
 	}
