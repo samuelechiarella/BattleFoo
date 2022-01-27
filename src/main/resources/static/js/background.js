@@ -19,12 +19,6 @@ function closeBack() {
 	document.getElementById("manageTeamsBackside").style.left = "-12.5em";
 }
 
-function openCreateTeamSidebar(){
-  closeMenu();
-  closeBack();
-  document.getElementsByClassName("side-panel")[0].style.right="0";
-}
-
 function openPopup(id) {
   var popup = document.getElementById(id);
   popup.classList.toggle("show");
@@ -42,6 +36,20 @@ function openLoginSignup(choice){
     	}
   	}
   	document.getElementsByClassName(choice)[0].classList.add("show-login-signup");
+};
+
+function openCreateTournament(){
+  	closeCreateTeam();
+  	closeMenu();
+  	closeBack();
+  	array = document.body.querySelectorAll(":not(.create-tournament-tabs *)");
+  	let len = array.length;
+  	for (var i = 0; i < len; i++){
+    	if(!array[i].classList.contains("do-not-hide")){
+        	array[i].classList.add("semi-transparent");
+    	}
+  	}
+  	document.getElementsByClassName("create-tournament-tabs")[0].classList.add("show-login-signup");
 };
 
 function closeLoginSignup(choice){

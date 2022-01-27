@@ -28,7 +28,6 @@ public class HomePage {
 			}
 			return "index";
 		}
-		
 		CommonMethods.updateTeamsAttribute(req, false);
 		CommonMethods.updateOrganizationsAttribute(req, false);
 		return "index";
@@ -36,9 +35,6 @@ public class HomePage {
 	
 	@GetMapping("/index")
 	public String getHomePage2(HttpServletRequest req) {
-		if(req.getSession(true).getAttribute("loggedUser")==null) {
-			return "index";
-		}
 		CommonMethods.updateTeamsAttribute(req, false);
 		CommonMethods.updateOrganizationsAttribute(req, false);
 		return "index";

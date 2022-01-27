@@ -41,9 +41,12 @@
 			    <div class="side-elem">
 			      <a href="/tournamentStructure">Tournament Structure</a>
 			    </div>
+			    <div class="side-elem">
+			    	<a href="#" onclick="openCreateTournament()">Crea Torneo</a>
+			    </div>
 			    <div class="side-elem profile-logout-buttons sidebar-log-buttons">
 			      <a id="profileButton" href="#">${loggedUser}</a>
-			      <a id="logoutButton" href="/logout">Logout</a>
+			      <a id="logoutButton" href="#" onclick="logout()">Logout</a>
 			    </div>
 		    </jstl:if>
 		    <!-- END IF -->
@@ -70,7 +73,7 @@
 							</div>
 						</jstl:forEach>
 					</div>
-					<a href="#" class="not-move" id="newOrganizationButton">+ New Organization</a>
+					<a href="#" class="not-move" id="newOrganizationButton" onclick="openCreateOrganizationSidebar()">+ New Organization</a>
 				</jstl:when>
 				<jstl:otherwise>
 					<div class="side-elem">
@@ -96,6 +99,36 @@
 			<a href="#" class="not-move" id="newTeamButton" onclick="openCreateTeamSidebar()">+ New Team</a>
 		</div>
 
+		<!-- Create Organization Panel-->
+		<div class="side-panel">
+		  <div class="writings">
+		    <h1>Create Organization</h1>
+		  </div>
+		  <form action="">
+		    <div class="side-panel-form">
+		      <div class="writings form-elem popup">
+		        <label for="nicknameOrganization">Nickname</label>
+		        <input id="nicknameOrganization" type="text" name="" value="">
+		        <span class="popuptext" id="organizationNameTakenPopup">Organization name already exists!</span>
+		        <span class="popuptext" id="insertOrganizationNamePopup">This field must be filled!</span>
+		        <span class="popuptext" id="organizationNameNotFilledPopup">Organization name field is not filled!</span>
+		        <span class="popuptext" id="organizationNameConstraintsNotSatisfiedPopup">Only letters/numbers/underscores are allowed!</span>
+		      </div>
+		      <div class="form-elem organization-banner">
+		        <img id="img-banner" src="https://img.search.brave.com/hNH5gu1hOSjTJfO4wTQeOcNBD8Iu610WVnUSb_utYAk/rs:fit:1200:450:1/g:ce/aHR0cDovL3dpa2l0/cmF2ZWwub3JnL3Vw/bG9hZC9zaGFyZWQv/Ni82YS9EZWZhdWx0/X0Jhbm5lci5qcGc">
+		        <label class="label-button" for="choose-banner">Logo</label>
+		        <input id="choose-banner" type="file" accept="image/*" onchange="getImg(this)">
+		      </div>
+		      <div class="form-elem btns">
+		        <label class="label-button" for="create-btn" onclick="storeTeam()">Create</label>
+		        <label class="label-button" for="cancel-btn" onclick="closeCreateTeam()">Cancel</label>
+		        <input id="organization-create-btn" type="button">
+		        <input id="organization-cancel-btn" type="button">
+		      </div>
+		    </div>
+		  </form>
+		</div>
+
 		<!-- Create Team Panel-->
 		<div class="side-panel">
 		  <div class="writings">
@@ -119,8 +152,8 @@
 		      <div class="form-elem btns">
 		        <label class="label-button" for="create-btn" onclick="storeTeam()">Create</label>
 		        <label class="label-button" for="cancel-btn" onclick="closeCreateTeam()">Cancel</label>
-		        <input id="create-btn" type="button">
-		        <input id="cancel-btn" type="button">
+		        <input id="team-create-btn" type="button">
+		        <input id="team-cancel-btn" type="button">
 		      </div>
 		    </div>
 		  </form>
@@ -134,7 +167,6 @@
 			<input type="text" id="loginUsername" class="do-not-hide clear-log-in" name="loginUsername" placeholder="Username or Email">
 			<input type="password" id="loginPassword" class="do-not-hide clear-log-in" name="loginPassword" placeholder="Password">
 			<button class="do-not-hide" onclick="login()">Submit</button>
-			
 		</div>
 		
 		<!-- Sign up -->
@@ -157,6 +189,9 @@
 		    <input type="password" id="signupManagerPassword" class="do-not-hide clear-sign-up-manager" name="signupPassword" placeholder="Password">
 	    	<button class="do-not-hide" onclick="signupAsManager()">Submit</button>
 	 	</div>
+  		
+  		<!-- Create Tournament Panel -->
+  		<jsp:include page="createTournament.jsp"></jsp:include>
   		
 	</body>
 </html>

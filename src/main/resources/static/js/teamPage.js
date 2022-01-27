@@ -27,5 +27,79 @@ function openTab(evt, tabName) {
     evt.currentTarget.className += " active";
     last = evt.currentTarget.className;
   }
+}
 
+function setDescriptionEditable(){
+	document.getElementById("editTeamDescription").classList.add("hide-apply-changes");
+	document.querySelector(".apply-cancel-changes").classList.remove("hide-apply-changes");
+	document.querySelector("#description-content textarea").removeAttribute("readonly");
+	document.querySelector("#description-content textarea").style.pointerEvents = "auto";
+}
+
+function setNotEditable() {
+	location.reload();
+}
+
+function confirmDescriptionChanges() {
+	console.log($("#description-content textarea").val());
+}
+
+function addTeamMember(){
+	
+}
+
+function editTeamMembers() {
+	
+}
+
+function insertNewTeamMember() {
+	$.ajax({
+        type: "POST", 
+        url: "/addTeamMember",
+        contentType: "application/json",
+        data: JSON.stringify($("#newTeamMember").val()),
+        success: function(answer){
+			switch(answer.responseCode){
+				case 501:
+					alert(answer.responseMessage);
+					break;
+				case 502:
+					alert(answer.responseMessage);
+					break;
+				case 503:
+					alert(answer.responseMessage);
+					break;
+				default:
+					location.reload();
+					break;
+			}
+		}, 
+        error: function(err){console.log("err")}
+    });
+}
+
+function removeTeamMember() {
+	$.ajax({
+        type: "POST", 
+        url: "/removeTeamMember",
+        contentType: "application/json",
+        data: JSON.stringify($("#newTeamMember").val()),
+        success: function(answer){
+			switch(answer.responseCode){
+				case 501:
+					alert(answer.responseMessage);
+					break;
+				case 502:
+					alert(answer.responseMessage);
+					break;
+				case 503:
+					alert(answer.responseMessage);
+					break;
+				default:
+					location.reload();
+					break;
+			}
+		}, 
+        error: function(err){console.log("err")}
+    });
 }

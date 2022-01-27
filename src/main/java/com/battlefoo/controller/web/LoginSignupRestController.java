@@ -2,6 +2,7 @@ package com.battlefoo.controller.web;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,13 @@ import com.battlefoo.persistence.jdbc.ManagersDAO;
 
 @RestController
 public class LoginSignupRestController {
+	
+	@GetMapping("/logout")
+	public Response logout(HttpServletRequest req){
+		req.getSession(true).setAttribute("loggedUser", "");
+		return new Response(Response.success, "Redirect to index");
+	}
+	
 	@PostMapping("/login")
 	public Response login(HttpServletRequest req, @RequestBody User user){
 		Response response = createCreateLoginResponse(user);

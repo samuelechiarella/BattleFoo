@@ -1,0 +1,93 @@
+Contratto C01: nomeFunzione
+
+Operazione: nomeFunzione()
+Riferimenti:    casi d'uso
+Pre-condizione:
+Post-condizioni:
+
+Contratto C01: makeTournament
+
+Operazione: makeTournament()
+Riferimenti:    caso d'uso: Gestire Torneo
+Pre-condizione: nessuna.
+Post-condizioni:    L' organizzazione è stata confermata.
+
+
+Contratto C02: fillIn
+
+Operazione: fillIn(tournamentName, tounamentAttendeesNumber, gameName, description)
+Riferimenti:    caso d'uso: Gestire Torneo
+Pre-condizione: nessuna
+Post-condizioni: Vengono cambiati gli attributi del torneo: nome, numero di partecipanti, gioco e descrizione.
+
+
+Contratto C03: endCreation
+
+Operazione: endCreation()
+Riferimenti:    caso d'uso: Gestire Torneo
+Pre-condizione: il Torneo ha assegnati: nome, numero di partecipanti, gioco e descrizione.
+Post-condizioni:    Viene creata un'istanza di Torneo.
+
+
+Contratto C04: sendResult
+
+Operazione: sendResult()
+Riferimenti:    caso d'uso: Avviare e Monitorare l'andamento del torneo
+Pre-condizione: nessuna
+Post-condizioni:    l'istanza Partita cambia l'attributo Risultato.
+
+
+Contratto C05: fillIn
+
+Operazione: fillIn(organizationName, banner)
+Riferimenti:    caso d'uso: Gestire profilo organizzazione.
+Pre-condizione: nessuna
+Post-condizioni:    Vengono assegnati gli attributi dell'organizzazione: idOrganizzazione, nome, banner.
+
+
+Contratto C06: fillIn
+
+Operazione: fillIn(description, members)
+Riferimenti:    caso d'uso: Gestire profilo organizzazione.
+Pre-condizione: nessuna
+Post-condizioni:    Vengono assegnati gli attributi dell'organizzazione: descrizione, membri.
+
+
+Contratto C07: fillIn
+
+Operazione: fillIn(teamName, logo)
+Riferimenti:    caso d'uso: Gestire team.
+Pre-condizione: nessuna
+Post-condizioni:    Vengono assegnati gli attributi del team: nomeTeam, logo.
+
+
+Contratto C08: fillIn
+
+Operazione: fillIn(description, members)
+Riferimenti:    caso d'uso: Gestire team.
+Pre-condizione: nessuna
+Post-condizioni:    Vengono assegnati gli attributi del team: descrizione, membri.
+
+
+Contratto C09: chooseTournament
+
+Operazione: chooseTournament()
+Riferimenti:    caso d'uso: Iscrizione ad un Torneo.
+Pre-condizione: nessuna
+Post-condizioni:    Il Giocatore seleziona il torneo di interesse e lo invia al Sistema.
+
+
+Contratto C10: signUpTournament
+
+Operazione: signUpTournament()
+Riferimenti:    caso d'uso: Iscrizione ad un Torneo.
+Pre-condizione: nessuna
+Post-condizioni:    Il Giocatore richiede l'iscrizione al torneo e lo invia al Sistema.
+
+
+Contratto C11: chooseTeamAndApply
+
+Operazione: chooseTeamAndApply()
+Riferimenti:    caso d'uso: Iscrizione ad un Torneo.
+Pre-condizione: nessuna
+Post-condizioni:    Il Giocatore richiede l'iscrizione al torneo invia al Sistema.

@@ -130,7 +130,7 @@ public class Database {
 		return TeamsDAO.getInstance(connection).getTeamMembers(teamName);
 	}
 
-	public boolean insertTeamMember(String creatorUsername, String organizationName, String membersUsername) {
+	public boolean insertOrganizationMember(String creatorUsername, String organizationName, String membersUsername) {
 		Manager creator = ManagersDAO.getInstance(connection).getByUsername(creatorUsername);
 		Organization currentOrg = null;
 		for(Organization o : OrganizationsDAO.getInstance(connection).getAllByCreatorId(creator.getManagerId()))
@@ -162,5 +162,27 @@ public class Database {
 
 	public boolean insertManager(String username) {
 		return ManagersDAO.getInstance(connection).insertManager(username);
+	}
+
+	public boolean managerAlreadyMemberOfTheStaff(Organization organization, String membersUsername) {
+		return ManagersDAO.getInstance(connection).isMemberOf(organization, membersUsername);
+	}
+
+	public boolean insertTeamMember(Team team, String newTeamMember) {
+		Player p = PlayersDAO.getInstance(connection).getByUsername(newTeamMember);
+		return PlayersDAO.getInstance(connection).insertIntoTeam(team, p);
+	}
+
+	public boolean removeTeamMember(Team team, String newTeamMember) {
+		Player p = PlayersDAO.getInstance(connection).getByUsername(newTeamMember);
+		return PlayersDAO.getInstance(connection).removeFromTeam(team, p);
+	}
+
+	public boolean playerIsMember(Team team, String newTeamMember) {
+		List<Player> members = TeamsDAO.getInstance(connection).getTeamMembers(team.getTeamName());
+		for(Player p : members)
+			if(p.getUsername().compareTo(newTeamMember) == 0)
+				return false;
+		return true;
 	}
 }

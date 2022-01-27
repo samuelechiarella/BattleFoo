@@ -17,7 +17,7 @@ public class CommonMethods {
 		List<Team> teams = null;
 		
 		// if a teams list exists yet and there is no team to add, stop 
-		if(session.getAttribute("teamsList") != null && !teamAdded)
+		if( (session.getAttribute("teamsList") != null && !teamAdded) || session.getAttribute("loggedUser")==null)
 			return;
 		
 		// otherwise ask db for all the teams

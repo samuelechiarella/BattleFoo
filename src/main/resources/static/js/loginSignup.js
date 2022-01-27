@@ -77,3 +77,18 @@ function signupAsManager(){
 		}
 	});	
 }
+
+function logout(){
+	$.ajax({
+		type: "GET",
+		url: "/logout",
+		contentType: "application/json",
+		success: function(answer){
+			console.log(answer.responseMessage);
+			location.href = "/index";
+		},
+		error: function(err){
+			console.log(err);
+		}
+	});
+}

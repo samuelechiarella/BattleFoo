@@ -1,4 +1,4 @@
-.out-tab-logo-name, .out-tab-logo-name *, .out-tab-btn {
+.out-tab-logo-name, .out-tab-logo-name *{
   display: inline-block;
   vertical-align: middle;
 }
@@ -26,17 +26,6 @@ label[for="team-logo"] {
   position: absolute;
 }
 
-.out-tab-btn label {
-  padding: 0.5em;
-  color: #EEEEFF;
-  cursor: pointer;
-}
-
-.out-tab-btn img {
-  padding: 0.3em;
-  width: 1.8em;
-}
-
 label[for="team-logo"] {
   font-size: 3.5em;
 }
@@ -54,7 +43,8 @@ label[for="team-logo"] {
 .tab {
   overflow: hidden;
   border: 0.1em solid orange;
-  border-radius: 0.2em;
+  border-top-left-radius: 0.2em;
+  border-top-right-radius: 0.2em;
   background-color: #f1f1f1;
   font-size: 1.1em;
   min-width: 14em;
@@ -83,6 +73,10 @@ label[for="team-logo"] {
 
 /* Style the tab content */
 .tabcontent {
+  background-color: #BFC0C4;
+  border: 0.1em outset orange;
+  border-bottom-left-radius: 0.2em;
+  border-bottom-right-radius: 0.2em;
   height: 20em;
   overflow: auto;
   display: none;
@@ -91,20 +85,75 @@ label[for="team-logo"] {
   font-weight: normal;
 }
 
-#list-attendees ul {
-  list-style: none;
+#description-content textarea {
+	resize: none;
+	background-color: #BFC0C4;
+	width: 95%;
+	height: 99%;
+	border: none;
+	pointer-events: none;
 }
 
-#list-attendees li:not(:last-child){
+.attendee {
   display: inline-block;
-  margin-right: 0.8em;
+  cursor: pointer;
 }
 
-#list-attendees * {
+.attendee:not(:last-child) {
+	margin-right: 0.5em;
+}
+
+.attendee img {
+	transition: 0.5s;
+}
+
+.attendee img:hover {
+	background-color: white;
+}
+
+#list-attendees *:not(#editTeamMembers) {
   padding: 0.3em;
 }
 
-#list-attendees img {
-  width: 7em;
+#list-attendees img:not(#editTeamMembers) {
+  width: 5em;
   border-radius: 10em;
+}
+
+#editTeamMembers, #editTeamDescription img {
+	width: 2em;
+	position: fixed;
+	right: 5%;
+  	bottom: 15%;
+  	cursor: pointer;
+}
+
+.apply-cancel-changes {
+  position: fixed;
+  right: 5%;
+  bottom: 15%;
+}
+
+.hide-apply-changes {
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none
+}
+
+.apply-cancel-changes label {
+	color: #252525;
+	background-color: rgb(179,107,0);
+	padding: 0.3em;
+	font-size: 1em;
+	font-family: sans-serif;
+}
+
+label[for="description"], label[for="attendees"] {
+	font-family: sans-serif;
+	color: #232323;
+}
+
+label[for="team-logo"] {
+	font-family: sans-serif;
+	color: #111111;
 }

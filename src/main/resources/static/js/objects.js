@@ -22,3 +22,15 @@ function Organization(organizationId, organizationName, description, creatorId) 
 	this.description = description;
 	this.creatorId = creatorId;
 }
+
+function Tournament(name,date,description,rules,schedule,gameName,sponsor,prizes,logo){
+	this.name = name;
+	this.date = date;
+	this.description = description;
+	this.rules = rules;
+	this.schedule = schedule;
+	this.gameName = gameName;
+	this.sponsor = sponsor;
+	this.prized = prizes;
+	this.logo = logo;
+}

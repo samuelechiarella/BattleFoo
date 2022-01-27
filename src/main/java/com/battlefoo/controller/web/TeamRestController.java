@@ -27,6 +27,7 @@ import com.battlefoo.persistence.dbManagement.Database;
 
 @RestController
 public class TeamRestController {
+	
 	@PostMapping("/createTeam")
 	public Response createTeam(@RequestBody Team team, HttpServletRequest req){
 		//	setting attribute teamsList
@@ -51,6 +52,68 @@ public class TeamRestController {
 		return res;
 	}
 	
+	@PostMapping("/addTeamMember")
+	public Response getResponseAddTeamMember(HttpServletRequest req, @RequestBody String newTeamMember) {
+		Response res = createAddTeamMemberResponse(req, newTeamMember.replace("\"", ""));
+		return res;
+	}
+	
+	@PostMapping("/removeTeamMember")
+	public Response getResponseRemoveTeamMember(HttpServletRequest req, @RequestBody String newTeamMember) {
+		Response res = createRemoveTeamMemberResponse(req, newTeamMember.replace("\"", ""));
+		return res;
+	}
+	
+	private Response createAddTeamMemberResponse(HttpServletRequest req, String newTeamMember) {
+		Response res = new Response(Response.failure,"Adding team member failed!");
+		if(Database.getInstance().playerExists(newTeamMember)) {
+			if(Database.getInstance().playerIsMember((Team)req.getSession(true).getAttribute("team"), newTeamMember)){
+				if(Database.getInstance().insertTeamMember((Team)req.getSession(true).getAttribute("team"), newTeamMember)) {
+					res.setResponseCode(200);
+					res.setResponseMessage("Team Member added");
+					List<Player> members = (List<Player>) req.getSession(true).getAttribute("teamMembersList");
+					members.add(Database.getInstance().getPlayerByUsername(newTeamMember));
+					req.getSession(true).setAttribute("teamMembersList", members);
+				}
+				else {
+					res.setResponseCode(503);
+					res.setResponseMessage("Storing team member failed!");
+				}
+			}
+			else {
+				res.setResponseCode(502);
+				res.setResponseMessage("It is already Member!");
+			}
+		}
+		else {
+			res.setResponseCode(501);
+			res.setResponseMessage("Username doesn't exist");
+		}
+		return res;
+	}
+	
+	private Response createRemoveTeamMemberResponse(HttpServletRequest req, String newTeamMember) {
+		Response res = new Response(Response.failure,"Removing team member failed!");
+		if(Database.getInstance().playerExists(newTeamMember)) {
+			if(Database.getInstance().removeTeamMember((Team)req.getSession(true).getAttribute("team"), newTeamMember)) {
+				res.setResponseCode(200);
+				res.setResponseMessage("Team Member removed");
+				List<Player> members = (List<Player>) req.getSession(true).getAttribute("teamMembersList");
+				members.remove(Database.getInstance().getPlayerByUsername(newTeamMember));
+				req.getSession(true).setAttribute("teamMembersList", members);
+			}
+			else {
+				res.setResponseCode(502);
+				res.setResponseMessage("Removing team member failed!");
+			}
+		}
+		else {
+			res.setResponseCode(501);
+			res.setResponseMessage("Username doesn't exist");
+		}
+		return res;
+	}
+
 	private Response createCreateTeamResponse(Team team, String loggedUser) {
 		Response res = new Response(Response.failure,"Storing failed");
 		if(usernameAccepted(team.getTeamName())) {
@@ -110,6 +173,17 @@ public class TeamRestController {
 						br.close();
 					} catch (IOException e) {
 						System.out.println("ERROR IN COMMON METHODS CREATE TEAM IO EXCEPTION");
+					}
+				}
+				for(Player p : teamMembersList) {
+					if(p.getProfilePicture().compareTo(ServerPaths.DEFAULT_PROFILE_PICTURE)!=0) {
+						try {
+							BufferedReader br =  new BufferedReader(new FileReader(p.getProfilePicture()));
+							p.setProfilePicture(br.readLine());
+							br.close();
+						} catch (IOException e) {
+							System.out.println("ERROR IN COMMON METHODS CREATE TEAM IO EXCEPTION");
+						}
 					}
 				}
 				req.getSession(true).setAttribute("teamMembersList", teamMembersList);

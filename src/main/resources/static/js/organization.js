@@ -1,22 +1,17 @@
-const tabs = document.querySelectorAll('[data-tab-target]')
-const tabContents = document.querySelectorAll('[data-tab-content]')
-
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    const target = document.querySelector(tab.dataset.tabTarget)
-    tabContents.forEach(tabContent => {
-      tabContent.classList.remove('active')
-    })
-    tabs.forEach(tab => {
-      tab.classList.remove('active')
-    })
-    tab.classList.add('active')
-    target.classList.add('active')
-  })
-})
+function setActive(choice) {
+	let tabs = document.getElementsByClassName("tab");
+	for(let i=0; i < tabs.length; ++i){
+		tabs[i].classList.remove("active");
+	}
+	let contents = document.getElementsByClassName("tab-content");
+	for(let i=0; i < contents.length; ++i){
+		contents[i].classList.remove("active");
+	}
+	document.getElementById(choice).classList.add("active");
+	document.getElementById(choice.substring(0,choice.length-3)+"Content").classList.add("active");
+}
 
 function addMember() {
-	console.log($("#newMember").val());
     $.ajax({
         type: "POST", 
         url: "/addMember",
@@ -29,7 +24,10 @@ function addMember() {
 					break;
 				case 502:
 					alert(answer.responseMessage);
-					breaK;
+					break;
+				case 503:
+					alert(answer.responseMessage);
+					break;
 				default:
 					insertNewMember(answer.data.profilePicture, answer.data.username);
 					$("#newMember").val("");

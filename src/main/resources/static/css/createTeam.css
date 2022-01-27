@@ -35,7 +35,7 @@
   font-size: 1.13em;
 }
 
-#choose-img, .side-panel input[type="button"] {
+#choose-img, #choose-banner, .side-panel input[type="button"] {
   opacity: 0;
   z-index: -1;
   position: absolute;
@@ -59,6 +59,13 @@ label[for="choose-img"] {
   text-align: center;
 }
 
+label[for="choose-banner"]  {
+  position: fixed;
+  top: 20em;
+  display: block;
+  margin-left:0.1em;
+}
+
 .label-button:hover{
   background-color: #EAA022;
 }
@@ -66,6 +73,15 @@ label[for="choose-img"] {
 #img-logo {
   width: 16em;
   height: 16em;
+  background: #C0D5FF;
+  margin: 0.5em 0.2em;
+  border: 0.2em solid orange;
+  border-radius: 1em;
+}
+
+#img-banner {
+  width: 20em;
+  height: 6em;
   background: #C0D5FF;
   margin: 0.5em 0.2em;
   border: 0.2em solid orange;

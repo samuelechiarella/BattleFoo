@@ -1,4 +1,4 @@
-.log-in, .sign-up, .sign-up-manager{
+.log-in, .sign-up, .sign-up-manager, .edit-team-member{
 	z-index: -1;
 	position: fixed;
 	opacity: 0;
@@ -13,7 +13,7 @@
 	transition: 0.5s;
 }
 
-.log-in input, .sign-up input, .sign-up-manager input {
+.log-in input, .sign-up input, .sign-up-manager input, .edit-team-member input {
 	border-radius:20 px;
 	padding: 10px;
 	margin: 10px 0;
@@ -22,7 +22,7 @@
 	outline:none;
 }
 
-.log-in button, .sign-up button, .sign-up-manager button {
+.log-in button, .sign-up button, .sign-up-manager button, .edit-team-member button {
 	color: #fff;
 	width:100%;
 	padding: 10px;
@@ -52,7 +52,7 @@
 	left: 3.5em;
 }
 
-.log-in h1, .sign-up h1, sign-up-manager h1 {
+.log-in h1, .sign-up h1, sign-up-manager h1, .edit-team-member h1 {
 	font-family: sans-serif;
 	color: #272727;
 }

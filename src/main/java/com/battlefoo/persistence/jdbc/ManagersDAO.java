@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.battlefoo.DatabaseNames;
 import com.battlefoo.model.entitiesObjects.Manager;
+import com.battlefoo.model.entitiesObjects.Organization;
 import com.battlefoo.persistence.queriesInterfaces.ManagersQueries;
 
 public class ManagersDAO implements ManagersQueries{
@@ -116,6 +117,21 @@ public class ManagersDAO implements ManagersQueries{
 			ps.setString(1, username);
 			ps.execute();
 			return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean isMemberOf(Organization organization, String membersUsername) {
+		Manager m = getByUsername(membersUsername);
+		String query = "select * from organizations_members where manager_id=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, m.getManagerId());
+			if(ps.executeQuery().next())
+				return true;
 		}
 		catch(SQLException e) {
 			e.printStackTrace();

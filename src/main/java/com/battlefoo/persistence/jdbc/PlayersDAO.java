@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.battlefoo.DatabaseNames;
 import com.battlefoo.model.entitiesObjects.Player;
+import com.battlefoo.model.entitiesObjects.Team;
 import com.battlefoo.persistence.queriesInterfaces.PlayersQueries;
 
 public class PlayersDAO implements PlayersQueries {
@@ -107,6 +108,38 @@ public class PlayersDAO implements PlayersQueries {
 							thisRes.getLong(DatabaseNames.Tables.Players.COLUMN_PLAYER_ID),
 							thisRes.getString(DatabaseNames.Tables.Users.COLUMN_PROFILE_PICTURE));
 		return p;
+	}
+
+	@Override
+	public boolean insertIntoTeam(Team team, Player newTeamMember) {
+		String query = "insert into teams_members values(?,?);";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, newTeamMember.getPlayerId());
+			ps.setString(2, team.getTeamName());
+			ps.execute();
+			return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean removeFromTeam(Team team, Player p) {
+		String query = "delete from teams_members where player_id=? and team_name=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, p.getPlayerId());
+			ps.setString(2, team.getTeamName());
+			ps.execute();
+			return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

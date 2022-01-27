@@ -14,10 +14,6 @@
         <img id="team-logo" src="${team.logo}" alt="">
         <label for="team-logo">${team.teamName}</label>
       </div>
-      <div class="out-tab-btn">
-        <label for="edit"><img src="images/sidebar-icons/editIcon.png" title="Edit Team"></label>
-        <button class="keep-away" id="edit"></button>
-      </div>
     </div>
 
     <div class="tabs">
@@ -31,9 +27,19 @@
 
       <!-- Tab content -->
       <div id="description-content" class="tabcontent">
-      	<h3 contenteditable="true">${team.description}</h3>
+      	<textarea readonly>${team.description}</textarea><!-- contenteditable="true" -->
+      	<div id="editTeamDescription">
+        	<label for="edit"><img src="images/sidebar-icons/editIcon.png" title="Edit Description"></label>
+        	<button class="keep-away" id="edit" onclick="setDescriptionEditable()"></button>
+      	</div>
+      	<div class="apply-cancel-changes hide-apply-changes">
+	      <label for="apply-changes" class="label-button" onclick="confirmDescriptionChanges()">Apply</label>
+		  <button id="apply-changes" class="keep-away"></button>
+		  <label for="cancel-changes" class="label-button" onclick="setNotEditable()">Cancel</label>
+		  <button id="cancel-changes" class="keep-away"></button>
+	  	</div>
       </div>
-
+      
       <div id="list-attendees" class="tabcontent">
       	<jstl:forEach items="${teamMembersList}" var="player">
 		<div class="attendee tooltip">
@@ -41,7 +47,20 @@
 		  <span class="tooltiptext">${player.username}</span>
 		</div>
 		</jstl:forEach>
+		<img id="editTeamMembers" class="" onclick="openLoginSignup('edit-team-member')" src="images/sidebar-icons/editIcon.png" title="Edit Members">
       </div>
+	  
     </div>
+    
+    <!-- Edit Team Members -->
+	<div class="edit-team-member do-not-hide">
+	    <a class="close-log-in-sign-up do-not-hide" onclick="closeLoginSignup('edit-team-member')">&times;</a>
+	    <h1 class="do-not-hide">Edit Member</h1>
+	    <input type="text" id="newTeamMember" class="do-not-hide" placeholder="New Member Username">
+	    <div class="do-not-hide">
+	    	<button id="addMember" class="do-not-hide" onclick="insertNewTeamMember()">Add</button>
+	    	<button id="deleteMember" class="do-not-hide" onclick="removeTeamMember()">Remove</button>
+	    </div>
+ 	</div>
 </body>
 </html>

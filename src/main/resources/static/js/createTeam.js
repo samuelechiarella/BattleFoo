@@ -1,3 +1,9 @@
+function openCreateTeamSidebar(){
+  closeMenu();
+  closeBack();
+  document.getElementsByClassName("side-panel")[0].style.right="0";
+}
+
 function closeCreateTeam(){
   $("#nickname").val("");
   $("#img-logo").attr("src","");
