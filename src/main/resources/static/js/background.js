@@ -24,6 +24,33 @@ function openPopup(id) {
   popup.classList.toggle("show");
 }
 
+function openCreateOrganizationSidebar() {
+  closeMenu();
+  closeBack();
+  document.getElementsByClassName("side-panel-create-organization")[0].style.right="0";
+}
+
+function closeCreateOrganization() {
+  document.getElementsByClassName("side-panel-create-organization")[0].style.right="-30em";
+  $("#nicknameOrganization").val("");
+  $("#img-banner").removeAttr("src");
+  openOrganizeTournaments();
+  openMenu();
+}
+function openCreateTeamSidebar(){
+  closeMenu();
+  closeBack();
+  document.getElementsByClassName("side-panel-create-team")[0].style.right="0";
+}
+
+function closeCreateTeam(){
+  $("#nickname").val("");
+  $("#img-logo").removeAttr("src");
+  document.getElementsByClassName("side-panel-create-team")[0].style.right="-30em";
+  openManageTeams();
+  openMenu();
+}
+
 function openLoginSignup(choice){
   	closeCreateTeam();
   	closeMenu();

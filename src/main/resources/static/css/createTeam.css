@@ -2,13 +2,20 @@
   display: inline;
 }
 
+.side-panel-create-team {
+	right: -30em;
+}
+
+.side-panel-create-organization {
+	right: -30em;
+}
+
 .side-panel {
   bottom: 0;
   width: 30em;
 	position: fixed;
 	z-index: 1;
 	top: 0;
-	right: -30em;
 	background-color: rgb(179,107,0);
 	overflow-x: hidden;
 	padding-top: 3.75em;

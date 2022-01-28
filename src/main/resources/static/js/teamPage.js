@@ -42,14 +42,23 @@ function setNotEditable() {
 
 function confirmDescriptionChanges() {
 	console.log($("#description-content textarea").val());
-}
-
-function addTeamMember(){
-	
-}
-
-function editTeamMembers() {
-	
+	$.ajax({
+		type: "POST",
+		url: "/editDescription",
+		contentType: "application/json",
+		data: JSON.stringify($("#description-content textarea").val()),
+		success:function(answer){
+			console.log(answer.responseMessage);
+			textarea = document.querySelector("#description-content textarea");
+			textarea.readonly = false;
+			textarea.style.pointerEvents = "none";
+			document.getElementById("editTeamDescription").classList.remove("hide-apply-changes")
+			document.querySelector(".apply-cancel-changes").classList.add("hide-apply-changes");;
+		},
+		error:function(err){
+			console.log(err);
+		}
+	});
 }
 
 function insertNewTeamMember() {

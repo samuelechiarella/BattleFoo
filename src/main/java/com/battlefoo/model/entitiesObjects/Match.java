@@ -13,33 +13,25 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
-@Getter
 @Setter
+@Getter
 @ToString
-public class Team {
+public class Match {
 	
 	@NonNull
-	private String teamName;
-	
+	private String firstTeam;
 	@NonNull
-	private String logo;
-	
-	private String description;
-	
+	private String secondTeam;
+	private String result;
+	private Long tournamentId;
 	@NonNull
-	private Long leaderId;
+	private Long matchId;
 	
-	public Team(String teamName, String logo) {
-		this.teamName = teamName;
-		this.logo = logo;
-	}
-
-
 	@Override
 	public int hashCode() {
-		return Objects.hash(teamName);
+		return Objects.hash(matchId);
 	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -48,7 +40,7 @@ public class Team {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Team other = (Team) obj;
-		return Objects.equals(teamName, other.teamName);
+		Match other = (Match) obj;
+		return Objects.equals(matchId, other.matchId);
 	}
 }

@@ -30,6 +30,7 @@ public class HomePage {
 		}
 		CommonMethods.updateTeamsAttribute(req, false);
 		CommonMethods.updateOrganizationsAttribute(req, false);
+		CommonMethods.updateGamesAttribute(req);
 		return "index";
 	}
 	
@@ -37,6 +38,7 @@ public class HomePage {
 	public String getHomePage2(HttpServletRequest req) {
 		CommonMethods.updateTeamsAttribute(req, false);
 		CommonMethods.updateOrganizationsAttribute(req, false);
+		CommonMethods.updateGamesAttribute(req);
 		return "index";
 	}
 }

@@ -1,17 +1,3 @@
-function openCreateTeamSidebar(){
-  closeMenu();
-  closeBack();
-  document.getElementsByClassName("side-panel")[0].style.right="0";
-}
-
-function closeCreateTeam(){
-  $("#nickname").val("");
-  $("#img-logo").attr("src","");
-  document.getElementsByClassName("side-panel")[0].style.right="-30em";
-  openManageTeams();
-  openMenu();
-}
-
 function storeTeam() {
 	$(document).ready(function(){
 		let newTeam = new Team($("#nickname").val(), $("#img-logo").attr("src"));
@@ -54,8 +40,7 @@ function getImg(input) {
 	if(file){
 		reader.readAsDataURL(file);
 		reader.onload = function() {
-			imgDataURL = reader.result;
-			$("#img-logo").attr("src",imgDataURL);
+			$("#img-logo").attr("src",reader.result);
 		};
 	}
 }

@@ -19,7 +19,7 @@
 	<div class="tab-content">
     <div class="overview_box">
       <div id="overview" data-tab-content class="active overview">
-        <h1>NOME TORNEO</h1>
+        <h1>${tournament.name}</h1>
         <img src="images/games_banner_index/r6Wallpaper.jpg" alt="PLACEHOLDER_IMG">
         <p>This is the tournament's home</p>
         <br></br>
@@ -28,9 +28,8 @@
       <div class="sub-tab">
         <label for="Details" class="tablinks active" onclick="openTab(event, 'Details-content')">Details</label>
         <label for="Rules" class="tablinks" onclick="openTab(event, 'Rules-content')">Rules</label>
-        <label for="Prizes" class="tablinks" onclick="openTab(event, 'Prizes-content')">Prizes</label>
+        <label for="Prizes" class="tablinks" onclick="openTab(event, 'Prizes-content')">My Match</label>
         <label for="Schedule" class="tablinks" onclick="openTab(event, 'Schedule-content')">Schedule</label>
-        <label for="Contact" class="tablinks" onclick="openTab(event, 'Contact-content')">Contact</label>
         <button class="keepaway" id="Details">Details</button>
         <button class="keepaway" id="Rules">Rules</button>
         <button class="keepaway" id="Prizes">Prizes</button>
@@ -47,22 +46,43 @@
         <h3>Rules</h3>
         <p>tournament's rules.</p>
       </div>
-
-      <div id="Prizes-content" class="tabcontent">
-        <h3>Prizes</h3>
-        <img src="images/games_banner_index/paladinsWallpaper.jpg" alt="PRIZE_PLACEHOLDER">
-        <p>tournament's prizes.</p>
-      </div>
-
+      
       <div id="Schedule-content" class="tabcontent">
         <h3>Schedule</h3>
         <p>tournament's Schedule.</p>
       </div>
 
-      <div id="Contact-content" class="tabcontent">
-        <h3>Contact</h3>
-        <p>tournament's Contacts.</p>
+      <div id="Prizes-content" class="tabcontent">
+      	<div class="tournament-match">
+		    <div class="top-bar">
+		      <div class="match-team">
+		        <div class="team1">
+		          <img src="https://img.search.brave.com/8yjDaafA2sZyO-GyI8eTGhA1Jovk5ZmNcfCL0Uj4p7E/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC52/V2VEam5YSUZUdkJG/UGxIVW0zLUdBSGFI/YSZwaWQ9QXBp" title="team1" alt="team1Logo">
+		        </div>
+		      </div>
+		      <div class="vs-logo">
+		      	<img src="https://thumbs.dreamstime.com/b/v-s-versus-letter-logo-vs-letters-transparent-background-vector-illustration-competition-confrontation-v-s-versus-letter-159953254.jpg" alt="">
+		      </div>
+		      <div class="match-team">
+		        <div class="team2">
+		          <img src="https://img.search.brave.com/PmYFjP68SimuSEmY9LCGZ2ENmH-6gFRFEo1PUoqvh9Q/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5q/VUNoMEstWVhjTGl6/MGhzR2tySmtnSGFI/YSZwaWQ9QXBp" title="team2" alt="team2Logo">
+		        </div>
+		      </div>
+		    </div>
+		
+		    <div class="match-chat">
+		      <div class="match-text">
+		        <textarea readonly>asdasdasasd asd</textarea>
+		        <input type="text" placeholder="Type something...">
+		      </div>
+		      <div class="sendbox">
+		          <button id="sendMessageBtn">Send</button>
+		          <button id="chatRefresh"><img src="https://img.icons8.com/external-kmg-design-basic-outline-kmg-design/2x/external-refresh-arrows-kmg-design-basic-outline-kmg-design.png" alt="refresh"></button>
+		      </div>
+		    </div>
+		</div>
       </div>
+      
     </div>
 
     <div id="partecipants" data-tab-content>

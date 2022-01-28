@@ -27,7 +27,7 @@
 
       <!-- Tab content -->
       <div id="description-content" class="tabcontent">
-      	<textarea readonly>${team.description}</textarea><!-- contenteditable="true" -->
+      	<textarea readonly>${team.description}</textarea>
       	<div id="editTeamDescription">
         	<label for="edit"><img src="images/sidebar-icons/editIcon.png" title="Edit Description"></label>
         	<button class="keep-away" id="edit" onclick="setDescriptionEditable()"></button>

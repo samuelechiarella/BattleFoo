@@ -16,6 +16,7 @@ public class OrganizationController {
 			return "index";
 		CommonMethods.updateTeamsAttribute(req, false);
 		CommonMethods.updateOrganizationsAttribute(req, false);
+		CommonMethods.updateGamesAttribute(req);
 		return "organization";
 	}
 }

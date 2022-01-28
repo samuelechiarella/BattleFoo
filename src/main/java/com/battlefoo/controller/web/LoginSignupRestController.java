@@ -6,12 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.battlefoo.ServerPaths;
 import com.battlefoo.model.Response;
 import com.battlefoo.model.entitiesObjects.User;
 import com.battlefoo.persistence.dbManagement.Database;
-import com.battlefoo.persistence.jdbc.ManagersDAO;
 
 @RestController
 public class LoginSignupRestController {

@@ -103,8 +103,8 @@ public class Database {
 		return TournamentsDAO.getInstance(connection).getAll();
 	}
 	
-	public Tournament getManagerByTournamentName(String tournamentName) {
-		return TournamentsDAO.getInstance(connection).getByTournamentName(tournamentName);
+	public Tournament getCreatorByTournamentName(String username) {
+		return TournamentsDAO.getInstance(connection).getByCreatorUsername(username);
 	}
 	
 	public boolean tournamentExists(String tournamentName) {
@@ -184,5 +184,13 @@ public class Database {
 			if(p.getUsername().compareTo(newTeamMember) == 0)
 				return false;
 		return true;
+	}
+
+	public boolean insertTournament(Tournament tournament) {
+		return TournamentsDAO.getInstance(connection).insertTournament(tournament);
+	}
+
+	public boolean editTeamDescription(Team team, String description) {
+		return TeamsDAO.getInstance(connection).editDescription(team,description);
 	}
 }

@@ -10,14 +10,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.battlefoo.ServerPaths;
 import com.battlefoo.model.CommonMethods;
 import com.battlefoo.model.Response;
@@ -28,6 +25,23 @@ import com.battlefoo.persistence.dbManagement.Database;
 @RestController
 public class TeamRestController {
 	
+	@PostMapping("/editDescription")
+	public Response editDescription(HttpServletRequest req, @RequestBody String description) {
+		return createResponseEditDescription(req, description.replace("\"", ""));
+	}
+	
+	private Response createResponseEditDescription(HttpServletRequest req, String description) {
+		Response res = new Response(Response.failure, "Editing team description failed");
+		Team t = (Team)req.getSession(true).getAttribute("team");
+		if(Database.getInstance().editTeamDescription(t,description)) {
+			res.setResponseCode(200);
+			res.setResponseMessage("Description updated");
+			t.setDescription(description);
+			req.getSession(true).setAttribute("team", t);
+		}
+		return res;
+	}
+
 	@PostMapping("/createTeam")
 	public Response createTeam(@RequestBody Team team, HttpServletRequest req){
 		//	setting attribute teamsList

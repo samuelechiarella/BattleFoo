@@ -33,7 +33,6 @@ public class Tournament {
 	private String gameName;
 	
 	private String sponsor;
-	private String prizes;
 	
 	@NonNull
 	private String logo;
@@ -42,7 +41,7 @@ public class Tournament {
 	private Long managerId;
 	
 	public Tournament(String name, Date date, String description, String rules, String schedule,
-					String gameName, String sponsor, String prizes, String logo) {
+					String gameName, String sponsor, String logo) {
 		this.name = name;
 		this.date = date;
 		this.description = description;
@@ -50,12 +49,11 @@ public class Tournament {
 		this.schedule = schedule;
 		this.gameName = gameName;
 		this.sponsor = sponsor;
-		this.prizes = prizes;
 		this.logo = logo;
 	}
 	
 	public Tournament(String name, String date, String description, String rules, String schedule,
-			String gameName, String sponsor, String prizes, String logo) {
+			String gameName, String sponsor, String logo) {
 		this.name = name;
 		this.date = new Date(date);
 		this.description = description;
@@ -63,7 +61,6 @@ public class Tournament {
 		this.schedule = schedule;
 		this.gameName = gameName;
 		this.sponsor = sponsor;
-		this.prizes = prizes;
 		this.logo = logo;
 	}
 

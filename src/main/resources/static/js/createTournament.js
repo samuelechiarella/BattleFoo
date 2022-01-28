@@ -3,21 +3,18 @@ tournamentBanner = "";
 gameName="";
 function createTournament() {
 	let name = $("#createTournamentName").val();
-	let date = $("#create-tournament-date").val();
+	let date = $("#createTournamentDate").val();
 	let description = $("#createTournamentDescription").val();
 	let rules = $("#createTournamentRules").val();
-	let schedule = $("#createTournament").val();
-	let gameName = "GameName";
-	let sponsor = "BannerSponsor";
+	let schedule = $("#createTournamentSchedule").val();
 	let prizes = "Prizes";
-	let logo = "Logo";
-	let tournament = new Tournament(name,date,description,rules,schedule,gameName,sponsor,prizes,logo);
+	let tournament = new Tournament(name,date,description,rules,schedule,gameName,sponsorBanner,prizes,tournamentBanner);
 	$.ajax({
 		type: "POST",
 		url: "/createTournament",
 		contentType: "application/json",
 		data: JSON.stringify(tournament),
-		success: function(){
+		success: function(answer){
 			console.log("done");
 		},
 		error: function(err){
@@ -28,4 +25,9 @@ function createTournament() {
 
 function closeCreateTournament() {
 	location.reload();
+}
+
+function setGameName(name){
+	gameName = name;
+	$("#gameTitle").val(gameName);
 }

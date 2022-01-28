@@ -138,6 +138,22 @@ public class TeamsDAO implements TeamsQueries {
 	}
 	
 	private Team createTeam(ResultSet res) throws SQLException {
-		return new Team(res.getString("team_name"), res.getString("logo"), res.getLong("leader_id"));
+		return new Team(res.getString("team_name"), res.getString("logo"), res.getString("description"), res.getLong("leader_id"));
+	}
+
+	@Override
+	public boolean editDescription(Team team, String description) {
+		String query = "update teams set description=? where team_name=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, description);
+			ps.setString(2, team.getTeamName());
+			ps.execute();
+			return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }

@@ -11,7 +11,7 @@
       --><label class="create-tournament-label first-create-tournament-label do-not-hide" for='r1'>Category</label><!--
       --><div class='create-tournament-content do-not-hide'>
           <div class="category do-not-hide">
-            <input type="text" class="do-not-hide" placeholder="Type a title..">
+            <input id="gameTitle" type="text" class="do-not-hide" placeholder="Type a title..">
             <button id="searchGame" class="do-not-hide">Search</button>
             <div class="games-list do-not-hide">
               <table class="do-not-hide">
@@ -23,11 +23,13 @@
       	          </tr>
                 </thead>
                 <tbody class="do-not-hide">
-                  <tr class="do-not-hide">
-    		        <td class="do-not-hide"><img alt="image" class="do-not-hide"></td>
-    		        <td class="do-not-hide">name</td>
-                    <td class="do-not-hide">Survival</td>
-  		            </tr>
+                	<jstl:forEach items="${gamesList}" var="game">
+                  		<tr class="do-not-hide" onclick="setGameName('${game.name}')">
+    		        		<td class="do-not-hide"><img alt="${game.name}" src="${game.logo}" class="do-not-hide"></td>
+    		        		<td class="do-not-hide">${game.name}</td>
+                    		<td class="do-not-hide">${game.genre}</td>
+  		            	</tr>
+  		        	</jstl:forEach>
                 </tbody>
               </table>
             </div>

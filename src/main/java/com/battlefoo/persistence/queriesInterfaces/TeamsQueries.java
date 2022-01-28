@@ -9,5 +9,6 @@ public interface TeamsQueries {
 	public Team getByTeamName(String teamName);
 	public boolean exists(String teamName);
 	List<Team> getAllByLeaderId(long leaderId);
-	boolean insert(Team team);
+	public boolean insert(Team team);
+	public boolean editDescription(Team team, String description);
 }

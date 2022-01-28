@@ -37,10 +37,17 @@ public class Date {
 	
 	public String getDate() {
 		String m = "", d = "";
+		
 		if(month < 10)	
-			m = "0" + month;
+			m = "0" + String.valueOf(month);
+		else
+			m = String.valueOf(month);
+		
 		if(day < 10)	
 			d = "0" + day;
+		else
+			d = String.valueOf(day);
+		
 		return m + "/" + d + "/" + year;
 	}
 }

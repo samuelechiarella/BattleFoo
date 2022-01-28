@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import com.battlefoo.ServerPaths;
+import com.battlefoo.model.entitiesObjects.Game;
 import com.battlefoo.model.entitiesObjects.Organization;
 import com.battlefoo.model.entitiesObjects.Team;
 import com.battlefoo.persistence.dbManagement.Database;
@@ -51,5 +52,17 @@ public class CommonMethods {
 		organizations = Database.getInstance().getMyOrganizations((String)req.getSession(true).getAttribute("loggedUser"));
 			
 		session.setAttribute("organizationsList", organizations);
+	}
+	
+	public static void updateGamesAttribute(HttpServletRequest req) {
+		HttpSession session = req.getSession(true);
+		List<Game> games = null;
+		
+		if(session.getAttribute("loggedManager") == null)
+			return;
+		
+		games = Database.getInstance().getAllGames();
+			
+		session.setAttribute("gamesList", games);
 	}
 }
