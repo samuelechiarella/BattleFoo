@@ -11,6 +11,5 @@ import lombok.ToString;
 @Setter
 public class Attendee {
 	public String name;
-	public String seed;
-	public String score;
+	public String id;
 }

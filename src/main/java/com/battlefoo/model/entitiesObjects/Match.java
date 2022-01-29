@@ -26,6 +26,8 @@ public class Match {
 	private Long tournamentId;
 	@NonNull
 	private Long matchId;
+	@NonNull
+	private Integer phase;
 	
 	@Override
 	public int hashCode() {

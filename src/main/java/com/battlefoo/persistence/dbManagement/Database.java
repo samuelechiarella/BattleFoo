@@ -8,6 +8,7 @@ import com.battlefoo.DatabaseNames;
 import com.battlefoo.model.entitiesObjects.*;
 import com.battlefoo.persistence.jdbc.GamesDAO;
 import com.battlefoo.persistence.jdbc.ManagersDAO;
+import com.battlefoo.persistence.jdbc.MatchesDAO;
 import com.battlefoo.persistence.jdbc.OrganizationsDAO;
 import com.battlefoo.persistence.jdbc.PlayersDAO;
 import com.battlefoo.persistence.jdbc.TeamsDAO;
@@ -192,5 +193,13 @@ public class Database {
 
 	public boolean editTeamDescription(Team team, String description) {
 		return TeamsDAO.getInstance(connection).editDescription(team,description);
+	}
+
+	public List<Match> getAllMatchesByTournamentId(Long tournamentId) {
+		return MatchesDAO.getInstance(connection).getAllByTournamentId(tournamentId);
+	}
+
+	public String[][] getTeamsByPhase(int numeroPartite, Long tournamentId) {
+		return MatchesDAO.getInstance(connection).getTeamsByPhase(numeroPartite, tournamentId);
 	}
 }
