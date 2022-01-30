@@ -1,60 +1,49 @@
-Nome del caso d'uso: Gestire Profilo Organizzazione
-Portata: Gestore Tornei
+Nome del caso d'uso: Gestire Profilo Organizzazione.
+Portata: Gestore Tornei di videogiochi.
 
-Livello: Sottofunzione Profilo Organizzatore(?)
+Livello: Obiettivo utente.
 
-Attore Primario: Organizzatore
+Attore Primario: Organizzatore.
 
 Parti Interessati ed Interessi:
--	Organizzatore organizzazione:	Vuole poter creare la propria organizzazione, modificare i dati di quest'ultima
-									ed essere in grado di creare inviti per altri eventuali membri dello staff.
--	Membro Staff:	Vuole facilmente individuare gli inviti ricevuti da parte dell'organizzazione per poterne fare parte.
+-	Organizzatore:	Vuole poter creare la propria organizzazione, modificare i dati di quest'ultima
+					ed essere in grado di creare inviti per altri eventuali membri dello staff.
+-	Membro Staff:	Vuole facilmente individuare gli inviti ricevuti da parte dell'organizzazione per
+					poterne fare parte.
 
-Pre-condizioni:	Tutti gli utenti interessati sono identificati come "Profilo Organizzatore".
+Pre-condizioni:	Tutti gli utenti interessati sono autenticati come organizzatori.
 
-Garanzia di Successo (Post-Condizione):
+Garanzia di Successo:
 	L'Organizzazione viene creata. L'Organizzatore è in grado di modificare le info di quest'ultima a suo piacimento.
 	L'Organizzatore ha la possibilità di invitare i membri dello staff. I membri scelti ricevono ed accettano gli
 	inviti dalle organizzazioni.
 
 Scenario principale di successo:
-1. L'Organizzatore apre la pagina di creazione dell'organizzazione.
-2. L'Organizzatore inserisce gli elementi di base dell'organizzazione.
-3. Il sistema convalida e carica la home dell'organizzazione.
-4. L'Organizzatore inserisce le informazioni di contatto.
-5. L'Organizzatore aggiunge lo staff dell'organizzazione.
-6. Il sistema conferma i membri dello staff.
-7. Il sistema manda gli inviti ai membri dello staff.
-8. L'Organizzatore conclude e conferma i dati.
-9. Il Sistema aggiorna i dati dell'organizzazione.
+1. L' Organizzatore vuole creare un' organizzazione.
+2. Il Sistema avvia la creazione dell' organizzazione.
+3. L' Organizzatore inserisce gli elementi di base dell'organizzazione.
+4. Il sistema convalida, crea e avvia la modifica dell'organizzazione.
+5. L' Organizzatore inserisce le specifiche dell' organizzazione.
+6. Il sistema convalida e aggiorna l'organizzazione.
 
-Estensioni (Flussi Alternativi):
-3a. Il Sistema notifica che il nome dell'organizzazione è già in uso:
-    1.	L'Organizzatore cambia il nome dell'organizzazione.
-    2.	L'Organizzatore conferma il nome inserito.
-    3.  Il Sistema controlla.
-		3b. Il nome inserito è già in uso:
-			1. Torna al 3a.
-		4.	Il Sistema convalida il nome e riprende con il normale proseguimento.
+Estensioni:
+4. Il Sistema trova degli errori nei campi:
+        1.  Il Sistema notifica gli errori all'Organizzatore.
+        2.  Ritorna al punto 3) dello scenario principale.
 
-3b. Il Sistema notifica che i campi non sono stati compilati:
-    1.	L'Organizzatore compila nuovamente i campi vuoti.
-    2.	L'Organizzatore conferma nuovamente i campi.
-    3.  Il Sistema controlla.
-		3c. I campi non sono compilati nuovamente:
-			1. Torna al 3b.
-		4.	Il Sistema convalida i campi e riprende con il normale proseguimento.
+5.	L' Organizzatore vuole aggiungere dei membri allo staff dell' organizzazione:
+	1.	L' Organizzatore invita un utente.
+	2.	Il Sistema convalida l'utente e invia l'invito.
+		2a.	L' utente non è autenticato:
+			1.	Il Sistema notifica l' errore.
+			2.	Ritorna al punto 5 delle Estensioni.
 
-6a. Il campo di inserimento del nome utente non esiste:
-	1. L'Organizzatore inserisce il nome utente del membro da inserire nell'apposito campo.
-	2. Il Sistema verifica il nome utente.
-		3a. Nome utente non registrato nel Sistema:
-		    1. Il Sistema segnala l'errore.
-		    2. Torna al punto 6a.
-	3. Il Sistema convalida il nome e riprende con il normale proseguimento.
+6. Il Sistema notifica errori nei campi:
+    1.	L'Organizzatore modifica i campi.
+    2.  Torna al punto 6) dello scenario principale.
 
 Requisiti Speciali:
-	- Risposta del server entro 5 ms il 95% delle volte.
+	- Latenza nella risposta delle pagine web non superiore a 5 secondi.
 	- Le finestre di segnalazione degli eventuali errori sono facilmente individuabili dall'utente.
 
 Frequenza di ripetizione: Ogni qualvolta l'Organizzatore decide di creare una nuova Organizzazione.

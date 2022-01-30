@@ -54,11 +54,12 @@ public class DatabaseNames {
 		
 		public class Users {
 			public static final String TABLE_NAME = "users";
-			public static final String COLUMN_NICKNAME = "nickname";
+			public static final String COLUMN_USERNAME = "username";
 			public static final String COLUMN_FIRST_NAME = "firstname";
 			public static final String COLUMN_LAST_NAME = "lastname";
 			public static final String COLUMN_EMAIL = "email";
 			public static final String COLUMN_PASSWORD = "password";
+			public static final String COLUMN_PROFILE_PICTURE = "profile_picture";
 		}
 	}
 }

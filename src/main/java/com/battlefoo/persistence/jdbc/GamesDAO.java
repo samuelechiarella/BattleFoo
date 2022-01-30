@@ -94,9 +94,8 @@ public class GamesDAO implements GamesQueries{
 	}
 	
 	private Game createGame(ResultSet res) throws SQLException {
-		Game g = new Game(res.getString(1));
-		if(res.getString(2) != null)
-			g.setGenre(res.getString(2));
+		Game g = new Game(res.getString(1),res.getString(3));
+		g.setGenre(res.getString(2));
 		return g;
 	}
 

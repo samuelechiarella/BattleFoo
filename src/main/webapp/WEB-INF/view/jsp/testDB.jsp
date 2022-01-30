@@ -3,114 +3,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" 
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/testDB.js"></script>
+<script src="js/jquery.gracket.min.js"></script>
 <style type="text/css">
-body{
-	background-color: #373737;
+.g_gracket {
+  width: 9999px;
+  background-color: #fff;
+  padding: 55px 15px 5px;
+  line-height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
-table {
-  margin: 5em;
-  border-collapse: collapse;
-  width: 100%;
-  font-family: sans-serif;
+.g_round {
+  float: left;
+  margin-right: 70px;
 }
 
-th {
-	font-size: 3em;
-	color: #DA4D0B;
+.g_game {
+  position: relative;
+  margin-bottom: 15px;
 }
 
-td {
-	font-size: 1em;
-	color: #E8E8E8;
+.g_gracket h3 {
+  margin: 0;
+  padding: 10px 8px 8px;
+  font-size: 18px;
+  font-weight: normal;
+  color: #fff
 }
 
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #DDD;
+.g_team {
+  background: #3597AE;
 }
 
-tr:hover {background-color: #585858;}
-
-.logo {
-	widht: 10em;
-	height: 10em;
+.g_team:last-child {
+  background: #FCB821;
 }
 
+.g_round:last-child {
+  margin-right: 20px;
+}
+
+.g_winner {
+  background: #444;
+}
+
+.g_winner .g_team {
+  background: none;
+}
+
+.g_current {
+  cursor: pointer;
+  background: #A0B43C!important;
+}
+
+.g_round_label {
+  top: -5px;
+  font-weight: normal;
+  color: #CCC;
+  text-align: center;
+  font-size: 18px;
+}
 </style>
 </head>
 <body>
-<table>
-	<thead>
-		<tr>
-			<th>Game Name</th>
-			<th>Game Genre</th>
-		</tr>
-	</thead>
-	<tbody>
-		<jstl:forEach items="${allGames}" var="game">
-		<tr>
-			<td><h3>${game.name}</h3></td>
-			<td><h3>${game.genre}</h3></td>
-		</tr>
-		</jstl:forEach>
-	</tbody>
-</table>
 
-<table>
-	<thead>
-		<tr>
-			<th>Player Nickname</th>
-			<th>Player ID</th>
-		</tr>
-	</thead>
-	<tbody>
-		<jstl:forEach items="${allPlayers}" var="player">
-		<tr>
-			<td><h3>${player.nickname}</h3></td>
-			<td><h3>${player.playerId}</h3></td>
-		</tr>
-		</jstl:forEach>
-	</tbody>
-</table>
-
-<table>
-	<thead>
-		<tr>
-			<th>Player Nickname</th>
-			<th>Player ID</th>
-		</tr>
-	</thead>
-	<tbody>
-		<jstl:forEach items="${allManagers}" var="manager">
-		<tr>
-			<td><h3>${manager.nickname}</h3></td>
-			<td><h3>${manager.managerId}</h3></td>
-		</tr>
-		</jstl:forEach>
-	</tbody>
-</table>
-
-<table>
-	<thead>
-		<tr>
-			<th>Team Name</th>
-			<th>Leader ID</th>
-			<th>Logo</th>
-		</tr>
-	</thead>
-	<tbody>
-		<jstl:forEach items="${teamsList}" var="team">
-		<tr>
-			<td><h3>${team.teamName}</h3></td>
-			<td><h3>${team.leaderId}</h3></td>
-			<td><img class="logo" src="${team.logo}"></td>
-		</tr>
-		</jstl:forEach>
-	</tbody>
-</table>
+<div class="my_gracket"></div>
 
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.battlefoo.model.entitiesObjects;
 
 import java.util.Objects;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -10,19 +11,20 @@ import lombok.Setter;
 import lombok.ToString;
 
 @NoArgsConstructor
+@AllArgsConstructor
 @RequiredArgsConstructor
 @Getter
 @Setter
 @ToString
 public class Team {
 	
-	private String description;
-	
 	@NonNull
 	private String teamName;
 	
 	@NonNull
 	private String logo;
+	
+	private String description;
 	
 	@NonNull
 	private Long leaderId;

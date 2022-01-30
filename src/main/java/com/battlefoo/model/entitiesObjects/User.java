@@ -2,6 +2,7 @@ package com.battlefoo.model.entitiesObjects;
 
 import java.util.Objects;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -11,15 +12,14 @@ import lombok.ToString;
 
 @NoArgsConstructor
 @RequiredArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @ToString
 public class User {
 	
-	protected String password;
-	
 	@NonNull
-	protected String nickname;
+	protected String username;
 	
 	@NonNull
 	protected String firstName;
@@ -29,10 +29,28 @@ public class User {
 	
 	@NonNull
 	protected String email;
-
+	
+	protected String password;
+	
+	@NonNull
+	protected String profilePicture;
+	
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+	
+	public User(String username, String firstName, String lastName, String email) {
+		super();
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+	}
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(nickname);
+		return Objects.hash(username);
 	}
 
 	@Override
@@ -44,6 +62,6 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(nickname, other.nickname);
+		return Objects.equals(username, other.username);
 	}
 }

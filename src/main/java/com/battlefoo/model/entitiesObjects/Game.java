@@ -17,7 +17,11 @@ public class Game {
 	
 	@NonNull
 	private String name;
+	
 	private String genre;
+	
+	@NonNull
+	private String logo;
 
 	@Override
 	public int hashCode() {

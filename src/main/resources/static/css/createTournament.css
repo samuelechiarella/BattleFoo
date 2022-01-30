@@ -1,0 +1,197 @@
+.create-tournament-tabs {
+  opacity: 0;
+  z-index: -1;
+  box-shadow: 0px 2px 15px 2px;
+  position: absolute;
+  top: 51%;
+  left: 50%;
+  min-height: 40em;
+  height: 80%;
+  min-width: 45em;
+  transform: translate(-50%, -50%);
+  transition: 0.5s;
+}
+
+.first-create-tournament-label {
+  border-top-left-radius: 0.3em;
+}
+
+.last-create-tournament-label {
+  border-top-right-radius: 0.3em;
+}
+
+.create-tournament-label, #createTournamentSlider {
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  background: rgb(179,107,0);
+  color: #AAA;
+  width: 15em;
+  height: auto;
+  padding: 20px 0px;
+}
+
+.create-tournament-label:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.create-tournament-tabs [type=radio] {
+  display: none;
+}
+
+.create-tournament-content {
+  border-bottom-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+  position: absolute;
+  top: 50px; right: 0; bottom: 0; left: 0;
+  background: white;
+  padding: 20px;
+  box-shadow: inset 0px 5px 5px -5px;
+  display: none;
+}
+
+#createTournamentSlider {
+  background-color: transparent;
+  position: absolute;
+  border-bottom: 3px solid white;
+  margin: 7px 10px;
+  transition: transform 0.5s;
+  width: 12em;
+}
+
+[type=radio].create-tournament,#r1.create-tournament:checked ~ #createTournamentSlider {
+  transform: translate(-44em, 0);
+}
+
+[type=radio].create-tournament,#r2.create-tournament:checked ~ #createTournamentSlider {
+  transform: translate(-29.5em, 0px);
+}
+
+[type=radio].create-tournament,#r3.create-tournament:checked ~ #createTournamentSlider {
+  transform: translate(-14em, 0px);
+}
+
+[type=radio].create-tournament:checked + .create-tournament-label {
+  color: white;
+}
+
+[type=radio].create-tournament:checked + .create-tournament-label + .create-tournament-content {
+  display: inline-block;
+}
+
+.create-tournament-content textarea {
+  font-size: 1em;
+  padding: 0.4em;
+  resize: none;
+  min-height: 10em;
+  height: 50vh;
+  font-family: sans-serif;
+}
+
+.create-tournament-content textarea {
+  margin-left: 1.5em;
+}
+
+.information *{
+  display: block;
+  margin: 1em;
+  font-family: sans-serif;
+}
+
+.information input {
+  width: 80%;
+  margin-left: 5em;
+}
+
+.information button {
+  width: 6em;
+  color: #fff;
+	padding: 10px;
+	border-radius: 20px;
+	font-size: 15px;
+	margin: 10px 0;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: orange;
+  margin-left: 1em;
+}
+
+.tournament-banner {
+  border: 0.2em solid orange;
+  border-radius: 0.3em;
+  height: 10em;
+}
+
+.create-tournament-tabs input{
+  font-size: 15px;
+  font-family: sans-serif;
+  padding: 10px;
+}
+
+.category {
+  margin-top: 8em;
+  text-align: center;
+}
+
+.category button {
+  width: 6em;
+  color: #fff;
+  padding: 10px;
+  border-radius: 2px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: orange;
+}
+
+.games-list {
+  font-family: sans-serif;
+  text-align: center;
+  overflow-y: auto;
+  min-height: 6em;
+  max-height: 25em;
+  text-align: center;
+  margin-left: 12em;
+  margin-top: 3em;
+  width: 20em;
+}
+
+.games-list table{
+  border-collapse: collapse;
+}
+
+.games-list tbody th, .games-list tbody td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  width: 5em;
+}
+
+.games-list tbody tr:hover {
+	background-color: orange;
+  cursor: pointer;
+}
+
+.games-list img {
+	width: 6em;
+}
+
+.create-tournament-create-cancel-btns {
+	display: block;
+	margin-left: 29.5em;
+}
+
+.create-tournament-create-cancel-btns button{
+  width: 6em;
+  color: #fff;
+  padding: 10px;
+  border-radius: 2px;
+  font-size: 15px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: orange;
+  margin-top: 3em;
+}

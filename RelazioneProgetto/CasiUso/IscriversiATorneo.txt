@@ -1,50 +1,42 @@
 Nome del caso d'uso: Iscriversi ad un Torneo.
-Portata: Gestore torneo di videogiochi. (o sottofunzione?)
+Portata: Gestore torneo di videogiochi.
 Attore primario: Team.
 Parti interessate e interessi:
-    -   Giocatore: Avere la possibilità di selezionare e cercare tornei
-        filtrando per alcuni campi, visualizzare le specifiche del
-        torneo di suo interesse ed eventualmente effettuare l'iscrizione
-        del suo team a quest'ultimo.
+    -   Giocatore: Avere la possibilità di cercare e selezionare  e iscriversi 
+                    ad un torneo.
     -   Organizzatore: Avere la possibilità di controllare il numero di
-        partecipanti fino alla data del torneo ed eventualmente
-        (in caso il numero di team fosse insufficiente) rimandare
-        ad un'altra data.
+                        partecipanti fino alla data del torneo.
 
 Pre-Condizioni:
-    Il Giocatore è identificato ed autenticato. Il Giocatore fa aprte di un team.
+    Il Giocatore è identificato ed autenticato. Il Giocatore fa parte di un team.
 
 Garanzia di successo:
-    L'iscrizione va a buon fine ed il Team risulta correttamente iscritto al torneo,
-    compare dunque nell'elenco partecipanti.
+    L'iscrizione va a buon fine ed il Team risulta correttamente iscritto al torneo.
 
 Scenario principale di successo:
-    1)  Il Giocatore seleziona la lista di tornei disponibili.
-    2)  Il Sistema visualizza l'intero elenco di torneo disponibili.
-    3)  Il Giocatore sceglie un torneo.
-    4)  Il Giocatore seleziona il torneo di suo interesse.
-    5)  Il Sistema visualizza la pagina del torneo.
-    6)  Il Giocatore seleziona l'iscrizione al torneo.
-    7)  Il Sistema visualizza la pagina di iscrizione al torneo.
+    1)  Il Giocatore vuole iscriversi ad un torneo.
+    2)  Il Sistema visualizza i tornei disponibili.
+    3)  Il Giocatore sceglie e seleziona il torneo.
+    5)  Il Sistema visualizza il torneo.
+    6)  Il Giocatore vuole iscrivere il proprio team al torneo.
+    7)  Il Sistema avvia l' iscrizione al torneo.
     8)  Il Giocatore sceglie, conferma il team con cui iscriversi e
         prosegue con la registrazione al torneo.
-    9)  Il Sistema registra l'iscrizione e aggiorna i partecipanti.
+    9)  Il Sistema iscrive il team al torneo e aggiorna i partecipanti.
 
 Estensioni:
 
-*a. Il Giocatore decide di modificare i criteri di ricerca:
-    a-1.   Il Giocatore inserisce il filtro desiderato.
-    a-2.   Il Sistema restituisce i risultati della ricerca.
-        a2-a.   La ricerca non ha prodotto risultati:
-            a2a-1.  Il Sistema notifica l'assenza di risultati in base ai
-                    criteri di ricerca e si torna al passo precendente dello
-                    scenario principale.
-    a-3.   Si prosegue con il passo successivo dello scenario principale.
+3a. Il Giocatore decide di modificare i criteri di ricerca:
+    1.  Il Giocatore inserisce il filtro desiderato.
+    2.  Il Sistema restituisce i risultati della ricerca.
+        2a. La ricerca non ha prodotto risultati:
+            1.  Il Sistema notifica l'assenza di risultati in base ai
+                    criteri di ricerca e si torna al punto 2).
+    3.   Si prosegue con il punto 4).
 
-1a. Non sono presenti tornei:
-    1a-1.   Il Sistema notifica che non sono presenti tornei al momento
-            e restituisce l'opzione di tornare alla pagina principale.
-            Si torna al punto 1).
+8a. Il Giocatore non fa parte di nessun team o vuole partecipare con un
+    team non ancora creato:
+    1.  Il Sistema avvia la creazione del team.
 
 Requisiti speciali:
     -   Evitare conflitti dovuti alla concorrenza nella registrazione ai tornei.

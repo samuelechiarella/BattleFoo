@@ -6,6 +6,8 @@ import com.battlefoo.model.entitiesObjects.Manager;
 
 public interface ManagersQueries {
 	public List<Manager> getAll();
-	public Manager getByNickname(String nickname);
-	public boolean exists(String nickname); 
+	public Manager getByUsername(String username);
+	public boolean exists(String nickname);
+	public Manager getById(Long managerId);
+	public boolean insertManager(String username);
 }
