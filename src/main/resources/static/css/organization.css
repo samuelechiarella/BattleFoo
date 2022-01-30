@@ -74,25 +74,53 @@ body {
 	left: 45%;
 }
 
-.staffTable table {
+#tournamentsContent {
+	position: absolute;
+	left: 45%;
+}
+
+.staffTable table, .tournamentTable table{
   border-collapse: collapse;
   width: 100%;
 }
 
-.staffTable th, .staffTable td {
+.staffTable th, .staffTable td , .tournamentTable th, .tournamentTable td{
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
-.staffTable tr:hover {
+.staffTable tr:hover, .tournamentTable tr:hover{
 	background-color: orange;
 }
 
-.staffTable img {
+.staffTable img, .tournamentTable img {
 	width: 6em;
 }
 
 #twitch-embed {
 
+}
+
+.createTournamentBtn {
+	position: fixed;
+	right: 15em;
+	bottom: 15em;
+	width: 10em;
+}
+
+.createTournamentBtn button {
+	width: 100%;
+	font-family: sans-serif;
+	font-size: 1.3em;
+	border: 0.1em solid orange;
+	background-color: #FF6800;
+	cursor: pointer;
+	color: white;
+	border-radius: 1em;
+	transition: 0.2s;
+}
+
+.createTournamentBtn button:hover {
+	background-color: orange;
 }

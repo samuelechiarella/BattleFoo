@@ -21,8 +21,8 @@ function storeTeam() {
 							console.log(answer.responseMessage);
 							break;
 						default:
-							console.log("TEAM CREATED");
-							location.reload(true);
+							console.log(answer.responseMessage);
+							location.href = "/teamPage";
 							break;
 					};
 			},
@@ -43,4 +43,22 @@ function getImg(input) {
 			$("#img-logo").attr("src",reader.result);
 		};
 	}
+}
+
+function openTeamPage(teamName){
+	$.ajax({
+		type: "POST",
+		url: "/teamPage",
+		contentType: "application/json",
+		data: JSON.stringify(teamName),
+		success: function(answer){
+			if(answer.responseCode==200){
+				location.href = "/teamPage";
+			}
+			console.log(answer.responseMessage);
+		},
+		error: function(err){
+			console.log(err);
+		}
+	});
 }

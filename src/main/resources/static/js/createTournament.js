@@ -1,26 +1,37 @@
-sponsorBanner = "";
-tournamentBanner = "";
-gameName="";
 function createTournament() {
-	let name = $("#createTournamentName").val();
-	let date = $("#createTournamentDate").val();
-	let description = $("#createTournamentDescription").val();
-	let rules = $("#createTournamentRules").val();
-	let schedule = $("#createTournamentSchedule").val();
-	let prizes = "Prizes";
-	let tournament = new Tournament(name,date,description,rules,schedule,gameName,sponsorBanner,prizes,tournamentBanner);
-	$.ajax({
-		type: "POST",
-		url: "/createTournament",
-		contentType: "application/json",
-		data: JSON.stringify(tournament),
-		success: function(answer){
-			console.log("done");
-		},
-		error: function(err){
-			console.log(err);
-		}
-	});
+	let numOfAttendees = $("#numOfAttendees").val();
+	if(parseInt(numOfAttendees) < 8 || parseInt(numOfAttendees) > 32){
+		alert("Number of attendees must be between 8 and 32!");
+	}
+	else{
+		let name = $("#createTournamentName").val();
+		let date = $("#createTournamentDate").val();
+		let description = $("#createTournamentDescription").val();
+		let rules = $("#createTournamentRules").val();
+		let schedule = $("#createTournamentSchedule").val();
+		let gameName = $("#gameTitle").val();
+		let sponsorBanner = $("#sponsor-banner-img").attr("src");
+		let prizes = "Prizes";
+		let tournamentBanner = $("#tournament-banner-img").attr("src");
+		let tournament = new Tournament(name,date,description,rules,schedule,gameName,sponsorBanner,prizes,tournamentBanner,numOfAttendees);
+		$.ajax({
+			type: "POST",
+			url: "/createTournament",
+			contentType: "application/json",
+			data: JSON.stringify(tournament),
+			success: function(answer){
+				if(answer.responseCode==200){
+					location.href = "/tournamentStructure";
+				}
+				else{
+					alert(answer.responseMessage);
+				}
+			},
+			error: function(err){
+				console.log(err);
+			}
+		});
+	}
 }
 
 function closeCreateTournament() {
@@ -31,3 +42,41 @@ function setGameName(name){
 	gameName = name;
 	$("#gameTitle").val(gameName);
 }
+
+function getSponsorBanner(input){
+	let file = input.files[0];
+	let reader = new FileReader();
+	if(file){
+		reader.readAsDataURL(file);
+		reader.onload = function() {
+			$("#sponsor-banner-img").attr("src",reader.result);
+		};
+	}	
+}
+
+function getTournamentBanner(input){
+	let file = input.files[0];
+	let reader = new FileReader();
+	if(file){
+		reader.readAsDataURL(file);
+		reader.onload = function() {
+			$("#tournament-banner-img").attr("src",reader.result);
+		};
+	}	
+}
+
+function openCreateTournament(){
+  	closeCreateTeam();
+  	closeMenu();
+  	closeBack();
+	let firstDiv = document.querySelector(".create-tournament-tabs");
+	firstDiv.classList.add("show-create-tournament");
+  	array = document.body.querySelectorAll("*:not(.do-not-hide-create-tournament)");
+  	let len = array.length;
+  	for (var i = 0; i < len; i++){
+		array[i].classList.add("no-event-in-create-tournament");
+		if(!array[i].classList.contains("do-not-hide")){
+        	array[i].classList.add("semi-transparent-in-create-tournament");
+		}
+  	}
+};

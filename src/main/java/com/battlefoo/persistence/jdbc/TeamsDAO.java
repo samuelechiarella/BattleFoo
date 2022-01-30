@@ -87,11 +87,6 @@ public class TeamsDAO implements TeamsQueries {
 			ps.setString(2, team.getLogo());
 			ps.setLong(3, team.getLeaderId());
 			ps.execute();
-			query = "insert into teams_members values(?,?)";
-			ps = connection.prepareStatement(query);
-			ps.setLong(1, team.getLeaderId());
-			ps.setString(2, team.getTeamName());
-			ps.execute();
 			return true;
 		}
 		catch(SQLException e) {

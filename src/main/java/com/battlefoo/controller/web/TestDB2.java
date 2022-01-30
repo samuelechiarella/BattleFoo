@@ -14,35 +14,30 @@ public class TestDB2 {
 		return getStructure(8,null,1);
 	}
 	
-	public Attendee[][][] getStructure(int numeroPartecipanti, String vincitore, long tournamentId){
+	public Attendee[][][] getStructure(int numberOfAttendees, String winner, long tournamentId){
 				
-		int gironeIniziale = numeroPartecipanti/2;
+		int firstGroup = numberOfAttendees/2;
 		
-		int numeroGironi = ((int) (Math.log(gironeIniziale) / Math.log(2))) + 1;
+		int numberOfGroups = ((int) (Math.log(firstGroup) / Math.log(2))) + 1;
 		
 		Attendee[][][] attendees = null;
 		
-		attendees = new Attendee[numeroGironi+1][][];
-		attendees[numeroGironi] = new Attendee[1][1];
-		
-		if(vincitore != null) {
-			attendees[numeroGironi][0][0] = new Attendee(vincitore, vincitore);
-		}
-		else
-			attendees[numeroGironi][0][0] = new Attendee(vincitore, "");
+		attendees = new Attendee[numberOfGroups+1][][];
 		
 		//initialize structure
-		for(int i = 0, numeroPartite = numeroPartecipanti/2; i < numeroGironi; ++i, numeroPartite/=2) {
-			attendees[i] =new Attendee[numeroPartite][2];
+		for(int i = 0, numberOfMatches = numberOfAttendees/2; i < numberOfGroups; ++i, numberOfMatches/=2) {
+			attendees[i] =new Attendee[numberOfMatches][2];
 		}
+		attendees[numberOfGroups] = new Attendee[1][1];
 
-		for(int i = 0, numeroPartite = numeroPartecipanti/2; i < numeroGironi; ++i, numeroPartite/=2) {
-			for(int j = 0; j < numeroPartite; ++j) {
-				String[][] teams = Database.getInstance().getTeamsByPhase(numeroPartite, tournamentId);
+		for(int i = 0, numberOfMatches = numberOfAttendees/2; i < numberOfGroups; ++i, numberOfMatches/=2) {
+			for(int j = 0; j < numberOfMatches; ++j) {
+				String[][] teams = Database.getInstance().getTeamsByPhase(numberOfMatches, tournamentId);
 				attendees[i][j][0] = new Attendee(teams[j][0],teams[j][0]);
 				attendees[i][j][1] = new Attendee(teams[j][1],teams[j][1]);
 			}
 		}
+		attendees[numberOfGroups][0][0] = new Attendee(winner, winner);
 		
 		return attendees;
 	}

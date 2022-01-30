@@ -18,13 +18,13 @@ public class OrganizationsDAO implements OrganizationsQueries {
 	private OrganizationsDAO(Connection connection) {
 		this.connection = connection;
 	}
-	
+
 	public static OrganizationsDAO getInstance(Connection c) {
 		if(instance == null)
 			instance = new OrganizationsDAO(c);
 		return instance;
 	}
-	
+
 	@Override
 	public List<Organization> getAll() {
 		// TODO Auto-generated method stub
@@ -52,8 +52,9 @@ public class OrganizationsDAO implements OrganizationsQueries {
 
 	public List<Manager> getMembersByOrganizationId(Long organizationId) {
 		List<Manager> l = null;
+		System.out.println(organizationId);
 		try {
-			String query = "select * from organizations_members where organization_id=?";
+			String query = "select * from organizations_members where organization_id=?;";
 			PreparedStatement ps = connection.prepareStatement(query);
 			ps.setLong(1, organizationId);
 			ResultSet res = ps.executeQuery();
@@ -66,7 +67,7 @@ public class OrganizationsDAO implements OrganizationsQueries {
 		}
 		return l;
 	}
-	
+
 	@Override
 	public boolean exists(String name) {
 		// TODO Auto-generated method stub
@@ -94,7 +95,7 @@ public class OrganizationsDAO implements OrganizationsQueries {
 	@Override
 	public List<Organization> getAllByManagerId(long managerId) {
 		List<Organization> l = null;
-		String query = "select organizations.* from organizations_members full outer join organizations on organizations_members.organization_id = organizations.organization_id where manager_id=?;";
+		String query = "select organizations.* from managers full outer join organizations on managers.manager_id = organizations.creator_id where manager_id=?;";
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
 			ps.setLong(1, managerId);
@@ -125,7 +126,60 @@ public class OrganizationsDAO implements OrganizationsQueries {
 		return false;
 	}
 	
+	@Override
+	public Organization getById(Long orgId, Long creatorId) {
+		Organization org = null;
+		String query = "select * from organizations where organization_id=? and creator_id=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, orgId);
+			ps.setLong(2, creatorId);
+			ResultSet res = ps.executeQuery();
+			if(res.next())
+				org = createOrganization(res);
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return org;
+	}
+	
+	@Override
+	public boolean insertOrganization(Organization org) {
+		String query = "insert into organizations(name,creator_id,banner) values(?,?,?);";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, org.getOrganizationName());
+			ps.setLong(2, org.getCreatorId());
+			ps.setString(3, org.getBanner());
+			ps.execute();
+			return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	@Override
+	public List<Manager> getMembersByOrgName(String orgName) {
+		List<Manager> l = null;
+		try {
+			String query = "select organizations_members.* from  organizations_members full outer join organizations on organizations_members.organization_id = organizations.organization_id where organizations.name=?;";
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, orgName);
+			ResultSet res = ps.executeQuery();
+			l = new ArrayList<Manager>();
+			while(res.next())
+				l.add(ManagersDAO.getInstance(connection).getById(res.getLong("manager_id")));
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return l;
+	}
+	
 	private Organization createOrganization(ResultSet res) throws SQLException {
-		return new Organization(res.getLong("organization_id"),res.getString("name"),res.getString("description"),res.getLong("creator_id"));
+		return new Organization(res.getLong("organization_id"),res.getString("name"),res.getString("description"),res.getLong("creator_id"), res.getString("banner"));
 	}
 }

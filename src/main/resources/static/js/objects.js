@@ -16,14 +16,12 @@ function UserLogIn(username, password){
 	this.password = password;
 }
 
-function Organization(organizationId, organizationName, description, creatorId) {
-	this.organizationId = organizationId;
+function Organization(organizationName, banner) {
 	this.organizationName = organizationName;
-	this.description = description;
-	this.creatorId = creatorId;
+	this.banner = banner;
 }
 
-function Tournament(name,date,description,rules,schedule,gameName,sponsor,prizes,logo){
+function Tournament(name,date,description,rules,schedule,gameName,sponsor,prizes,logo,numOfAttendees){
 	this.name = name;
 	this.date = date;
 	this.description = description;
@@ -33,4 +31,5 @@ function Tournament(name,date,description,rules,schedule,gameName,sponsor,prizes
 	this.sponsor = sponsor;
 	this.prized = prizes;
 	this.logo = logo;
+	this.numOfAttendees = numOfAttendees;
 }

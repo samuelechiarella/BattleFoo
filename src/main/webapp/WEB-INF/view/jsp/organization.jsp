@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css/organization.css">
 <script src="js/organization.js"></script>
-<jsp:include page="resources.jsp"></jsp:include>
 </head>
 <body>
     <jsp:include page="background.jsp"></jsp:include>
@@ -18,10 +17,10 @@
         <li id="liveTab" class="tab" onclick="setActive('liveTab')">LIVE</li>
     </ul>
     
-    <div class="tabs-contents">
+    <div class="tabs-contents do-not-hide-create-tournament">
 	    
 	    <div id="homeContent" class="tab-content active">
-	      <img id="organizationBanner" src="https://img.search.brave.com/bg8y4g6v_9rMlzYQh1sy-ggkVPPL6uc7P0cm3AWJbMc/rs:fit:600:240:1/g:ce/aHR0cDovL25lcmRy/ZWFjdG9yLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAxNC8w/Ny9MZWFndWUtb2Yt/TGVnZW5kcy1CYW5u/ZXIucG5n" alt="Organization Logo">
+	      <img id="organizationBanner" src="${organization.banner}" alt="Organization Logo">
 	      <h1>${organization.organizationName}</h1>
 	      <div id="org-info">
 	          <div id="org-description">
@@ -32,9 +31,37 @@
 	      </div>
 	    </div>
 	    
-	    <div id="tournamentsContent" class="tab-content">
+	    <div id="tournamentsContent" class="tab-content do-not-hide-create-tournament">
 	      <h1>TOURNAMENTS</h1>
-	      <p>Some information about tournaments</p>
+	      <table class="tournamentsTable">
+	          <tr>
+	          	<th>Category</th>
+	            <th>Name</th>
+	          </tr>
+	          
+	          <jstl:forEach items="${tournamentsList}" var="tournament">
+		          <tr>
+		            <td>
+		            
+			            <jstl:forEach items="${gamesList}" var="game">
+			            	<jstl:if test="${game.name eq tournament.gameName}">
+			            		<img src="${game.logo}">
+			            	</jstl:if>
+			            </jstl:forEach>
+		            
+		            </td>
+		            <td>${tournament.name}</td>
+		          </tr>
+	           </jstl:forEach>
+	           
+	      </table>
+		  <!-- Create Tournament Panel -->
+	      <jsp:include page="createTournament.jsp"></jsp:include>
+	      
+	      <div class="createTournamentBtn">
+	      	<button onclick="openCreateTournament()">Create Tournament</button>
+	      </div>
+	  		 
 	    </div>
 	    
 	    <div id="staffContent" class="tab-content">

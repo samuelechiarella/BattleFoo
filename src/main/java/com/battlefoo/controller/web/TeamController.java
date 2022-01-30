@@ -14,8 +14,8 @@ public class TeamController {
 	public String getTeamPage(HttpServletRequest req) {
 		if(req.getSession(true).getAttribute("loggedUser")==null)
 			return "index";
-		CommonMethods.updateTeamsAttribute(req, false);
-		CommonMethods.updateOrganizationsAttribute(req, false);
+		CommonMethods.updateTeamsAttribute(req);
+		CommonMethods.updateOrganizationsAttribute(req);
 		return "teamPage";
 	}
 }

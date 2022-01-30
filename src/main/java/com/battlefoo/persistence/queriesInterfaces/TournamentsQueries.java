@@ -9,5 +9,6 @@ public interface TournamentsQueries {
 	public Tournament getByTournamentName(String tournamentName);
 	public boolean exists(String tournamentName);
 	public Tournament getByCreatorUsername(String username);
-	public boolean insertTournament(Tournament tournament);
+	public boolean insertTournament(Tournament tournament, Long organizationId);
+	public List<Tournament> getByOrganizationId(Long organizationId);
 }

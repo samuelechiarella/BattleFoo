@@ -12,4 +12,7 @@ public interface OrganizationsQueries {
 	public List<Organization> getAllByCreatorId(long creatorId);
 	public boolean insertMember(Manager creator, Organization organization, Manager newMember);
 	public List<Organization> getAllByManagerId(long managerId);
+	public Organization getById(Long orgId, Long creatorId);
+	public boolean insertOrganization(Organization org);
+	public List<Manager> getMembersByOrgName(String orgName);
 }
