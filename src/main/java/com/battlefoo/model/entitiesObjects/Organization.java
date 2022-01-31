@@ -28,4 +28,11 @@ public class Organization {
 	
 	@NonNull
 	private Long creatorId;
+	
+	private String banner;
+
+	public Organization(@NonNull String organizationName, String banner) {
+		this.organizationName = organizationName;
+		this.banner = banner;
+	}
 }

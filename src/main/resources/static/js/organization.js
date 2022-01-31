@@ -34,7 +34,7 @@ function addMember() {
 					break;
 			}
 		}, 
-        error: function(err){console.log("err")}
+        error: function(err){console.log(err)}
     });
 }
 

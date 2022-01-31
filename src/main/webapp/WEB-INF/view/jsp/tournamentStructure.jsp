@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,9 +22,7 @@
     <div class="overview_box">
       <div id="overview" data-tab-content class="active overview">
         <h1>${tournament.name}</h1>
-        <img src="images/games_banner_index/r6Wallpaper.jpg" alt="PLACEHOLDER_IMG">
-        <p>This is the tournament's home</p>
-        <br></br>
+        <img src="${tournament.logo}">
       </div>
       <!-- Tab links -->
       <div class="sub-tab">
@@ -39,21 +39,24 @@
       <!-- Tab content -->
       <div id="Details-content" class="tabcontent">
         <h3>Details</h3>
-        <p>some details about the tournament.</p>
+        <textarea readonly>${tournament.description}</textarea>
       </div>
 
       <div id="Rules-content" class="tabcontent">
         <h3>Rules</h3>
-        <p>tournament's rules.</p>
+        <textarea readonly>${tournament.rules}</textarea>
       </div>
       
       <div id="Schedule-content" class="tabcontent">
         <h3>Schedule</h3>
-        <p>tournament's Schedule.</p>
+        <textarea readonly>${tournament.schedule}</textarea>
       </div>
 
       <div id="Prizes-content" class="tabcontent">
+      	
       	<div class="tournament-match">
+      		
+      		<jstl:if test="${not empty match}">
 		    <div class="top-bar">
 		      <div class="match-team">
 		        <div class="team1">
@@ -69,7 +72,8 @@
 		        </div>
 		      </div>
 		    </div>
-		
+			</jstl:if>
+		    
 		    <div class="match-chat">
 		      <div class="match-text">
 		        <textarea readonly>asdasdasasd asd</textarea>

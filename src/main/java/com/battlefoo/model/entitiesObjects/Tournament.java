@@ -17,7 +17,7 @@ import lombok.ToString;
 public class Tournament {
 	
 	@NonNull
-	private String tournamentId;
+	private Long tournamentId;
 	
 	@NonNull
 	private String name;
@@ -40,8 +40,11 @@ public class Tournament {
 	@NonNull
 	private Long managerId;
 	
+	@NonNull
+	private Integer numOfAttendees;
+	
 	public Tournament(String name, Date date, String description, String rules, String schedule,
-					String gameName, String sponsor, String logo) {
+					String gameName, String sponsor, String logo, Integer numOfAttendees) {
 		this.name = name;
 		this.date = date;
 		this.description = description;
@@ -50,10 +53,11 @@ public class Tournament {
 		this.gameName = gameName;
 		this.sponsor = sponsor;
 		this.logo = logo;
+		this.numOfAttendees = numOfAttendees;
 	}
 	
 	public Tournament(String name, String date, String description, String rules, String schedule,
-			String gameName, String sponsor, String logo) {
+			String gameName, String sponsor, String logo, Integer numOfAttendees) {
 		this.name = name;
 		this.date = new Date(date);
 		this.description = description;
@@ -62,6 +66,22 @@ public class Tournament {
 		this.gameName = gameName;
 		this.sponsor = sponsor;
 		this.logo = logo;
+		this.numOfAttendees = numOfAttendees;
+	}
+	
+	public Tournament(String name, String date, String description, String rules, String schedule,
+			String gameName, String sponsor, String logo, Long managerId, Long tournamentId, Integer numOfAttendees) {
+		this.name = name;
+		this.date = new Date(date);
+		this.description = description;
+		this.rules = rules;
+		this.schedule = schedule;
+		this.gameName = gameName;
+		this.sponsor = sponsor;
+		this.logo = logo;
+		this.managerId = managerId;
+		this.tournamentId = tournamentId;
+		this.numOfAttendees = numOfAttendees;
 	}
 
 	@Override

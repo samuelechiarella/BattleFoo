@@ -28,17 +28,19 @@ public class HomePage {
 			}
 			return "index";
 		}
-		CommonMethods.updateTeamsAttribute(req, false);
-		CommonMethods.updateOrganizationsAttribute(req, false);
+		CommonMethods.updateTeamsAttribute(req);
+		CommonMethods.updateOrganizationsAttribute(req);
 		CommonMethods.updateGamesAttribute(req);
 		return "index";
 	}
 	
 	@GetMapping("/index")
 	public String getHomePage2(HttpServletRequest req) {
-		CommonMethods.updateTeamsAttribute(req, false);
-		CommonMethods.updateOrganizationsAttribute(req, false);
-		CommonMethods.updateGamesAttribute(req);
+		if(req.getSession(true).getAttribute("loggedUser")!=null) {
+			CommonMethods.updateTeamsAttribute(req);
+			CommonMethods.updateOrganizationsAttribute(req);
+			CommonMethods.updateGamesAttribute(req);
+		}
 		return "index";
 	}
 }

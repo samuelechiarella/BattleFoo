@@ -1,30 +1,27 @@
-function storeTeam() {
+function storeOrganization() {
 	$(document).ready(function(){
-		let newTeam = new Team($("#nicknameOrganization").val(), $("#img-banner").attr("src"));
+		let newOrganization = new Organization($("#nicknameOrganization").val(), $("#img-banner").attr("src"));
 		$.ajax({
 			type: "POST",
 			url: "/createOrganization",
 			contentType: "application/json",
-			data: JSON.stringify(newTeam),
+			data: JSON.stringify(newOrganization),
 			success: function(answer){
 				switch(answer.responseCode){
-						case 501:
-							openPopup("nameTakenPopup");
-							console.log(answer.responseMessage);
-							break;
-						case 502:
-							openPopup("teamNameNotFilledPopup");
-							console.log(answer.responseMessage);
-							break;
-						case 503:
-							openPopup("constraintsNotSatisfiedPopup");
-							console.log(answer.responseMessage);
-							break;
-						default:
-							console.log("TEAM CREATED");
-							location.reload(true);
-							break;
-					};
+					case 501:
+						alert(answer.responseMessage);
+						break;
+					case 502:
+						alert(answer.responseMessage);
+						break;
+					case 503:
+						alert(answer.responseMessage);
+						break;
+					default:
+						console.log(answer.message);
+						location.href = "/organizationPage";
+						break;
+				};
 			},
 			error: function(err){
 				console.log("CREATE TEAM ERROR");
@@ -43,4 +40,23 @@ function getOrgImg(input) {
 			$("#img-banner").attr("src",reader.result);
 		};
 	}
+}
+
+function openOrganizationPage(organizationId, creatorId){
+	let orgIdAndCreatorId = [organizationId, creatorId];
+	$.ajax({
+		type: "POST",
+		url: "/organizationPage",
+		contentType: "application/json",
+		data: JSON.stringify(orgIdAndCreatorId),
+		success: function(answer){
+			if(answer.responseCode==200){
+				location.href = "/organizationPage";
+			}
+			console.log(answer.responseMessage);
+		},
+		error: function(err){
+			console.log(err);
+		}
+	});
 }

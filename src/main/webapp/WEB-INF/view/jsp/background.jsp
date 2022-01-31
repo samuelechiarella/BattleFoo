@@ -36,13 +36,7 @@
 			      <a href="/testDB">Test Database</a>
 			    </div>
 			    <div class="side-elem">
-			      <a href="/testChat">Test Chat</a>
-			    </div>
-			    <div class="side-elem">
 			      <a href="/tournamentStructure">Tournament Structure</a>
-			    </div>
-			    <div class="side-elem">
-			    	<a href="#" onclick="openCreateTournament()">Crea Torneo</a>
 			    </div>
 			    <div class="side-elem profile-logout-buttons sidebar-log-buttons">
 			      <a id="profileButton" href="#">${loggedUser}</a>
@@ -69,7 +63,7 @@
 						<!-- lista organizzazioni -->
 						<jstl:forEach items="${organizationsList}" var="org">
 						 	<div class="side-elem">
-								<span onclick="openOrganizationPage('${org.organizationId}','${org.organizationName}','${org.description}','${org.creatorId}')">${org.organizationName}</span>
+								<span onclick="openOrganizationPage('${org.organizationId}','${org.creatorId}')">${org.organizationName}</span>
 							</div>
 						</jstl:forEach>
 					</div>
@@ -116,7 +110,7 @@
 		      </div>
 		      <div class="form-elem organization-banner">
 		        <img id="img-banner">
-		        <label class="label-button" for="choose-banner">Logo</label>
+		        <label class="label-button" for="choose-banner">Banner</label>
 		        <input id="choose-banner" type="file" accept="image/*" onchange="getOrgImg(this)">
 		      </div>
 		      <div class="form-elem btns">
@@ -189,9 +183,6 @@
 		    <input type="password" id="signupManagerPassword" class="do-not-hide clear-sign-up-manager" name="signupPassword" placeholder="Password">
 	    	<button class="do-not-hide" onclick="signupAsManager()">Submit</button>
 	 	</div>
-  		
-  		<!-- Create Tournament Panel -->
-  		<jsp:include page="createTournament.jsp"></jsp:include>
   		
 	</body>
 </html>

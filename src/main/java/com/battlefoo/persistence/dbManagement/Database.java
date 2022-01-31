@@ -15,6 +15,8 @@ import com.battlefoo.persistence.jdbc.TeamsDAO;
 import com.battlefoo.persistence.jdbc.TournamentsDAO;
 import com.battlefoo.persistence.jdbc.UsersDAO;
 
+import lombok.NonNull;
+
 public class Database {
 	
 	private Connection connection;
@@ -155,6 +157,10 @@ public class Database {
 	public List<Manager> getOrganizationMembersById(Long id) {
 		return OrganizationsDAO.getInstance(connection).getMembersByOrganizationId(id);
 	}
+	
+	public List<Manager> getOrganizationMembersByOrgName(String orgName) {
+		return OrganizationsDAO.getInstance(connection).getMembersByOrgName(orgName);
+	}
 
 	public List<Organization> getMyOrganizations(String username) {
 		Manager manager = Database.getInstance().getManagerByUsername(username);
@@ -187,8 +193,8 @@ public class Database {
 		return true;
 	}
 
-	public boolean insertTournament(Tournament tournament) {
-		return TournamentsDAO.getInstance(connection).insertTournament(tournament);
+	public boolean insertTournament(Tournament tournament, Long organizationId) {
+		return TournamentsDAO.getInstance(connection).insertTournament(tournament, organizationId);
 	}
 
 	public boolean editTeamDescription(Team team, String description) {
@@ -201,5 +207,17 @@ public class Database {
 
 	public String[][] getTeamsByPhase(int numeroPartite, Long tournamentId) {
 		return MatchesDAO.getInstance(connection).getTeamsByPhase(numeroPartite, tournamentId);
+	}
+
+	public Organization getOrganizationById(Long orgId, Long creatorId) {
+		return OrganizationsDAO.getInstance(connection).getById(orgId, creatorId);
+	}
+
+	public boolean insertOrganization(Organization org) {
+		return OrganizationsDAO.getInstance(connection).insertOrganization(org);
+	}
+
+	public List<Tournament> getTournamentsByOrganizationId(Long organizationId) {
+		return TournamentsDAO.getInstance(connection).getByOrganizationId(organizationId);
 	}
 }

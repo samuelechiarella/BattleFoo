@@ -51,13 +51,65 @@ public class TeamRestController {
 		if(obj instanceof String) {
 			user = (String)obj;
 		}
-		Response response = createCreateTeamResponse(team,user);
+		Response response = createCreateTeamResponse(req, team, user);
 		
 		if(response.getResponseCode()==200)
-			CommonMethods.updateTeamsAttribute(req, true);
+			CommonMethods.updateTeamsAttribute(req);
 		else
-			CommonMethods.updateTeamsAttribute(req, false);
+			CommonMethods.updateTeamsAttribute(req);
 		return response;
+	}
+	
+	private Response createCreateTeamResponse(HttpServletRequest req, Team team, String loggedUser) {
+		Response res = new Response(Response.failure,"Storing failed");
+		team.setLeaderId(Database.getInstance().getPlayerByUsername(loggedUser).getPlayerId());
+		if(usernameAccepted(team.getTeamName())) {
+			if(!Database.getInstance().teamExists(team.getTeamName())) {
+				if(team.getLogo() != null) {
+					// storing logo into a text file named as below
+					BufferedWriter writer;
+					String imgFileName = new Date().getTime() + ".txt";
+					try {
+						writer = new BufferedWriter(new FileWriter(new File(ServerPaths.TEAMS_LOGOS_PATH, imgFileName)));
+						writer.write(team.getLogo());
+						writer.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					//*******************************************
+					
+					req.getSession(true).setAttribute("team", team);
+					
+					// setting the team logo as the path to the text file instead
+					team.setLogo(ServerPaths.TEAMS_LOGOS_PATH + imgFileName);
+				}
+				else {
+					team.setLogo(ServerPaths.DEFAULT_TEAM_LOGO);
+					req.getSession(true).setAttribute("team", team);
+				}
+				Database.getInstance().insertTeam(team);
+				Database.getInstance().insertTeamMember(team, loggedUser);
+				List<Player> membersList = Database.getInstance().getAllTeamMembers(team.getTeamName());
+				req.getSession(true).setAttribute("teamMembersList", membersList);
+				res.setResponseCode(Response.success);
+				res.setResponseMessage("Team successfully stored");
+			}
+			else {
+				res.setResponseCode(501);// team name already taken
+				res.setResponseMessage("Team name already taken!");
+			}
+		}
+		else {
+			if(team.getTeamName().isEmpty()) {
+				res.setResponseCode(502);
+				res.setResponseMessage("Team name field is not filled!");
+			}
+			else {
+				res.setResponseCode(503);
+				res.setResponseMessage("Constraints not satisfied!");
+			}
+		}
+		return res;
 	}
 	
 	@PostMapping("/teamPage")
@@ -128,51 +180,7 @@ public class TeamRestController {
 		return res;
 	}
 
-	private Response createCreateTeamResponse(Team team, String loggedUser) {
-		Response res = new Response(Response.failure,"Storing failed");
-		if(usernameAccepted(team.getTeamName())) {
-			if(!Database.getInstance().teamExists(team.getTeamName())) {
-				if(team.getLogo() != null) {
-					// storing logo into a text file named as below
-					BufferedWriter writer;
-					String imgFileName = new Date().getTime() + ".txt";
-					try {
-						writer = new BufferedWriter(new FileWriter(new File(ServerPaths.TEAMS_LOGOS_PATH, imgFileName)));
-						writer.write(team.getLogo());
-						writer.close();
-					} catch (IOException e) {
-						System.out.println("***********************************ManageTeam.java ERROR createTeam***********************************");
-					}
-					//*******************************************
-					
-					// setting the team logo as the path to the text file instead
-					team.setLogo(ServerPaths.TEAMS_LOGOS_PATH + imgFileName);
-				}
-				else {
-					team.setLogo(ServerPaths.DEFAULT_LOGO);
-				}
-				team.setLeaderId(Database.getInstance().getPlayerByUsername(loggedUser).getPlayerId());
-				Database.getInstance().insertTeam(team);
-				res.setResponseCode(Response.success);
-				res.setResponseMessage("Team successfully stored");
-			}
-			else {
-				res.setResponseCode(501);// team name already taken
-				res.setResponseMessage("Team name already taken!");
-			}
-		}
-		else {
-			if(team.getTeamName().isEmpty()) {
-				res.setResponseCode(502);
-				res.setResponseMessage("Team name field is not filled!");
-			}
-			else {
-				res.setResponseCode(503);
-				res.setResponseMessage("Constraints not satisfied!");
-			}
-		}
-		return res;
-	}
+	
 	
 	private Response createTeamPageResponse(HttpServletRequest req, String teamName) {
 		Response res = new Response(Response.failure,"Creating Team Page failed!");
@@ -180,13 +188,13 @@ public class TeamRestController {
 		if(team != null) {
 			List<Player> teamMembersList = Database.getInstance().getAllTeamMembers(teamName);
 			if(teamMembersList != null) {
-				if(team.getLogo().compareTo(ServerPaths.DEFAULT_LOGO)!=0) {
+				if(team.getLogo().compareTo(ServerPaths.DEFAULT_TEAM_LOGO)!=0) {
 					try {
 						BufferedReader br =  new BufferedReader(new FileReader(team.getLogo()));
 						team.setLogo(br.readLine());
 						br.close();
 					} catch (IOException e) {
-						System.out.println("ERROR IN COMMON METHODS CREATE TEAM IO EXCEPTION");
+						e.printStackTrace();
 					}
 				}
 				for(Player p : teamMembersList) {
@@ -196,7 +204,7 @@ public class TeamRestController {
 							p.setProfilePicture(br.readLine());
 							br.close();
 						} catch (IOException e) {
-							System.out.println("ERROR IN COMMON METHODS CREATE TEAM IO EXCEPTION");
+							e.printStackTrace();
 						}
 					}
 				}
