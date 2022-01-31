@@ -9,16 +9,16 @@
 </head>
 <body>
     <jsp:include page="background.jsp"></jsp:include>
-    
+
     <ul class="tabs">
         <li id="homeTab" class="active tab" onclick="setActive('homeTab')">HOME</li>
         <li id="tournamentsTab" class="tab" onclick="setActive('tournamentsTab')">TOURNAMENTS</li>
         <li id="staffTab" class="tab" onclick="setActive('staffTab')">STAFF</li>
         <li id="liveTab" class="tab" onclick="setActive('liveTab')">LIVE</li>
     </ul>
-    
+
     <div class="tabs-contents do-not-hide-create-tournament">
-	    
+
 	    <div id="homeContent" class="tab-content active">
 	      <img id="organizationBanner" src="${organization.banner}" alt="Organization Logo">
 	      <h1>${organization.organizationName}</h1>
@@ -30,7 +30,7 @@
 	          <button id="editOrganizationDescription">Edit</button>
 	      </div>
 	    </div>
-	    
+
 	    <div id="tournamentsContent" class="tab-content do-not-hide-create-tournament">
 	      <h1>TOURNAMENTS</h1>
 	      <table class="tournamentsTable">
@@ -38,32 +38,32 @@
 	          	<th>Category</th>
 	            <th>Name</th>
 	          </tr>
-	          
+
 	          <jstl:forEach items="${tournamentsList}" var="tournament">
 		          <tr>
 		            <td>
-		            
+
 			            <jstl:forEach items="${gamesList}" var="game">
 			            	<jstl:if test="${game.name eq tournament.gameName}">
 			            		<img src="${game.logo}">
 			            	</jstl:if>
 			            </jstl:forEach>
-		            
+
 		            </td>
 		            <td>${tournament.name}</td>
 		          </tr>
 	           </jstl:forEach>
-	           
+
 	      </table>
 		  <!-- Create Tournament Panel -->
 	      <jsp:include page="createTournament.jsp"></jsp:include>
-	      
+
 	      <div class="createTournamentBtn">
 	      	<button onclick="openCreateTournament()">Create Tournament</button>
 	      </div>
-	  		 
+
 	    </div>
-	    
+
 	    <div id="staffContent" class="tab-content">
 	      <h1>STAFF</h1>
 	      <p>Let me tell you about our staff</p>
@@ -72,26 +72,26 @@
 	            <th></th>
 	            <th>Name</th>
 	          </tr>
-	          
+
 	          <jstl:forEach items="${staff}" var="member">
 		          <tr>
 		            <td><img src="${member.profilePicture}"></td>
 		            <td>${member.username}</td>
 		          </tr>
 	           </jstl:forEach>
-	           
+
 	      </table>
-	      
+
 	      <jstl:if test="${organization.creatorId eq loggedManager.managerId}">
 		      <input type="text" id="newMember">
 		      <button onclick="addMember()">Add Member</button>
 	      </jstl:if>
-	      
+
 	    </div>
 	    <div id="liveContent" class="tab-content">
 	      <h1>LIVE</h1>
 	      <p>Here will be implemented live stream</p>
-	     
+
 	      <!-- Load the Twitch embed JavaScript file -->
 	      <script src="https://embed.twitch.tv/embed/v1.js"></script>
 	      <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
