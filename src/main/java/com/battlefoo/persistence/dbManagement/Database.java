@@ -3,6 +3,7 @@ package com.battlefoo.persistence.dbManagement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import com.battlefoo.DatabaseNames;
 import com.battlefoo.model.entitiesObjects.*;
@@ -145,9 +146,9 @@ public class Database {
 		return OrganizationsDAO.getInstance(connection).insertMember(creator, currentOrg, newMember);
 	}
 
-	public List<Team> getTeamsByPlayer(String leaderUsername) {
-		Player leader = PlayersDAO.getInstance(connection).getByUsername(leaderUsername);
-		return TeamsDAO.getInstance(connection).getAllByLeaderId(leader.getPlayerId());
+	public List<Team> getTeamsByPlayerUsername(String username) {
+		Player player = PlayersDAO.getInstance(connection).getByUsername(username);
+		return TeamsDAO.getInstance(connection).getAllByPlayerId(player.getPlayerId());
 	}
 
 	public Manager getManagerById(Long creatorId) {
@@ -219,5 +220,33 @@ public class Database {
 
 	public List<Tournament> getTournamentsByOrganizationId(Long organizationId) {
 		return TournamentsDAO.getInstance(connection).getByOrganizationId(organizationId);
+	}
+
+	public Tournament getTournamentByTournamentId(Long tournamentId) {
+		return TournamentsDAO.getInstance(connection).getById(tournamentId);
+	}
+
+	public List<Team> getTournamentAttendeesByTournamentId(Long tournamentId) {
+		List<String> attendeesNames = TournamentsDAO.getInstance(connection).getAttendeesById(tournamentId);
+		List<Team> attendees = null;
+		if(attendeesNames != null) {
+			attendees = new ArrayList<Team>();
+			for(String teamName : attendeesNames) {
+				attendees.add(TeamsDAO.getInstance(connection).getByTeamName(teamName));
+			}
+		}
+		return attendees;
+	}
+
+	public List<Team> getTournamentAttendeesByTournamentName(String name) {
+		List<String> attendeesNames = TournamentsDAO.getInstance(connection).getAttendeesByName(name);
+		List<Team> attendees = null;
+		if(attendeesNames != null) {
+			attendees = new ArrayList<Team>();
+			for(String teamName : attendeesNames) {
+				attendees.add(TeamsDAO.getInstance(connection).getByTeamName(teamName));
+			}
+		}
+		return attendees;
 	}
 }

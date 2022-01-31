@@ -11,4 +11,6 @@ public interface TournamentsQueries {
 	public Tournament getByCreatorUsername(String username);
 	public boolean insertTournament(Tournament tournament, Long organizationId);
 	public List<Tournament> getByOrganizationId(Long organizationId);
+	public Tournament getById(Long tournamentId);
+	public List<String> getAttendeesById(Long tounamentId);
 }

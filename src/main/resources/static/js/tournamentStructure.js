@@ -41,3 +41,21 @@ function openTab(evt, tabName) {
   evt.currentTarget.className += " active";
   console.log(evt.currentTarget.className);
 }
+
+function openTournamentPage(tournamentId) {
+	$.ajax({
+		type: "POST",
+		url: "tournamentPage",
+		contentType: "application/json",
+		data: JSON.stringify(tournamentId),
+		success: function(answer){
+			if(answer.responseCode == 200){
+				location.href = "/tounamentPage";
+			}
+			else{
+				console.log(answer.responseMessage);
+			}
+		},
+		error: function(err){ console.log(err); }
+	});
+}

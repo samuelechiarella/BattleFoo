@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.battlefoo.model.entitiesObjects.Manager;
+import com.battlefoo.model.entitiesObjects.Team;
 import com.battlefoo.model.entitiesObjects.Tournament;
 import com.battlefoo.persistence.queriesInterfaces.TournamentsQueries;
 
@@ -52,7 +53,17 @@ public class TournamentsDAO  implements TournamentsQueries{
 
 	@Override
 	public boolean exists(String tournamentName) {
-		// TODO Auto-generated method stub
+		String query = "select * from tournaments where name=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, tournamentName);
+			ResultSet res = ps.executeQuery();
+			if(res.next())
+				return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
 		return false;
 	}
 	
@@ -97,7 +108,6 @@ public class TournamentsDAO  implements TournamentsQueries{
 			ps.setLong(2, organizationId);
 			ps.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -120,11 +130,65 @@ public class TournamentsDAO  implements TournamentsQueries{
 		}
 		return tournaments;
 	}
+	
+	@Override
+	public Tournament getById(Long tournamentId) {
+		Tournament t = null;
+		String query = "select * from tournaments where tournament_id=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, tournamentId);
+			ResultSet res = ps.executeQuery();
+			if(res.next())
+				t = createTournament(res);
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return t;
+	}
+	
+	@Override
+	public List<String> getAttendeesById(Long tounamentId) {
+		List<String> attendees = null;
+		String query = "select team_name from tournaments_attendees where tournament_id=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, tounamentId);
+			ResultSet res = ps.executeQuery();
+			attendees = new ArrayList<String>();
+			while(res.next()) {
+				attendees.add(res.getString("team_name"));
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return attendees;
+	}
+	
+	public List<String> getAttendeesByName(String name) {
+		List<String> attendees = null;
+		String query = "select tournaments_attendees.team_name from tournaments_attendees,tournaments where"
+					+ "tournaments.tournament_id = tournaments_attendees.tournament_id and tournaments.name=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, name);
+			ResultSet res = ps.executeQuery();
+			attendees = new ArrayList<String>();
+			while(res.next()) {
+				attendees.add(res.getString("team_name"));
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return attendees;
+	}
 
 	private Tournament createTournament(ResultSet res) throws SQLException {
 		return new Tournament(res.getString(1),res.getString(2),res.getString(3),
 				res.getString(4),res.getString(5),res.getString(6),res.getString(7),
 				res.getString(8),res.getLong(9),res.getLong(10),res.getInt(11));
 	}
-
 }

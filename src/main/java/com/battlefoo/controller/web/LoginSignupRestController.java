@@ -1,5 +1,7 @@
 package com.battlefoo.controller.web;
 
+import java.util.Enumeration;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +18,11 @@ public class LoginSignupRestController {
 	
 	@GetMapping("/logout")
 	public Response logout(HttpServletRequest req){
-		req.getSession(true).setAttribute("loggedUser", "");
+		Enumeration<String> e = req.getSession(true).getAttributeNames();
+		while(e.hasMoreElements()) {
+			String s = e.nextElement();
+			req.getSession(true).removeAttribute(s);
+		}
 		return new Response(Response.success, "Redirect to index");
 	}
 	
@@ -27,6 +33,7 @@ public class LoginSignupRestController {
 		if(response.getResponseCode()==200) {
 			req.getSession(true).setAttribute("loggedUser", user.getUsername());
 			req.getSession(true).setAttribute("loggedPlayer", Database.getInstance().getPlayerByUsername(user.getUsername()));
+			
 			if(Database.getInstance().managerExists(user.getUsername()))
 				req.getSession(true).setAttribute("loggedManager", Database.getInstance().getManagerByUsername(user.getUsername()));
 		}

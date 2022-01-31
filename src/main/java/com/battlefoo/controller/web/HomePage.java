@@ -29,17 +29,17 @@ public class HomePage {
 			return "index";
 		}
 		CommonMethods.updateTeamsAttribute(req);
-		CommonMethods.updateOrganizationsAttribute(req);
 		CommonMethods.updateGamesAttribute(req);
+		CommonMethods.updateOrganizationsAttribute(req);
 		return "index";
 	}
 	
 	@GetMapping("/index")
 	public String getHomePage2(HttpServletRequest req) {
-		if(req.getSession(true).getAttribute("loggedUser")!=null) {
+		if(req.getSession(true).getAttribute("loggedUser") != null) {
 			CommonMethods.updateTeamsAttribute(req);
-			CommonMethods.updateOrganizationsAttribute(req);
 			CommonMethods.updateGamesAttribute(req);
+			CommonMethods.updateOrganizationsAttribute(req);
 		}
 		return "index";
 	}

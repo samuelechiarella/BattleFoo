@@ -95,7 +95,7 @@ public class OrganizationsDAO implements OrganizationsQueries {
 	@Override
 	public List<Organization> getAllByManagerId(long managerId) {
 		List<Organization> l = null;
-		String query = "select organizations.* from managers full outer join organizations on managers.manager_id = organizations.creator_id where manager_id=?;";
+		String query = "select organizations.* from managers,organizations, organizations_members where managers.manager_id = organizations_members.manager_id and organizations.organization_id = organizations_members.organization_id and managers.manager_id=?;";
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
 			ps.setLong(1, managerId);

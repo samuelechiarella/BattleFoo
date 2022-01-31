@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,6 +17,7 @@ import com.battlefoo.ServerPaths;
 import com.battlefoo.model.Response;
 import com.battlefoo.model.entitiesObjects.Manager;
 import com.battlefoo.model.entitiesObjects.Organization;
+import com.battlefoo.model.entitiesObjects.Team;
 import com.battlefoo.model.entitiesObjects.Tournament;
 import com.battlefoo.persistence.dbManagement.Database;
 
@@ -33,57 +35,83 @@ public class TournamentRestController {
 		Manager creator = (Manager)req.getSession(true).getAttribute("loggedManager");
 		
 		if(creator != null) {
-			tournament.setManagerId(creator.getManagerId());
-			//set tournament logo and sponsor banner
-			if(tournament.getLogo() != null) {
-				BufferedWriter writer;
-				String imgFileName = new Date().getTime() + ".txt";
-				try {
-					writer = new BufferedWriter(new FileWriter(new File(ServerPaths.TOURNAMENTS_LOGOS_PATH, imgFileName)));
-					writer.write(tournament.getLogo());
-					writer.close();
-				} catch (IOException e) {
-					e.printStackTrace();
+			if(Database.getInstance().tournamentExists(tournament.getName())) {
+				tournament.setManagerId(creator.getManagerId());
+				//set tournament logo and sponsor banner
+				if(tournament.getLogo() != null) {
+					BufferedWriter writer;
+					String imgFileName = new Date().getTime() + ".txt";
+					try {
+						writer = new BufferedWriter(new FileWriter(new File(ServerPaths.TOURNAMENTS_LOGOS_PATH, imgFileName)));
+						writer.write(tournament.getLogo());
+						writer.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					
+					req.getSession(true).setAttribute("tournament", tournament);
+					
+					// setting the team logo as the path to the text file instead
+					tournament.setLogo(ServerPaths.TOURNAMENTS_LOGOS_PATH + imgFileName);
+				}
+				else {
+					tournament.setLogo(ServerPaths.DEFAULT_ORGANIZATION_BANNER);
+					req.getSession(true).setAttribute("tournament", tournament);
 				}
 				
-				req.getSession(true).setAttribute("tournament", tournament);
-				
-				// setting the team logo as the path to the text file instead
-				tournament.setLogo(ServerPaths.TOURNAMENTS_LOGOS_PATH + imgFileName);
-			}
-			else {
-				tournament.setLogo(ServerPaths.DEFAULT_ORGANIZATION_BANNER);
-				req.getSession(true).setAttribute("tournament", tournament);
-			}
-			
-			if(tournament.getSponsor() != null) {
-				BufferedWriter writer;
-				String imgFileName = new Date().getTime() + ".txt";
-				try {
-					writer = new BufferedWriter(new FileWriter(new File(ServerPaths.TOURNAMENTS_SPONSORS_PATH, imgFileName)));
-					writer.write(tournament.getSponsor());
-					writer.close();
-				} catch (IOException e) {
-					e.printStackTrace();
+				if(tournament.getSponsor() != null) {
+					BufferedWriter writer;
+					String imgFileName = new Date().getTime() + ".txt";
+					try {
+						writer = new BufferedWriter(new FileWriter(new File(ServerPaths.TOURNAMENTS_SPONSORS_PATH, imgFileName)));
+						writer.write(tournament.getSponsor());
+						writer.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					
+					req.getSession(true).setAttribute("tournament", tournament);
+					
+					// setting the team logo as the path to the text file instead
+					tournament.setSponsor(ServerPaths.TOURNAMENTS_SPONSORS_PATH + imgFileName);
+				}
+				else {
+					tournament.setSponsor(ServerPaths.DEFAULT_ORGANIZATION_BANNER);
+					req.getSession(true).setAttribute("tournament", tournament);
 				}
 				
-				req.getSession(true).setAttribute("tournament", tournament);
-				
-				// setting the team logo as the path to the text file instead
-				tournament.setSponsor(ServerPaths.TOURNAMENTS_SPONSORS_PATH + imgFileName);
+				if(Database.getInstance().insertTournament(tournament,((Organization)req.getSession(true).getAttribute("organization")).getOrganizationId() )) {
+					List<Team> tournamentAttendees = Database.getInstance().getTournamentAttendeesByTournamentName(tournament.getName());
+					req.getSession(true).setAttribute("tournamentAttendees", tournamentAttendees);
+					res.setResponseCode(200);
+					res.setResponseMessage("Tournament stored");
+				}
 			}
 			else {
-				tournament.setSponsor(ServerPaths.DEFAULT_ORGANIZATION_BANNER);
-				req.getSession(true).setAttribute("tournament", tournament);
-			}
-			
-			if(Database.getInstance().insertTournament(tournament,((Organization)req.getSession(true).getAttribute("organization")).getOrganizationId() )) {
-				res.setResponseCode(200);
-				res.setResponseMessage("Tournament stored");
+				res.setResponseMessage("Tournament Name already exists!");
 			}
 		}
 		else{
 			System.out.println("CREATORI ID IS NULL TOURNAMENT REST CONTROLLER CREATE TOURNAMENT");
+		}
+		return res;
+		
+	}
+	
+	@PostMapping("/tournamentPage")
+	public Response getTournamentPage(HttpServletRequest req, @RequestBody Long tournamentId) {
+		return createResponseTournamentPage(req,tournamentId);
+	}
+
+	private Response createResponseTournamentPage(HttpServletRequest req, Long tournamentId) {
+		Response res = new Response(Response.failure, "Getting tournament page failed!");
+		Tournament t = Database.getInstance().getTournamentByTournamentId(tournamentId);
+		if(t!=null) {
+			List<Team> tournamentAttendees = Database.getInstance().getTournamentAttendeesByTournamentId(tournamentId);
+			req.getSession(true).setAttribute("tournamentAttendees", tournamentAttendees);
+			req.getSession(true).setAttribute("tournament", t);
+			res.setResponseCode(200);
+			res.setResponseMessage("Tournament page has been returned");
 		}
 		return res;
 	}

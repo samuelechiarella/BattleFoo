@@ -115,12 +115,12 @@ public class TeamsDAO implements TeamsQueries {
 	}
 	
 	@Override
-	public List<Team> getAllByLeaderId(long leaderId) {
+	public List<Team> getAllByPlayerId(long playerId) {
 		List<Team> l = null;
-		String query = "select * from teams where leader_id=?;";
+		String query = "select * from teams,teams_members,players where teams.team_name = teams_members.team_name and players.player_id = teams_members.player_id and players.player_id=?;";
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
-			ps.setLong(1, leaderId);
+			ps.setLong(1, playerId);
 			ResultSet res = ps.executeQuery();
 			l = new ArrayList<Team>();
 			while(res.next())

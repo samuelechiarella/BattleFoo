@@ -22,7 +22,7 @@ public class CommonMethods {
 			return;
 		
 		// otherwise ask db for all the teams
-		teams = Database.getInstance().getTeamsByPlayer((String)session.getAttribute("loggedUser"));
+		teams = Database.getInstance().getTeamsByPlayerUsername((String)session.getAttribute("loggedUser"));
 		
 		// the db stored the paths of all the teams logos, but we have wrote
 		// the real base64 logos into many text files who follow THOSE paths, thus we
