@@ -47,6 +47,9 @@
 		    
 		    <!-- ONLY IF THE USER IS NOT LOGGED -->
 		    <jstl:if test="${empty loggedUser}">
+		    
+		    	<div class="side-elem"><a href="/BrowseTournament">bTournament</a></div>
+		    
 			    <div class="side-elem login-signup-buttons sidebar-log-buttons">
 			      <a id="loginButton" href="#" onclick="openLoginSignup('log-in')">Log In</a>
 			      <a id="signupButton" href="#" onclick="openLoginSignup('sign-up')">Sign Up</a>
