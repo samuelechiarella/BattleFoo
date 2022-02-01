@@ -102,11 +102,7 @@
 		    <div class="side-panel-form">
 		      <div class="writings form-elem popup">
 		        <label for="nicknameOrganization">Nickname</label>
-		        <input id="nicknameOrganization" type="text" name="" value="">
-		        <span class="popuptext" id="organizationNameTakenPopup">Organization name already exists!</span>
-		        <span class="popuptext" id="insertOrganizationNamePopup">This field must be filled!</span>
-		        <span class="popuptext" id="organizationNameNotFilledPopup">Organization name field is not filled!</span>
-		        <span class="popuptext" id="organizationNameConstraintsNotSatisfiedPopup">Only letters/numbers/underscores are allowed!</span>
+		        <input id="nicknameOrganization" type="text">
 		      </div>
 		      <div class="form-elem organization-banner">
 		        <img id="img-banner">

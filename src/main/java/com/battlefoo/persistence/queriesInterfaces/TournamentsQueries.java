@@ -2,6 +2,7 @@ package com.battlefoo.persistence.queriesInterfaces;
 
 import java.util.List;
 
+import com.battlefoo.model.entitiesObjects.Team;
 import com.battlefoo.model.entitiesObjects.Tournament;
 
 public interface TournamentsQueries {
@@ -13,4 +14,5 @@ public interface TournamentsQueries {
 	public List<Tournament> getByOrganizationId(Long organizationId);
 	public Tournament getById(Long tournamentId);
 	public List<String> getAttendeesById(Long tounamentId);
+	public boolean insertTeam(Team team, Tournament tournament);
 }

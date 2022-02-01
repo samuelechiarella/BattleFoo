@@ -14,7 +14,6 @@
 		<li data-tab-target="#overview" class="active tab">OVERVIEW</li>
 		<li data-tab-target="#partecipants" class="tab">PARTECIPANTS</li>
 		<li data-tab-target="#brakets" class="tab">BRACKETS</li>
-    <li data-tab-target="#stats" class="tab">STATS</li>
 		<li data-tab-target="#live" class="tab">LIVE</li>
 	</ul>
 
@@ -24,6 +23,36 @@
         <h1>${tournament.name}</h1>
         <img src="${tournament.logo}">
       </div>
+      <jstl:if test="${not empty loggedPlayer}">
+	      <jstl:set var="teamFound" value="false"></jstl:set>
+	      <jstl:forEach items="${tournamentAttendees}" var="team">
+		      <jstl:if test="${team.leaderId eq loggedPlayer.playerId}">
+		      	<jstl:set var="teamFound" value="true"></jstl:set>
+		      </jstl:if>
+	      </jstl:forEach>
+	      
+	      <jstl:if test="${not teamFound}">
+		      <button id="signupTournamentBtn" onclick="openSignupTournament()">Sign Up Tournament</button>
+		      <div class="signup-tournament">
+		     	<img id="teamChoosedForSignup">
+		      	<div class="dropdown">
+					<button class="dropbtn">My Teams</button>
+						<div class="dropdown-content">
+							<jstl:forEach items="${teamsList}" var="team">
+								<jstl:if test="${team.leaderId eq loggedPlayer.playerId}">
+							    	<a href="#" onclick="setImageTeamChoosed('${team.logo}','${team.teamName}')">${team.teamName}</a>
+						    	</jstl:if>
+					    	</jstl:forEach>
+					  	</div>
+			  	</div>
+			  	<div class="confirm-cancel-signup-tournament-btns">
+				  	<button id="confirmSignupTournament" onclick="signupTeam()">Confirm</button>
+				  	<button id="closeSignupTOurnament" onclick="closeSignupTournament()">Cancel</button>
+			  	</div>
+			  </div>
+		  </jstl:if>
+	  </jstl:if>
+	  
       <!-- Tab links -->
       <div class="sub-tab">
         <label for="Details" class="tablinks active" onclick="openTab(event, 'Details-content')">Details</label>
@@ -98,73 +127,20 @@
 		  		<th>Team Logo</th>
 		    	<th>Team Name</th>
 			</tr>
-			<tr>
-				<td>*INSERT TEAM LOGO HERE*</td>
-			  	<td>*INSERT TEAM NAME HERE*</td>
-			</tr>
-			<tr>
-				<td>*INSERT TEAM LOGO HERE*</td>
-			  	<td>*INSERT TEAM NAME HERE*</td>
-			</tr>
-			<tr>
-				<td>*INSERT TEAM LOGO HERE*</td>
-			  	<td>*INSERT TEAM NAME HERE*</td>
-			</tr>
-			<tr>
-				<td>*INSERT TEAM LOGO HERE*</td>
-			  	<td>*INSERT TEAM NAME HERE*</td>
-			</tr>
-			<tr>
-				<td>*INSERT TEAM LOGO HERE*</td>
-			  	<td>*INSERT TEAM NAME HERE*</td>
-			</tr>
-			<tr>
-				<td>*INSERT TEAM LOGO HERE*</td>
-			  	<td>*INSERT TEAM NAME HERE*</td>
-			</tr>
-			<tr>
-				<td>*INSERT TEAM LOGO HERE*</td>
-			  	<td>*INSERT TEAM NAME HERE*</td>
-			</tr>
-			<tr>
-				<td>*INSERT TEAM LOGO HERE*</td>
-			  	<td>*INSERT TEAM NAME HERE*</td>
-			</tr>
-			<tr>
-				<td>*INSERT TEAM LOGO HERE*</td>
-			  	<td>*INSERT TEAM NAME HERE*</td>
-			</tr>
-			<tr>
-				<td>*INSERT TEAM LOGO HERE*</td>
-			  	<td>*INSERT TEAM NAME HERE*</td>
-			</tr>
-			<tr>
-				<td>*INSERT TEAM LOGO HERE*</td>
-			  	<td>*INSERT TEAM NAME HERE*</td>
-			</tr>
-			<tr>
-				<td>*INSERT TEAM LOGO HERE*</td>
-			  	<td>*INSERT TEAM NAME HERE*</td>
-			</tr>
-			<tr>
-				<td>*INSERT TEAM LOGO HERE*</td>
-			  	<td>*INSERT TEAM NAME HERE*</td>
-			</tr>
-			<tr>
-				<td>*INSERT TEAM LOGO HERE*</td>
-			  	<td>*INSERT TEAM NAME HERE*</td>
-			</tr>
+			<jstl:forEach items="${tournamentAttendees}" var="team">
+				<tr>
+					<td><img src="${team.logo}"></td>
+			  		<td>${team.teamName}</td>
+				</tr>
+			</jstl:forEach>
 		</table>
 	  </div>
 	  
     </div>
+    
     <div id="brakets" data-tab-content>
       <h1>BRACKETS</h1>
       <p>Let me tell you about our staff</p>
-    </div>
-    <div id="stats" data-tab-content>
-      <h1>STATS</h1>
-      <p>Give a look to tournament stats</p>
     </div>
     	
 	<div id="live" data-tab-content>

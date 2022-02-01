@@ -253,4 +253,8 @@ public class Database {
 	public Organization getOrganizationByOrganizationName(String organizationName, Long creatorId) {
 		return OrganizationsDAO.getInstance(connection).getByName(organizationName, creatorId);
 	}
+
+	public boolean insertTeamIntoTournament(Team team, Tournament tournament) {
+		return TournamentsDAO.getInstance(connection).insertTeam(team,tournament);
+	}
 }

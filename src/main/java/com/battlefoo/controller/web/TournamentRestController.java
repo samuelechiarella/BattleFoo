@@ -125,10 +125,55 @@ public class TournamentRestController {
 			
 			//*******************************************************************************************************
 			List<Team> tournamentAttendees = Database.getInstance().getTournamentAttendeesByTournamentId(tournamentId);
+			
+			for(Team team : tournamentAttendees) {
+				if(team.getLogo() != null) {
+					try {
+						BufferedReader br =  new BufferedReader(new FileReader(team.getLogo()));
+						team.setLogo(br.readLine());
+						br.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				else
+					team.setLogo(ServerPaths.DEFAULT_TEAM_LOGO);
+			}
+			
 			req.getSession(true).setAttribute("tournamentAttendees", tournamentAttendees);
 			req.getSession(true).setAttribute("tournament", t);
 			res.setResponseCode(200);
 			res.setResponseMessage("Tournament page has been returned");
+		}
+		return res;
+	}
+	
+	@PostMapping("/signupTeam")
+	public Response signupTeam(HttpServletRequest req, @RequestBody String teamName) {
+		Team team = Database.getInstance().getTeamByTeamName(teamName.replace("\"", ""));
+		Tournament tournament = (Tournament)req.getSession(true).getAttribute("tournament");
+		return createSignupTeamResponse(req,team,tournament);
+	}
+
+	private Response createSignupTeamResponse(HttpServletRequest req, Team team, Tournament tournament) {
+		Response res = new Response(Response.failure, "Signing up team failed!");
+		List<Team> attendees = Database.getInstance().getTournamentAttendeesByTournamentId(tournament.getTournamentId());
+		
+		if(tournament.getNumOfAttendees() == attendees.size()) {
+			res.setResponseMessage("Tournament is full!");
+			return res;
+		}
+		
+		for(Team t : attendees) {
+			if(t.getTeamName().compareTo(team.getTeamName()) == 0) {
+				res.setResponseMessage("Team already signed!");
+				return res;
+			}
+		}
+		
+		if(Database.getInstance().insertTeamIntoTournament(team,tournament)) {
+			res.setResponseCode(200);
+			res.setResponseMessage("Team signed");
 		}
 		return res;
 	}

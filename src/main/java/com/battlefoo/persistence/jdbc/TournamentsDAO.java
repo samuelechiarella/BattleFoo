@@ -183,7 +183,7 @@ public class TournamentsDAO  implements TournamentsQueries{
 	public List<String> getAttendeesByName(String name) {
 		List<String> attendees = null;
 		String query = "select tournaments_attendees.team_name from tournaments_attendees,tournaments where"
-					+ "tournaments.tournament_id = tournaments_attendees.tournament_id and tournaments.name=?;";
+					+ " tournaments.tournament_id = tournaments_attendees.tournament_id and tournaments.name=?;";
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
 			ps.setString(1, name);
@@ -203,5 +203,21 @@ public class TournamentsDAO  implements TournamentsQueries{
 		return new Tournament(res.getString(1),res.getString(2),res.getString(3),
 				res.getString(4),res.getString(5),res.getString(6),res.getString(7),
 				res.getString(8),res.getLong(9),res.getLong(10),res.getInt(11));
+	}
+
+	@Override
+	public boolean insertTeam(Team team, Tournament tournament) {
+		String query = "insert into tournaments_attendees values(?,?);";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, team.getTeamName());
+			ps.setLong(2, tournament.getTournamentId());
+			ps.execute();
+			return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
