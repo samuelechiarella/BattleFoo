@@ -65,6 +65,7 @@ public class TeamRestController {
 		team.setLeaderId(Database.getInstance().getPlayerByUsername(loggedUser).getPlayerId());
 		if(usernameAccepted(team.getTeamName())) {
 			if(!Database.getInstance().teamExists(team.getTeamName())) {
+				String base64Image = "";
 				if(team.getLogo() != null) {
 					// storing logo into a text file named as below
 					BufferedWriter writer;
@@ -77,19 +78,24 @@ public class TeamRestController {
 						e.printStackTrace();
 					}
 					//*******************************************
-					
-					req.getSession(true).setAttribute("team", team);
+					base64Image = team.getLogo();
 					
 					// setting the team logo as the path to the text file instead
 					team.setLogo(ServerPaths.TEAMS_LOGOS_PATH + imgFileName);
 				}
 				else {
 					team.setLogo(ServerPaths.DEFAULT_TEAM_LOGO);
-					req.getSession(true).setAttribute("team", team);
 				}
 				Database.getInstance().insertTeam(team);
 				Database.getInstance().insertTeamMember(team, loggedUser);
 				List<Player> membersList = Database.getInstance().getAllTeamMembers(team.getTeamName());
+				
+				if(!base64Image.isEmpty()) {
+					team.setLogo(base64Image);
+				}
+				
+				req.getSession(true).setAttribute("team", team);
+				
 				req.getSession(true).setAttribute("teamMembersList", membersList);
 				res.setResponseCode(Response.success);
 				res.setResponseMessage("Team successfully stored");
