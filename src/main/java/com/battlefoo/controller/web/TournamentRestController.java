@@ -37,7 +37,11 @@ public class TournamentRestController {
 		Manager creator = (Manager)req.getSession(true).getAttribute("loggedManager");
 		
 		if(creator != null) {
-			if(Database.getInstance().tournamentExists(tournament.getName())) {
+			if(!Database.getInstance().tournamentExists(tournament.getName())) {
+				
+				String bannerTournamentBase64Image = "";
+				String bannerSponsorBase64Image = "";
+				
 				tournament.setManagerId(creator.getManagerId());
 				//set tournament logo and sponsor banner
 				if(tournament.getLogo() != null) {
@@ -51,8 +55,7 @@ public class TournamentRestController {
 						e.printStackTrace();
 					}
 					
-					req.getSession(true).setAttribute("tournament", tournament);
-					
+					bannerTournamentBase64Image = tournament.getLogo();
 					// setting the team logo as the path to the text file instead
 					tournament.setLogo(ServerPaths.TOURNAMENTS_LOGOS_PATH + imgFileName);
 				}
@@ -72,7 +75,8 @@ public class TournamentRestController {
 						e.printStackTrace();
 					}
 					
-					req.getSession(true).setAttribute("tournament", tournament);
+					
+					bannerSponsorBase64Image = tournament.getSponsor();
 					
 					// setting the team logo as the path to the text file instead
 					tournament.setSponsor(ServerPaths.TOURNAMENTS_SPONSORS_PATH + imgFileName);
@@ -84,7 +88,16 @@ public class TournamentRestController {
 				
 				if(Database.getInstance().insertTournament(tournament,((Organization)req.getSession(true).getAttribute("organization")).getOrganizationId() )) {
 					List<Team> tournamentAttendees = Database.getInstance().getTournamentAttendeesByTournamentName(tournament.getName());
+					
+					if(!bannerTournamentBase64Image.isEmpty()) {
+						tournament.setLogo(bannerTournamentBase64Image);
+					}
+					if(!bannerSponsorBase64Image.isEmpty()) {
+						tournament.setSponsor(bannerSponsorBase64Image);
+					}
+					
 					req.getSession(true).setAttribute("tournamentAttendees", tournamentAttendees);
+					req.getSession(true).setAttribute("tournament", tournament);
 					res.setResponseCode(200);
 					res.setResponseMessage("Tournament stored");
 				}
@@ -127,7 +140,7 @@ public class TournamentRestController {
 			List<Team> tournamentAttendees = Database.getInstance().getTournamentAttendeesByTournamentId(tournamentId);
 			
 			for(Team team : tournamentAttendees) {
-				if(team.getLogo() != null) {
+				if(team.getLogo().compareTo(ServerPaths.DEFAULT_TEAM_LOGO) != 0) {
 					try {
 						BufferedReader br =  new BufferedReader(new FileReader(team.getLogo()));
 						team.setLogo(br.readLine());

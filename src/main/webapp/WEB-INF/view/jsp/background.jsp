@@ -35,9 +35,6 @@
 			    <div class="side-elem">
 			      <a href="/testDB">Test Database</a>
 			    </div>
-			    <div class="side-elem">
-			      <a href="/tournamentStructure">Tournament Structure</a>
-			    </div>
 			    <div class="side-elem profile-logout-buttons sidebar-log-buttons">
 			      <a id="profileButton" href="#">${loggedUser}</a>
 			      <a id="logoutButton" href="#" onclick="logout()">Logout</a>

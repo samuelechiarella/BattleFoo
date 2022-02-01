@@ -1,6 +1,7 @@
 package com.battlefoo.controller.web;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
@@ -20,6 +21,25 @@ public class TournamentController {
 	@GetMapping("/tournamentPage")
 	public String getTournamentPage(HttpServletRequest req) {
 		Tournament t = (Tournament)  req.getSession(true).getAttribute("tournament");
+		if(t.getLogo().compareTo(ServerPaths.DEFAULT_ORGANIZATION_BANNER) != 0) {
+			try {
+				BufferedReader br =  new BufferedReader(new FileReader(t.getLogo()));
+				t.setLogo(br.readLine());
+				br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		if(t.getSponsor().compareTo(ServerPaths.DEFAULT_ORGANIZATION_BANNER) != 0) {
+			try {
+				BufferedReader br =  new BufferedReader(new FileReader(t.getSponsor()));
+				t.setSponsor(br.readLine());
+				br.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		req.getSession(true).setAttribute("tournament", t);
 		List<Team> tournamentAttendees = Database.getInstance().getTournamentAttendeesByTournamentName(t.getName());
 		for(Team team : tournamentAttendees) {
 			if(team.getLogo().compareTo(ServerPaths.DEFAULT_TEAM_LOGO) != 0) {

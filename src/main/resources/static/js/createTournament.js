@@ -21,7 +21,7 @@ function createTournament() {
 			data: JSON.stringify(tournament),
 			success: function(answer){
 				if(answer.responseCode==200){
-					location.href = "/tournamentStructure";
+					location.href = "/tournamentPage";
 				}
 				else{
 					alert(answer.responseMessage);
