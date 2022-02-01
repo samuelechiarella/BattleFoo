@@ -31,6 +31,7 @@ public class OrganizationRestController {
 	public Response addMember(HttpServletRequest req, @RequestBody String membersUsername) {
 		String currentUser = (String)req.getSession(true).getAttribute("loggedUser");
 		Organization currentOrganization = (Organization)req.getSession(true).getAttribute("organization");
+		
 		Response res = createAddMemberResponse(currentUser, currentOrganization, membersUsername.replace("\"", ""));
 		if(res.getResponseCode()==200) {
 			List<Manager> staff = (List<Manager>)req.getSession(true).getAttribute("staff");
@@ -83,6 +84,9 @@ public class OrganizationRestController {
 			Database.getInstance().insertOrganizationMember(creator.getUsername(), org.getOrganizationName(), creator.getUsername());
 			List<Manager> staff = Database.getInstance().getOrganizationMembersByOrgName(org.getOrganizationName());
 			req.getSession(true).setAttribute("staff", staff);
+			
+			org = Database.getInstance().getOrganizationByOrganizationName(org.getOrganizationName(), org.getCreatorId());
+			
 			req.getSession(true).setAttribute("organization", org);
 			CommonMethods.updateOrganizationsAttribute(req);
 			res.setResponseCode(200);
@@ -107,7 +111,6 @@ public class OrganizationRestController {
 				}
 			}
 		}
-		System.out.println(tournaments);
 		req.getSession(true).setAttribute("tournamentsList", tournaments);
 		req.getSession(true).setAttribute("organization", org);
 		req.getSession(true).setAttribute("staff", staff);

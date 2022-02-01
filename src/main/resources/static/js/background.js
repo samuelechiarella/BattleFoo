@@ -78,3 +78,21 @@ function closeLoginSignup(choice){
   	}
   	document.getElementsByClassName(choice)[0].classList.remove("show-login-signup");
 }
+
+function openTournamentPage(tournamentId) {
+	$.ajax({
+		type: "POST",
+		url: "/tournamentPage",
+		contentType: "application/json",
+		data: JSON.stringify(tournamentId),
+		success: function(answer){
+			if(answer.responseCode == 200){
+				location.href = "/tournamentPage";
+			}
+			else{
+				console.log(answer.responseMessage);
+			}
+		},
+		error: function(err){ console.log(err); }
+	});
+}

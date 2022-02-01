@@ -1,5 +1,6 @@
 package com.battlefoo.persistence.jdbc;
 
+import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,8 +30,20 @@ public class TournamentsDAO  implements TournamentsQueries{
 	
 	@Override
 	public List<Tournament> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Tournament> tournaments = null;
+		String query = "select * from tournaments;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ResultSet res = ps.executeQuery();
+			tournaments = new ArrayList<Tournament>();
+			while(res.next()) {
+				tournaments.add(createTournament(res));
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return tournaments;
 	}
 
 	@Override

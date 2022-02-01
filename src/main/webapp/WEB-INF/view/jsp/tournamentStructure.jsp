@@ -76,7 +76,7 @@
 		    
 		    <div class="match-chat">
 		      <div class="match-text">
-		        <textarea readonly>asdasdasasd asd</textarea>
+		        <textarea readonly></textarea>
 		        <input type="text" placeholder="Type something...">
 		      </div>
 		      <div class="sendbox">

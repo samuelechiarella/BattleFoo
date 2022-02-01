@@ -1,7 +1,9 @@
 package com.battlefoo.controller.web;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Date;
@@ -107,6 +109,21 @@ public class TournamentRestController {
 		Response res = new Response(Response.failure, "Getting tournament page failed!");
 		Tournament t = Database.getInstance().getTournamentByTournamentId(tournamentId);
 		if(t!=null) {
+			// SET TOURNAMENT BANNER AND SPONSOR BANNER
+
+			if(t.getLogo() != null) {
+				try {
+					BufferedReader br =  new BufferedReader(new FileReader(t.getLogo()));
+					t.setLogo(br.readLine());
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			else
+				t.setLogo(ServerPaths.DEFAULT_ORGANIZATION_BANNER);
+			
+			//*******************************************************************************************************
 			List<Team> tournamentAttendees = Database.getInstance().getTournamentAttendeesByTournamentId(tournamentId);
 			req.getSession(true).setAttribute("tournamentAttendees", tournamentAttendees);
 			req.getSession(true).setAttribute("tournament", t);

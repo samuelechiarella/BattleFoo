@@ -19,7 +19,7 @@
 		    </div>
 		    <div class="side-elem">
 		      <img id="browse" src="images/sidebar-icons/browse_tournaments_icon.png">
-		      <a href="#"><label for="browse">Browse<br>Tournaments</label></a>
+		      <a href="/BrowseTournament"><label for="browse">Browse<br>Tournaments</label></a>
 		    </div>
 		    
 		    <!-- ONLY IF THE USER IS LOGGED -->
@@ -47,9 +47,6 @@
 		    
 		    <!-- ONLY IF THE USER IS NOT LOGGED -->
 		    <jstl:if test="${empty loggedUser}">
-		    
-		    	<div class="side-elem"><a href="/BrowseTournament">bTournament</a></div>
-		    
 			    <div class="side-elem login-signup-buttons sidebar-log-buttons">
 			      <a id="loginButton" href="#" onclick="openLoginSignup('log-in')">Log In</a>
 			      <a id="signupButton" href="#" onclick="openLoginSignup('sign-up')">Sign Up</a>

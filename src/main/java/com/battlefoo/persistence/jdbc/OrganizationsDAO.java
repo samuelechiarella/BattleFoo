@@ -70,7 +70,6 @@ public class OrganizationsDAO implements OrganizationsQueries {
 
 	@Override
 	public boolean exists(String name) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	

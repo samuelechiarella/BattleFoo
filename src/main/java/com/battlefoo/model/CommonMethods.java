@@ -58,9 +58,6 @@ public class CommonMethods {
 		HttpSession session = req.getSession(true);
 		List<Game> games = null;
 		
-		if(session.getAttribute("loggedManager") == null)
-			return;
-		
 		games = Database.getInstance().getAllGames();
 			
 		session.setAttribute("gamesList", games);

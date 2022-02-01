@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class TournamentController {
-	@GetMapping("/tournamentStructure")
+	@GetMapping("/tournamentPage")
 	public String getTournamentPage(HttpServletRequest req) {
 		return "/tournamentStructure";
 	}

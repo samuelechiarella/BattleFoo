@@ -139,6 +139,17 @@ public class TeamRestController {
 					res.setResponseMessage("Team Member added");
 					List<Player> members = (List<Player>) req.getSession(true).getAttribute("teamMembersList");
 					members.add(Database.getInstance().getPlayerByUsername(newTeamMember));
+					for(Player p : members) {
+						if(p.getProfilePicture().compareTo(ServerPaths.DEFAULT_PROFILE_PICTURE) != 0) {
+							try {
+								BufferedReader br =  new BufferedReader(new FileReader(p.getProfilePicture()));
+								p.setProfilePicture(br.readLine());
+								br.close();
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						}
+					}
 					req.getSession(true).setAttribute("teamMembersList", members);
 				}
 				else {
@@ -188,7 +199,7 @@ public class TeamRestController {
 		if(team != null) {
 			List<Player> teamMembersList = Database.getInstance().getAllTeamMembers(teamName);
 			if(teamMembersList != null) {
-				if(team.getLogo().compareTo(ServerPaths.DEFAULT_TEAM_LOGO)!=0) {
+				if(team.getLogo().compareTo(ServerPaths.DEFAULT_TEAM_LOGO) != 0) {
 					try {
 						BufferedReader br =  new BufferedReader(new FileReader(team.getLogo()));
 						team.setLogo(br.readLine());
@@ -198,7 +209,7 @@ public class TeamRestController {
 					}
 				}
 				for(Player p : teamMembersList) {
-					if(p.getProfilePicture().compareTo(ServerPaths.DEFAULT_PROFILE_PICTURE)!=0) {
+					if(p.getProfilePicture().compareTo(ServerPaths.DEFAULT_PROFILE_PICTURE) != 0) {
 						try {
 							BufferedReader br =  new BufferedReader(new FileReader(p.getProfilePicture()));
 							p.setProfilePicture(br.readLine());

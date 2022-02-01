@@ -15,7 +15,6 @@ public class OrganizationController {
 		CommonMethods.updateTeamsAttribute(req);
 		CommonMethods.updateOrganizationsAttribute(req);
 		CommonMethods.updateGamesAttribute(req);
-		System.out.println("ENTRO");
 		return "organization";
 	}
 }

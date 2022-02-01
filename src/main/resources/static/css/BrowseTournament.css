@@ -83,3 +83,8 @@
 .FilterBtn button:hover {
 	background-color: orange;
 }
+
+.browse-tournament-table img {
+	width:5em;
+	border-radius: 10em;
+}

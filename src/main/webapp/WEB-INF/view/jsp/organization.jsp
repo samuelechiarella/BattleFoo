@@ -42,13 +42,11 @@
 	          <jstl:forEach items="${tournamentsList}" var="tournament">
 		          <tr>
 		            <td>
-
 			            <jstl:forEach items="${gamesList}" var="game">
 			            	<jstl:if test="${game.name eq tournament.gameName}">
 			            		<img src="${game.logo}">
 			            	</jstl:if>
 			            </jstl:forEach>
-
 		            </td>
 		            <td>${tournament.name}</td>
 		          </tr>

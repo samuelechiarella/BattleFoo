@@ -126,10 +126,11 @@ public class ManagersDAO implements ManagersQueries{
 
 	public boolean isMemberOf(Organization organization, String membersUsername) {
 		Manager m = getByUsername(membersUsername);
-		String query = "select * from organizations_members where manager_id=?;";
+		String query = "select * from organizations_members where manager_id=? and organization_id=?;";
 		try {
 			PreparedStatement ps = connection.prepareStatement(query);
 			ps.setLong(1, m.getManagerId());
+			ps.setLong(2, organization.getOrganizationId());
 			if(ps.executeQuery().next())
 				return true;
 		}

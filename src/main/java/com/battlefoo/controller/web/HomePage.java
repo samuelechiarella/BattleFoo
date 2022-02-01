@@ -17,7 +17,7 @@ public class HomePage {
 	@GetMapping("/")
 	public String getHomePage1(HttpServletRequest req) {
 		if(req.getSession(true).getAttribute("loggedUser")==null) {
-			BufferedWriter writer;
+			/*BufferedWriter writer;
 			try {
 				writer = new BufferedWriter(new FileWriter(new File(ServerPaths.LOG_PATH,"log.txt"), true));
 				writer.append(req.getRemoteAddr() + ":" + req.getRemotePort() + " DATE: " +
@@ -25,11 +25,11 @@ public class HomePage {
 				writer.close();
 			} catch (IOException e) {
 				System.out.println("***********************************HomePage.java ERROR***********************************");
-			}
+			}*/
+			CommonMethods.updateGamesAttribute(req);
 			return "index";
 		}
 		CommonMethods.updateTeamsAttribute(req);
-		CommonMethods.updateGamesAttribute(req);
 		CommonMethods.updateOrganizationsAttribute(req);
 		return "index";
 	}
@@ -38,9 +38,9 @@ public class HomePage {
 	public String getHomePage2(HttpServletRequest req) {
 		if(req.getSession(true).getAttribute("loggedUser") != null) {
 			CommonMethods.updateTeamsAttribute(req);
-			CommonMethods.updateGamesAttribute(req);
 			CommonMethods.updateOrganizationsAttribute(req);
 		}
+		CommonMethods.updateGamesAttribute(req);
 		return "index";
 	}
 }

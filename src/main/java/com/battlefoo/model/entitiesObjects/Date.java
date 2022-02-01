@@ -7,18 +7,26 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @EqualsAndHashCode
 public class Date {
 	
+	@NonNull
 	private Integer month;
+	@NonNull
 	private Integer day;
+	@NonNull
 	private Integer year;
+	
+	private String dateString;
 	
 	public Date(String date) {
 		Pattern p = Pattern.compile("((?:\\d){2})\\/((?:\\d){2})\\/((?:\\d){4})");
@@ -33,6 +41,7 @@ public class Date {
 			this.day = -1;
 			this.year = -1;
 		}
+		this.dateString = this.getDate();
 	}
 	
 	public String getDate() {

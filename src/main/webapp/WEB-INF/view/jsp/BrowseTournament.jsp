@@ -25,11 +25,19 @@
 		    	<th>Title</th>
 				<th>Date</th>
 			</tr>
-			<tr>
-				<td>*INSERT GAME LOGO HERE*</td>
-			  	<td>*INSERT TOURNAMENT TITLE HERE*</td>
-			  	<td>*INSERT TOURNAMENT DATE HERE*</td>
-			</tr>
+			<jstl:forEach items="${allTournaments}" var="tournament">
+				<tr onclick="openTournamentPage('${tournament.tournamentId}')">
+					<td>
+						<jstl:forEach items="${gamesList}" var="game">
+				            <jstl:if test="${game.name eq tournament.gameName}">
+				            	<img src="${game.logo}">
+				            </jstl:if>
+				        </jstl:forEach>
+			        </td>
+				  	<td>${tournament.name}</td>
+				  	<td>${tournament.date.dateString}</td>
+				</tr>
+			</jstl:forEach>
 		</table>
 	</div>
 </div>

@@ -249,4 +249,8 @@ public class Database {
 		}
 		return attendees;
 	}
+
+	public Organization getOrganizationByOrganizationName(String organizationName, Long creatorId) {
+		return OrganizationsDAO.getInstance(connection).getByName(organizationName, creatorId);
+	}
 }
