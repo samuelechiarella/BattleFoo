@@ -63,6 +63,7 @@ public class OrganizationRestController {
 		Response res = new Response(Response.failure, "Storing organization failed!");
 		Manager creator = (Manager)req.getSession(true).getAttribute("loggedManager");
 		org.setCreatorId(creator.getManagerId());
+		String base64Image = "";
 		if(org.getBanner() != null) {
 			BufferedWriter writer;
 			String bannerFileName = new Date().getTime() + ".txt";
@@ -73,20 +74,21 @@ public class OrganizationRestController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			req.getSession(true).setAttribute("organization", org);
+			base64Image = org.getBanner();
 			org.setBanner(ServerPaths.ORGANIZATIONS_BANNERS_PATH + bannerFileName);
 		}
 		else {
 			org.setBanner(ServerPaths.DEFAULT_ORGANIZATION_BANNER);
-			req.getSession(true).setAttribute("organization", org);
 		}
 		if(Database.getInstance().insertOrganization(org)) {
 			Database.getInstance().insertOrganizationMember(creator.getUsername(), org.getOrganizationName(), creator.getUsername());
 			List<Manager> staff = Database.getInstance().getOrganizationMembersByOrgName(org.getOrganizationName());
 			req.getSession(true).setAttribute("staff", staff);
 			
-			org = Database.getInstance().getOrganizationByOrganizationName(org.getOrganizationName(), org.getCreatorId());
-			
+			org.setOrganizationId(Database.getInstance().getOrganizationByOrganizationName(org.getOrganizationName(), org.getCreatorId()).getOrganizationId());
+			if(!base64Image.isEmpty()) {
+				org.setBanner(base64Image);
+			}
 			req.getSession(true).setAttribute("organization", org);
 			CommonMethods.updateOrganizationsAttribute(req);
 			res.setResponseCode(200);
@@ -111,6 +113,18 @@ public class OrganizationRestController {
 				}
 			}
 		}
+		
+		if(org.getBanner().compareTo(ServerPaths.DEFAULT_ORGANIZATION_BANNER) != 0) {
+			BufferedReader reader;
+			try {
+				reader = new BufferedReader(new FileReader(new File(org.getBanner())));
+				org.setBanner(reader.readLine());
+				reader.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		req.getSession(true).setAttribute("tournamentsList", tournaments);
 		req.getSession(true).setAttribute("organization", org);
 		req.getSession(true).setAttribute("staff", staff);

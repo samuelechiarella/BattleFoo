@@ -52,7 +52,6 @@ public class OrganizationsDAO implements OrganizationsQueries {
 
 	public List<Manager> getMembersByOrganizationId(Long organizationId) {
 		List<Manager> l = null;
-		System.out.println(organizationId);
 		try {
 			String query = "select * from organizations_members where organization_id=?;";
 			PreparedStatement ps = connection.prepareStatement(query);
