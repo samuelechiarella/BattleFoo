@@ -91,7 +91,72 @@
 
     <div id="partecipants" data-tab-content>
       <h1>PARTECIPANTS</h1>
-      <p>Some information about tournament's partecipants</p>
+     
+      <div class="partecipants-table">
+		<table>
+			<tr>
+		  		<th>Team Logo</th>
+		    	<th>Team Name</th>
+			</tr>
+			<tr>
+				<td>*INSERT TEAM LOGO HERE*</td>
+			  	<td>*INSERT TEAM NAME HERE*</td>
+			</tr>
+			<tr>
+				<td>*INSERT TEAM LOGO HERE*</td>
+			  	<td>*INSERT TEAM NAME HERE*</td>
+			</tr>
+			<tr>
+				<td>*INSERT TEAM LOGO HERE*</td>
+			  	<td>*INSERT TEAM NAME HERE*</td>
+			</tr>
+			<tr>
+				<td>*INSERT TEAM LOGO HERE*</td>
+			  	<td>*INSERT TEAM NAME HERE*</td>
+			</tr>
+			<tr>
+				<td>*INSERT TEAM LOGO HERE*</td>
+			  	<td>*INSERT TEAM NAME HERE*</td>
+			</tr>
+			<tr>
+				<td>*INSERT TEAM LOGO HERE*</td>
+			  	<td>*INSERT TEAM NAME HERE*</td>
+			</tr>
+			<tr>
+				<td>*INSERT TEAM LOGO HERE*</td>
+			  	<td>*INSERT TEAM NAME HERE*</td>
+			</tr>
+			<tr>
+				<td>*INSERT TEAM LOGO HERE*</td>
+			  	<td>*INSERT TEAM NAME HERE*</td>
+			</tr>
+			<tr>
+				<td>*INSERT TEAM LOGO HERE*</td>
+			  	<td>*INSERT TEAM NAME HERE*</td>
+			</tr>
+			<tr>
+				<td>*INSERT TEAM LOGO HERE*</td>
+			  	<td>*INSERT TEAM NAME HERE*</td>
+			</tr>
+			<tr>
+				<td>*INSERT TEAM LOGO HERE*</td>
+			  	<td>*INSERT TEAM NAME HERE*</td>
+			</tr>
+			<tr>
+				<td>*INSERT TEAM LOGO HERE*</td>
+			  	<td>*INSERT TEAM NAME HERE*</td>
+			</tr>
+			<tr>
+				<td>*INSERT TEAM LOGO HERE*</td>
+			  	<td>*INSERT TEAM NAME HERE*</td>
+			</tr>
+			<tr>
+				<td>*INSERT TEAM LOGO HERE*</td>
+			  	<td>*INSERT TEAM NAME HERE*</td>
+			</tr>
+		</table>
+	  </div>
+	  
     </div>
     <div id="brakets" data-tab-content>
       <h1>BRACKETS</h1>
@@ -101,9 +166,26 @@
       <h1>STATS</h1>
       <p>Give a look to tournament stats</p>
     </div>
-		<div id="live" data-tab-content>
-      <h1>LIVE</h1>
-      <p>there will be implemented live stream</p>
+    	
+	<div id="live" data-tab-content>
+		<div class="h1-text"><h1>LIVE</h1></div>
+	    <div class="live-content">
+	      	<!-- Load the Twitch embed JavaScript file -->
+		    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+		    <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
+		    <!-- Add a placeholder for the Twitch embed -->
+		    <div id="twitch-embed">
+		    	<script type="text/javascript">
+		        new Twitch.Embed("twitch-embed", {
+		        width: 854,
+		        height: 480,
+		        channel: "nambon", <!-- ADD HERE THE ORGANIZATION CHANNEL BY JUST TYPING THE CHANNEL'S NAME -->
+		        // Only needed if this page is going to be embedded on other websites
+		        parent: ["embed.example.com", "othersite.example.com"]
+		          });
+		        </script>
+		    </div>
+		 </div>
     </div>
   </div>
 </body>
