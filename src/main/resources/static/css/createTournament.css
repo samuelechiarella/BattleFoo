@@ -8,7 +8,7 @@
   min-height: 40em;
   height: 80%;
   min-width: 45em;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, 5%);
   transition: 0.5s;
   border-radius: 0.3em;
 }
@@ -59,9 +59,9 @@
   border-bottom-left-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
   position: absolute;
-  top: 50px; right: 0; bottom: 0; left: 0;
+  top: 3.6em; right: 0px; bottom: -0.1em; left: 0px;
   background: white;
-  padding: 20px;
+  padding: 2px;
   box-shadow: inset 0px 5px 5px -5px;
   display: none;
 }
@@ -100,17 +100,18 @@
   padding: 0.4em;
   resize: none;
   min-height: 10em;
-  height: 50vh;
+  height: 30em;
   font-family: sans-serif;
 }
 
 .create-tournament-content textarea {
   margin-left: 1.5em;
+  margin-top: 1em;
 }
 
 .information *{
   display: block;
-  margin: 1em;
+  margin: 0.5em;
   font-family: sans-serif;
 }
 
@@ -143,7 +144,7 @@
 .tournament-banner img {
   border: 0.2em solid orange;
   border-radius: 0.3em;
-  height: 10em;
+  height: 8.5em;
   width: 40em;
 }
 
@@ -154,7 +155,7 @@
 }
 
 .category {
-  margin-top: 8em;
+  margin-top: 3em;
   text-align: center;
 }
 
@@ -192,6 +193,10 @@
   width: 5em;
 }
 
+.games-list tbody td {
+  color: gray;
+}
+
 .games-list tbody tr:hover {
 	background-color: orange;
   cursor: pointer;
@@ -216,5 +221,11 @@
   outline: none;
   cursor: pointer;
   background-color: orange;
-  margin-top: 3em;
+  margin-top: 1.6em;
+}
+
+#homeContent img{
+	max-width: 50em;
+	max-height: 90em;
+	margin-top: 5em;
 }
