@@ -109,14 +109,7 @@ function applyFilterSearchGame() {
 }
 
 function insertNewGame(logo, name, genre){
-	/*let table = document.getElementById("gamesTableCreateTournament");
-	let row = table.insertRow(-1);
-	let cell = [row.insertCell(0), row.insertCell(1)];
-	let img = document.createElement('img');
-	img.src = logo;
-	cell[0].appendChild(img);
-	cell[1].textContent = name;*/
 	var row= "<tr class='do-not-hide-create-tournament' onclick=\"setGameName('" + name + "')\"><td class='do-not-hide-create-tournament'><img src='"
 			+ logo + "'></td><td>" + name + "</td><td>" + genre + "</td></tr>";
-  	$('#gamesTableCreateTournament').append(row);
+  	$('#gamesTableBodyCreateTournament').append(row);
 } 
