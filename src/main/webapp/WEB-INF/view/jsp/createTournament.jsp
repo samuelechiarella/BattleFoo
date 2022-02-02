@@ -14,9 +14,9 @@
       --><div class="create-tournament-content do-not-hide-create-tournament">
           <div class="category do-not-hide-create-tournament">
             <input id="gameTitle" type="text" class="do-not-hide-create-tournament" placeholder="Type a title..">
-            <button id="searchGame" class="do-not-hide-create-tournament">Search</button>
+            <button id="searchGame" class="do-not-hide-create-tournament" onclick="applyFilterSearchGame()">Search</button>
             <div class="games-list do-not-hide-create-tournament">
-              <table class="do-not-hide-create-tournament">
+              <table id="gamesTableCreateTournament" class="do-not-hide-create-tournament">
                 <thead class="do-not-hide-create-tournament">
       	          <tr class="do-not-hide-create-tournament">
       	            <th class="do-not-hide-create-tournament"></th>
@@ -24,7 +24,7 @@
                     <th class="do-not-hide-create-tournament">Genre</th>
       	          </tr>
                 </thead>
-                <tbody class="do-not-hide-create-tournament">
+                <tbody id="gamesTableBodyCreateTournament" class="do-not-hide-create-tournament">
                 	<jstl:forEach items="${gamesList}" var="game">
                   		<tr class="do-not-hide-create-tournament" onclick="setGameName('${game.name}')">
     		        		<td class="do-not-hide-create-tournament"><img alt="${game.name}" src="${game.logo}" class="do-not-hide-create-tournament"></td>

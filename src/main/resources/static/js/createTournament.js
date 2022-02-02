@@ -78,5 +78,45 @@ function openCreateTournament(){
 		if(!array[i].classList.contains("do-not-hide")){
         	array[i].classList.add("semi-transparent-in-create-tournament");
 		}
-  	}
-};
+ 	}
+}
+
+function applyFilterSearchGame() {
+	if($("#gameTitle").val() == null){ return; }
+	let tbody = document.getElementById("gamesTableBodyCreateTournament");
+	while(tbody.hasChildNodes()){
+		tbody.removeChild(tbody.firstChild);
+	}
+	$.ajax({
+		type: "POST",
+		url: "/filterGames",
+		contentType: "application/json",
+		data: JSON.stringify($("#gameTitle").val()),
+		success: function(games){
+			if(games == null){
+				console.log("GAMES LIST FILTERED IS NULL");
+				return;
+			}
+			
+			for(let i = 0; i < games.length; ++i) {
+				insertNewGame(games[i][0],games[i][1],games[i][2]);
+			}
+		},
+		error: function(err){
+			console.log(err);
+		}
+	});
+}
+
+function insertNewGame(logo, name, genre){
+	/*let table = document.getElementById("gamesTableCreateTournament");
+	let row = table.insertRow(-1);
+	let cell = [row.insertCell(0), row.insertCell(1)];
+	let img = document.createElement('img');
+	img.src = logo;
+	cell[0].appendChild(img);
+	cell[1].textContent = name;*/
+	var row= "<tr class='do-not-hide-create-tournament' onclick=\"setGameName('" + name + "')\"><td class='do-not-hide-create-tournament'><img src='"
+			+ logo + "'></td><td>" + name + "</td><td>" + genre + "</td></tr>";
+  	$('#gamesTableCreateTournament').append(row);
+} 

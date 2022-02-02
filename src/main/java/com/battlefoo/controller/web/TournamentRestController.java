@@ -191,4 +191,10 @@ public class TournamentRestController {
 		return res;
 	}
 	
+	@PostMapping("/filterGames")
+	public String[][] getGamesListFiltered(HttpServletRequest req, @RequestBody String filter) {
+		String[][] gamesFiltered = Database.getInstance().getGamesListByFilter(filter.replace("\"", "%"));
+		return gamesFiltered;
+	}
+	
 }

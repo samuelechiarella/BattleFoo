@@ -9,4 +9,5 @@ public interface GamesQueries {
 	public Game getByName(String name);
 	public boolean exists(String name); 
 	public List<Game> getGamesByGenre(String genre);
+	public List<Game> getListByFilter(String filter);
 }

@@ -262,4 +262,17 @@ public class Database {
 		Manager m = ManagersDAO.getInstance(connection).getByUsername(membersUsername);
 		return OrganizationsDAO.getInstance(connection).removeMember(org, m);
 	}
+
+	public String[][] getGamesListByFilter(String filter) {
+		List<Game> gamesFiltered = GamesDAO.getInstance(connection).getListByFilter(filter);
+		String[][] gamesArray = new String[gamesFiltered.size()][];
+		
+		for(int i = 0; i < gamesArray.length; ++i) { 
+			gamesArray[i] = new String[3];
+			gamesArray[i][0] = gamesFiltered.get(i).getLogo();
+			gamesArray[i][1] = gamesFiltered.get(i).getName();
+			gamesArray[i][2] = gamesFiltered.get(i).getGenre();
+		}
+		return gamesArray;	
+	}
 }

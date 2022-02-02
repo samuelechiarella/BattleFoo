@@ -92,11 +92,28 @@ public class GamesDAO implements GamesQueries{
 		}
 		return list;
 	}
+
+	@Override
+	public List<Game> getListByFilter(String filter) {
+		List<Game> gamesListFiltered = null;
+		String query = "select * from games where name like ?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, filter);
+			ResultSet res = ps.executeQuery();
+			gamesListFiltered = new ArrayList<Game>();
+			while(res.next())
+				gamesListFiltered.add(createGame(res));
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return gamesListFiltered;
+	}
 	
 	private Game createGame(ResultSet res) throws SQLException {
 		Game g = new Game(res.getString(1),res.getString(3));
 		g.setGenre(res.getString(2));
 		return g;
 	}
-
 }
