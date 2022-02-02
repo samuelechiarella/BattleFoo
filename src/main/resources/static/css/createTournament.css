@@ -144,8 +144,10 @@
 .tournament-banner img {
   border: 0.2em solid orange;
   border-radius: 0.3em;
-  height: 8.5em;
-  width: 40em;
+  max-height: 8.5em;
+  max-width: 40em;
+  min-height: 8.5em;
+  min-width: 40em;
 }
 
 .create-tournament-tabs input{

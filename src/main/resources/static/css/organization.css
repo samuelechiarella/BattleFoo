@@ -84,9 +84,17 @@ body {
   width: 100%;
 }
 
+#tournamentsContent td{
+  margin-top: 1.5em;
+}
+
+#tournamentsContent table {
+  margin-top: 3em;
+}
+
 .staffTable th, .staffTable td , .tournamentTable th, .tournamentTable td{
   padding: 8px;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid #ddd;
 }
 
@@ -94,8 +102,14 @@ body {
 	background-color: orange;
 }
 
-.staffTable img, .tournamentTable img {
-	width: 6em;
+#staffContent img {
+	max-height: 4em;
+	max-width: 4em;
+}
+
+#tournamentsContent img {
+	max-height: 4em;
+	max-width: 4em;
 }
 
 .createTournamentBtn {
@@ -119,4 +133,24 @@ body {
 
 .createTournamentBtn button:hover {
 	background-color: orange;
+}
+
+#twitch-embed {
+	margin-top: 3em;
+	text-align: center;
+	justify-content: center;
+	
+	border-bottom: 2px solid orange;
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	
+	border-top: 2px solid orange;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+	
+	border-left: 2px solid orange;
+	
+	border-right: 2px solid orange;
+	
+	padding: 3em;
 }

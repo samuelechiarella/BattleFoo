@@ -133,6 +133,8 @@ body {
 	border-left: 2px solid orange;
 	
 	border-right: 2px solid orange;
+	
+	padding: 3em;
 }
 
 .h1-text{
@@ -377,3 +379,34 @@ body {
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: orange;}
+
+#Details-content textarea {
+	resize: none;
+	height: 20vh;
+	width: 70vh;
+}
+
+#Rules-content textarea {
+	resize: none;
+	height: 20vh;
+	width: 70vh;
+}
+
+#Schedule-content textarea {
+	resize: none;
+	height: 20vh;
+	width: 70vh;
+}
+
+#overview img {
+	justify-content: center;
+	max-height: 25em;
+	max-width: 50em;
+	min-height: 25em;
+	min-width: 50em;
+}
+
+.partecipants-table img {
+	max-height: 4em;
+	max-width: 4 em;
+}

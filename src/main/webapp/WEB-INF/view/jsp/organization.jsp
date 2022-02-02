@@ -88,7 +88,6 @@
 	    </div>
 	    <div id="liveContent" class="tab-content">
 	      <h1>LIVE</h1>
-	      <p>Here will be implemented live stream</p>
 
 	      <!-- Load the Twitch embed JavaScript file -->
 	      <script src="https://embed.twitch.tv/embed/v1.js"></script>
