@@ -443,3 +443,11 @@ body {
 	max-height: 4em;
 	max-width: 4 em;
 }
+
+.match-text textarea {
+	padding: 0.3em;
+	font-size: 1.2em;
+	font-family: sans-serif;
+	font-weight: bold;
+	color: #202020;
+}
