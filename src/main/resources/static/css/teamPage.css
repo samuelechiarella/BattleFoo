@@ -4,7 +4,7 @@
 }
 
 .out-tab {
-  position: absolute;
+	margin-top: 10em;
   text-align: center;
   width: 100%;
   top: 10%;
@@ -87,11 +87,22 @@ label[for="team-logo"] {
 
 #description-content textarea {
 	resize: none;
-	background-color: #BFC0C4;
 	width: 95%;
+	color: white;
+	font-size: 1.6em;
+	background-color: transparent;
 	height: 99%;
 	border: none;
 	pointer-events: none;
+}
+
+#description-content {
+	background-color: rgba(0,0,0,0.5);
+	overflow-y: hidden; 
+}
+
+#list-attendees {
+	background-color: rgba(0,0,0,0.5);
 }
 
 .attendee {
