@@ -257,4 +257,9 @@ public class Database {
 	public boolean insertTeamIntoTournament(Team team, Tournament tournament) {
 		return TournamentsDAO.getInstance(connection).insertTeam(team,tournament);
 	}
+
+	public boolean removeStaffMember(Organization org, String membersUsername) {
+		Manager m = ManagersDAO.getInstance(connection).getByUsername(membersUsername);
+		return OrganizationsDAO.getInstance(connection).removeMember(org, m);
+	}
 }

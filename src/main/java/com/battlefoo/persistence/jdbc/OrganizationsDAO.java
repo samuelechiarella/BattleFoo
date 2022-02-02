@@ -180,4 +180,18 @@ public class OrganizationsDAO implements OrganizationsQueries {
 	private Organization createOrganization(ResultSet res) throws SQLException {
 		return new Organization(res.getLong("organization_id"),res.getString("name"),res.getString("description"),res.getLong("creator_id"), res.getString("banner"));
 	}
+
+	public boolean removeMember(Organization org, Manager manager) {
+		String query = "delete from organizations_members where manager_id = ?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, manager.getManagerId());
+			ps.execute();
+			return true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

@@ -31,7 +31,8 @@
 		      </jstl:if>
 	      </jstl:forEach>
 	      
-	      <jstl:if test="${not teamFound}">
+	      <jstl:choose>
+	      <jstl:when test="${not teamFound}">
 		      <button id="signupTournamentBtn" onclick="openSignupTournament()">Sign Up Tournament</button>
 		      <div class="signup-tournament">
 		     	<img id="teamChoosedForSignup">
@@ -43,15 +44,21 @@
 							    	<a href="#" onclick="setImageTeamChoosed('${team.logo}','${team.teamName}')">${team.teamName}</a>
 						    	</jstl:if>
 					    	</jstl:forEach>
-					  	</div>
+					   	</div>
 			  	</div>
 			  	<div class="confirm-cancel-signup-tournament-btns">
 				  	<button id="confirmSignupTournament" onclick="signupTeam()">Confirm</button>
 				  	<button id="closeSignupTOurnament" onclick="closeSignupTournament()">Cancel</button>
 			  	</div>
 			  </div>
-		  </jstl:if>
+		  </jstl:when>
+			<jstl:otherwise>
+				<button id="leaveTournamentBtn">Leave Tournament</button>	
+			</jstl:otherwise>
+		  
+		  </jstl:choose>
 	  </jstl:if>
+	  
 	  
       <!-- Tab links -->
       <div class="sub-tab">

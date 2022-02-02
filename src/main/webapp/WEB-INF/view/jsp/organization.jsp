@@ -57,8 +57,10 @@
 	      <jsp:include page="createTournament.jsp"></jsp:include>
 
 	      <div class="createTournamentBtn">
-	      	<button onclick="openCreateTournament()">Create Tournament</button>
+	      	<button id= "createTournament" onclick="openCreateTournament()">Create Tournament</button>
+	      	<button id= "deleteTournament" onclick="openDeleteTournament()">Delete Tournament</button>
 	      </div>
+	      
 
 	    </div>
 
@@ -82,7 +84,8 @@
 
 	      <jstl:if test="${organization.creatorId eq loggedManager.managerId}">
 		      <input type="text" id="newMember">
-		      <button onclick="addMember()">Add Member</button>
+		      <button id="addBtn" onclick="addMember()">Add Member</button>
+		      <button id="removeBtn" onclick="removeMember()">Remove Member</button>
 	      </jstl:if>
 
 	    </div>

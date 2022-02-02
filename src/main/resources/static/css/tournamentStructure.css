@@ -245,9 +245,17 @@ body {
 }
 
 .partecipants-table img {
-	width: 15em;
+	max-width: 3em;
+	max-height: 3em;
+	min-width: 3em;
+	min-height: 3em; 
 	border-radius: 10em;
 }
+
+.partecipants-table td {
+	font-size: 2em;
+}
+
 
 .partecipants-table tr{
 	transition: 0.3s;	
@@ -281,10 +289,35 @@ body {
 	cursor: pointer;
 	transition: 0.2s;
 	color: white;
-	width: 7em;
+	max-height: 3em;
+	max-width: 7em;
+	min-height: 3em;
+	min-width: 7em;
 }
 
 .overview_box #signupTournamentBtn:hover {
+	background-color: orange;
+}
+
+.overview_box #leaveTournamentBtn {
+	background-color: rgba(179,107,0, 0.8);
+	border-radius: 5em;
+	font-size: 1.2em;
+	font-family: sans-serif;
+	position: fixed;
+	top: 6em;
+	right: 5em;
+	cursor: pointer;
+	transition: 0.2s;
+	color: white;
+	max-height: 3em;
+	max-width: 7em;
+	min-height: 3em;
+	min-width: 7em;
+}
+
+
+.overview_box #leaveTournamentBtn:hover {
 	background-color: orange;
 }
 

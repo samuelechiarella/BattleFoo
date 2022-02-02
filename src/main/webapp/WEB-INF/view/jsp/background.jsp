@@ -65,6 +65,7 @@
 						</jstl:forEach>
 					</div>
 					<a href="#" class="not-move" id="newOrganizationButton" onclick="openCreateOrganizationSidebar()">+ New Organization</a>
+					<a href="#" class="not-move" id="deleteOrganizationButton" onclick="openDeleteOrganizationSidebar()">- Delete Organization</a>
 				</jstl:when>
 				<jstl:otherwise>
 					<div class="side-elem">

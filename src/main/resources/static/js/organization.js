@@ -34,8 +34,25 @@ function addMember() {
 					break;
 			}
 		}, 
-        error: function(err){console.log(err)}
+        error: function(err){console.log(err);}
     });
+}
+
+function removeMember (){
+	$.ajax({
+		type: "POST",
+		url: "/removeMember",
+		contentType: "application/json",
+		data: JSON.stringify($("#newMember").val()),
+		success: function(answer){
+			if (answer.responseCode == 200){
+				location.reload();
+			} else {
+				console.log(answer.responseMessage);
+			}
+		},
+		error: function(err){console.log(err);}
+	});
 }
 
 function insertNewMember(profilePicture, username){

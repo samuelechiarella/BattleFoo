@@ -41,6 +41,9 @@ function openTab(evt, tabName) {
   evt.currentTarget.className += " active";
   console.log(evt.currentTarget.className);
 }
+function openLeaveTournament() {
+	document.getElementsByClassName("signup-tournament")[0].classList.add("show-signup-tournament");
+}
 
 function openSignupTournament() {
 	document.getElementsByClassName("signup-tournament")[0].classList.add("show-signup-tournament");

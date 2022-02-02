@@ -71,8 +71,9 @@ body {
 
 #staffContent {
 	position: absolute;
-	left: 45%;
+	left: 35%;
 }
+
 
 #tournamentsContent {
 	position: absolute;
@@ -82,6 +83,17 @@ body {
 .staffTable table, .tournamentTable table{
   border-collapse: collapse;
   width: 100%;
+}
+
+.staffTable img {
+	max-height: 3em;
+	max-width: 3em;
+	min-height: 3em;
+	min-width: 3em;
+}
+
+.staffTable td, th {
+	font-size: 1.3em;
 }
 
 #tournamentsContent td{
@@ -98,7 +110,7 @@ body {
   border-bottom: 1px solid #ddd;
 }
 
-.staffTable tr:hover, .tournamentTable tr:hover{
+.staffTable td:hover, .tournamentTable tr:hover{
 	background-color: orange;
 }
 
@@ -118,7 +130,9 @@ body {
 	bottom: 15em;
 	width: 10em;
 }
-
+#deleteTournament{
+	margin-top: 5%;
+}
 .createTournamentBtn button {
 	width: 100%;
 	font-family: sans-serif;
@@ -129,9 +143,49 @@ body {
 	color: white;
 	border-radius: 1em;
 	transition: 0.2s;
+	
 }
 
 .createTournamentBtn button:hover {
+	background-color: orange;
+}
+
+#removeBtn {
+	width: 25%;
+	font-family: sans-serif;
+	font-size: 1.3em;
+	border: 0.1em solid orange;
+	background-color: #FF6800;
+	cursor: pointer;
+	color: white;
+	border-radius: 1em;
+	transition: 0.2s;
+	margin-left: 0.3em;
+}
+
+#newMember{
+	font-family: sans-serif;
+	font-size: 1.3em;
+	border: 0.2em solid orange;
+	background-color: white;
+	margin-top: 0.5em;
+	border-radius: 0.5em;
+}
+
+#addBtn {
+	width: 25%;
+	font-family: sans-serif;
+	font-size: 1.3em;
+	border: 0.1em solid orange;
+	background-color: #FF6800;
+	cursor: pointer;
+	color: white;
+	border-radius: 1em;
+	transition: 0.2s;
+	margin-left: 0.5em;
+}
+
+#addBtn:hover, #removeBtn:hover {
 	background-color: orange;
 }
 

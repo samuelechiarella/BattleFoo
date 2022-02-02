@@ -54,6 +54,42 @@ public class OrganizationRestController {
 		return res;
 	}
 	
+	@PostMapping("/removeMember")
+	public Response removeMember(HttpServletRequest req, @RequestBody String membersUsername ) {
+		Response res = new Response(Response.failure,"Removing members fail");
+		membersUsername = membersUsername.replace("\"", "");
+		if(Database.getInstance().managerExists(membersUsername)) {
+			List<Manager> staff = (List<Manager>) req.getSession(true).getAttribute("staff");
+			boolean membroTrovato = false;
+			for(Manager m : staff) {
+				if(m.getUsername().compareTo(membersUsername) == 0) {
+					membroTrovato = true;
+				}
+			}
+			if(membroTrovato) {
+				Organization org = (Organization) req.getSession(true).getAttribute("organization");
+				if (Database.getInstance().removeStaffMember(org, membersUsername)) {
+					Manager temp = null;
+					for(Manager m : staff)
+					{
+						if( m.getUsername().compareTo(membersUsername) == 0) {
+							temp = m;
+							break;
+						}
+					}
+					staff.remove(temp);
+					req.getSession(true).setAttribute("staff", staff);
+					res.setResponseCode(200);
+					res.setResponseMessage("Staff member removed");
+				}
+			}
+				
+		} else res.setResponseMessage("manager doesn't exist");
+		
+		return res;
+		
+	}
+	
 	@PostMapping("/organizationPage")
 	public Response getResponseOrganizationPage(HttpServletRequest req, @RequestBody Long[] orgIdAndCreatorId) {
 		return createOrganizationPageResponse(req,orgIdAndCreatorId);

@@ -111,13 +111,26 @@ input[type="text"] {
 }
 
 #newOrganizationButton	{
-  width:9em;
+  max-width:9em;
+  min-width:9em;
+  position: absolute;
+  left: 0.5em;
+	bottom: 9.5em;
+	border-radius: 0.5em;
+	border: 2px solid white;
+}
+
+#deleteOrganizationButton	{
+  max-width:9em;
+  min-width:9em;
   position: absolute;
   left: 0.5em;
 	bottom: 5em;
 	border-radius: 0.5em;
 	border: 2px solid white;
+	
 }
+
 
 #logo img{
   width: 8em;
