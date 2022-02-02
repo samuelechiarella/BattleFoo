@@ -286,8 +286,7 @@ public class Database {
 	
 		for (int i = 0; i < tournamentArray.length;i++) {
 			tournamentArray[i] = new String[4];
-			for (int j = 0; j<gameList.size();j++)
-			{
+			for (int j = 0; j<gameList.size();j++)	{
 				if( tournamentFiltered.get(i).getGameName().equals(gameList.get(j).getName())) {
 					tournamentArray[i][0] = gameList.get(j).getLogo();
 					break;
