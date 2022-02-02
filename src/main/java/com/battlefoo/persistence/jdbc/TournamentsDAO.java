@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.battlefoo.model.entitiesObjects.Game;
 import com.battlefoo.model.entitiesObjects.Manager;
 import com.battlefoo.model.entitiesObjects.Team;
 import com.battlefoo.model.entitiesObjects.Tournament;
@@ -220,4 +221,22 @@ public class TournamentsDAO  implements TournamentsQueries{
 		}
 		return false;
 	}
+
+	public List<Tournament> getListByFilter(String filter) {
+		List<Tournament> tournamentFilter = null;
+		String query = "select * from tournaments where name like ?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, filter);
+			ResultSet res = ps.executeQuery();
+			tournamentFilter = new ArrayList<Tournament>();
+			while(res.next())
+				tournamentFilter.add(createTournament(res));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return tournamentFilter;
+	}
+
+	
 }

@@ -2,6 +2,8 @@ package com.battlefoo.persistence.dbManagement;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -276,6 +278,27 @@ public class Database {
 		return gamesArray;	
 	}
 
+	public String[][] getTournamentByName(String filter) {
+		List<Tournament> tournamentFiltered = TournamentsDAO.getInstance(connection).getListByFilter(filter);
+		List<Game> gameList = GamesDAO.getInstance(connection).getAll();
+		String[][] tournamentArray = new String[tournamentFiltered.size()][];
+		
+	
+		for (int i = 0; i < tournamentArray.length;i++) {
+			tournamentArray[i] = new String[4];
+			for (int j = 0; j<gameList.size();j++)	{
+				if( tournamentFiltered.get(i).getGameName().equals(gameList.get(j).getName())) {
+					tournamentArray[i][0] = gameList.get(j).getLogo();
+					break;
+				}
+			}
+			tournamentArray[i][1] = tournamentFiltered.get(i).getName();
+			tournamentArray[i][2] = tournamentFiltered.get(i).getDate().getDate();
+			tournamentArray[i][3] = String.valueOf(tournamentFiltered.get(i).getTournamentId());
+		}
+		return tournamentArray;
+	}
+	
 	public String getChatHistory(Long matchId) {
 		return MatchesDAO.getInstance(connection).getChatByMatchId(matchId);
 	}
