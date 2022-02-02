@@ -64,4 +64,35 @@ public class MatchesDAO implements MatchesQueries {
 		return teams;
 	}
 
+	@Override
+	public String getChatByMatchId(Long matchId) {
+		String query = "select chat_history from matches where match_id=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, matchId);
+			ResultSet res = ps.executeQuery();
+			if(res.next())
+				return res.getString("chat_history");
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public boolean setChatHistoryByMatchId(String chatHistory, Long matchId) {
+		String query = "update matches set chat_history=? where match_id=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, chatHistory);
+			ps.setLong(2, matchId);
+			ps.execute();
+			return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 }

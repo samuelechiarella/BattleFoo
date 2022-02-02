@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.battlefoo.ServerPaths;
 import com.battlefoo.model.Response;
 import com.battlefoo.model.entitiesObjects.Manager;
+import com.battlefoo.model.entitiesObjects.Match;
 import com.battlefoo.model.entitiesObjects.Organization;
 import com.battlefoo.model.entitiesObjects.Team;
 import com.battlefoo.model.entitiesObjects.Tournament;
@@ -197,4 +199,29 @@ public class TournamentRestController {
 		return gamesFiltered;
 	}
 	
+	@PostMapping("/sendMessage")
+	public Response getSendMessageResponse(HttpServletRequest req, @RequestBody String message) {
+		return createSendMessageResponse(req,message.replace("\"", ""));
+	}
+
+	private Response createSendMessageResponse(HttpServletRequest req, String message) {
+		//Match currentMatch = (Match) req.getSession(true).getAttribute("match");
+		String chatHistory = Database.getInstance().getChatHistory(new Long(1));
+		if(chatHistory == null)
+			chatHistory = "";
+		chatHistory+=(String)req.getSession(true).getAttribute("loggedUser") + ": " + message + "\n";
+		Database.getInstance().setChatHistory(chatHistory,new Long(1));
+		Response res = new Response(Response.success, "Message sent");
+		return res;
+	}
+	
+	@GetMapping("/refreshChatHistory")
+	public Response getChatHistory(HttpServletRequest req) {
+		String chatHistory = Database.getInstance().getChatHistory(new Long(1));//currentMatch.getMatchId()
+		if(chatHistory == null)
+			chatHistory = "";
+		chatHistory+=(String)req.getSession(true).getAttribute("loggedUser");
+		Response res = new Response(Response.success, "Chat refreshed",chatHistory);
+		return res;
+	}
 }

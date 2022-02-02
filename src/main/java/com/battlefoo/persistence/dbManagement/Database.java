@@ -275,4 +275,12 @@ public class Database {
 		}
 		return gamesArray;	
 	}
+
+	public String getChatHistory(Long matchId) {
+		return MatchesDAO.getInstance(connection).getChatByMatchId(matchId);
+	}
+
+	public boolean setChatHistory(String chatHistory, Long matchId) {
+		return MatchesDAO.getInstance(connection).setChatHistoryByMatchId(chatHistory,matchId);
+	}
 }
