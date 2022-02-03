@@ -224,4 +224,18 @@ public class TournamentRestController {
 		Response res = new Response(Response.success, "Chat refreshed",chatHistory);
 		return res;
 	}
+	
+	@PostMapping("/leaveTournament")
+	public Response leaveTournament(HttpServletRequest req, @RequestBody String teamSigned) {
+		Response res = new Response(Response.failure, "Leave tournament failed!");
+		Team team = Database.getInstance().getTeamByTeamName(teamSigned.replaceAll("\"", ""));
+		Tournament tournament = (Tournament)req.getSession(true).getAttribute("tournament");
+		if(Database.getInstance().leaveTournamentByTeamName(team, tournament)) {
+			res.setResponseCode(200);
+			res.setResponseMessage("Team leaved successfully");
+		}
+		return res;
+	}
+	
+	
 }

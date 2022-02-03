@@ -98,6 +98,11 @@ body {
 
 #tournamentsContent td{
   margin-top: 1.5em;
+  cursor: pointer;
+}
+
+#tournamentsContent tr:hover{
+  background-color: orange;
 }
 
 #tournamentsContent table {
@@ -207,4 +212,30 @@ body {
 	border-right: 2px solid orange;
 	
 	padding: 3em;
+}
+
+.tournament-active {
+	background: orange;
+}
+
+.delete-organization-button {
+	position: fixed;
+	right: 10em;
+	top: 10em;
+}
+
+.delete-organization-button button{
+	padding: 0.3em;
+	border: 0.1em solid orange;
+	font-size: 1.3em;
+	font-family: sans-serif;
+	background-color: #FF6800;
+	cursor: pointer;
+	transition: 0.2s;
+	color: white;
+	border-radius: 1em;
+}
+
+.delete-organization-button button:hover {
+	background-color: orange; 
 }

@@ -28,6 +28,7 @@
 	      <jstl:forEach items="${tournamentAttendees}" var="team">
 		      <jstl:if test="${team.leaderId eq loggedPlayer.playerId}">
 		      	<jstl:set var="teamFound" value="true"></jstl:set>
+		      	<jstl:set var="teamSigned" value="${team.teamName}"></jstl:set>
 		      </jstl:if>
 	      </jstl:forEach>
 	      
@@ -53,7 +54,7 @@
 			  </div>
 		  </jstl:when>
 			<jstl:otherwise>
-				<button id="leaveTournamentBtn">Leave Tournament</button>	
+				<button id="leaveTournamentBtn" onclick="leaveTournament('${teamSigned}')">Leave Tournament</button>	
 			</jstl:otherwise>
 		  
 		  </jstl:choose>
@@ -135,7 +136,7 @@
 		    	<th>Team Name</th>
 			</tr>
 			<jstl:forEach items="${tournamentAttendees}" var="team">
-				<tr>
+				<tr onclick="openTeamPage('${team.teamName}')">
 					<td><img src="${team.logo}"></td>
 			  		<td>${team.teamName}</td>
 				</tr>

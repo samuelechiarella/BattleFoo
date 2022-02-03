@@ -238,5 +238,36 @@ public class TournamentsDAO  implements TournamentsQueries{
 		return tournamentFilter;
 	}
 
+	@Override
+	public boolean deleteTournamentById(Long tournamentId) {
+		String query = "delete from tournaments where tournament_id=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, tournamentId);
+			ps.execute();
+			return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public boolean deleteTeamFromTournament(Team team, Tournament tournament) {
+		String query = "delete from tournaments_attendees where team_name=? and tournament_id=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, team.getTeamName());
+			ps.setLong(2, tournament.getTournamentId());
+			ps.execute();
+			return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
 	
 }

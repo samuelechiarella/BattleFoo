@@ -194,4 +194,37 @@ public class OrganizationRestController {
 		}
 		return res;
 	}
+	
+	@PostMapping("/deleteTournament")
+	public Response deleteTournament(HttpServletRequest req, @RequestBody Long tournamentId) {
+		Response res = new Response(Response.failure, "Deleting touranment failed!");
+		if(Database.getInstance().deleteTournamentById(tournamentId)) {
+			List<Tournament> tournaments = (List<Tournament>) req.getSession(true).getAttribute("tournamentsList");
+			Tournament deletedTournament = null;
+			for(Tournament t : tournaments)
+				if(t.getTournamentId() == tournamentId) {
+					deletedTournament = t;
+					break;
+				}
+			if(deletedTournament!=null)
+				tournaments.remove(deletedTournament);
+			req.getSession(true).setAttribute("tournamentsList", tournaments);
+			res.setResponseCode(200);
+			res.setResponseMessage("Tournament deleted");
+		}
+		return res;
+	}
+	
+	@PostMapping("/deleteOrganization")
+	public Response deleteOrganization(HttpServletRequest req, @RequestBody Long orgId) {
+		Response res = new Response(Response.failure, "Deleting organization failed!");
+		List<Tournament> tournaments = Database.getInstance().getTournamentsByOrganizationId(orgId);
+		for(Tournament t : tournaments)
+			Database.getInstance().deleteTournamentById(t.getTournamentId());
+		if(Database.getInstance().deleteOrganizationById(orgId)) {
+			res.setResponseCode(200);
+			res.setResponseMessage("Organization deleted");
+		}
+		return res;
+	}
 }

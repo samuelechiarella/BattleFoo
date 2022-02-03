@@ -306,4 +306,16 @@ public class Database {
 	public boolean setChatHistory(String chatHistory, Long matchId) {
 		return MatchesDAO.getInstance(connection).setChatHistoryByMatchId(chatHistory,matchId);
 	}
+
+	public boolean deleteTournamentById(Long tournamentId) {
+		return TournamentsDAO.getInstance(connection).deleteTournamentById(tournamentId);
+	}
+
+	public boolean leaveTournamentByTeamName(Team team, Tournament tournament) {
+		return TournamentsDAO.getInstance(connection).deleteTeamFromTournament(team, tournament);
+	}
+
+	public boolean deleteOrganizationById(Long orgId) {
+		return OrganizationsDAO.getInstance(connection).deleteById(orgId);
+	}
 }

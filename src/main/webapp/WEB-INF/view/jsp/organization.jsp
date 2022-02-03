@@ -29,6 +29,9 @@
 	          <button id="submitOrganizationDescription">Done</button>
 	          <button id="editOrganizationDescription">Edit</button>
 	      </div>
+	      <div class="delete-organization-button">
+	      	<button onclick="deleteOrganization('${organization.organizationId}')">Delete Organization</button>
+	      </div>
 	    </div>
 
 	    <div id="tournamentsContent" class="tab-content do-not-hide-create-tournament">
@@ -40,7 +43,7 @@
 	          </tr>
 
 	          <jstl:forEach items="${tournamentsList}" var="tournament">
-		          <tr>
+		          <tr id="${tournament.tournamentId}" onclick="selectTournament(this)">
 		            <td>
 			            <jstl:forEach items="${gamesList}" var="game">
 			            	<jstl:if test="${game.name eq tournament.gameName}">
@@ -58,7 +61,7 @@
 
 	      <div class="createTournamentBtn">
 	      	<button id= "createTournament" onclick="openCreateTournament()">Create Tournament</button>
-	      	<button id= "deleteTournament" onclick="openDeleteTournament()">Delete Tournament</button>
+	      	<button id= "deleteTournament" onclick="deleteTournament()">Delete Tournament</button>
 	      </div>
 	      
 

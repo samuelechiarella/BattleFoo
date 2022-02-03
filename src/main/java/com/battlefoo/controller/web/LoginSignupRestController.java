@@ -45,8 +45,10 @@ public class LoginSignupRestController {
 	public Response signup(HttpServletRequest req, @RequestBody User user){
 		user.setProfilePicture(ServerPaths.DEFAULT_PROFILE_PICTURE);
 		Response response = createSignupResponse(user);
-		if(response.getResponseCode()==200)
+		if(response.getResponseCode()==200) {
 			req.getSession(true).setAttribute("loggedUser", user.getUsername());
+			req.getSession(true).setAttribute("loggedPlayer", Database.getInstance().getPlayerByUsername(user.getUsername()));
+		}
 		
 		return response;
 	}

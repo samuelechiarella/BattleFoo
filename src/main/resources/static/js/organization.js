@@ -65,3 +65,54 @@ function insertNewMember(profilePicture, username){
 	cell[0].appendChild(img);
 	cell[1].textContent = username;
 }
+
+function selectTournament(element){
+	let tr = document.querySelectorAll("#tournamentsContent tr");
+	for(let i = 0; i < tr.length; ++i){
+		tr[i].classList.remove("tournament-active");
+	}
+	element.classList.add("tournament-active");
+}
+
+function deleteTournament() {
+	let tr = document.getElementsByClassName("tournament-active")[0];
+	if(tr == null){
+		alert("Select a Tournament to delete it");
+		return;
+	}
+	$.ajax({
+		type: "POST",
+		url: "/deleteTournament",
+		contentType: "application/json",
+		data: JSON.stringify(tr.id),
+		success: function(answer){
+			if(answer.responseCode==200) {
+				alert(answer.responseMessage);
+				location.reload();
+			}
+			else {
+				console.log(answer.responseMessage);
+			}
+		},
+		error: function(err){ console.log(err); }
+	});
+}
+
+function deleteOrganization(orgId) {
+	$.ajax({
+		type: "POST",
+		url: "/deleteOrganization",
+		contentType: "application/json",
+		data: JSON.stringify(orgId),
+		success: function(answer){
+			if(answer.responseCode==200) {
+				alert(answer.responseMessage);
+				location.href = "/index";
+			}
+			else {
+				console.log(answer.responseMessage);
+			}
+		},
+		error: function(err){ console.log(err); }
+	});
+}

@@ -52,14 +52,14 @@
   </div>
 
   <div class="tournaments">
-    <h2>Happening Soon:</h2>
+    <h2>Random:</h2>
     <div class="list-tournaments">
-      <div class="tournament"><img src="https://imgr.search.brave.com/Nerqv-diQqQcQdRA4A9oEDUfOB8-OBzFqssgJ1rFTQ8/fit/1080/675/ce/1/aHR0cDovL2dhbWVk/dXN0cmlhLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAxOC8w/NS9HQU1FUE9MSVMt/Rk9STklURS0yLTEw/ODB4Njc1LmpwZw"></div>
-      <div class="tournament"><img src="https://imgr.search.brave.com/4fF5bgc_A2ZX-fIPLb3FCCr7zGb_N-REuTgRr6ZUJGs/fit/1200/567/ce/1/aHR0cHM6Ly9vcmln/MDAuZGV2aWFudGFy/dC5uZXQvZjMwNy9m/LzIwMTQvMDA1L2Mv/MC90b3JuZW9fbG9s/X3N0YV9jcnV6X2Jh/bm5lcl9ieV9qdWxp/b3R0LWQ3MTBwcWQu/anBn"></div>
-      <div class="tournament"><img src="https://imgr.search.brave.com/47XXpa3jd1-O-6ML_dztc0BAnsjsgCugObiUyk2GgHI/fit/1200/720/ce/1/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9X/dTdyaUVsUjM1MC9t/YXhyZXNkZWZhdWx0/LmpwZw"></div>
-      <div class="tournament"><img src="https://imgr.search.brave.com/faICdBdYsPKee3dKXAD6HkabJGN1oOV_l_PfFCGsOSM/fit/1200/720/ce/1/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS8t/dWFXNEVVN0Z2ay9t/YXhyZXNkZWZhdWx0/LmpwZw"></div>
-      <div class="tournament"><img src="https://imgr.search.brave.com/f8sF16aoO-eXcFjOuNnDrojrxxt4-F-l_9iyngpOWHk/fit/460/269/ce/1/aHR0cDovL2kuaW1n/dXIuY29tL0tmcDRM/eU0ucG5n"></div>
-    </div>
+    	<jstl:forEach items="${randomTournaments}" var="tournament">
+      		<div class="tournament">
+      			<img src="${tournament.logo}" title="${tournament.name}" onclick="openTournamentPage('${tournament.tournamentId}')">
+      		</div>
+      	</jstl:forEach>
+      </div>
   </div>
 
 </body>

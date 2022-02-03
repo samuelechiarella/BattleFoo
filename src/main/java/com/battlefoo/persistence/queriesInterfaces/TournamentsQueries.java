@@ -15,4 +15,6 @@ public interface TournamentsQueries {
 	public Tournament getById(Long tournamentId);
 	public List<String> getAttendeesById(Long tounamentId);
 	public boolean insertTeam(Team team, Tournament tournament);
+	public boolean deleteTournamentById(Long tournamentId);
+	public boolean deleteTeamFromTournament(Team team, Tournament tournament);
 }

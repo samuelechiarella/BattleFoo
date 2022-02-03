@@ -118,5 +118,24 @@ $(document).ready(function(){
 		},
 		error: function(err){ console.log(err); }
 	});
-}, 1000);
+	}, 6000);
 });
+
+function leaveTournament(teamSigned) {
+	$.ajax({
+		type: "POST",
+		url: "/leaveTournament",
+		contentType: "application/json",
+		data: JSON.stringify(teamSigned),
+		success: function(answer){
+			if(answer.responseCode==200){
+				alert(answer.responseMessage);
+				location.reload();
+			}
+			else{
+				console.log(answer.responseMessage);
+			}
+		},
+		error: function(err){ console.log(err); }
+	});
+}

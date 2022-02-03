@@ -9,6 +9,12 @@
 <body>
 	<jsp:include page="background.jsp"></jsp:include>
 
+	<jstl:set var="leaderIn" value="false"></jstl:set>
+	
+	<jstl:if test="${team.leaderId eq loggedPlayer.playerId}">
+		<jstl:set var="leaderIn" value="true"></jstl:set>
+	</jstl:if>
+
 	<jstl:set value="${team}" var="team"/>
 		<div class="out-tab">
 	      <div class="out-tab-logo-name">
@@ -29,10 +35,12 @@
 	      <!-- Tab content -->
 	      <div id="description-content" class="tabcontent">
 	      	<textarea readonly>${team.description}</textarea>
-	      	<div id="editTeamDescription">
-	        	<label for="edit"><img src="images/sidebar-icons/editIcon.png" title="Edit Description"></label>
-	        	<button class="keep-away" id="edit" onclick="setDescriptionEditable()"></button>
-	      	</div>
+	      	<jstl:if test="${leaderIn}">
+		      	<div id="editTeamDescription">
+		        	<label for="edit"><img src="images/sidebar-icons/editIcon.png" title="Edit Description"></label>
+		        	<button class="keep-away" id="edit" onclick="setDescriptionEditable()"></button>
+		      	</div>
+		    </jstl:if>
 	      	<div class="apply-cancel-changes hide-apply-changes">
 		      <label for="apply-changes" class="label-button" onclick="confirmDescriptionChanges()">Apply</label>
 			  <button id="apply-changes" class="keep-away"></button>
@@ -41,6 +49,7 @@
 		  	</div>
 	      </div>
 	      
+	      
 	      <div id="list-attendees" class="tabcontent">
 	      	<jstl:forEach items="${teamMembersList}" var="player">
 			<div class="attendee tooltip">
@@ -48,7 +57,11 @@
 			  <span class="tooltiptext">${player.username}</span>
 			</div>
 			</jstl:forEach>
-			<img id="editTeamMembers" class="" onclick="openLoginSignup('edit-team-member')" src="images/sidebar-icons/editIcon.png" title="Edit Members">
+			
+			<jstl:if test="${leaderIn}">
+				<img id="editTeamMembers" class="" onclick="openLoginSignup('edit-team-member')" src="images/sidebar-icons/editIcon.png" title="Edit Members">
+	      	</jstl:if>
+	      	
 	      </div>
 		  
 	    </div>

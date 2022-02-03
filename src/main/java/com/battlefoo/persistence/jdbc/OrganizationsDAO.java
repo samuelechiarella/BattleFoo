@@ -194,4 +194,19 @@ public class OrganizationsDAO implements OrganizationsQueries {
 		}
 		return false;
 	}
+
+	@Override
+	public boolean deleteById(Long orgId) {
+		String query = "delete from organizations where organization_id=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, orgId);
+			ps.execute();
+			return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		return false;
+	}
+}
 }
