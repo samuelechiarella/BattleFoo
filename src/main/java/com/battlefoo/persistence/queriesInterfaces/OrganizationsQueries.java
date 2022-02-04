@@ -16,4 +16,5 @@ public interface OrganizationsQueries {
 	public boolean insertOrganization(Organization org);
 	public List<Manager> getMembersByOrgName(String orgName);
 	public boolean deleteById(Long orgId);
+	public boolean editDescription(Organization currentOrganization, String description);
 }

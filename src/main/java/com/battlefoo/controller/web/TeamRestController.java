@@ -32,6 +32,8 @@ public class TeamRestController {
 	
 	private Response createResponseEditDescription(HttpServletRequest req, String description) {
 		Response res = new Response(Response.failure, "Editing team description failed");
+		description = description.replace("\"", "");
+		description = description.replace("\\n", "\n");
 		Team t = (Team)req.getSession(true).getAttribute("team");
 		if(Database.getInstance().editTeamDescription(t,description)) {
 			res.setResponseCode(200);

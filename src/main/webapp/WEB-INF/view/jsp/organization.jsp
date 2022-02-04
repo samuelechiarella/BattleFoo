@@ -24,10 +24,10 @@
 	      <h1>${organization.organizationName}</h1>
 	      <div id="org-info">
 	          <div id="org-description">
-	              <textarea readonly>Add a description for your Organization</textarea>
+	              <textarea id="organizationDescription" readonly>${organization.description}</textarea>
 	          </div>
-	          <button id="submitOrganizationDescription">Done</button>
-	          <button id="editOrganizationDescription">Edit</button>
+	          <button id="submitOrganizationDescription" onclick="closeOrganizationDescriptionEditing()">Done</button>
+	          <button id="editOrganizationDescription" onclick="editOrganizationDescription()">Edit</button>
 	      </div>
 	      <div class="delete-organization-button">
 	      	<button onclick="deleteOrganization('${organization.organizationId}')">Delete Organization</button>

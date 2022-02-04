@@ -207,6 +207,22 @@ public class OrganizationsDAO implements OrganizationsQueries {
 		catch(SQLException e) {
 			e.printStackTrace();
 		return false;
+		}
 	}
-}
+
+	@Override
+	public boolean editDescription(Organization currentOrganization, String description) {
+		String query = "update organizations set description=? where organization_id=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, description);
+			ps.setLong(2, currentOrganization.getOrganizationId());
+			ps.execute();
+			return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

@@ -50,7 +50,7 @@ function confirmDescriptionChanges() {
 		success:function(answer){
 			console.log(answer.responseMessage);
 			textarea = document.querySelector("#description-content textarea");
-			textarea.readonly = false;
+			textarea.readonly = true;
 			textarea.style.pointerEvents = "none";
 			document.getElementById("editTeamDescription").classList.remove("hide-apply-changes")
 			document.querySelector(".apply-cancel-changes").classList.add("hide-apply-changes");;

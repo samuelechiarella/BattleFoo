@@ -116,3 +116,27 @@ function deleteOrganization(orgId) {
 		error: function(err){ console.log(err); }
 	});
 }
+
+function editOrganizationDescription() {
+	textarea = document.getElementById("organizationDescription");
+	textarea.removeAttribute("readonly");
+}
+
+function closeOrganizationDescriptionEditing() {
+	textarea = document.getElementById("organizationDescription");
+	$.ajax({
+		type: "POST",
+		url: "/editOrganizationDescription",
+		contentType: "application/json",
+		data: JSON.stringify(textarea.value),
+		success: function(answer){
+			if(answer.responseCode){
+				textarea.readonly = true;
+			}
+			else {
+				console.log(answer.responseMessage);
+			}
+		},
+		error: function(err){ console.log(err); }
+	});
+}

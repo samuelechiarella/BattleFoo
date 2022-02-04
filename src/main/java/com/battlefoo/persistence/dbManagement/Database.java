@@ -318,4 +318,8 @@ public class Database {
 	public boolean deleteOrganizationById(Long orgId) {
 		return OrganizationsDAO.getInstance(connection).deleteById(orgId);
 	}
+
+	public boolean editOrganizationDescription(Organization currentOrganization, String description) {
+		return OrganizationsDAO.getInstance(connection).editDescription(currentOrganization, description);
+	}
 }

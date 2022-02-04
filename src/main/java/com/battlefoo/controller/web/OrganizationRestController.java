@@ -227,4 +227,19 @@ public class OrganizationRestController {
 		}
 		return res;
 	}
+	
+	@PostMapping("/editOrganizationDescription")
+	public Response editOrganizationDescription(HttpServletRequest req, @RequestBody String orgDescr) {
+		Response res = new Response(Response.failure, "Updating description failed");
+		orgDescr = orgDescr.replace("\"", "");
+		orgDescr = orgDescr.replace("\\n", "\n");
+		Organization currentOrganization = (Organization) req.getSession(true).getAttribute("organization");
+		if(Database.getInstance().editOrganizationDescription(currentOrganization, orgDescr)) {
+			res.setResponseCode(200);
+			res.setResponseMessage("Organization description updated");
+			currentOrganization.setDescription(orgDescr);
+			req.getSession(true).setAttribute("organization", currentOrganization);
+		}
+		return res;
+	}
 }
