@@ -57,12 +57,13 @@ body {
 #org-description textarea {
   padding: 1em;
   resize: none;
-  background-color: #BFC0C4;
   width: 80%;
   height: 99%;
   border: none;
   border-radius: 0.5em;
   font-size: 1.5em;
+  color: white;
+  background-color: rgba(0,0,0,0.5);
 }
 
 #org-info button {
@@ -71,7 +72,7 @@ body {
 
 #staffContent {
 	position: absolute;
-	left: 35%;
+	left: 45%;
 }
 
 
@@ -92,20 +93,19 @@ body {
 	min-width: 3em;
 }
 
-.staffTable td, th {
+.staffTable td, th , #tournamentsContent table td {
 	font-size: 1.3em;
 }
 
-#tournamentsContent td{
-  margin-top: 1.5em;
+#tournamentsContent td, #staffContent td{
   cursor: pointer;
 }
 
-#tournamentsContent tr:hover{
+#tournamentsContent td:hover, #staffContent td:hover {
   background-color: orange;
 }
 
-#tournamentsContent table {
+#tournamentsContent table , #staffContent table{
   margin-top: 3em;
 }
 
@@ -115,18 +115,9 @@ body {
   border-bottom: 1px solid #ddd;
 }
 
-.staffTable td:hover, .tournamentTable tr:hover{
-	background-color: orange;
-}
-
-#staffContent img {
-	max-height: 4em;
-	max-width: 4em;
-}
-
 #tournamentsContent img {
-	max-height: 4em;
-	max-width: 4em;
+	max-height: 3em;
+	max-width: 3em;
 }
 
 .createTournamentBtn {
@@ -139,7 +130,8 @@ body {
 	margin-top: 5%;
 }
 .createTournamentBtn button {
-	width: 100%;
+	width: 10%;
+	height: 6%;
 	font-family: sans-serif;
 	font-size: 1.3em;
 	border: 0.1em solid orange;
@@ -148,37 +140,17 @@ body {
 	color: white;
 	border-radius: 1em;
 	transition: 0.2s;
-	
+	position: fixed;
+	top: 30em;
+	left: 65em;
 }
 
 .createTournamentBtn button:hover {
 	background-color: orange;
 }
 
-#removeBtn {
-	width: 25%;
-	font-family: sans-serif;
-	font-size: 1.3em;
-	border: 0.1em solid orange;
-	background-color: #FF6800;
-	cursor: pointer;
-	color: white;
-	border-radius: 1em;
-	transition: 0.2s;
-	margin-left: 0.3em;
-}
-
-#newMember{
-	font-family: sans-serif;
-	font-size: 1.3em;
-	border: 0.2em solid orange;
-	background-color: white;
-	margin-top: 0.5em;
-	border-radius: 0.5em;
-}
-
 #addBtn {
-	width: 25%;
+	width: 10%;
 	font-family: sans-serif;
 	font-size: 1.3em;
 	border: 0.1em solid orange;
@@ -188,6 +160,38 @@ body {
 	border-radius: 1em;
 	transition: 0.2s;
 	margin-left: 0.5em;
+	margin-top: 1em;
+	position: fixed;
+	top: 22em;
+	left: 52em;
+}
+
+#removeBtn {
+	width: 10%;
+	font-family: sans-serif;
+	font-size: 1.3em;
+	border: 0.1em solid orange;
+	background-color: #FF6800;
+	cursor: pointer;
+	color: white;
+	border-radius: 1em;
+	transition: 0.2s;
+	margin-left: 0.5em;
+	margin-top: 1em;
+	position: fixed;
+	top: 24em;
+	left: 52em;
+}
+
+#newMember{
+	font-family: sans-serif;
+	font-size: 1.3em;
+	border: 0.2em solid orange;
+	background-color: white;
+	margin-top: 1em;
+	border-radius: 0.5em;
+	position: fixed;
+	left: 39em;
 }
 
 #addBtn:hover, #removeBtn:hover {
@@ -219,7 +223,7 @@ body {
 }
 
 .delete-organization-button {
-	position: fixed;
+	position: absolute;
 	right: 10em;
 	top: 10em;
 }
@@ -238,4 +242,16 @@ body {
 
 .delete-organization-button button:hover {
 	background-color: orange; 
+}
+
+#submitOrganizationDescription, #editOrganizationDescription {
+	padding: 0.3em;
+	border: 0.1em solid orange;
+	font-size: 1.3em;
+	font-family: sans-serif;
+	background-color: #FF6800;
+	cursor: pointer;
+	transition: 0.2s;
+	color: white;
+	border-radius: 1em;
 }

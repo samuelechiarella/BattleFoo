@@ -21,7 +21,7 @@
     <div class="overview_box">
       <div id="overview" data-tab-content class="active overview">
         <h1>${tournament.name}</h1>
-        <img src="${tournament.logo}">
+        <img id="imgLogo" src="${tournament.logo}">
       </div>
       <jstl:if test="${not empty loggedPlayer}">
 	      <jstl:set var="teamFound" value="false"></jstl:set>
@@ -118,7 +118,6 @@
 		      </div>
 		      <div class="sendbox">
 		          <button id="sendMessageBtn" onclick="sendMessage()">Send</button>
-		          <button id="chatRefresh"><img src="https://img.icons8.com/external-kmg-design-basic-outline-kmg-design/2x/external-refresh-arrows-kmg-design-basic-outline-kmg-design.png" alt="refresh"></button>
 		      </div>
 		    </div>
 		</div>

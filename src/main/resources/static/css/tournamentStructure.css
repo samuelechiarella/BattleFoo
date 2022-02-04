@@ -55,18 +55,18 @@ body {
 
 /* Style the tab */
 .sub-tab {
-  display: inline-block;
-  font-family: 'Lobster', cursive;
-  font-weight: 400;
-  font-size: 21px;
-  color: #edf0f1;
-  text-decoration: none;
-  justify-content: flex-end;
-  text-align: center;
-  list-style-type: none;
-  margin-left: 35%;
-  padding: 5px;
-  border-bottom: 1px solid orange;
+	display: inline-block;
+	font-family: 'Lobster', cursive;
+ 	font-weight: 400;
+	font-size: 21px;
+	color: #edf0f1;
+	text-decoration: none;
+	justify-content: flex-end;
+	text-align: center;
+	list-style-type: none;
+	margin-bottom: 1%;
+	padding: 5px;
+	margin-left: 1%;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -189,33 +189,12 @@ body {
   width: 1.5em;
 }
 
-.match-chat {
-  text-align: center;
-  margin-top: 5em;
-}
-
-.match-text {
-  width: 50%;
-  margin-left: 24%;
-}
-
-.match-text *{
-  width: 100%;
-  font-size: 1em;
-  font-family: sans-serif;
-  padding: 0.4em;
-}
-
-.match-chat textarea {
-  resize: none;
-  height: 20vh;
-}
-
 .sendbox button {
   transition: 0.5s;
-  margin: 0.5em;
+  margin-top: 0.5em;
+  margin-right: 2%;
   padding: 0.5em;
-  font-size: 0.8em;
+  font-size: 1em;
   font-family: sans-serif;
   color: white;
   background: none;
@@ -279,7 +258,7 @@ body {
 }
 
 .overview_box #signupTournamentBtn {
-	background-color: rgba(179,107,0, 0.8);
+	background-color: rgba(179,107,0, 1);
 	border-radius: 5em;
 	font-size: 1.2em;
 	font-family: sans-serif;
@@ -295,12 +274,16 @@ body {
 	min-width: 7em;
 }
 
+#overview h1 {
+	position: static;
+}
+
 .overview_box #signupTournamentBtn:hover {
 	background-color: orange;
 }
 
 .overview_box #leaveTournamentBtn {
-	background-color: rgba(179,107,0, 0.8);
+	background-color: rgba(179,107,0, 1);
 	border-radius: 5em;
 	font-size: 1.2em;
 	font-family: sans-serif;
@@ -415,20 +398,32 @@ body {
 
 #Details-content textarea {
 	resize: none;
-	height: 20vh;
-	width: 70vh;
+	height: 10em;
+	width: 70em;
+	padding: 0.8em;
+	color: white;
+	font-size: 1.3em;
+	background-color: rgba(0,0,0,0.5)
 }
 
 #Rules-content textarea {
 	resize: none;
-	height: 20vh;
-	width: 70vh;
+	height: 10em;
+	width: 70em;
+	padding: 0.8em;
+	color: white;
+	font-size: 1.3em;
+	background-color: rgba(0,0,0,0.5)
 }
 
 #Schedule-content textarea {
 	resize: none;
-	height: 20vh;
-	width: 70vh;
+	height: 10em;
+	width: 70em;
+	padding: 0.8em;
+	color: white;
+	font-size: 1.3em;
+	background-color: rgba(0,0,0,0.5)
 }
 
 #overview img {
@@ -445,9 +440,30 @@ body {
 }
 
 .match-text textarea {
-	padding: 0.3em;
-	font-size: 1.2em;
-	font-family: sans-serif;
-	font-weight: bold;
-	color: #202020;
+	resize: none;
+	height: 7.5em;
+	width: 50em;
+	padding: 0.8em;
+	color: white;
+	font-size: 1.3em;
+	background-color: rgba(0,0,0,0.5)
+}
+
+#messageToSend {
+	width: 66em;
+	color: white;
+	margin-top: 1%;
+	background-color: rgba(0,0,0,0.5)
+}
+
+.match-text *{
+  width: 100%;
+  font-size: 1em;
+  font-family: sans-serif;
+  padding: 0.4em;
+}
+
+.match-text {
+  width: 50%;
+  margin-left: 20%;
 }
