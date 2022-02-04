@@ -69,7 +69,28 @@
 					<jstl:when test="${not empty loggedManager}">
 						<div class="backside-list">
 							<!-- lista organizzazioni -->
-							<jstl:forEach items="${organizationsList}" var="org">
+							<jstl:forEach items="${createdOrganizationList}" var="org">
+							 	<div class="side-elem">
+									<span onclick="openOrganizationPage('${org.organizationId}','${org.creatorId}')">${org.organizationName}</span>
+								</div>
+							</jstl:forEach>
+						</div>
+						
+						<span id="teamsIHaveCreated" class="teams-list-span">Created</span>
+						<!-- Teams I have created -->
+						<div class="backside-list-i-have-created">
+							<jstl:forEach items="${createdOrganizationsList}" var="org">
+							 	<div class="side-elem">
+									<span onclick="openOrganizationPage('${org.organizationId}','${org.creatorId}')">${org.organizationName}</span>
+								</div>
+							</jstl:forEach>
+						</div>
+						
+						<span id="teamsIBelong" class="teams-list-span">I belong</span>
+						<!-- Teams I belong -->
+						<div class="backside-list-i-have-created">
+							<!-- lista organizzazioni -->
+							<jstl:forEach items="${organizationIBelongList}" var="org">
 							 	<div class="side-elem">
 									<span onclick="openOrganizationPage('${org.organizationId}','${org.creatorId}')">${org.organizationName}</span>
 								</div>
@@ -88,15 +109,29 @@
 			<!-- Manage Teams side panel -->
 			<div id="manageTeamsBackside" class="sidepanel">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeBack()">&lt;</a>
-				<div id="teams-list" class="backside-list">
-				<jstl:forEach items="${teamsList}" var="team">
-					<div class="team-logo">
-						<div class="tooltip">
-							<img id="${team.leaderId}"  src="${team.logo}" onclick="openTeamPage('${team.teamName}')">
-							<span class="tooltiptext">${team.teamName}</span>
+				<span id="teamsIHaveCreated" class="teams-list-span">Created teams</span>
+				<div class="backside-list-i-have-created">
+					<!-- Teams I have created -->
+					<jstl:forEach items="${createdTeamsList}" var="team">
+						<div class="team-logo">
+							<div class="tooltip">
+								<img id="${team.leaderId}"  src="${team.logo}" onclick="openTeamPage('${team.teamName}')">
+								<span class="tooltiptext">${team.teamName}</span>
+							</div>
 						</div>
-					</div>
-				</jstl:forEach>
+					</jstl:forEach>
+				</div>
+				<span id="teamsIBelong" class="teams-list-span">Teams i belong</span>
+				<div class="backside-list-i-belong">
+					<!-- Teams I belong -->
+					<jstl:forEach items="${teamsIBelongList}" var="team">
+						<div class="team-logo">
+							<div class="tooltip">
+								<img id="${team.leaderId}"  src="${team.logo}" onclick="openTeamPage('${team.teamName}')">
+								<span class="tooltiptext">${team.teamName}</span>
+							</div>
+						</div>
+					</jstl:forEach>
 				</div>
 				<a href="#" class="not-move" id="newTeamButton" onclick="openCreateTeamSidebar()">+ New Team</a>
 			</div>

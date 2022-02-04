@@ -126,7 +126,7 @@ public class TournamentRestController {
 		if(t!=null) {
 			// SET TOURNAMENT BANNER AND SPONSOR BANNER
 
-			if(t.getLogo() != null) {
+			if(t.getLogo().compareTo(ServerPaths.DEFAULT_ORGANIZATION_BANNER) != 0) {
 				try {
 					BufferedReader br =  new BufferedReader(new FileReader(t.getLogo()));
 					t.setLogo(br.readLine());
