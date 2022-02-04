@@ -107,7 +107,7 @@ input[type="text"] {
 }
 
 /* The sidepanel links */
-.sidepanel a, .side-elem, .side-elem label{
+.sidepanel a, .side-elem, .side-elem label, .side-elem span{
   padding: 0.4em;
   text-decoration: none;
   font-size: 1.13em;
@@ -115,6 +115,10 @@ input[type="text"] {
   color: white;
   transition: 0.3s;
   cursor: pointer;
+}
+
+.side-elem span {
+	position: fixed;
 }
 
 .side-elem {
@@ -175,20 +179,38 @@ input[type="text"] {
 	overflow-y: scroll;
 }
 
-.backside-list {
-	height: 37.5em;
+.backside-list-i-have-created {
+	height: 25%;
+	overflow-y: auto;
+	margin-bottom: 2em;
+}
+
+.backside-list-i-belong {
+	height: 25%;
 	overflow-y: auto;
 }
 
-#newTeamButton	{
+.teams-list-span {
+	color: white;
+	font-size: 1.2em;
+	font-family: sans-serif;
+	margin-left: 1em;
+}
 
+#newTeamButton	{
 	position: absolute;
   	left: 1.2em;
-	bottom: 5em;
+	bottom: 10%;
 	border-radius: 0.5em;
 	border: 2px solid white;
 }
-
+/*
+@media screen and (max-height: 40em) {
+   #newTeamButton {
+   		display: none;
+   }
+}
+*/
 #newOrganizationButton	{
   max-width:9em;
   min-width:9em;
