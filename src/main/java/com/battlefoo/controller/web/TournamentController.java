@@ -22,40 +22,42 @@ public class TournamentController {
 	@GetMapping("/tournamentPage")
 	public String getTournamentPage(HttpServletRequest req) {
 		Tournament t = (Tournament)  req.getSession(true).getAttribute("tournament");
-		if(t.getLogo().compareTo(ServerPaths.DEFAULT_ORGANIZATION_BANNER) != 0) {
-			try {
-				BufferedReader br =  new BufferedReader(new FileReader(t.getLogo()));
-				t.setLogo(br.readLine());
-				br.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		if(t.getSponsor().compareTo(ServerPaths.DEFAULT_ORGANIZATION_BANNER) != 0) {
-			try {
-				BufferedReader br =  new BufferedReader(new FileReader(t.getSponsor()));
-				t.setSponsor(br.readLine());
-				br.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		req.getSession(true).setAttribute("tournament", t);
-		List<Team> tournamentAttendees = Database.getInstance().getTournamentAttendeesByTournamentName(t.getName());
-		for(Team team : tournamentAttendees) {
-			if(team.getLogo().compareTo(ServerPaths.DEFAULT_TEAM_LOGO) != 0) {
+		if(t != null) {
+			if(t.getLogo().compareTo(ServerPaths.DEFAULT_ORGANIZATION_BANNER) != 0) {
 				try {
-					BufferedReader br =  new BufferedReader(new FileReader(team.getLogo()));
-					team.setLogo(br.readLine());
+					BufferedReader br =  new BufferedReader(new FileReader(t.getLogo()));
+					t.setLogo(br.readLine());
 					br.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
-			else
-				team.setLogo(ServerPaths.DEFAULT_TEAM_LOGO);
+			if(t.getSponsor().compareTo(ServerPaths.DEFAULT_ORGANIZATION_BANNER) != 0) {
+				try {
+					BufferedReader br =  new BufferedReader(new FileReader(t.getSponsor()));
+					t.setSponsor(br.readLine());
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			req.getSession(true).setAttribute("tournament", t);
+			List<Team> tournamentAttendees = Database.getInstance().getTournamentAttendeesByTournamentName(t.getName());
+			for(Team team : tournamentAttendees) {
+				if(team.getLogo().compareTo(ServerPaths.DEFAULT_TEAM_LOGO) != 0) {
+					try {
+						BufferedReader br =  new BufferedReader(new FileReader(team.getLogo()));
+						team.setLogo(br.readLine());
+						br.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				else
+					team.setLogo(ServerPaths.DEFAULT_TEAM_LOGO);
+			}
+			req.getSession(true).setAttribute("tournamentAttendees", tournamentAttendees);
 		}
-		req.getSession(true).setAttribute("tournamentAttendees", tournamentAttendees);
 		return "/tournamentStructure";
 	}
 	

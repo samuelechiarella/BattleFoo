@@ -175,8 +175,9 @@
 		    </div>
 		    
 		    <div class="invitationLink">
-		        <label for="generateInvitationLinkBtn">Genera Link Invito! </label>
-				<button id="generateInvitationLinkBtn">Generate</button>
+		    	<input type="text" id="linkInvite" placeholder="Link invite" readonly>
+		        <label for="generateInvitationLinkBtn">Generate the invite!</label>
+				<button id="generateInvitationLinkBtn" onclick="generateInvite('${tournament.tournamentId}')">Generate</button>
 			</div>
 		    </div>
 		 </div>

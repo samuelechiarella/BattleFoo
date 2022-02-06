@@ -139,3 +139,7 @@ function leaveTournament(teamSigned) {
 		error: function(err){ console.log(err); }
 	});
 }
+
+function generateInvite(tournamentId) {
+	$("#linkInvite").val("localhost:8080/visit"+tournamentId);
+}
