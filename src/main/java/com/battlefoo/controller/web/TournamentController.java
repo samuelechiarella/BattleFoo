@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.battlefoo.ServerPaths;
 import com.battlefoo.model.entitiesObjects.Team;
@@ -56,5 +57,45 @@ public class TournamentController {
 		}
 		req.getSession(true).setAttribute("tournamentAttendees", tournamentAttendees);
 		return "/tournamentStructure";
+	}
+	
+	@GetMapping("/visit{tournamentId}")
+	public String getTournamentPage(@PathVariable("tournamentId") Long tournamentId, HttpServletRequest req) {
+		Tournament t = Database.getInstance().getTournamentByTournamentId(tournamentId);
+		if(t!=null) {
+			// SET TOURNAMENT BANNER AND SPONSOR BANNER
+			if(t.getLogo().compareTo(ServerPaths.DEFAULT_ORGANIZATION_BANNER) != 0) {
+				try {
+					BufferedReader br =  new BufferedReader(new FileReader(t.getLogo()));
+					t.setLogo(br.readLine());
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			else
+				t.setLogo(ServerPaths.DEFAULT_ORGANIZATION_BANNER);
+			
+			//*******************************************************************************************************
+			List<Team> tournamentAttendees = Database.getInstance().getTournamentAttendeesByTournamentId(tournamentId);
+			
+			for(Team team : tournamentAttendees) {
+				if(team.getLogo().compareTo(ServerPaths.DEFAULT_TEAM_LOGO) != 0) {
+					try {
+						BufferedReader br =  new BufferedReader(new FileReader(team.getLogo()));
+						team.setLogo(br.readLine());
+						br.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+				else
+					team.setLogo(ServerPaths.DEFAULT_TEAM_LOGO);
+			}
+			
+			req.getSession(true).setAttribute("tournamentAttendees", tournamentAttendees);
+			req.getSession(true).setAttribute("tournament", t);
+		}
+		return "tournamentStructure";
 	}
 }

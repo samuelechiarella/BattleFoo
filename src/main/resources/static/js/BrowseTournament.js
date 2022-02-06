@@ -23,10 +23,11 @@ function applyFilterSearchTournament(){
 			}
 		});
 	}
-	function insertNewTournament(logo, name, data,id){
+
+function insertNewTournament(logo, name, data,id){
 	var row= "<tr onclick=\"openTournamentPage('" + Number(id) + "')\"><td><img src='"
 			+ logo + "'></td><td>" + name + "</td><td>" + data + "</td></tr>";
-  	$('#filterTournamentTableBody').append(row);
+	$('#filterTournamentTableBody').append(row);
 } 
 	
 	

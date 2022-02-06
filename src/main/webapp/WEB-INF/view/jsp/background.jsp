@@ -55,10 +55,14 @@
 			    
 			    <!-- ONLY IF THE USER IS NOT LOGGED -->
 			    <jstl:if test="${empty loggedUser}">
-				    <div class="side-elem login-signup-buttons sidebar-log-buttons">
-				      <a id="loginButton" href="#" onclick="openLoginSignup('log-in')">Log In</a>
-				      <div class="g-signin2" onclick="clickLogin()" data-onsuccess="onSignIn"></div>
-				      <a id="signupButton" href="#" onclick="openLoginSignup('sign-up')">Sign Up</a>
+				    <div class="login-signup-buttons sidebar-log-buttons">
+				      <div class="g-signin2 google-btn" onclick="clickLogin()" data-onsuccess="onSignIn"></div>	
+				      <div class="side-elem" >
+				      	<a id="loginButton" href="#" onclick="openLoginSignup('log-in')">Log In</a>
+				      </div>
+				      <div class="side-elem" >
+				      	<a id="signupButton" href="#" onclick="openLoginSignup('sign-up')">Sign Up</a>
+				      </div>
 				    </div>
 			    </jstl:if>
 			</div>
@@ -68,15 +72,6 @@
 				<a href="javascript:void(0)" class="closebtn" onclick="closeBack()">&lt;</a>
 				<jstl:choose>
 					<jstl:when test="${not empty loggedManager}">
-						<div class="backside-list">
-							<!-- lista organizzazioni -->
-							<jstl:forEach items="${createdOrganizationList}" var="org">
-							 	<div class="side-elem">
-									<span onclick="openOrganizationPage('${org.organizationId}','${org.creatorId}')">${org.organizationName}</span>
-								</div>
-							</jstl:forEach>
-						</div>
-						
 						<span id="teamsIHaveCreated" class="teams-list-span">Created</span>
 						<!-- Teams I have created -->
 						<div class="backside-list-i-have-created">
@@ -231,7 +226,7 @@
 		    	<button class="do-not-hide" onclick="signupAsManager()">Submit</button>
 		 	</div>
 		 	
-		 	<!-- Sign up as Manager -->
+		 	<!-- Sign in Google -->
 			<div class="log-in-google do-not-hide">
 			    <a class="close-log-in-sign-up clear-sign-up-manager do-not-hide" onclick="closeLoginSignup('log-in-google')">&times;</a>
 			    <h1 class="do-not-hide">Choose your password</h1>
