@@ -13,6 +13,7 @@
 	<ul class="tabs">
 		<li data-tab-target="#overview" class="active tab">OVERVIEW</li>
 		<li data-tab-target="#partecipants" class="tab">PARTECIPANTS</li>
+		<li data-tab-target="#matches" class="tab">MATCHES</li>
 		<li data-tab-target="#brakets" class="tab">BRACKETS</li>
 		<li data-tab-target="#live" class="tab">LIVE</li>
 	</ul>
@@ -65,11 +66,9 @@
       <div class="sub-tab">
         <label for="Details" class="tablinks active" onclick="openTab(event, 'Details-content')">Details</label>
         <label for="Rules" class="tablinks" onclick="openTab(event, 'Rules-content')">Rules</label>
-        <label for="Prizes" class="tablinks" onclick="openTab(event, 'Prizes-content')">My Match</label>
         <label for="Schedule" class="tablinks" onclick="openTab(event, 'Schedule-content')">Schedule</label>
         <button class="keepaway" id="Details">Details</button>
         <button class="keepaway" id="Rules">Rules</button>
-        <button class="keepaway" id="Prizes">Prizes</button>
         <button class="keepaway" id="Schedule">Schedule</button>
         <button class="keepaway" id="Contact">Contact</button>
       </div>
@@ -89,39 +88,7 @@
         <textarea readonly>${tournament.schedule}</textarea>
       </div>
 
-      <div id="Prizes-content" class="tabcontent">
-      	
-      	<div class="tournament-match">
-      		
-      		<jstl:if test="${not empty match}">
-		    <div class="top-bar">
-		      <div class="match-team">
-		        <div class="team1">
-		          <img src="https://img.search.brave.com/8yjDaafA2sZyO-GyI8eTGhA1Jovk5ZmNcfCL0Uj4p7E/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC52/V2VEam5YSUZUdkJG/UGxIVW0zLUdBSGFI/YSZwaWQ9QXBp" title="team1" alt="team1Logo">
-		        </div>
-		      </div>
-		      <div class="vs-logo">
-		      	<img src="https://thumbs.dreamstime.com/b/v-s-versus-letter-logo-vs-letters-transparent-background-vector-illustration-competition-confrontation-v-s-versus-letter-159953254.jpg" alt="">
-		      </div>
-		      <div class="match-team">
-		        <div class="team2">
-		          <img src="https://img.search.brave.com/PmYFjP68SimuSEmY9LCGZ2ENmH-6gFRFEo1PUoqvh9Q/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5q/VUNoMEstWVhjTGl6/MGhzR2tySmtnSGFI/YSZwaWQ9QXBp" title="team2" alt="team2Logo">
-		        </div>
-		      </div>
-		    </div>
-			</jstl:if>
-		    
-		    <div class="match-chat">
-		      <div class="match-text">
-		        <textarea id="textAreaChat" readonly></textarea>
-		        <input id="messageToSend" type="text" placeholder="Type something...">
-		      </div>
-		      <div class="sendbox">
-		          <button id="sendMessageBtn" onclick="sendMessage()">Send</button>
-		      </div>
-		    </div>
-		</div>
-      </div>
+
       
     </div>
 
@@ -140,6 +107,22 @@
 			  		<td>${team.teamName}</td>
 				</tr>
 			</jstl:forEach>
+		</table>
+	  </div>
+	  
+    </div>
+    
+    <!-- MATCHES -->
+    <div id="matches" data-tab-content>
+      <h1>MATCHES</h1>
+     
+      <div class="partecipants-table">
+		<table>
+			<tr>
+		  		<th>Team 1</th>
+		    	<th>Team 2</th>
+		    	<th>Risultato</th>
+			</tr>
 		</table>
 	  </div>
 	  
