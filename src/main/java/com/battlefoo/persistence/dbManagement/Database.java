@@ -354,4 +354,8 @@ public class Database {
 				return p;
 		return null;
 	}
+
+	public boolean insertMatch(Match m) {
+		return MatchesDAO.getInstance(connection).insertMatch(m);
+	}
 }

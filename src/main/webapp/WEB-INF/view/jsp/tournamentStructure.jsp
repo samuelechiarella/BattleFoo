@@ -57,6 +57,11 @@
 			</jstl:otherwise>
 		  
 		  </jstl:choose>
+		  
+		  <jstl:if test="${tournament.managerId eq loggedManager.managerId}">
+		  	<button id="startTournamentBtn" onclick="startTournament()">Start Tournament</button>
+		  </jstl:if>
+		  
 	  </jstl:if>
 	  
 	  

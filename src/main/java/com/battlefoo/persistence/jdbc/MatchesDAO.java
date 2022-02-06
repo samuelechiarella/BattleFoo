@@ -155,4 +155,24 @@ public class MatchesDAO implements MatchesQueries {
 		return new Match(res.getString(1),res.getString(2),res.getString(3),res.getLong(4),res.getLong(5),
 						res.getInt(6),res.getString(7));
 	}
+
+	@Override
+	public boolean insertMatch(Match m) {
+		String query = "insert into matches(first_team,second_team,result,tournament_id,phase,chat_history) values(?,?,?,?,?,?)";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, m.getFirstTeam());
+			ps.setString(2, m.getSecondTeam());
+			ps.setString(3, m.getResult());
+			ps.setLong(4, m.getTournamentId());
+			ps.setInt(5, m.getPhase());
+			ps.setString(6, m.getChatHistory());
+			ps.execute();
+			return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 }

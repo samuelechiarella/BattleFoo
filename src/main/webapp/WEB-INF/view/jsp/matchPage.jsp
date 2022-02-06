@@ -46,14 +46,25 @@
       <jstl:if test="${not empty loggedUser}">
       	<jstl:choose>
       	  <jstl:when test="${not empty loggedManager}">
-      	  		
+      	  		<jstl:set var="intoTheStaff" value="false"></jstl:set>
       	  		<jstl:forEach items="${matchStaff}" var="staffMember">
       	  			<jstl:if test="${staffMember.managerId eq loggedManager.managerId}">
+      	  			<jstl:set var="intoTheStaff" value="true"></jstl:set>
       	  				<div class="sendbox">
 				          <button id="sendMessageBtn" onclick="sendMessage()">Send</button>
 				      	</div>
       	  			</jstl:if>
       	  		</jstl:forEach>
+      	  		
+      	  		<jstl:if test="${not intoTheStaff}">
+      	  			<jstl:forEach items="${matchAttendees}" var="attendee">
+	      	  			<jstl:if test="${attendee.playerId eq loggedPlayer.playerId}">
+	      	  				<div class="sendbox">
+					          <button id="sendMessageBtn" onclick="sendMessage()">Send</button>
+					      	</div>
+	      	  			</jstl:if>
+      	  			</jstl:forEach>
+      	  		</jstl:if>
       	  		
 	      </jstl:when>
 	      

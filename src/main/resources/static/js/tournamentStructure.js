@@ -160,3 +160,20 @@ $(document).ready(function(){
 		        parent: ["embed.example.com", "othersite.example.com"]
 		          });
 });
+
+function startTournament(){
+	$.ajax({
+			type: "GET",
+			url: "/startTournament",
+			contentType: "application/json",
+			success: function(answer){
+				if(answer.responseCode == 200){
+					console.log("Tournament Started");
+				}
+				else{
+					alert(answer.responseMessage);
+				}
+			},
+			error: function(err){ console.log(err); }
+		});
+}

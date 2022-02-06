@@ -12,4 +12,5 @@ public interface MatchesQueries {
 	public String getChatByMatchId(Long matchId);
 	public Match getMatchById(Long matchId);
 	public List<Long> getMatchLongAttendeesByMatchId(Long matchId);
+	public boolean insertMatch(Match m);
 }

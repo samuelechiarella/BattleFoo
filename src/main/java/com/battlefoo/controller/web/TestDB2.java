@@ -14,7 +14,7 @@ public class TestDB2 {
 		return getStructure(8,null,1);
 	}
 	
-	public Attendee[][][] getStructure(int numberOfAttendees, String winner, long tournamentId){
+	private Attendee[][][] getStructure(int numberOfAttendees, String winner, long tournamentId){
 				
 		int firstGroup = numberOfAttendees/2;
 		

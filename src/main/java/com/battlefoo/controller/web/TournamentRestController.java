@@ -6,16 +6,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.battlefoo.ServerPaths;
 import com.battlefoo.model.Response;
 import com.battlefoo.model.entitiesObjects.Manager;
@@ -226,6 +224,29 @@ public class TournamentRestController {
 				req.getSession(true).setAttribute("tournament", t);
 			}
 		}
+		return res;
+	}
+	
+	@GetMapping("/startTournament")
+	public Response startTournament(HttpServletRequest req) {
+		Response res = new Response(200, "Tournament started");
+		Tournament t = (Tournament) req.getSession(true).getAttribute("tournament");
+		List<Team> tournamentAttendees = Database.getInstance().getTournamentAttendeesByTournamentId(t.getTournamentId());
+		List<Match> matches = new ArrayList<Match>();
+		for(int i = 0; i < tournamentAttendees.size()-1; i+=2) {
+			Match tmp = new Match();
+			tmp.setFirstTeam(tournamentAttendees.get(i).getTeamName());
+			if(i+1 < tournamentAttendees.size())
+				tmp.setSecondTeam(tournamentAttendees.get(i+1).getTeamName());
+			else
+				tmp.setSecondTeam("-");
+			tmp.setPhase(t.getNumOfAttendees()/2);
+			tmp.setResult("-");
+			tmp.setTournamentId(t.getTournamentId());
+			matches.add(tmp);
+		}
+		for(Match m : matches)
+			Database.getInstance().insertMatch(m);
 		return res;
 	}
 }
