@@ -27,6 +27,7 @@ function applyFilterSearchTournament(){
 	var row= "<tr onclick=\"openTournamentPage('" + Number(id) + "')\"><td><img src='"
 			+ logo + "'></td><td>" + name + "</td><td>" + data + "</td></tr>";
   	$('#filterTournamentTableBody').append(row);
+  	
 } 
 	
 	

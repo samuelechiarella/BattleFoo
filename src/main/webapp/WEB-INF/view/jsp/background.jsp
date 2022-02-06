@@ -68,14 +68,7 @@
 				<a href="javascript:void(0)" class="closebtn" onclick="closeBack()">&lt;</a>
 				<jstl:choose>
 					<jstl:when test="${not empty loggedManager}">
-						<div class="backside-list">
-							<!-- lista organizzazioni -->
-							<jstl:forEach items="${createdOrganizationList}" var="org">
-							 	<div class="side-elem">
-									<span onclick="openOrganizationPage('${org.organizationId}','${org.creatorId}')">${org.organizationName}</span>
-								</div>
-							</jstl:forEach>
-						</div>
+						
 						
 						<span id="teamsIHaveCreated" class="teams-list-span">Created</span>
 						<!-- Teams I have created -->

@@ -123,6 +123,7 @@ input[type="text"] {
 
 .side-elem {
   margin-left: 1em;
+  
 }
 
 .side-elem label{
@@ -183,12 +184,21 @@ input[type="text"] {
 	height: 25%;
 	overflow-y: auto;
 	margin-bottom: 2em;
+	overflow: hidden;
+	width:6em;
+}
+
+.backside-list-i-have-created .side-elem{
+	margin-top: 1em;
+	overflow: hidden;
 }
 
 .backside-list-i-belong {
 	height: 25%;
 	overflow-y: auto;
+
 }
+
 
 .teams-list-span {
 	color: white;
