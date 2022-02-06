@@ -158,15 +158,26 @@
 		    <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
 		    <!-- Add a placeholder for the Twitch embed -->
 		    <div id="twitch-embed">
-		    	<script type="text/javascript">
-		        new Twitch.Embed("twitch-embed", {
-		        width: 854,
-		        height: 480,
-		        channel: "nambon", <!-- ADD HERE THE ORGANIZATION CHANNEL BY JUST TYPING THE CHANNEL'S NAME -->
-		        // Only needed if this page is going to be embedded on other websites
-		        parent: ["embed.example.com", "othersite.example.com"]
-		          });
-		        </script>
+		    	<script type="text/javascript" id="liveMediaPlayer">
+	        new Twitch.Embed("twitch-embed", {
+	        width: 854,
+	        height: 480,
+	        channel: "nambon", <!-- ADD HERE THE ORGANIZATION CHANNEL BY JUST TYPING THE CHANNEL'S NAME -->
+	        // Only needed if this page is going to be embedded on other websites
+	        parent: ["embed.example.com", "othersite.example.com"]
+	          });
+	        </script>
+	        
+	        <div class="liveBox">
+		        <textarea id="liveDescription" readonly>Inserisci nel campo sottostante il nome del tuo account Twitch.tv, successivamente clicca il bottone ed infine ricarica la pagina!</textarea>
+		       	<input type="text" id="liveInput">
+		        <button id="addTwitchAccount">Confirm</button>
+		    </div>
+		    
+		    <div class="invitationLink">
+		        <label for="generateInvitationLinkBtn">Genera Link Invito! </label>
+				<button id="generateInvitationLinkBtn">Generate</button>
+			</div>
 		    </div>
 		 </div>
     </div>
