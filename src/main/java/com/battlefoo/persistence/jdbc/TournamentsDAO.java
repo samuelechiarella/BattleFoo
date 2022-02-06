@@ -1,15 +1,11 @@
 package com.battlefoo.persistence.jdbc;
 
-import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.battlefoo.model.entitiesObjects.Game;
-import com.battlefoo.model.entitiesObjects.Manager;
 import com.battlefoo.model.entitiesObjects.Team;
 import com.battlefoo.model.entitiesObjects.Tournament;
 import com.battlefoo.persistence.queriesInterfaces.TournamentsQueries;
@@ -200,12 +196,6 @@ public class TournamentsDAO  implements TournamentsQueries{
 		return attendees;
 	}
 
-	private Tournament createTournament(ResultSet res) throws SQLException {
-		return new Tournament(res.getString(1),res.getString(2),res.getString(3),
-				res.getString(4),res.getString(5),res.getString(6),res.getString(7),
-				res.getString(8),res.getLong(9),res.getLong(10),res.getInt(11));
-	}
-
 	@Override
 	public boolean insertTeam(Team team, Tournament tournament) {
 		String query = "insert into tournaments_attendees values(?,?);";
@@ -269,5 +259,49 @@ public class TournamentsDAO  implements TournamentsQueries{
 		return false;
 	}
 
-	
+	@Override
+	public boolean setTwitchChannel(Tournament t, String twitchChannel) {
+		String query = "update tournaments set twitch_channel=? where tournament_id=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setString(1, twitchChannel);
+			ps.setLong(2, t.getTournamentId());
+			ps.execute();
+			return true;
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	private Tournament createTournament(ResultSet res) throws SQLException {
+		Tournament t = new Tournament(res.getString(1),res.getString(2),res.getString(3),
+				res.getString(4),res.getString(5),res.getString(6),res.getString(7),
+				res.getString(8),res.getLong(9),res.getLong(10),res.getInt(11));
+		t.setTwitchChannel(res.getString(12));
+		return t;
+	}
+
+	public List<Long> getTournamentStaff(Long tournamentId) {
+		List<Long> managersId = null;
+		String query = "select organizations_members.manager_id "
+				+ "from tournaments,tournaments_staff,organizations,organizations_members "
+				+ "where tournaments.tournament_id = tournaments_staff.tournament_id "
+				+ "and tournaments_staff.organization_id = organizations.organization_id "
+				+ "and organizations.organization_id = organizations_members.organization_id "
+				+ "and tournaments.tournament_id = ?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, tournamentId);
+			ResultSet res = ps.executeQuery();
+			managersId = new ArrayList<Long>();
+			while(res.next())
+				managersId.add(res.getLong(1));
+		}
+		catch(SQLException e) {
+			
+		}
+		return managersId;
+	}
 }

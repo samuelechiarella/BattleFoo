@@ -124,8 +124,9 @@ public class TournamentRestController {
 		Response res = new Response(Response.failure, "Getting tournament page failed!");
 		Tournament t = Database.getInstance().getTournamentByTournamentId(tournamentId);
 		if(t!=null) {
+			
 			// SET TOURNAMENT BANNER AND SPONSOR BANNER
-
+			
 			if(t.getLogo().compareTo(ServerPaths.DEFAULT_ORGANIZATION_BANNER) != 0) {
 				try {
 					BufferedReader br =  new BufferedReader(new FileReader(t.getLogo()));
@@ -199,32 +200,6 @@ public class TournamentRestController {
 		return gamesFiltered;
 	}
 	
-	@PostMapping("/sendMessage")
-	public Response getSendMessageResponse(HttpServletRequest req, @RequestBody String message) {
-		return createSendMessageResponse(req,message.replace("\"", ""));
-	}
-
-	private Response createSendMessageResponse(HttpServletRequest req, String message) {
-		//Match currentMatch = (Match) req.getSession(true).getAttribute("match");
-		String chatHistory = Database.getInstance().getChatHistory(new Long(1));
-		if(chatHistory == null)
-			chatHistory = "";
-		chatHistory+=(String)req.getSession(true).getAttribute("loggedUser") + ": " + message + "\n";
-		Database.getInstance().setChatHistory(chatHistory,new Long(1));
-		Response res = new Response(Response.success, "Message sent");
-		return res;
-	}
-	
-	@GetMapping("/refreshChatHistory")
-	public Response getChatHistory(HttpServletRequest req) {
-		String chatHistory = Database.getInstance().getChatHistory(new Long(1));//currentMatch.getMatchId()
-		if(chatHistory == null)
-			chatHistory = "";
-		chatHistory+=(String)req.getSession(true).getAttribute("loggedUser");
-		Response res = new Response(Response.success, "Chat refreshed",chatHistory);
-		return res;
-	}
-	
 	@PostMapping("/leaveTournament")
 	public Response leaveTournament(HttpServletRequest req, @RequestBody String teamSigned) {
 		Response res = new Response(Response.failure, "Leave tournament failed!");
@@ -237,5 +212,20 @@ public class TournamentRestController {
 		return res;
 	}
 	
-	
+	@PostMapping("/setTwitchChannel")
+	public Response setTwitchChannel(HttpServletRequest req, @RequestBody String twitchChannel) {
+		Response res = new Response(Response.failure, "Setting twitch channel failed!");
+		twitchChannel = twitchChannel.replace("\"", "");
+		Tournament t = (Tournament)req.getSession(true).getAttribute("tournament");
+		if(t != null) {
+			if(Database.getInstance().setTwitchChannel(t,twitchChannel)) {
+				res.setResponseCode(200);
+				res.setResponseMessage("Twitch channel setted");
+				req.getSession(true).setAttribute("twitchChannel", twitchChannel);
+				t.setTwitchChannel(twitchChannel);
+				req.getSession(true).setAttribute("tournament", t);
+			}
+		}
+		return res;
+	}
 }

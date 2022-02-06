@@ -2,8 +2,6 @@ package com.battlefoo.persistence.dbManagement;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +15,6 @@ import com.battlefoo.persistence.jdbc.PlayersDAO;
 import com.battlefoo.persistence.jdbc.TeamsDAO;
 import com.battlefoo.persistence.jdbc.TournamentsDAO;
 import com.battlefoo.persistence.jdbc.UsersDAO;
-
-import lombok.NonNull;
 
 public class Database {
 	
@@ -321,5 +317,41 @@ public class Database {
 
 	public boolean editOrganizationDescription(Organization currentOrganization, String description) {
 		return OrganizationsDAO.getInstance(connection).editDescription(currentOrganization, description);
+	}
+
+	public boolean setTwitchChannel(Tournament t, String twitchChannel) {
+		return TournamentsDAO.getInstance(connection).setTwitchChannel(t,twitchChannel);
+	}
+
+	public List<Manager> getMatchStaff(Long tournamentId) {
+		List<Long> managersId = TournamentsDAO.getInstance(connection).getTournamentStaff(tournamentId);
+		if(managersId != null) {
+			List<Manager> tournamentStaff = new ArrayList<Manager>();
+			for(Long id : managersId) {
+				tournamentStaff.add(ManagersDAO.getInstance(connection).getById(id));
+			}
+			return tournamentStaff;
+		}
+		return null;
+	}
+
+	public Match getMatchById(Long matchId) {
+		return MatchesDAO.getInstance(connection).getMatchById(matchId);
+	}
+
+	public List<Player> getMatchLongAttendeesByMatchId(Long matchId) {
+		List<Long> matchLongsAttendees = MatchesDAO.getInstance(connection).getMatchLongAttendeesByMatchId(matchId);
+		List<Player> matchAttendees = new ArrayList<Player>();
+		for(Long id : matchLongsAttendees)
+			matchAttendees.add(Database.getInstance().getPlayerById(id));
+		return matchAttendees;
+	}
+
+	private Player getPlayerById(Long id) {
+		List<Player> allPlayers = PlayersDAO.getInstance(connection).getAll();
+		for(Player p : allPlayers)
+			if(p.getPlayerId() == id)
+				return p;
+		return null;
 	}
 }

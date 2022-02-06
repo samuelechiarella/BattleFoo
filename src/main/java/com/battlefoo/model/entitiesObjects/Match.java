@@ -28,6 +28,7 @@ public class Match {
 	private Long matchId;
 	@NonNull
 	private Integer phase;
+	private String chatHistory;
 	
 	@Override
 	public int hashCode() {

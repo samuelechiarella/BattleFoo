@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import com.battlefoo.model.entitiesObjects.Match;
 import com.battlefoo.persistence.queriesInterfaces.MatchesQueries;
@@ -31,8 +32,21 @@ public class MatchesDAO implements MatchesQueries {
 
 	@Override
 	public List<Match> getAllByTournamentId(Long tounamentId) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Match> matches = null;
+		String query = "select matches.* from matches,tournaments where matches.tournament_id=tournaments.tournament_id "
+						+ "and tournaments.tournament_id=?;";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, tounamentId);
+			ResultSet res = ps.executeQuery();
+			matches = new ArrayList<Match>();
+			while(res.next())
+				matches.add(createMatch(res));
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return matches;
 	}
 
 	@Override
@@ -94,5 +108,51 @@ public class MatchesDAO implements MatchesQueries {
 		}
 		return false;
 	}
+	
+	@Override
+	public Match getMatchById(Long matchId) {
+		Match m = null;
+		String query = "select * from matches where match_id=?;";
+		try{
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, matchId);
+			ResultSet res = ps.executeQuery();
+			if(res.next())
+				m = createMatch(res);
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return m;
+	}
 
+	@Override
+	public List<Long> getMatchLongAttendeesByMatchId(Long matchId) {
+		List<Long> l = null;
+		String query = "select teams_members.player_id "
+				+ "from matches,tournaments,tournaments_attendees,teams,teams_members "
+				+ "where matches.tournament_id = tournaments.tournament_id "
+				+ "and tournaments.tournament_id = tournaments_attendees.tournament_id "
+				+ "and tournaments_attendees.team_name = teams.team_name "
+				+ "and teams.team_name = teams_members.team_name "
+				+ "and matches.match_id =? "
+				+ "and (matches.first_team = teams_members.team_name or matches.second_team = teams_members.team_name);";
+		try {
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setLong(1, matchId);
+			ResultSet res = ps.executeQuery();
+			l = new ArrayList<Long>();
+			while(res.next())
+				l.add(res.getLong(1));
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return l;
+	}
+	
+	private Match createMatch(ResultSet res) throws SQLException{
+		return new Match(res.getString(1),res.getString(2),res.getString(3),res.getLong(4),res.getLong(5),
+						res.getInt(6),res.getString(7));
+	}
 }

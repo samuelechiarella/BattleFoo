@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.battlefoo.ServerPaths;
+import com.battlefoo.model.entitiesObjects.Match;
 import com.battlefoo.model.entitiesObjects.Team;
 import com.battlefoo.model.entitiesObjects.Tournament;
 import com.battlefoo.persistence.dbManagement.Database;
@@ -56,7 +57,14 @@ public class TournamentController {
 				else
 					team.setLogo(ServerPaths.DEFAULT_TEAM_LOGO);
 			}
+			
+			List<Match> matches = Database.getInstance().getAllMatchesByTournamentId(t.getTournamentId());
+			
+			req.getSession(true).setAttribute("matches",matches);
+			
 			req.getSession(true).setAttribute("tournamentAttendees", tournamentAttendees);
+			
+			req.getSession(true).setAttribute("twitchChannel", t.getTwitchChannel());
 		}
 		return "/tournamentStructure";
 	}
@@ -97,6 +105,8 @@ public class TournamentController {
 			
 			req.getSession(true).setAttribute("tournamentAttendees", tournamentAttendees);
 			req.getSession(true).setAttribute("tournament", t);
+			req.getSession(true).setAttribute("twitchChannel", t.getTwitchChannel());
+			System.out.println(req.getSession(true).getAttribute("twitchChannel"));
 		}
 		return "tournamentStructure";
 	}

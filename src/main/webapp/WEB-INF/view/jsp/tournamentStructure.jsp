@@ -41,10 +41,8 @@
 		      	<div class="dropdown">
 					<button class="dropbtn">My Teams</button>
 						<div class="dropdown-content">
-							<jstl:forEach items="${teamsList}" var="team">
-								<jstl:if test="${team.leaderId eq loggedPlayer.playerId}">
-							    	<a href="#" onclick="setImageTeamChoosed('${team.logo}','${team.teamName}')">${team.teamName}</a>
-						    	</jstl:if>
+							<jstl:forEach items="${createdTeamsList}" var="team">
+							    <a href="#" onclick="setImageTeamChoosed('${team.logo}','${team.teamName}')">${team.teamName}</a>
 					    	</jstl:forEach>
 					   	</div>
 			  	</div>
@@ -118,24 +116,44 @@
      
       <div class="matches-table">
 		<table>
-			<tr>
-				<th>Phase </th>
-		  		<th>Logo </th>
-		  		<th>Team 1</th>
-		  		<th></th>
-		    	<th>Team 2</th>
-		    	<th> Logo</th>
-		    	<th>Risultato</th>
-			</tr>
-			<!-- Team 1 Team 2 -->
-			<jstl:forEach items="${tournamentAttendees}" var="team">
-					<td></td>
-					<td><img src="${team.logo}"></td>
-			  		<td>${team.teamName}</td>
-			  		 <td><h2>VS</h2></td>
-			  		<td>${team.teamName}</td>
-			  		<td><img src="${team.logo}"></td>
-			</jstl:forEach>
+			<thead>
+				<tr>
+					<th>Phase </th>
+			  		<th>Logo </th>
+			  		<th>Team 1</th>
+			  		<th></th>
+			    	<th>Team 2</th>
+			    	<th> Logo</th>
+			    	<th>Result</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<!-- Team 1 Team 2 -->
+				<jstl:forEach items="${matches}" var="match">
+					<tr id="${match.matchId}" onclick="openMatchPage('${match.matchId}')">
+						<td>${match.phase}</td>
+						
+						<jstl:forEach items="${tournamentAttendees}" var="team">
+							<jstl:if test="${team.teamName eq match.firstTeam}">
+								<td><img src="${team.logo}"></td>
+							</jstl:if>
+						</jstl:forEach>
+				  		
+				  		<td>${match.firstTeam}</td>
+				  		<td><h2>VS</h2></td>
+				  		<td>${match.secondTeam}</td>
+				  		
+				  		<jstl:forEach items="${tournamentAttendees}" var="team">
+							<jstl:if test="${team.teamName eq match.secondTeam}">
+								<td><img src="${team.logo}"></td>
+							</jstl:if>
+						</jstl:forEach>
+				  		
+				  		<td>${match.result}</td>
+				  	</tr>
+				</jstl:forEach>
+			</tbody>
 		</table>
 	  </div>
 	  
@@ -154,20 +172,19 @@
 		    <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
 		    <!-- Add a placeholder for the Twitch embed -->
 		    <div id="twitch-embed">
-		    	<script type="text/javascript" id="liveMediaPlayer">
-	        new Twitch.Embed("twitch-embed", {
-	        width: 854,
-	        height: 480,
-	        channel: "nambon", <!-- ADD HERE THE ORGANIZATION CHANNEL BY JUST TYPING THE CHANNEL'S NAME -->
-	        // Only needed if this page is going to be embedded on other websites
-	        parent: ["embed.example.com", "othersite.example.com"]
-	          });
-	        </script>
-	        
+		    
 	        <div class="liveBox">
 		        <textarea id="liveDescription" readonly>Inserisci nel campo sottostante il nome del tuo account Twitch.tv, successivamente clicca il bottone ed infine ricarica la pagina!</textarea>
-		       	<input type="text" id="liveInput">
-		        <button id="addTwitchAccount">Confirm</button>
+		       	<jstl:choose>
+			       	<jstl:when test="${not empty twitchChannel}">
+			    		<input type="text" id="liveInput" value="${twitchChannel}">
+			    	</jstl:when>
+			    	
+			    	<jstl:otherwise>
+			    	<input type="text" id="liveInput">
+			    	</jstl:otherwise>
+		    	</jstl:choose>
+		        <button id="addTwitchAccount" onclick="createLiveStreaming()">Confirm</button>
 		    </div>
 		    
 		    <div class="invitationLink">

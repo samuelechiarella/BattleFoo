@@ -189,13 +189,12 @@ input[type="text"] {
 	height: 25%;
 	overflow-y: auto;
 	margin-bottom: 2em;
-	overflow: hidden;
-	width:6em;
+	overflow-x: hidden;
 }
 
 .backside-list-i-have-created .side-elem{
 	margin-top: 1em;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 .backside-list-i-belong {

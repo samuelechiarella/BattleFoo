@@ -43,6 +43,8 @@ public class Tournament {
 	@NonNull
 	private Integer numOfAttendees;
 	
+	private String twitchChannel;
+	
 	public Tournament(String name, Date date, String description, String rules, String schedule,
 					String gameName, String sponsor, String logo, Integer numOfAttendees) {
 		this.name = name;

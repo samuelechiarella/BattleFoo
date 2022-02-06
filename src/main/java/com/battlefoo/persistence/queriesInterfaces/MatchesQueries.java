@@ -10,4 +10,6 @@ public interface MatchesQueries {
 	public Match getMatch(String team1, String team2, Long tournamentId);
 	public String[][] getTeamsByPhase(int numeroPartite, Long tournamentId);
 	public String getChatByMatchId(Long matchId);
+	public Match getMatchById(Long matchId);
+	public List<Long> getMatchLongAttendeesByMatchId(Long matchId);
 }

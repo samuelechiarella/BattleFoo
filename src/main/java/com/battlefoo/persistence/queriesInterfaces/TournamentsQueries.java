@@ -17,4 +17,5 @@ public interface TournamentsQueries {
 	public boolean insertTeam(Team team, Tournament tournament);
 	public boolean deleteTournamentById(Long tournamentId);
 	public boolean deleteTeamFromTournament(Team team, Tournament tournament);
+	public boolean setTwitchChannel(Tournament t, String twitchChannel);
 }

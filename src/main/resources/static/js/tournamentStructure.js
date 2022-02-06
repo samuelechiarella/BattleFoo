@@ -82,45 +82,6 @@ function signupTeam() {
 	});
 }
 
-function sendMessage() {
-	if($("#messageToSend").val() == null){ return; }
-	$.ajax({
-		type: "POST",
-		url: "/sendMessage",
-		contentType: "application/json",
-		data: JSON.stringify($("#messageToSend").val()),
-		success: function(answer){
-			if(answer.responseCode==200){
-				$("#messageToSend").val("");
-			}
-			else{
-				console.log(answer.responseMessage);
-			}
-		},
-		error: function(err){ console.log(err); }
-	});
-}
-
-$(document).ready(function(){
-	setInterval(function() {
-	console.log("refreshed");
-	$.ajax({
-		type: "GET",
-		url: "/refreshChatHistory",
-		contentType: "application/json",
-		success: function(answer){
-			if(answer.responseCode==200){
-				$("#textAreaChat").val(answer.data);
-			}
-			else{
-				console.log(answer.responseMessage);
-			}
-		},
-		error: function(err){ console.log(err); }
-	});
-	}, 6000);
-});
-
 function leaveTournament(teamSigned) {
 	$.ajax({
 		type: "POST",
@@ -143,3 +104,59 @@ function leaveTournament(teamSigned) {
 function generateInvite(tournamentId) {
 	$("#linkInvite").val("localhost:8080/visit"+tournamentId);
 }
+
+function openMatchPage(matchId){
+	$.ajax({
+		type: "POST",
+		url: "/matchPage",
+		contentType: "application/json",
+		data: JSON.stringify(matchId),
+		success: function(answer){
+			if(answer.responseCode == 200){
+				location.href = "/matchPage";
+			}
+			else{
+				alert(answer.responseMessage);
+			}
+		},
+		error: function(err){ console.log(err); }
+	});
+}
+
+function createLiveStreaming(){
+	if($("#liveInput").val() != ""){
+		$.ajax({
+			type: "POST",
+			url: "/setTwitchChannel",
+			contentType: "application/json",
+			data: JSON.stringify($("#liveInput").val()),
+			success: function(answer){
+				if(answer.responseCode == 200){
+					location.reload();
+				}
+				else{
+					alert(answer.responseMessage);
+				}
+			},
+			error: function(err){ console.log(err); }
+		});
+	}
+}
+
+$(document).ready(function(){
+	let twitchChannel = "";
+	if($("#liveInput").val() != ""){
+		twitchChannel = $("#liveInput").val();
+	}
+	else{
+		twitchChannel = "nambon";
+	}
+	
+	new Twitch.Embed("twitch-embed", {
+		        width: 854,
+		        height: 480,
+		        channel: twitchChannel, // ADD HERE THE ORGANIZATION CHANNEL BY JUST TYPING THE CHANNEL'S NAME
+		        // Only needed if this page is going to be embedded on other websites
+		        parent: ["embed.example.com", "othersite.example.com"]
+		          });
+});
