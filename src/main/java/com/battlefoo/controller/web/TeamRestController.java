@@ -145,6 +145,7 @@ public class TeamRestController {
 				if(Database.getInstance().insertTeamMember((Team)req.getSession(true).getAttribute("team"), newTeamMember)) {
 					res.setResponseCode(200);
 					res.setResponseMessage("Team Member added");
+					res.setData(Database.getInstance().getPlayerByUsername(newTeamMember));
 					List<Player> members = (List<Player>) req.getSession(true).getAttribute("teamMembersList");
 					members.add(Database.getInstance().getPlayerByUsername(newTeamMember));
 					for(Player p : members) {
@@ -180,9 +181,11 @@ public class TeamRestController {
 	private Response createRemoveTeamMemberResponse(HttpServletRequest req, String newTeamMember) {
 		Response res = new Response(Response.failure,"Removing team member failed!");
 		if(Database.getInstance().playerExists(newTeamMember)) {
+			Player playerRemoved = Database.getInstance().getPlayerByUsername(newTeamMember);
 			if(Database.getInstance().removeTeamMember((Team)req.getSession(true).getAttribute("team"), newTeamMember)) {
 				res.setResponseCode(200);
 				res.setResponseMessage("Team Member removed");
+				res.setData(playerRemoved);
 				List<Player> members = (List<Player>) req.getSession(true).getAttribute("teamMembersList");
 				members.remove(Database.getInstance().getPlayerByUsername(newTeamMember));
 				req.getSession(true).setAttribute("teamMembersList", members);

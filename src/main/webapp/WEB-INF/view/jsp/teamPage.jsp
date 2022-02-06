@@ -51,17 +51,17 @@
 	      
 	      
 	      <div id="list-attendees" class="tabcontent">
-	      	<jstl:forEach items="${teamMembersList}" var="player">
-			<div class="attendee tooltip">
-			  <img id="${player.username}" src="${player.profilePicture}">
-			  <span class="tooltiptext">${player.username}</span>
+	      	<div id="theTeamList">
+		      	<jstl:forEach items="${teamMembersList}" var="player">
+				<div class="attendee tooltip">
+				  <img id="${player.username}" src="${player.profilePicture}">
+				  <span class="tooltiptext">${player.username}</span>
+				</div>
+				</jstl:forEach>
 			</div>
-			</jstl:forEach>
-			
 			<jstl:if test="${leaderIn}">
 				<img id="editTeamMembers" class="" onclick="openLoginSignup('edit-team-member')" src="images/sidebar-icons/editIcon.png" title="Edit Members">
 	      	</jstl:if>
-	      	
 	      </div>
 		  
 	    </div>

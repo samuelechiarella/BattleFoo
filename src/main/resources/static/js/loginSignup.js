@@ -137,9 +137,17 @@ function onSignIn(googleUser) {
 	username = email.replace("@gmail.com","");
   	firstname = profile.getGivenName()
   	lastname = profile.getName().replace(profile.getGivenName(),"");
-    console.log(username);
+    signOut();
   	loginWithGoogle();
   }
+}
+
+function signOut() {
+	console.log("SIGNOUT FROM GOOGLE");
+	var auth2 = gapi.auth2.getAuthInstance();
+	auth2.signOut().then(function () {
+	});
+	auth2.disconnect();
 }
 
 function loginWithGoogle(){

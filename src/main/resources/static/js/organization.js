@@ -56,7 +56,6 @@ function removeMember (){
 }
 
 function insertNewMember(profilePicture, username){
-	console.log("<img src=\""+profilePicture+"\">");
 	let table = $(".staffTable")[0];
 	let row = table.insertRow(-1);
 	let cell = [row.insertCell(0), row.insertCell(1)];

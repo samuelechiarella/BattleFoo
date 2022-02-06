@@ -79,12 +79,20 @@ function insertNewTeamMember() {
 					alert(answer.responseMessage);
 					break;
 				default:
-					location.reload();
+					insertTeamMember(answer.data)
 					break;
 			}
 		}, 
-        error: function(err){console.log("err")}
+        error: function(err){ console.log(err); }
     });
+}
+
+				  
+				
+function insertTeamMember(member){
+	var div= "<div class='attendee tooltip'><img id='" + member.username + "' src='" + member.profilePicture + "'>"+
+				"<span class='tooltiptext'>" + member.username + "</span></div>";
+	$('#theTeamList').append(div);
 }
 
 function removeTeamMember() {
@@ -105,10 +113,16 @@ function removeTeamMember() {
 					alert(answer.responseMessage);
 					break;
 				default:
-					location.reload();
+					console.log(answer.data);
+					removeMember(answer.data);
 					break;
 			}
 		}, 
-        error: function(err){console.log("err")}
+        error: function(err){console.log(err)}
     });
+}
+
+function removeMember(member){
+	let div = document.getElementById(member.username).parentElement;
+	document.getElementById("theTeamList").removeChild(div);
 }

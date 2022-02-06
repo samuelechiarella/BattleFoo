@@ -91,6 +91,11 @@ input[type="text"] {
 }
 /*****************************SIDEBAR*****************************/
 
+.google-btn {
+	margin-left: 2em;
+	margin-bottom: 1em;
+}
+
 /* The sidepanel menu */
 .sidepanel {
 	bottom: 0;
