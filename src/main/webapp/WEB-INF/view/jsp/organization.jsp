@@ -14,7 +14,6 @@
         <li id="homeTab" class="active tab" onclick="setActive('homeTab')">HOME</li>
         <li id="tournamentsTab" class="tab" onclick="setActive('tournamentsTab')">TOURNAMENTS</li>
         <li id="staffTab" class="tab" onclick="setActive('staffTab')">STAFF</li>
-        <li id="liveTab" class="tab" onclick="setActive('liveTab')">LIVE</li>
     </ul>
 
     <div class="tabs-contents do-not-hide-create-tournament">
@@ -69,7 +68,13 @@
 
 	    <div id="staffContent" class="tab-content">
 	      <h1>STAFF</h1>
-	      <p>Let me tell you about our staff</p>
+	      
+	      <jstl:if test="${organization.creatorId eq loggedManager.managerId}">
+		      <input type="text" id="newMember">
+		      <button id="addBtn" onclick="addMember()">Add Member</button>
+		      <button id="removeBtn" onclick="removeMember()">Remove Member</button>
+	      </jstl:if>
+	      
 	      <table class="staffTable">
 	          <tr>
 	            <th></th>
@@ -85,43 +90,7 @@
 
 	      </table>
 
-	      <jstl:if test="${organization.creatorId eq loggedManager.managerId}">
-		      <input type="text" id="newMember">
-		      <button id="addBtn" onclick="addMember()">Add Member</button>
-		      <button id="removeBtn" onclick="removeMember()">Remove Member</button>
-	      </jstl:if>
-
 	    </div>
-	    <div id="liveContent" class="tab-content">
-	      <h1>LIVE</h1>
-
-	      <!-- Load the Twitch embed JavaScript file -->
-	      <script src="https://embed.twitch.tv/embed/v1.js"></script>
-	      <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
-	       <!-- Add a placeholder for the Twitch embed -->
-	      <div id="twitch-embed">
-	      	<script type="text/javascript" id="liveMediaPlayer">
-	        new Twitch.Embed("twitch-embed", {
-	        width: 854,
-	        height: 480,
-	        channel: "nambon", <!-- ADD HERE THE ORGANIZATION CHANNEL BY JUST TYPING THE CHANNEL'S NAME -->
-	        // Only needed if this page is going to be embedded on other websites
-	        parent: ["embed.example.com", "othersite.example.com"]
-	          });
-	        </script>
-	        
-	        <div class="liveBox">
-		        <textarea id="liveDescription" readonly>Inserisci nel campo sottostante il nome del tuo account Twitch.tv, successivamente clicca il bottone ed infine ricarica la pagina!</textarea>
-		       	<input type="text" id="liveInput">
-		        <button id="addTwitchAccount">Confirm</button>
-		    </div>
-		    
-		    <div class="invitationLink">
-		        <label for="generateInvitationLinkBtn">Genera Link Invito! </label>
-				<button id="generateInvitationLinkBtn">Generate</button>
-			</div>
-	      </div>
-	     </div>
   	</div>
 </body>
 </html>

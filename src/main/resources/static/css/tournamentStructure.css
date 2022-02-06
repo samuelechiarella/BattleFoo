@@ -118,9 +118,7 @@ body {
 }
 
 .live-content {
-	margin-top: 3em;
 	text-align: center;
-	justify-content: center;
 	
 	border-bottom: 2px solid orange;
 	border-bottom-left-radius: 30px;
@@ -141,14 +139,20 @@ body {
 }
 
 #twitch-embed {
-	margin-top: 3em;
 	text-align: center;
+	
+}
+
+#twitch-embed iframe{
+	margin-top: -13%;
+	margin-bottom: 2%;
 	margin-right: 40%;
 }
 
+
 #twitch-embed textarea, #twitch-embed button, #twitch-embed input {
 	text-align: center;
-	margin-left: 110%;
+	margin-left: 50%;
 }
 
 #twitch-embed textarea {
@@ -159,7 +163,7 @@ body {
 	color: white;
 	background-color: rgba(0,0,0,0.5);
     position: relative;
-    top: -25em;
+    top: 6em;
 }
 
 #twitch-embed #addTwitchAccount {
@@ -169,8 +173,8 @@ body {
 	font-size: 1.3em;
 	color: white;
     position: relative;
-    top: -22.6em;
-    left: 15em;
+    top: 3.3em;
+    left: 7em;
     width: 10%;
 	font-family: sans-serif;
 	border: 0.1em solid orange;
@@ -185,27 +189,38 @@ body {
 	background-color: rgba(230,150,0,0.8);
 }
 
-#twitch-embed input {
+#twitch-embed #liveInput {
 	font-family: sans-serif;
 	font-size: 1.3em;
 	border: 0.2em solid orange;
 	background-color: white;
-	margin-top: 1em;
 	border-radius: 0.5em;
 	position: relative;
-    top: -21em;
+    top: 5em;
+    right: 4em;
+}
+
+#twitch-embed #linkInvite {
+	font-family: sans-serif;
+	font-size: 1.3em;
+	border: 0.2em solid orange;
+	background-color: white;
+	border-radius: 0.5em;
+	position: relative;
+    top: 8.5em;
+    left: 4em;
 }
 
 .invitationLink label{
 	position: relative;
-    top: -18em;
-    left: 41em;
+    top: 6em;
+    right: 10em;
 }
 
 .invitationLink button{
 	position: relative;
-    top: -17em;
-    left: 6em;
+    top: 4.3em;
+    left: 5.3em;
 }
 
 #twitch-embed label {
