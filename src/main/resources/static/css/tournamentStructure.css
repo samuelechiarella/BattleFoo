@@ -267,10 +267,10 @@ body {
 
 .matches-table {
 	height: 22em;
-	width: 62em;
+	width: 75em;
 	overflow-y: auto;
     overflow-x: hidden;
-    margin-left: 26%;
+    margin-left: 20%;
     margin-top: 7em;
 }
 

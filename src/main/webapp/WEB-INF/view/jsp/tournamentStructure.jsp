@@ -119,6 +119,7 @@
       <div class="matches-table">
 		<table>
 			<tr>
+				<th>Phase </th>
 		  		<th>Logo </th>
 		  		<th>Team 1</th>
 		  		<th></th>
@@ -128,6 +129,7 @@
 			</tr>
 			<!-- Team 1 Team 2 -->
 			<jstl:forEach items="${tournamentAttendees}" var="team">
+					<td></td>
 					<td><img src="${team.logo}"></td>
 			  		<td>${team.teamName}</td>
 			  		 <td><h2>VS</h2></td>

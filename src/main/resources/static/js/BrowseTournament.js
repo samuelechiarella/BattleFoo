@@ -1,5 +1,3 @@
-
-
 function applyFilterSearchTournament(){
 	if($("#tournamentName").val() == null){return;}
 	let tbody = document.getElementById("filterTournamentTableBody");
