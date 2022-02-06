@@ -317,3 +317,8 @@ input[type="text"] {
   visibility: visible;
   opacity: 1;
 }
+
+#login-invalid-user-password {
+	color: red;
+	display: none;
+}

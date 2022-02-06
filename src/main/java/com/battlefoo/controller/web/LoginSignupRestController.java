@@ -100,7 +100,7 @@ public class LoginSignupRestController {
 	}
 	
 	private Response createSignupManagerResponse(HttpServletRequest req, String password) {
-		Response res = new Response(Response.failure, "Sugn up as Manager failed");
+		Response res = new Response(Response.failure, "Sign up as Manager failed");
 		String username = (String)req.getSession(true).getAttribute("loggedUser");
 		if(Database.getInstance().allowLogIn(username, password)) {
 			if(Database.getInstance().insertManager(username)) {
@@ -118,5 +118,18 @@ public class LoginSignupRestController {
 			res.setResponseMessage("Invalid password!");
 		}
 		return res;
+	}
+	
+	@PostMapping("/loginWithGoogle")
+	public Response loginWithGoogle(HttpServletRequest req, @RequestBody String username) {
+		Response response = new Response(Response.failure, "Loggin in with Google failed!");
+		username = username.replace("\"", "");
+		if(Database.getInstance().playerExists(username)) {
+			response.setResponseCode(200);
+			response.setResponseMessage("User logged with Google");
+			req.getSession(true).setAttribute("loggedUser", username);
+			req.getSession(true).setAttribute("loggedPlayer", Database.getInstance().getPlayerByUsername(username));
+		}
+		return response;
 	}
 }

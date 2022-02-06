@@ -57,6 +57,7 @@
 			    <jstl:if test="${empty loggedUser}">
 				    <div class="side-elem login-signup-buttons sidebar-log-buttons">
 				      <a id="loginButton" href="#" onclick="openLoginSignup('log-in')">Log In</a>
+				      <div class="g-signin2" onclick="clickLogin()" data-onsuccess="onSignIn"></div>
 				      <a id="signupButton" href="#" onclick="openLoginSignup('sign-up')">Sign Up</a>
 				    </div>
 			    </jstl:if>
@@ -194,12 +195,14 @@
 			
 		</div>
 	</body>
-	<!-- Log in -->  
-			<div class="log-in do-not-hide popup">
+			<!-- Log in -->  
+			<div class="log-in do-not-hide">
 				<a class="close-log-in-sign-up do-not-hide" onclick="closeLoginSignup('log-in')">&times;</a>
-				<span class="popuptext" id="invalidUsernamePassword">Invalid Username or Password!</span>
 				<h1 class="do-not-hide">Log In</h1>
-				<input type="text" id="loginUsername" class="do-not-hide clear-log-in" name="loginUsername" placeholder="Username or Email">
+				
+				<div id="login-error-message" class="do-not-hide"></div>
+				
+				<input type="text" id="loginUsername" class="do-not-hide clear-log-in" name="loginUsername" placeholder="Username">
 				<input type="password" id="loginPassword" class="do-not-hide clear-log-in" name="loginPassword" placeholder="Password">
 				<button class="do-not-hide" onclick="login()">Submit</button>
 			</div>
@@ -208,6 +211,9 @@
 			<div class="sign-up do-not-hide">
 			    <a class="close-log-in-sign-up do-not-hide" onclick="closeLoginSignup('sign-up')">&times;</a>
 			    <h1 class="do-not-hide">Sign Up</h1>
+			    
+			    <div id="signup-error-message" class="do-not-hide"></div>
+			    
 			    <input type="text" id="signupUsername" class="do-not-hide clear-sign-up" name="signupUsername" placeholder="Username">
 		    	<input type="text" id="firstname" class="do-not-hide clear-sign-up" name="firstname" placeholder="Firstname">
 		    	<input type="text" id="lastname" class="do-not-hide clear-sign-up" name="lastname" placeholder="Lastname">
@@ -223,5 +229,13 @@
 			    <h1 class="do-not-hide">Confirm your password</h1>
 			    <input type="password" id="signupManagerPassword" class="do-not-hide clear-sign-up-manager" name="signupPassword" placeholder="Password">
 		    	<button class="do-not-hide" onclick="signupAsManager()">Submit</button>
+		 	</div>
+		 	
+		 	<!-- Sign up as Manager -->
+			<div class="log-in-google do-not-hide">
+			    <a class="close-log-in-sign-up clear-sign-up-manager do-not-hide" onclick="closeLoginSignup('log-in-google')">&times;</a>
+			    <h1 class="do-not-hide">Choose your password</h1>
+			    <input type="password" id="loginGooglePassword" class="do-not-hide clear-sign-up-manager" placeholder="Password">
+		    	<button class="do-not-hide" onclick="signupWithGoogle()">Submit</button>
 		 	</div>
 </html>

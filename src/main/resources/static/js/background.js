@@ -73,10 +73,28 @@ function closeLoginSignup(choice){
     	}
   	}
 	array = document.body.getElementsByClassName("clear-" + choice);
-	for (let i = 0, len = array.length; i < len; i++){
+	for (let i = 0, len = array.length; i < len; i++) {
     	array[i].value="";
   	}
   	document.getElementsByClassName(choice)[0].classList.remove("show-login-signup");
+	if(choice === "sign-up") {
+		let div = document.getElementById("signup-error-message");
+		if(div.firstChild != null) {
+			div.removeChild(div.firstChild);
+			document.getElementById("signupPassword").style.borderColor = "black";
+			document.getElementById("confirmPassword").style.borderColor = "black";
+			document.getElementById("email").style.borderColor = "black";
+			document.getElementById("signupUsername").style.borderColor = "black";
+		}
+	}
+	if(choice === "log-in") {
+		let div = document.getElementById("login-error-message");
+		if(div.firstChild != null) {
+			div.removeChild(div.firstChild);
+			document.getElementById("loginUsername").style.borderColor = "black";
+			document.getElementById("loginPassword").style.borderColor = "black";
+		}
+	}
 }
 
 function openTournamentPage(tournamentId) {
