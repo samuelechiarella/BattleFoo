@@ -46,12 +46,16 @@ body {
   text-align: center;
 }
 
+
+/* ---------------------------------------- HOME SECTION ---------------------------------------*/
 #organization-banner {
 	max-height: 15%;
 }
 
 #org-description {
   text-decoration: none;
+  height: 10em;
+  margin-top: 5%;
 }
 
 #org-description textarea {
@@ -67,36 +71,43 @@ body {
 }
 
 #org-info button {
-	margin: 5px;
+	margin-top: 4%;
 }
 
-#staffContent {
-	position: absolute;
-	left: 45%;
+.delete-organization-button {
+	position: sticky;
+	bottom: 50.5em;
 }
 
-
-#tournamentsContent {
-	position: absolute;
-	left: 45%;
-}
-
-.staffTable table, .tournamentTable table{
-  border-collapse: collapse;
-  width: 100%;
-}
-
-.staffTable img {
-	max-height: 3em;
-	max-width: 3em;
-	min-height: 3em;
-	min-width: 3em;
-}
-
-.staffTable td, th , #tournamentsContent table td {
+.delete-organization-button button{
+	padding: 0.3em;
+	border: 0.1em solid orange;
 	font-size: 1.3em;
+	font-family: sans-serif;
+	background-color: orange;
+	cursor: pointer;
+	transition: 0.2s;
+	color: white;
+	border-radius: 1em;
 }
 
+.delete-organization-button button:hover, #submitOrganizationDescription:hover, #editOrganizationDescription:hover {
+	background-color: rgba(255,165,0,0.8); 
+}
+
+#submitOrganizationDescription, #editOrganizationDescription {
+	padding: 0.3em;
+	border: 0.1em solid orange;
+	font-size: 1.3em;
+	font-family: sans-serif;
+	background-color: orange;
+	cursor: pointer;
+	transition: 0.2s;
+	color: white;
+	border-radius: 1em;
+}
+
+/* ---------------------------------------- TOURNAMENT SECTION ---------------------------------------*/
 #tournamentsContent td, #staffContent td{
   cursor: pointer;
 }
@@ -109,10 +120,9 @@ body {
   margin-top: 3em;
 }
 
-.staffTable th, .staffTable td , .tournamentTable th, .tournamentTable td{
-  padding: 8px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
+#tournamentsContent {
+	position: absolute;
+	left: 45%;
 }
 
 #tournamentsContent img {
@@ -129,13 +139,18 @@ body {
 #deleteTournament{
 	margin-top: 5%;
 }
+
+.tournament-active {
+	background: orange;
+}
+
 .createTournamentBtn button {
 	width: 10%;
 	height: 6%;
 	font-family: sans-serif;
 	font-size: 1.3em;
 	border: 0.1em solid orange;
-	background-color: #FF6800;
+	background-color: orange;
 	cursor: pointer;
 	color: white;
 	border-radius: 1em;
@@ -146,199 +161,76 @@ body {
 }
 
 .createTournamentBtn button:hover {
-	background-color: orange;
+	background-color: rgba(255,165,0,0.8); 
+}
+
+/* ---------------------------------------- STAFF SECTION ---------------------------------------*/
+.staffTable table, .tournamentTable table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tab-content .staffTable{
+	margin-left: 35%;
+}
+
+.staffTable img {
+	max-height: 3em;
+	max-width: 3em;
+	min-height: 3em;
+	min-width: 3em;
+}
+
+.staffTable td, th , #tournamentsContent table td {
+	font-size: 1.3em;
+}
+
+#staffContent {
+	position: absolute;
+	margin-left: 35%;
+}
+
+.staffTable th, .staffTable td , .tournamentTable th, .tournamentTable td{
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
 }
 
 #addBtn {
-	width: 10%;
+	width: 17%;
 	font-family: sans-serif;
 	font-size: 1.3em;
 	border: 0.1em solid orange;
-	background-color: #FF6800;
+	background-color: orange;
 	cursor: pointer;
 	color: white;
 	border-radius: 1em;
 	transition: 0.2s;
 	margin-left: 0.5em;
-	margin-top: 1em;
-	position: fixed;
-	top: 22em;
-	left: 52em;
+	margin-top: 3em;
 }
 
 #removeBtn {
-	width: 10%;
+	width: 17%;
 	font-family: sans-serif;
 	font-size: 1.3em;
 	border: 0.1em solid orange;
-	background-color: #FF6800;
+	background-color: orange;
 	cursor: pointer;
 	color: white;
 	border-radius: 1em;
 	transition: 0.2s;
 	margin-left: 0.5em;
-	margin-top: 1em;
-	position: fixed;
-	top: 24em;
-	left: 52em;
 }
 
-#newMember{
+#newMember {
 	font-family: sans-serif;
 	font-size: 1.3em;
 	border: 0.2em solid orange;
 	background-color: white;
-	margin-top: 1em;
 	border-radius: 0.5em;
-	position: fixed;
-	left: 39em;
 }
 
 #addBtn:hover, #removeBtn:hover {
-	background-color: orange;
-}
-
-#twitch-embed {
-	margin-top: 3em;
-	text-align: center;
-	margin-right: 40%;
-}
-
-#twitch-embed textarea, #twitch-embed button, #twitch-embed input {
-	text-align: center;
-	margin-left: 110%;
-}
-
-#twitch-embed textarea {
-	resize: none;
-	width: 25.3em;
-	height: 7em;
-	font-size: 1.3em;
-	color: white;
-	background-color: rgba(0,0,0,0.5);
-    position: relative;
-    top: -25em;
-}
-
-#twitch-embed #addTwitchAccount {
-	max-width: 6em;
-	min-width: 6em;
-	height: 2em;
-	font-size: 1.3em;
-	color: white;
-    position: relative;
-    top: -22.6em;
-    left: 15em;
-    width: 10%;
-	font-family: sans-serif;
-	border: 0.1em solid orange;
-	background-color: orange;
-	cursor: pointer;
-	color: white;
-	border-radius: 1em;
-	transition: 0.2s;
-}
-
-#twitch-embed button:hover {
-	background-color: rgba(230,150,0,0.8);
-}
-
-#twitch-embed input {
-	font-family: sans-serif;
-	font-size: 1.3em;
-	border: 0.2em solid orange;
-	background-color: white;
-	margin-top: 1em;
-	border-radius: 0.5em;
-	position: relative;
-    top: -21em;
-}
-
-.invitationLink label{
-	position: relative;
-    top: -18em;
-    left: 41em;
-}
-
-.invitationLink button{
-	position: relative;
-    top: -17em;
-    left: 6em;
-}
-
-#twitch-embed label {
-	font-family: sans-serif;
-	font-style: italic;
-	font-size: 1.3em;
-	color: white;	
-}
-
-#twitch-embed #generateInvitationLinkBtn {
-	max-width: 6em;
-	min-width: 6em;
-	height: 2em;
-	font-size: 1.3em;
-	color: white;   
-    width: 10%;
-	font-family: sans-serif;
-	border: 0.1em solid orange;
-	background-color: orange;
-	cursor: pointer;
-	color: white;
-	border-radius: 1em;
-	transition: 0.2s;
-}
-
-#liveContent {
-	margin-top: 3em;
-	
-	border-bottom: 2px solid orange;
-	border-bottom-left-radius: 30px;
-	border-bottom-right-radius: 30px;
-	
-	border-top: 2px solid orange;
-	border-top-left-radius: 30px;
-	border-top-right-radius: 30px;
-	
-	border-left: 2px solid orange;
-	
-	border-right: 2px solid orange;
-}
-
-.tournament-active {
-	background: orange;
-}
-
-.delete-organization-button {
-	position: absolute;
-	right: 10em;
-	top: 10em;
-}
-
-.delete-organization-button button{
-	padding: 0.3em;
-	border: 0.1em solid orange;
-	font-size: 1.3em;
-	font-family: sans-serif;
-	background-color: #FF6800;
-	cursor: pointer;
-	transition: 0.2s;
-	color: white;
-	border-radius: 1em;
-}
-
-.delete-organization-button button:hover {
-	background-color: orange; 
-}
-
-#submitOrganizationDescription, #editOrganizationDescription {
-	padding: 0.3em;
-	border: 0.1em solid orange;
-	font-size: 1.3em;
-	font-family: sans-serif;
-	background-color: #FF6800;
-	cursor: pointer;
-	transition: 0.2s;
-	color: white;
-	border-radius: 1em;
+	background-color: rgba(255,165,0,0.8); 
 }

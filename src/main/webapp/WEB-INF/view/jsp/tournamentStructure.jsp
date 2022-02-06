@@ -178,7 +178,6 @@
 		    <!-- Add a placeholder for the Twitch embed -->
 		    <div id="twitch-embed">
 		    
-	        <div class="liveBox">
 		        <textarea id="liveDescription" readonly>Inserisci nel campo sottostante il nome del tuo account Twitch.tv, successivamente clicca il bottone ed infine ricarica la pagina!</textarea>
 		       	<jstl:choose>
 			       	<jstl:when test="${not empty twitchChannel}">
@@ -190,11 +189,10 @@
 			    	</jstl:otherwise>
 		    	</jstl:choose>
 		        <button id="addTwitchAccount" onclick="createLiveStreaming()">Confirm</button>
-		    </div>
 		    
 		    <div class="invitationLink">
 		    	<input type="text" id="linkInvite" placeholder="Link invite" readonly>
-		        <label for="generateInvitationLinkBtn">Generate the invite!</label>
+		        <label for="generateInvitationLinkBtn">Generate the invite link!</label>
 				<button id="generateInvitationLinkBtn" onclick="generateInvite('${tournament.tournamentId}')">Generate</button>
 			</div>
 		    </div>
