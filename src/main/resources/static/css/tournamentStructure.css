@@ -134,11 +134,101 @@ body {
 	
 	border-right: 2px solid orange;
 	
-	padding: 3em;
 }
 
 .h1-text{
 	margin-top: 3em;
+}
+
+#twitch-embed {
+	margin-top: 3em;
+	text-align: center;
+	margin-right: 40%;
+}
+
+#twitch-embed textarea, #twitch-embed button, #twitch-embed input {
+	text-align: center;
+	margin-left: 110%;
+}
+
+#twitch-embed textarea {
+	resize: none;
+	width: 25.3em;
+	height: 7em;
+	font-size: 1.3em;
+	color: white;
+	background-color: rgba(0,0,0,0.5);
+    position: relative;
+    top: -25em;
+}
+
+#twitch-embed #addTwitchAccount {
+	max-width: 6em;
+	min-width: 6em;
+	height: 2em;
+	font-size: 1.3em;
+	color: white;
+    position: relative;
+    top: -22.6em;
+    left: 15em;
+    width: 10%;
+	font-family: sans-serif;
+	border: 0.1em solid orange;
+	background-color: orange;
+	cursor: pointer;
+	color: white;
+	border-radius: 1em;
+	transition: 0.2s;
+}
+
+#twitch-embed button:hover {
+	background-color: rgba(230,150,0,0.8);
+}
+
+#twitch-embed input {
+	font-family: sans-serif;
+	font-size: 1.3em;
+	border: 0.2em solid orange;
+	background-color: white;
+	margin-top: 1em;
+	border-radius: 0.5em;
+	position: relative;
+    top: -21em;
+}
+
+.invitationLink label{
+	position: relative;
+    top: -18em;
+    left: 41em;
+}
+
+.invitationLink button{
+	position: relative;
+    top: -17em;
+    left: 6em;
+}
+
+#twitch-embed label {
+	font-family: sans-serif;
+	font-style: italic;
+	font-size: 1.3em;
+	color: white;	
+}
+
+#twitch-embed #generateInvitationLinkBtn {
+	max-width: 6em;
+	min-width: 6em;
+	height: 2em;
+	font-size: 1.3em;
+	color: white;   
+    width: 10%;
+	font-family: sans-serif;
+	border: 0.1em solid orange;
+	background-color: orange;
+	cursor: pointer;
+	color: white;
+	border-radius: 1em;
+	transition: 0.2s;
 }
 
 /*                                          MY MATCH                                    */
