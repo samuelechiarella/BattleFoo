@@ -116,13 +116,24 @@
     <div id="matches" data-tab-content>
       <h1>MATCHES</h1>
      
-      <div class="partecipants-table">
+      <div class="matches-table">
 		<table>
 			<tr>
+		  		<th>Logo </th>
 		  		<th>Team 1</th>
+		  		<th></th>
 		    	<th>Team 2</th>
+		    	<th> Logo</th>
 		    	<th>Risultato</th>
 			</tr>
+			<!-- Team 1 Team 2 -->
+			<jstl:forEach items="${tournamentAttendees}" var="team">
+					<td><img src="${team.logo}"></td>
+			  		<td>${team.teamName}</td>
+			  		 <td><h2>VS</h2></td>
+			  		<td>${team.teamName}</td>
+			  		<td><img src="${team.logo}"></td>
+			</jstl:forEach>
 		</table>
 	  </div>
 	  

@@ -216,7 +216,7 @@ body {
 
 .partecipants-table {
 	height: 22em;
-	width: 50em;
+	width: 52em;
 	overflow-y: auto;
     overflow-x: hidden;
     margin-left: 31%;
@@ -256,6 +256,59 @@ body {
 .partecipants-table th, td{
 	padding: 5px;
 }
+
+.matches-table table{
+	width: 90%;
+	text-align: center;
+	border-collapse: collapse;
+	color: white;
+    overflow-y: auto;
+}
+
+.matches-table {
+	height: 22em;
+	width: 62em;
+	overflow-y: auto;
+    overflow-x: hidden;
+    margin-left: 26%;
+    margin-top: 7em;
+}
+
+.matches-table img {
+	max-width: 3em;
+	max-height: 3em;
+	min-width: 3em;
+	min-height: 3em; 
+	border-radius: 10em;
+}
+
+.matches-table td {
+	font-size: 2em;
+}
+
+
+.matches-table tr{
+	transition: 0.3s;	
+}
+
+.matches-table td:hover{
+	color: orange;
+}
+
+.matches-table th{
+	font-size: 1.8em;
+	border-bottom: 1px solid #ddd;
+}
+
+.matches-table td{
+	cursor: pointer;
+}
+
+.matches-table th, .matches-table td{
+	padding: 20px;
+}
+
+
 
 .overview_box #signupTournamentBtn {
 	background-color: rgba(179,107,0, 1);
