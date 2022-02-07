@@ -1,0 +1,114 @@
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	/*background: linear-gradient(90deg, rgba(10,10,10,1) 0%, rgba(22,24,144,1) 35%, rgba(18,191,226,1) 100%);#282828*/
+}
+
+/* Slider */
+.slider {
+  top: 0;
+  margin: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 40%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.slides {
+  width: 500%;/*100*numero immagini*/
+  height: 40%;
+  display: flex;
+}
+
+.slides input {
+  display: none;
+}
+
+.slide {
+  width: 20%;
+  transition: 1s;
+}
+
+.slide img{
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.navigation-manual {
+  position: absolute;
+  width: 50%;
+  margin-top: -5%;
+  display: flex;
+  justify-content: center;
+}
+
+.manual-btn {
+  border: 2px solid orange;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.manual-btn:not(:last-child) {
+  margin-right: 2%;
+}
+
+.manual-btn:hover {
+  background: orange;
+}
+
+#radio1:checked ~ .first{
+  margin-left: 0;
+}
+
+#radio2:checked ~ .first{
+  margin-left: -20%;
+}
+
+#radio3:checked ~ .first{
+  margin-left: -40%;
+}
+
+#radio4:checked ~ .first{
+  margin-left: -60%;
+}
+
+#radio5:checked ~ .first{
+  margin-left: -80%;
+}
+
+.tournaments {
+  width: 65%;
+  height: 25%;
+  margin-top: 4%;
+  margin-left: 17.5%;
+}
+
+.tournaments h2 {
+  color: orange;
+  font-size: 1.5em;
+  font-family: sans-serif;
+}
+
+.list-tournaments {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow-x: scroll;
+}
+
+.tournament img {
+  width: 20em;
+  height: 12em;
+  border: 2px solid orange;
+  cursor: pointer;
+}
+.tournament:not(:last-child) img {
+  margin-right: 8px;
+}

@@ -1,0 +1,80 @@
+.top-bar{
+  text-align: center;
+  margin-top: 10em;
+}
+.tournament-match button {
+  cursor: pointer;
+}
+.match-team {
+  display: inline-block;
+}
+
+.match-team * {
+    display: block;
+    padding: 0.2em;
+}
+
+.team1 {
+  margin-right: 3em;
+}
+
+.team2 {
+  margin-left: 3em;
+}
+
+.team1, .team2 {
+  text-align: center;
+}
+
+.match-team span {
+  font-family: sans-serif;
+  font-size: 2em;
+}
+
+.match-team img {
+  width: 10em;
+  border-radius: 20em;
+}
+
+#chatRefresh img {
+  width: 1.5em;
+}
+
+.match-chat {
+  text-align: center;
+  margin-top: 5em;
+}
+
+.match-text {
+  width: 50%;
+  margin-left: 24%;
+}
+
+.match-text *{
+  width: 100%;
+  font-size: 1em;
+  font-family: sans-serif;
+  padding: 0.4em;
+}
+
+.match-chat textarea {
+  resize: none;
+  height: 20vh;
+background-color: rgba(0,0,0,0.5);
+}
+
+.sendbox button {
+  transition: 0.5s;
+
+  padding: 0.5em;
+  font-size: 0.8em;
+  font-family: sans-serif;
+  color: white;
+  background: none;
+  border-radius: 0.4em;
+  border: 0.1em solid orange;
+}
+
+.sendbox button:hover {
+  background-color: orange;
+}
