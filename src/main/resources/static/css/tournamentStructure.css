@@ -613,12 +613,14 @@ body {
 
 /*							GRACKET						*/
 .g_gracket {
-  width: 9999px;
-  background-color: #fff;
+  text-align: center;
+  width: 80%;
   padding: 55px 15px 5px;
   line-height: 100%;
   position: relative;
   overflow: hidden;
+  margin-left: 25%;
+  margin-top: 5em;
 }
 
 .g_round {
