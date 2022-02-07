@@ -43,9 +43,6 @@
 				      <img id="manage" src="images/sidebar-icons/teamIcon.png">
 				      <a href="#"><label for="manage" onclick="openManageTeams()">Manage<br>Teams</label></a>
 				    </div>
-				    <div class="side-elem">
-				      <a href="/testDB">Test Database</a>
-				    </div>
 				    <div class="side-elem profile-logout-buttons sidebar-log-buttons">
 				      <a id="profileButton" href="#">${loggedUser}</a>
 				      <a id="logoutButton" href="#" onclick="logout()">Logout</a>

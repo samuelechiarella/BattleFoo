@@ -20,19 +20,19 @@ function sendMessage() {
 $(document).ready(function(){
 	setInterval(function() {
 	console.log("refreshed");
-	$.ajax({
-		type: "GET",
-		url: "/refreshChatHistory",
-		contentType: "application/json",
-		success: function(answer){
-			if(answer.responseCode==200){
-				$("#textAreaChat").val(answer.data);
-			}
-			else{
-				console.log(answer.responseMessage);
-			}
-		},
-		error: function(err){ console.log(err); }
-	});
+		$.ajax({
+			type: "GET",
+			url: "/refreshChatHistory",
+			contentType: "application/json",
+			success: function(answer){
+				if(answer.responseCode==200){
+					$("#textAreaChat").val(answer.data);
+				}
+				else{
+					console.log(answer.responseMessage);
+				}
+			},
+			error: function(err){ console.log(err); }
+		});
 	}, 5000);
 });

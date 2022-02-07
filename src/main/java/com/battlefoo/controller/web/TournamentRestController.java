@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.battlefoo.ServerPaths;
+import com.battlefoo.model.Attendee;
 import com.battlefoo.model.Response;
 import com.battlefoo.model.entitiesObjects.Manager;
 import com.battlefoo.model.entitiesObjects.Match;
@@ -248,5 +249,39 @@ public class TournamentRestController {
 		for(Match m : matches)
 			Database.getInstance().insertMatch(m);
 		return res;
+	}
+	
+	@GetMapping("/updateBracket")
+	public Attendee[][][] getObj(HttpServletRequest req) {
+		Tournament t = (Tournament) req.getSession(true).getAttribute("tournament");
+		return getStructure(t.getNumOfAttendees(),null,t.getTournamentId());
+	}
+	
+	private Attendee[][][] getStructure(int numberOfAttendees, String winner, long tournamentId){
+				
+		int firstGroup = numberOfAttendees/2;
+		
+		int numberOfGroups = ((int) (Math.log(firstGroup) / Math.log(2))) + 1;
+		
+		Attendee[][][] attendees = null;
+		
+		attendees = new Attendee[numberOfGroups+1][][];
+		
+		//initialize structure
+		for(int i = 0, numberOfMatches = numberOfAttendees/2; i < numberOfGroups; ++i, numberOfMatches/=2) {
+			attendees[i] =new Attendee[numberOfMatches][2];
+		}
+		attendees[numberOfGroups] = new Attendee[1][1];
+
+		for(int i = 0, numberOfMatches = numberOfAttendees/2; i < numberOfGroups; ++i, numberOfMatches/=2) {
+			for(int j = 0; j < numberOfMatches; ++j) {
+				String[][] teams = Database.getInstance().getTeamsByPhase(numberOfMatches, tournamentId);
+				attendees[i][j][0] = new Attendee(teams[j][0],teams[j][0]);
+				attendees[i][j][1] = new Attendee(teams[j][1],teams[j][1]);
+			}
+		}
+		attendees[numberOfGroups][0][0] = new Attendee(winner, winner);
+		
+		return attendees;
 	}
 }

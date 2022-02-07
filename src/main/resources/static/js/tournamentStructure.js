@@ -143,6 +143,23 @@ function createLiveStreaming(){
 	}
 }
 
+function startTournament(){
+	$.ajax({
+			type: "GET",
+			url: "/startTournament",
+			contentType: "application/json",
+			success: function(answer){
+				if(answer.responseCode == 200){
+					console.log("Tournament Started");
+				}
+				else{
+					alert(answer.responseMessage);
+				}
+			},
+			error: function(err){ console.log(err); }
+		});
+}
+
 $(document).ready(function(){
 	let twitchChannel = "";
 	if($("#liveInput").val() != ""){
@@ -161,19 +178,22 @@ $(document).ready(function(){
 		          });
 });
 
-function startTournament(){
-	$.ajax({
+
+$(document).ready(function(){
+	setInterval(function() {
+		$.ajax({
 			type: "GET",
-			url: "/startTournament",
+			url: "/updateBracket",
 			contentType: "application/json",
-			success: function(answer){
-				if(answer.responseCode == 200){
-					console.log("Tournament Started");
-				}
-				else{
-					alert(answer.responseMessage);
-				}
+			success:function(data){
+				console.log(data);
+				$(".my_gracket").gracket({ 
+			    	src: data
+				});
 			},
-			error: function(err){ console.log(err); }
+			error: function(err){
+				console.log(err);
+			}
 		});
-}
+	}, 10000);
+});
