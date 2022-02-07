@@ -4,12 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" 
-        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" 
-        crossorigin="anonymous"></script>
-<script src="js/jquery.gracket.min.js"></script>
-
 <link rel="stylesheet" href="css/tournamentStructure.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="js/tournamentStructure.js" defer></script>
@@ -207,5 +201,9 @@
 		 </div>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" 
+        crossorigin="anonymous"></script>
+<script src="js/jquery.gracket.min.js"></script>
 </body>
 </html>
