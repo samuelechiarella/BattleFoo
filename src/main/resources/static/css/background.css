@@ -1,7 +1,8 @@
 body {
+	
 	margin: 0;
 	padding: 0;
-	background: linear-gradient(90deg, rgba(10,10,10,1) 0%, rgba(22,24,144,1) 35%, rgba(18,191,226,1) 100%);/*#282828*/
+	background: linear-gradient(90deg, rgba(10,10,10,1) 0%, rgba(22,24,144,1) 35%, rgba(18,191,226,1) 500%);/*#282828*/
 }
 
 input[type="text"] {
