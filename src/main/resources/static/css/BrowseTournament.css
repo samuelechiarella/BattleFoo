@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=MonteCarlo&family=Waterfall&display=swap');
+
+.PageTitle {
+	width: 100%;
+	
+}
+
+.PageTitle h1{
+	text-align: center;
+	color: white;
+	font-family: 'Lobster', cursive;
+	margin-top: 4em;
+}
+
+.browse-tournament-table table{
+	width: 69%;
+	text-align: center;
+	margin-left: 20%;
+	border-collapse: collapse;
+	color: white;
+    overflow-y: auto;
+    position: absolute;
+    overflow-x: scroll;
+    min-width: 30em;
+    
+}
+
+.browse-tournament-table {
+	height: 22em;
+}
+
+.browse-tournament-table tr{
+	transition: 0.3s;	
+}
+
+.browse-tournament-table tr:hover{
+	color: orange;
+}
+
+.browse-tournament-table th{
+	font-size: 1.8em;
+	border-bottom: 1px solid #ddd;
+}
+
+.browse-tournament-table td{
+	cursor: pointer;
+}
+
+.browse-tournament-table th, td{
+	padding: 5px;
+}
+
+.FilterArea {
+	margin-top: 5em;
+	margin-bottom: 3em;
+	margin-left: 30%;
+}
+
+
+.FilterArea input{
+	font-family: sans-serif;
+	
+}
+
+.FilterInput {
+	width: 51%;	
+	border: 0.3em solid orange;
+	padding: 0.4em;
+	color: white;
+	border-radius: 1em;
+}
+
+
+.FilterBtn {
+	width:3.5em;
+	height: 2em;
+	font-family: 'Lobster', cursive;
+	font-size: 1.5em;
+	border: 0.1em solid orange;
+	background-color: #FF6800;
+	cursor: pointer;
+	color: white;
+	border-radius: 1em;
+	transition: 0.2s;
+	margin-left: 1%;
+	
+
+}
+
+.FilterBtn button:hover {
+	background-color: orange;
+}
+
+.browse-tournament-table img {
+	max-width: 3em;
+	max-height: 3em;
+	border-radius: 10em;
+}
+
+.browse-tournament-table td {
+	font-size: 2em;
+}

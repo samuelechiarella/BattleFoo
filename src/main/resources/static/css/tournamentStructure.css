@@ -1,0 +1,612 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=MonteCarlo&family=Waterfall&display=swap');
+
+[data-tab-content] {
+  display: none;
+}
+
+.active[data-tab-content] {
+  display: block;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.tabs {
+  min-width:30em;
+  
+  display: flex;
+  font-family: 'Lobster', cursive;
+  font-weight: 400;
+  font-size: 21px;
+  color: #edf0f1;
+  text-decoration: none;
+  justify-content: flex-end;
+  list-style-type: none;
+  margin:0;
+  margin-left: 5em;
+  padding: 20px;
+  border-bottom: 1px solid orange;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 15px;
+}
+
+.tab.active {
+  background-color: rgb(179,107,0);
+}
+
+.tab:hover {
+  transition: 0.3s;
+  background-color: rgba(179,107,0, 0.8);
+}
+
+.tab-content h1, p{
+  color: #FFF;
+  margin-left: 44%;
+  /*margin-right: 20px;*/
+}
+
+
+
+/* Style the tab */
+.sub-tab {
+	display: inline-block;
+	font-family: 'Lobster', cursive;
+ 	font-weight: 400;
+	font-size: 21px;
+	color: #edf0f1;
+	text-decoration: none;
+	justify-content: flex-end;
+	text-align: center;
+	list-style-type: none;
+	margin-bottom: 1%;
+	padding: 5px;
+	margin-left: 1%;
+}
+
+/* Style the buttons that are used to open the tab content */
+.sub-tab label {
+  background-color: none;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.sub-tab label:hover {
+  background-color: rgba(179,107,0, 0.8);
+}
+
+/* Create an active/current tablink class */
+.sub-tab label.active {
+  background-color: rgb(179,107,0);
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid orange;
+  border-top: none;
+}
+
+.keepaway {
+  z-index: -1;
+  opacity: 0;
+  position: absolute;
+  margin: 0;
+}
+
+.tabcontent h3 {
+  color: #FFF;
+}
+
+#Prizes-content img {
+  width: 30%;
+}
+
+.tabcontent {
+	text-align: center;
+}
+
+.live-content {
+	text-align: center;
+	
+	border-bottom: 2px solid orange;
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	
+	border-top: 2px solid orange;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+	
+	border-left: 2px solid orange;
+	
+	border-right: 2px solid orange;
+	
+}
+
+.h1-text{
+	margin-top: 3em;
+}
+
+.live-invite-twitch {
+	
+	margin-top: 2em;
+	
+	
+}
+#twitch-embed {
+	height: 80%;
+}
+.set-live-input-text-button *{
+	display: block;
+}
+
+.set-live-input-text-button input {
+	text-align: center;
+	padding: 0.2em;
+	width: 12em;
+	display: inline-block;
+	border-radius: 0.2em;
+	font-size: 1.5em;
+	font-family: sans-serif;
+}
+
+.set-live-input-text-button button{
+	width: 6em;
+	display: inline-block;
+	border-color: orange;
+	padding: 0.1em;
+	border-radius: 0.2em;
+	font-size: 1.1em;
+	font-family: sans-serif;
+	cursor: pointer;
+}
+
+.live-invite-twitch .set-live-twitch, .live-invite-twitch .invitationLink {
+	display:block;
+	margin: 1em;
+}
+
+.invitationLink input{
+	text-align: center;
+	padding: 0.2em;
+	width: 12em;
+	display: inline-block;
+	border-radius: 0.2em;
+	font-size: 1.5em;
+	font-family: sans-serif;
+}
+
+.invitationLink label {
+	color: #0D0D0D;
+	font-size: 1.5em;
+	font-family: sans-serif;
+}
+
+.invitationLink button {
+	width: 6em;
+	display: inline-block;
+	border-color: orange;
+	padding: 0.1em;
+	border-radius: 0.2em;
+	font-size: 1.1em;
+	font-family: sans-serif;
+	cursor: pointer;
+}
+
+/*                                          MY MATCH                                    */
+
+.top-bar{
+  text-align: center;
+}
+.tournament-match button {
+  cursor: pointer;
+}
+.match-team {
+  display: inline-block;
+}
+
+.match-team * {
+    display: block;
+    padding: 0.2em;
+}
+
+.team1 {
+  margin-right: 3em;
+}
+
+.team2 {
+  margin-left: 3em;
+}
+
+.team1, .team2 {
+  text-align: center;
+}
+
+.match-team span {
+  font-family: sans-serif;
+  font-size: 2em;
+}
+
+.vs-logo {
+	display: inline-block;
+	width: 20em;
+}
+
+.match-team img {
+  width: 10em;
+  border-radius: 20em;
+}
+
+#chatRefresh img {
+  width: 1.5em;
+}
+
+.sendbox button {
+  transition: 0.5s;
+  margin-top: 0.5em;
+  margin-right: 2%;
+  padding: 0.5em;
+  font-size: 1em;
+  font-family: sans-serif;
+  color: white;
+  background: none;
+  border-radius: 0.4em;
+  border: 0.1em solid orange;
+}
+
+.sendbox button:hover {
+  background-color: orange;
+}
+
+.partecipants-table table{
+	width: 70%;
+	text-align: center;
+	border-collapse: collapse;
+	color: white;
+    overflow-y: auto;
+    position: absolute;
+}
+
+.partecipants-table {
+	height: 22em;
+	width: 52em;
+	overflow-y: auto;
+    overflow-x: hidden;
+    margin-left: 15%;
+    margin-top: 7em;
+}
+
+.partecipants-table img {
+	max-width: 3em;
+	max-height: 3em;
+	min-width: 3em;
+	min-height: 3em; 
+	border-radius: 10em;
+}
+
+.partecipants-table td {
+	font-size: 2em;
+}
+
+
+.partecipants-table tr{
+	transition: 0.3s;	
+}
+
+.partecipants-table td:hover{
+	color: orange;
+}
+
+.partecipants-table th{
+	font-size: 1.8em;
+	border-bottom: 1px solid #ddd;
+}
+
+.partecipants-table td{
+	cursor: pointer;
+}
+
+.partecipants-table th, td{
+	padding: 5px;
+}
+
+.matches-table table{
+	width: 90%;
+	text-align: center;
+	border-collapse: collapse;
+	color: white;
+    overflow-y: auto;
+    position:absolute;
+}
+
+.matches-table {
+	height: 22em;
+	width: 75em;
+	overflow-y: auto;
+    overflow-x: hidden;
+    margin-left: 5%;
+    margin-top: 7em;
+}
+
+.matches-table img {
+	max-width: 3em;
+	max-height: 3em;
+	min-width: 3em;
+	min-height: 3em; 
+	border-radius: 10em;
+}
+
+.matches-table td {
+	font-size: 2em;
+}
+
+
+.matches-table tr{
+	transition: 0.3s;	
+}
+
+.matches-table td:hover{
+	color: orange;
+}
+
+.matches-table th{
+	font-size: 1.8em;
+	border-bottom: 1px solid #ddd;
+}
+
+.matches-table td{
+	cursor: pointer;
+}
+
+.matches-table th, .matches-table td{
+	padding: 20px;
+}
+
+
+
+.overview_box #signupTournamentBtn {
+	background-color: rgba(179,107,0, 1);
+	border-radius: 5em;
+	font-size: 1.2em;
+	font-family: sans-serif;
+	position: fixed;
+	top: 6em;
+	right: 5em;
+	cursor: pointer;
+	transition: 0.2s;
+	color: white;
+	max-height: 3em;
+	max-width: 7em;
+	min-height: 3em;
+	min-width: 7em;
+}
+
+#overview h1 {
+	position: static;
+}
+
+.overview_box #signupTournamentBtn:hover {
+	background-color: orange;
+}
+
+.overview_box #leaveTournamentBtn {
+	background-color: rgba(179,107,0, 1);
+	border-radius: 5em;
+	font-size: 1.2em;
+	font-family: sans-serif;
+	position: fixed;
+	top: 6em;
+	right: 5em;
+	cursor: pointer;
+	transition: 0.2s;
+	color: white;
+	max-height: 3em;
+	max-width: 7em;
+	min-height: 3em;
+	min-width: 7em;
+}
+
+
+.overview_box #startTournamentBtn {
+	background-color: rgba(179,107,0, 1);
+	border-radius: 5em;
+	font-size: 1.2em;
+	font-family: sans-serif;
+	position: fixed;
+	top: 6em;
+	left: 2em;
+	cursor: pointer;
+	transition: 0.2s;
+	color: white;
+	max-height: 3em;
+	max-width: 7em;
+	min-height: 3em;
+	min-width: 7em;
+	
+}
+.overview_box #startTournamentBtn:hover {
+	background-color: orange;
+}
+
+.overview_box #leaveTournamentBtn:hover {
+	background-color: orange;
+}
+
+
+.tournament-img-banner	{
+	text-align: center;
+}
+.signup-tournament {
+	opacity: 0;
+	z-index: -1;
+	background: white;
+	border-radius: 2em;
+	width:20em;
+	height: 20em;
+	position: fixed;
+	top: 6.3em;
+	right: 5.9em;
+	transition: 0.3s;
+}
+
+.show-signup-tournament {
+	opacity: 1;
+	z-index: 0;
+}
+
+.signup-tournament img {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left:0;
+	border-radius: 2em;;
+}
+
+.confirm-cancel-signup-tournament-btns {
+	position: fixed;
+	top: 24em;
+	right: 7em;
+}
+
+.confirm-cancel-signup-tournament-btns button {
+	background-color: rgba(179,107,0, 0.8);
+	border-radius: 5em;
+	font-size: 1em;
+	font-family: sans-serif;
+	cursor: pointer;
+	transition: 0.2s;
+	color: white;
+	width: 5em;
+}
+
+.confirm-cancel-signup-tournament-btns button:hover {
+	background-color: orange;
+}
+
+/*										DROPDOWN MENU						*/
+/* Dropdown Button */
+.dropbtn {
+  background-color: rgba(179,107,0, 0.8);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  border-top-left-radius: 2em;
+  transition: 0.1s;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: orange;}
+
+#Details-content textarea {
+	resize: none;
+	height: 10em;
+	width: 70em;
+	padding: 0.8em;
+	color: white;
+	font-size: 1.3em;
+	background-color: rgba(0,0,0,0.5)
+}
+
+#Rules-content textarea {
+	resize: none;
+	height: 10em;
+	width: 70em;
+	padding: 0.8em;
+	color: white;
+	font-size: 1.3em;
+	background-color: rgba(0,0,0,0.5)
+}
+
+#Schedule-content textarea {
+	resize: none;
+	height: 10em;
+	width: 70em;
+	padding: 0.8em;
+	color: white;
+	font-size: 1.3em;
+	background-color: rgba(0,0,0,0.5)
+}
+
+#overview img {
+	
+	width:70%;
+	border-radius:1em;
+	min-width: 30em;
+}
+
+.partecipants-table img {
+	max-height: 4em;
+	max-width: 4 em;
+}
+
+.match-text textarea {
+	resize: none;
+	height: 7.5em;
+	width: 50em;
+	padding: 0.8em;
+	color: white;
+	font-size: 1.3em;
+	background-color: rgba(0,0,0,0.5)
+}
+
+#messageToSend {
+	width: 66em;
+	color: white;
+	margin-top: 1%;
+	background-color: rgba(0,0,0,0.5)
+}
+
+.match-text *{
+  width: 100%;
+  font-size: 1em;
+  font-family: sans-serif;
+  padding: 0.4em;
+}
+
+.match-text {
+  width: 50%;
+  margin-left: 20%;
+}
+
+

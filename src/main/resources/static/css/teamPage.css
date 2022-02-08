@@ -1,0 +1,170 @@
+.out-tab-logo-name, .out-tab-logo-name *{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.out-tab {
+	margin-top: 5em;
+  text-align: center;
+  width: 100%;
+  top: 10%;
+  min-width: 40%;
+}
+
+label[for="team-logo"] {
+	margin-left: 1em;
+}
+
+.out-tab img {
+  width: 13em;
+  border-radius: 0.5em;
+}
+
+.keep-away {
+  z-index: -1;
+  opacity: 0;
+  position: absolute;
+}
+
+label[for="team-logo"] {
+  font-size: 3.5em;
+}
+
+.tabs {
+  position: absolute;
+  top: 58%;
+  left: 2%;
+  margin-right: 2%;
+  width: 94%;
+  min-width: 14em;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 0.1em solid orange;
+  border-top-left-radius: 0.2em;
+  border-top-right-radius: 0.2em;
+  background-color: #f1f1f1;
+  font-size: 1.1em;
+  min-width: 14em;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab label {
+  background-color: none;
+  float: left;
+  outline: none;
+  cursor: pointer;
+  padding: 0.7em 0.9em;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+/* Change background color of buttons on hover */
+.tab label:hover {
+  background-color: orange;
+}
+
+/* Create an active/current tablink class */
+.tab label.active {
+  background-color: orange;
+}
+
+/* Style the tab content */
+.tabcontent {
+  background-color: #BFC0C4;
+  border: 0.1em outset orange;
+  border-bottom-left-radius: 0.2em;
+  border-bottom-right-radius: 0.2em;
+  height: 20em;
+  overflow: auto;
+  display: none;
+  padding: 0.6em 0.7em;
+  border-top: none;
+  font-weight: normal;
+}
+
+#description-content textarea {
+	resize: none;
+	width: 95%;
+	color: white;
+	font-size: 1.6em;
+	background-color: transparent;
+	height: 99%;
+	border: none;
+	pointer-events: none;
+}
+
+#description-content {
+	background-color: rgba(0,0,0,0.5);
+	overflow-y: hidden; 
+}
+
+#list-attendees {
+	background-color: rgba(0,0,0,0.5);
+}
+
+.attendee {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.attendee:not(:last-child) {
+	margin-right: 0.5em;
+}
+
+.attendee img {
+	transition: 0.5s;
+}
+
+.attendee img:hover {
+	background-color: white;
+}
+
+#list-attendees *:not(#editTeamMembers) {
+  padding: 0.3em;
+}
+
+#list-attendees img:not(#editTeamMembers) {
+  width: 5em;
+  border-radius: 10em;
+}
+
+#editTeamMembers, #editTeamDescription img {
+	width: 2em;
+	position: absolute;
+	right: 5%;
+  	bottom: 15%;
+  	cursor: pointer;
+}
+
+.apply-cancel-changes {
+  position: absolute;
+  right: 5%;
+  bottom: 10%;
+}
+
+.hide-apply-changes {
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none
+}
+
+.apply-cancel-changes label {
+	color: #252525;
+	background-color: rgb(179,107,0);
+	padding: 0.3em;
+	font-size: 1em;
+	font-family: sans-serif;
+}
+
+label[for="description"], label[for="attendees"] {
+	font-family: sans-serif;
+	color: #232323;
+}
+
+label[for="team-logo"] {
+	font-family: sans-serif;
+	color: #111111;
+}

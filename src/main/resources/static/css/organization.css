@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=MonteCarlo&family=Waterfall&display=swap');
+
+.tab-content {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.tabs {
+  display: flex;
+  font-family: 'Lobster', cursive;
+  font-weight: 400;
+  font-size: 21px;
+  color: #edf0f1;
+  text-decoration: none;
+  justify-content: flex-end;
+  list-style-type: none;
+  margin: 0;
+  padding: 20px;
+  border-bottom: 1px solid orange;
+}
+
+.tab {
+  cursor: pointer;
+  padding: 15px;
+}
+
+.tab.active {
+  background-color: rgb(179,107,0);;
+}
+
+.tab:hover {
+  transition: 0.3s;
+  background-color: rgba(179,107,0, 0.8);
+}
+
+.tabs-contents {
+  color: #FFF;
+  text-align: center;
+}
+
+
+/* ---------------------------------------- HOME SECTION ---------------------------------------*/
+#organization-banner {
+	max-height: 15%;
+}
+
+#org-description {
+  text-decoration: none;
+  height: 10em;
+  margin-top: 5%;
+}
+
+#org-description textarea {
+  padding: 1em;
+  resize: none;
+  width: 80%;
+  height: 99%;
+  border: none;
+  border-radius: 0.5em;
+  font-size: 1.5em;
+  color: white;
+  background-color: rgba(0,0,0,0.5);
+}
+
+#org-info button {
+	margin-top: 4%;
+}
+
+.delete-organization-button {
+	position: sticky;
+	bottom: 50.5em;
+}
+
+.delete-organization-button button{
+	padding: 0.3em;
+	border: 0.1em solid orange;
+	font-size: 1.3em;
+	font-family: sans-serif;
+	background-color: orange;
+	cursor: pointer;
+	transition: 0.2s;
+	color: white;
+	border-radius: 1em;
+}
+
+.delete-organization-button button:hover, #submitOrganizationDescription:hover, #editOrganizationDescription:hover {
+	background-color: rgba(255,165,0,0.8); 
+}
+
+#submitOrganizationDescription, #editOrganizationDescription {
+	padding: 0.3em;
+	border: 0.1em solid orange;
+	font-size: 1.3em;
+	font-family: sans-serif;
+	background-color: orange;
+	cursor: pointer;
+	transition: 0.2s;
+	color: white;
+	border-radius: 1em;
+}
+
+/* ---------------------------------------- TOURNAMENT SECTION ---------------------------------------*/
+#tournamentsContent td, #staffContent td{
+  cursor: pointer;
+}
+
+#tournamentsContent td:hover, #staffContent td:hover {
+  background-color: orange;
+}
+
+#tournamentsContent table , #staffContent table{
+  margin-top: 3em;
+}
+
+#tournamentsContent {
+	position: absolute;
+	left: 45%;
+}
+
+#tournamentsContent img {
+	max-height: 3em;
+	max-width: 3em;
+}
+
+.createTournamentBtn {
+	position: fixed;
+	right: 15em;
+	bottom: 15em;
+	width: 10em;
+}
+#deleteTournament{
+	margin-top: 50%;
+}
+
+.tournament-active {
+	background: orange;
+}
+
+.createTournamentBtn button {
+	width: 7em;
+    height: 2.5em;
+    font-family: sans-serif;
+    font-size: 1.3em;
+    border: 0.1em solid orange;
+    background-color: orange;
+    cursor: pointer;
+    color: white;
+    border-radius: 1em;
+    transition: 0.2s;
+    position: absolute;
+    top: 2em;
+    left: 2em;
+}
+
+.createTournamentBtn button:hover {
+	background-color: rgba(255,165,0,0.8); 
+}
+
+/* ---------------------------------------- STAFF SECTION ---------------------------------------*/
+.staffTable table, .tournamentTable table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tab-content .staffTable{
+	width:20em;
+	position:absolute;
+}
+
+.staffTable img {
+	max-height: 3em;
+	max-width: 3em;
+	min-height: 3em;
+	min-width: 3em;
+}
+
+.staffTable td, th , #tournamentsContent table td {
+	font-size: 1.3em;
+}
+
+#staffContent {
+	position: absolute;
+	margin-left: 35%;
+}
+
+.staffTable th, .staffTable td , .tournamentTable th, .tournamentTable td{
+  padding: 8px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+#addBtn {
+	width: 5em;
+	font-family: sans-serif;
+	font-size: 1.3em;
+	border: 0.1em solid orange;
+	background-color: orange;
+	cursor: pointer;
+	color: white;
+	border-radius: 1em;
+	transition: 0.2s;
+	margin-left: 0.5em;
+	margin-top: 3em;
+}
+
+#removeBtn {
+	width: 5em;
+	font-family: sans-serif;
+	font-size: 1.3em;
+	border: 0.1em solid orange;
+	background-color: orange;
+	cursor: pointer;
+	color: white;
+	border-radius: 1em;
+	transition: 0.2s;
+	margin-left: 0.5em;
+}
+
+#newMember {
+	font-family: sans-serif;
+	font-size: 1.3em;
+	border: 0.2em solid orange;
+	background-color: white;
+	border-radius: 0.5em;
+}
+
+#addBtn:hover, #removeBtn:hover {
+	background-color: rgba(255,165,0,0.8); 
+}
