@@ -26,6 +26,14 @@
         <img id="imgLogo" src="${tournament.logo}">
       </div>
       <jstl:if test="${not empty loggedPlayer}">
+      	
+		  <jstl:set var="intoTheStaff" value="false"></jstl:set>
+      	  <jstl:forEach items="${matchStaff}" var="staffMember">
+      	  	<jstl:if test="${staffMember.managerId eq loggedManager.managerId}">
+      	  		<jstl:set var="intoTheStaff" value="true"></jstl:set>
+      	  	</jstl:if>
+     	  </jstl:forEach>
+		          
 	      <jstl:set var="teamFound" value="false"></jstl:set>
 	      <jstl:forEach items="${tournamentAttendees}" var="team">
 		      <jstl:if test="${team.leaderId eq loggedPlayer.playerId}">
@@ -35,28 +43,27 @@
 	      </jstl:forEach>
 	      
 	      <jstl:choose>
-	      <jstl:when test="${not teamFound}">
-		      <button id="signupTournamentBtn" onclick="openSignupTournament()">Sign Up Tournament</button>
-		      <div class="signup-tournament">
-		     	<img id="teamChoosedForSignup">
-		      	<div class="dropdown">
-					<button class="dropbtn">My Teams</button>
-						<div class="dropdown-content">
-							<jstl:forEach items="${createdTeamsList}" var="team">
-							    <a href="#" onclick="setImageTeamChoosed('${team.logo}','${team.teamName}')">${team.teamName}</a>
-					    	</jstl:forEach>
-					   	</div>
-			  	</div>
-			  	<div class="confirm-cancel-signup-tournament-btns">
-				  	<button id="confirmSignupTournament" onclick="signupTeam()">Confirm</button>
-				  	<button id="closeSignupTOurnament" onclick="closeSignupTournament()">Cancel</button>
-			  	</div>
-			  </div>
-		  </jstl:when>
-			<jstl:otherwise>
-				<button id="leaveTournamentBtn" onclick="leaveTournament('${teamSigned}')">Leave Tournament</button>	
-			</jstl:otherwise>
-		  
+		      <jstl:when test="${not teamFound and not intoTheStaff}">
+			      <button id="signupTournamentBtn" onclick="openSignupTournament()">Sign Up Tournament</button>
+			      <div class="signup-tournament">
+			     	<img id="teamChoosedForSignup">
+			      	<div class="dropdown">
+						<button class="dropbtn">My Teams</button>
+							<div class="dropdown-content">
+								<jstl:forEach items="${createdTeamsList}" var="team">
+								    <a href="#" onclick="setImageTeamChoosed('${team.logo}','${team.teamName}')">${team.teamName}</a>
+						    	</jstl:forEach>
+						   	</div>
+				  	</div>
+				  	<div class="confirm-cancel-signup-tournament-btns">
+					  	<button id="confirmSignupTournament" onclick="signupTeam()">Confirm</button>
+					  	<button id="closeSignupTOurnament" onclick="closeSignupTournament()">Cancel</button>
+				  	</div>
+				  </div>
+			  </jstl:when>
+			  <jstl:otherwise>
+					<button id="leaveTournamentBtn" onclick="leaveTournament('${teamSigned}')">Leave Tournament</button>	
+			  </jstl:otherwise>
 		  </jstl:choose>
 		  
 		  <jstl:if test="${tournament.managerId eq loggedManager.managerId}">
