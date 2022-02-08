@@ -188,26 +188,34 @@
 		    <script src="https://embed.twitch.tv/embed/v1.js"></script>
 		    <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
 		    <!-- Add a placeholder for the Twitch embed -->
-		    <div id="twitch-embed">
-		    	<div class = "live-invite-twitch">
-			        <textarea id="liveDescription" readonly>Inserisci nel campo sottostante il nome del tuo account Twitch.tv, successivamente clicca il bottone ed infine ricarica la pagina!</textarea>
-			       	<jstl:choose>
-				       	<jstl:when test="${not empty twitchChannel}">
-				    		<input type="text" id="liveInput" value="${twitchChannel}">
-				    	</jstl:when>
-				    	
-				    	<jstl:otherwise>
-				    	<input type="text" id="liveInput">
-				    	</jstl:otherwise>
-			    	</jstl:choose>
-			        <button id="addTwitchAccount" onclick="createLiveStreaming()">Confirm</button>
-		    	</div>
-		    <div class="invitationLink">
-		    	<input type="text" id="linkInvite" placeholder="Link invite" readonly>
-		        <label for="generateInvitationLinkBtn">Generate the invite link!</label>
-				<button id="generateInvitationLinkBtn" onclick="generateInvite('${tournament.tournamentId}')">Generate</button>
-			</div>
-		    </div>
+		    <div id="twitch-embed">	 </div>   	
+		    	<div class="live-invite-twitch">
+			    	<div class="set-live-twitch">
+				        <jstl:choose>
+					       	<jstl:when test="${not empty twitchChannel}">
+					       		<div class="set-live-input-text-button">
+						    		<input type="text" id="liveInput" placeholder="Type a twitch channel.." value="${twitchChannel}">
+						    		<button id="addTwitchAccount" onclick="createLiveStreaming()">Confirm</button>
+					    		</div>
+					    	</jstl:when>
+					    	
+					    	<jstl:otherwise>
+					    		<div class="set-live-input-text-button">
+						    		<input type="text" placeholder="Type a twitch channel.." id="liveInput">
+						    		<button id="addTwitchAccount" onclick="createLiveStreaming()">Confirm</button>
+					    		</div>
+					    	</jstl:otherwise>
+				    	</jstl:choose>
+			        </div>
+				    
+				    <div class="invitationLink">
+				    	<label for="generateInvitationLinkBtn">Generate the invite link!</label>
+				    	<input type="text" id="linkInvite" placeholder="Link invite" readonly>
+						<button id="generateInvitationLinkBtn" onclick="generateInvite('${tournament.tournamentId}')">Generate</button>
+					</div>
+				</div>
+
+		    
 		 </div>
     </div>
   </div>
