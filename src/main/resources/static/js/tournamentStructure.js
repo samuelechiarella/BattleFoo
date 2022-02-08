@@ -180,20 +180,18 @@ $(document).ready(function(){
 
 
 $(document).ready(function(){
-	setInterval(function() {
-		$.ajax({
-			type: "GET",
-			url: "/updateBracket",
-			contentType: "application/json",
-			success:function(data){
-				console.log(data);
-				$(".my_gracket").gracket({ 
-			    	src: data
-				});
-			},
-			error: function(err){
-				console.log(err);
-			}
-		});
-	}, 10000);
+	$.ajax({
+		type: "GET",
+		url: "/updateBracket",
+		contentType: "application/json",
+		success:function(data){
+			console.log(data);
+			$(".my_gracket").gracket({ 
+		    	src: data
+			});
+		},
+		error: function(err){
+			console.log(err);
+		}
+	});
 });

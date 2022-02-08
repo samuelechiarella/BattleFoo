@@ -4,15 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-<script src="https://code.jquery.com/jquery-3.3.1.min.js" 
-        integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" 
-        crossorigin="anonymous"></script>
-<script src="js/jquery.gracket.min.js"></script>
-
 <link rel="stylesheet" href="css/tournamentStructure.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="js/tournamentStructure.js" defer></script>
+<link rel="stylesheet" href="css/gracket.css">
 </head>
 <body>
 <jsp:include page="background.jsp"></jsp:include>
@@ -28,9 +23,19 @@
     <div class="overview_box">
       <div id="overview" data-tab-content class="active overview">
         <h1>${tournament.name}</h1>
+        <div class = "tournament-img-banner">
         <img id="imgLogo" src="${tournament.logo}">
+        </div>
       </div>
       <jstl:if test="${not empty loggedPlayer}">
+      	
+		  <jstl:set var="intoTheStaff" value="false"></jstl:set>
+      	  <jstl:forEach items="${matchStaff}" var="staffMember">
+      	  	<jstl:if test="${staffMember.managerId eq loggedManager.managerId}">
+      	  		<jstl:set var="intoTheStaff" value="true"></jstl:set>
+      	  	</jstl:if>
+     	  </jstl:forEach>
+		          
 	      <jstl:set var="teamFound" value="false"></jstl:set>
 	      <jstl:forEach items="${tournamentAttendees}" var="team">
 		      <jstl:if test="${team.leaderId eq loggedPlayer.playerId}">
@@ -40,28 +45,27 @@
 	      </jstl:forEach>
 	      
 	      <jstl:choose>
-	      <jstl:when test="${not teamFound}">
-		      <button id="signupTournamentBtn" onclick="openSignupTournament()">Sign Up Tournament</button>
-		      <div class="signup-tournament">
-		     	<img id="teamChoosedForSignup">
-		      	<div class="dropdown">
-					<button class="dropbtn">My Teams</button>
-						<div class="dropdown-content">
-							<jstl:forEach items="${createdTeamsList}" var="team">
-							    <a href="#" onclick="setImageTeamChoosed('${team.logo}','${team.teamName}')">${team.teamName}</a>
-					    	</jstl:forEach>
-					   	</div>
-			  	</div>
-			  	<div class="confirm-cancel-signup-tournament-btns">
-				  	<button id="confirmSignupTournament" onclick="signupTeam()">Confirm</button>
-				  	<button id="closeSignupTOurnament" onclick="closeSignupTournament()">Cancel</button>
-			  	</div>
-			  </div>
-		  </jstl:when>
-			<jstl:otherwise>
-				<button id="leaveTournamentBtn" onclick="leaveTournament('${teamSigned}')">Leave Tournament</button>	
-			</jstl:otherwise>
-		  
+		      <jstl:when test="${not teamFound and not intoTheStaff}">
+			      <button id="signupTournamentBtn" onclick="openSignupTournament()">Sign Up Tournament</button>
+			      <div class="signup-tournament">
+			     	<img id="teamChoosedForSignup">
+			      	<div class="dropdown">
+						<button class="dropbtn">My Teams</button>
+							<div class="dropdown-content">
+								<jstl:forEach items="${createdTeamsList}" var="team">
+								    <a href="#" onclick="setImageTeamChoosed('${team.logo}','${team.teamName}')">${team.teamName}</a>
+						    	</jstl:forEach>
+						   	</div>
+				  	</div>
+				  	<div class="confirm-cancel-signup-tournament-btns">
+					  	<button id="confirmSignupTournament" onclick="signupTeam()">Confirm</button>
+					  	<button id="closeSignupTOurnament" onclick="closeSignupTournament()">Cancel</button>
+				  	</div>
+				  </div>
+			  </jstl:when>
+			  <jstl:otherwise>
+					<button id="leaveTournamentBtn" onclick="leaveTournament('${teamSigned}')">Leave Tournament</button>	
+			  </jstl:otherwise>
 		  </jstl:choose>
 		  
 		  <jstl:if test="${tournament.managerId eq loggedManager.managerId}">
@@ -207,5 +211,6 @@
 		 </div>
     </div>
   </div>
+<script src="js/jquery.gracket.min.js"></script>
 </body>
 </html>

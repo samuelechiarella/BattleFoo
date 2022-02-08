@@ -14,6 +14,8 @@ body {
 }
 
 .tabs {
+  min-width:30em;
+  
   display: flex;
   font-family: 'Lobster', cursive;
   font-weight: 400;
@@ -22,7 +24,8 @@ body {
   text-decoration: none;
   justify-content: flex-end;
   list-style-type: none;
-  margin: 0;
+  margin:0;
+  margin-left: 5em;
   padding: 20px;
   border-bottom: 1px solid orange;
 }
@@ -47,11 +50,7 @@ body {
   /*margin-right: 20px;*/
 }
 
-#overview img {
-  width: 40%;
-  padding: 1em;
-  margin-left: 30%;
-}
+
 
 /* Style the tab */
 .sub-tab {
@@ -312,11 +311,12 @@ body {
 }
 
 .partecipants-table table{
-	width: 90%;
+	width: 70%;
 	text-align: center;
 	border-collapse: collapse;
 	color: white;
     overflow-y: auto;
+    position: absolute;
 }
 
 .partecipants-table {
@@ -324,7 +324,7 @@ body {
 	width: 52em;
 	overflow-y: auto;
     overflow-x: hidden;
-    margin-left: 31%;
+    margin-left: 15%;
     margin-top: 7em;
 }
 
@@ -368,6 +368,7 @@ body {
 	border-collapse: collapse;
 	color: white;
     overflow-y: auto;
+    position:absolute;
 }
 
 .matches-table {
@@ -375,7 +376,7 @@ body {
 	width: 75em;
 	overflow-y: auto;
     overflow-x: hidden;
-    margin-left: 20%;
+    margin-left: 5%;
     margin-top: 7em;
 }
 
@@ -458,10 +459,35 @@ body {
 }
 
 
+.overview_box #startTournamentBtn {
+	background-color: rgba(179,107,0, 1);
+	border-radius: 5em;
+	font-size: 1.2em;
+	font-family: sans-serif;
+	position: fixed;
+	top: 6em;
+	left: 2em;
+	cursor: pointer;
+	transition: 0.2s;
+	color: white;
+	max-height: 3em;
+	max-width: 7em;
+	min-height: 3em;
+	min-width: 7em;
+	
+}
+.overview_box #startTournamentBtn:hover {
+	background-color: orange;
+}
+
 .overview_box #leaveTournamentBtn:hover {
 	background-color: orange;
 }
 
+
+.tournament-img-banner	{
+	text-align: center;
+}
 .signup-tournament {
 	opacity: 0;
 	z-index: -1;
@@ -585,11 +611,10 @@ body {
 }
 
 #overview img {
-	justify-content: center;
-	max-height: 25em;
-	max-width: 50em;
-	min-height: 25em;
-	min-width: 50em;
+	
+	width:70%;
+	border-radius:1em;
+	min-width: 30em;
 }
 
 .partecipants-table img {
@@ -626,63 +651,3 @@ body {
   margin-left: 20%;
 }
 
-/*							GRACKET						*/
-.g_gracket {
-  width: 9999px;
-  background-color: #fff;
-  padding: 55px 15px 5px;
-  line-height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.g_round {
-  float: left;
-  margin-right: 70px;
-}
-
-.g_game {
-  position: relative;
-  margin-bottom: 15px;
-}
-
-.g_gracket h3 {
-  margin: 0;
-  padding: 10px 8px 8px;
-  font-size: 18px;
-  font-weight: normal;
-  color: #fff
-}
-
-.g_team {
-  background: #3597AE;
-}
-
-.g_team:last-child {
-  background: #FCB821;
-}
-
-.g_round:last-child {
-  margin-right: 20px;
-}
-
-.g_winner {
-  background: #444;
-}
-
-.g_winner .g_team {
-  background: none;
-}
-
-.g_current {
-  cursor: pointer;
-  background: #A0B43C!important;
-}
-
-.g_round_label {
-  top: -5px;
-  font-weight: normal;
-  color: #CCC;
-  text-align: center;
-  font-size: 18px;
-}

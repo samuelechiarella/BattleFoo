@@ -254,6 +254,8 @@ public class TournamentRestController {
 	@GetMapping("/updateBracket")
 	public Attendee[][][] getObj(HttpServletRequest req) {
 		Tournament t = (Tournament) req.getSession(true).getAttribute("tournament");
+		if(t==null)
+			return null;
 		return getStructure(t.getNumOfAttendees(),null,t.getTournamentId());
 	}
 	
