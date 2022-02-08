@@ -189,19 +189,19 @@
 		    <!-- Create a Twitch.Embed object that will render within the "twitch-embed" element -->
 		    <!-- Add a placeholder for the Twitch embed -->
 		    <div id="twitch-embed">
-		    
-		        <textarea id="liveDescription" readonly>Inserisci nel campo sottostante il nome del tuo account Twitch.tv, successivamente clicca il bottone ed infine ricarica la pagina!</textarea>
-		       	<jstl:choose>
-			       	<jstl:when test="${not empty twitchChannel}">
-			    		<input type="text" id="liveInput" value="${twitchChannel}">
-			    	</jstl:when>
-			    	
-			    	<jstl:otherwise>
-			    	<input type="text" id="liveInput">
-			    	</jstl:otherwise>
-		    	</jstl:choose>
-		        <button id="addTwitchAccount" onclick="createLiveStreaming()">Confirm</button>
-		    
+		    	<div class = "live-invite-twitch">
+			        <textarea id="liveDescription" readonly>Inserisci nel campo sottostante il nome del tuo account Twitch.tv, successivamente clicca il bottone ed infine ricarica la pagina!</textarea>
+			       	<jstl:choose>
+				       	<jstl:when test="${not empty twitchChannel}">
+				    		<input type="text" id="liveInput" value="${twitchChannel}">
+				    	</jstl:when>
+				    	
+				    	<jstl:otherwise>
+				    	<input type="text" id="liveInput">
+				    	</jstl:otherwise>
+			    	</jstl:choose>
+			        <button id="addTwitchAccount" onclick="createLiveStreaming()">Confirm</button>
+		    	</div>
 		    <div class="invitationLink">
 		    	<input type="text" id="linkInvite" placeholder="Link invite" readonly>
 		        <label for="generateInvitationLinkBtn">Generate the invite link!</label>

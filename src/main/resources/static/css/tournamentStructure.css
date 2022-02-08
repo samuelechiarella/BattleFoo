@@ -651,3 +651,11 @@ body {
   margin-left: 20%;
 }
 
+@media screen and (max-width: 50em) {
+   .live-invite-twitch {
+   		position: absolute;
+   		bottom:  5%;
+   		margin-top: 90%;
+   		left: 0;
+   }
+}

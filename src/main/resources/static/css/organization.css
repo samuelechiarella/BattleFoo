@@ -137,7 +137,7 @@ body {
 	width: 10em;
 }
 #deleteTournament{
-	margin-top: 5%;
+	margin-top: 50%;
 }
 
 .tournament-active {
@@ -145,19 +145,19 @@ body {
 }
 
 .createTournamentBtn button {
-	width: 10%;
-	height: 6%;
-	font-family: sans-serif;
-	font-size: 1.3em;
-	border: 0.1em solid orange;
-	background-color: orange;
-	cursor: pointer;
-	color: white;
-	border-radius: 1em;
-	transition: 0.2s;
-	position: fixed;
-	top: 30em;
-	left: 65em;
+	width: 7em;
+    height: 2.5em;
+    font-family: sans-serif;
+    font-size: 1.3em;
+    border: 0.1em solid orange;
+    background-color: orange;
+    cursor: pointer;
+    color: white;
+    border-radius: 1em;
+    transition: 0.2s;
+    position: absolute;
+    top: 2em;
+    left: 2em;
 }
 
 .createTournamentBtn button:hover {
@@ -171,7 +171,8 @@ body {
 }
 
 .tab-content .staffTable{
-	margin-left: 35%;
+	width:20em;
+	position:absolute;
 }
 
 .staffTable img {
@@ -197,7 +198,7 @@ body {
 }
 
 #addBtn {
-	width: 17%;
+	width: 5em;
 	font-family: sans-serif;
 	font-size: 1.3em;
 	border: 0.1em solid orange;
@@ -211,7 +212,7 @@ body {
 }
 
 #removeBtn {
-	width: 17%;
+	width: 5em;
 	font-family: sans-serif;
 	font-size: 1.3em;
 	border: 0.1em solid orange;

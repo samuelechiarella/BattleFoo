@@ -32,7 +32,7 @@ label[for="team-logo"] {
 
 .tabs {
   position: absolute;
-  top: 50%;
+  top: 58%;
   left: 2%;
   margin-right: 2%;
   width: 94%;
@@ -133,16 +133,16 @@ label[for="team-logo"] {
 
 #editTeamMembers, #editTeamDescription img {
 	width: 2em;
-	position: fixed;
+	position: absolute;
 	right: 5%;
   	bottom: 15%;
   	cursor: pointer;
 }
 
 .apply-cancel-changes {
-  position: fixed;
+  position: absolute;
   right: 5%;
-  bottom: 15%;
+  bottom: 10%;
 }
 
 .hide-apply-changes {
