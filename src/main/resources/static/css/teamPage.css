@@ -4,7 +4,7 @@
 }
 
 .out-tab {
-	margin-top: 10em;
+	margin-top: 5em;
   text-align: center;
   width: 100%;
   top: 10%;
@@ -32,7 +32,7 @@ label[for="team-logo"] {
 
 .tabs {
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 2%;
   margin-right: 2%;
   width: 94%;
