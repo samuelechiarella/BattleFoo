@@ -23,7 +23,9 @@
     <div class="overview_box">
       <div id="overview" data-tab-content class="active overview">
         <h1>${tournament.name}</h1>
+        <div class = "tournament-img-banner">
         <img id="imgLogo" src="${tournament.logo}">
+        </div>
       </div>
       <jstl:if test="${not empty loggedPlayer}">
 	      <jstl:set var="teamFound" value="false"></jstl:set>

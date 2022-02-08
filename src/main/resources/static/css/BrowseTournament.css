@@ -2,6 +2,7 @@
 
 .PageTitle {
 	width: 100%;
+	
 }
 
 .PageTitle h1{
@@ -14,17 +15,19 @@
 .browse-tournament-table table{
 	width: 69%;
 	text-align: center;
-	margin-left: 30%;
+	margin-left: 20%;
 	border-collapse: collapse;
 	color: white;
     overflow-y: auto;
+    position: absolute;
+    overflow-x: scroll;
+   
+    min-width: 30em;
+    
 }
 
 .browse-tournament-table {
 	height: 22em;
-	width: 100em;
-	overflow-y: auto;
-    overflow-x: hidden;
 }
 
 .browse-tournament-table tr{
@@ -57,6 +60,7 @@
 
 .FilterArea input{
 	font-family: sans-serif;
+	
 }
 
 .FilterInput {
@@ -69,7 +73,8 @@
 
 
 .FilterBtn {
-	width: 7%;
+	width:3.5em;
+	height: 2em;
 	font-family: 'Lobster', cursive;
 	font-size: 1.5em;
 	border: 0.1em solid orange;
@@ -79,6 +84,8 @@
 	border-radius: 1em;
 	transition: 0.2s;
 	margin-left: 1%;
+	
+
 }
 
 .FilterBtn button:hover {
